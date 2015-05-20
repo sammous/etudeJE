@@ -13,9 +13,7 @@ mongoose.connect('mongodb://localhost/newauth');
 app.set('view engine','ejs');
 
 //app.set('views', __dirname + '/views');
-//app.use(express.static(path.join(__dirname, 'public')));
-
-
+app.use(express.static(__dirname + '/public'));
 
 //middleware
 app.use(bodyParser.urlencoded({ extended: true}));

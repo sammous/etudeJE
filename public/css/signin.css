@@ -1,6 +1,7 @@
 body {
     padding-top: 90px;
-    background-image:url(images/accueil_background_flou.jpg)
+    background-repeat:no-repeat;
+    background-image:url(/images/accueil_background_flou.jpg);
 }
 .panel-login {
 	border-color: #ccc;
