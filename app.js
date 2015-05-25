@@ -7,7 +7,6 @@ var session = require('express-session');
 var bcrypt = require('bcrypt-nodejs');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var mongoose = require('mongoose');
 var port = process.env.PORT || 3000;
 
 
@@ -58,7 +57,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.get('/', route.signIn);
+app.get('/signUp', route.signIn);
 
 // signin
 // GET
