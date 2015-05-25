@@ -36,8 +36,15 @@ app.post('/', function(req, res){
   });
 });
 
-app.get('/signin', function(req, res) {
-  res.render('search.html');
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
+
+app.get('/search', isLoggedIn, function(req, res) {
+  res.render('search.ejs', {
+  user : req.user // get the user out of session and pass to template
+  });
 });
 
 // route middleware to make sure a user is logged in

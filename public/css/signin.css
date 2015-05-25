@@ -2,6 +2,8 @@ body {
     padding-top: 90px;
     background-repeat:no-repeat;
     background-image:url(/images/accueil_background_flou.jpg);
+    animation-duration: 3s;
+    animation-name: slidein;
 }
 .panel-login {
 	border-color: #ccc;
@@ -81,4 +83,16 @@ body {
 	text-decoration: underline;
 	color: #666;
 }
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+  
 }
