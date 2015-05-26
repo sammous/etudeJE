@@ -18,6 +18,11 @@ var User = bookshelf.Model.extend({
    idAttribute: 'userId',
 });
 
+var Admin = bookshelf.Model.extend({
+   tableName: 'tblAdmin',
+   idAttribute: 'adminId',
+});
+
 module.exports = {
    User: User
 };

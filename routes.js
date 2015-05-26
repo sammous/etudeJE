@@ -20,6 +20,12 @@ var search = function(req, res, next) {
    }
 };
 
+// GET
+var adminSignin = function(req, res, next) {
+   if(req.isAuthenticated()) res.redirect('/');
+   res.render('admin');
+};
+
 // sign in
 // GET
 var signIn = function(req, res, next) {
@@ -106,6 +112,9 @@ var notFound404 = function(req, res, next) {
 /**************************************/
 // search
 module.exports.search = search;
+
+// GET
+module.exports.adminSignin = adminSignin  ;
 
 // sigin in
 // GET

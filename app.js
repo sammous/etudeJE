@@ -57,6 +57,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
+
+app.get('/', route.signIn);
+
+
+app.get('/admin', route.adminSignin);
+
+
 app.get('/signUp', route.signIn);
 
 // signin
@@ -79,7 +86,7 @@ app.get('/logout', route.logout);
 
 /********************************/
 // 404 not found
-app.use(route.notFound404);
+//app.use(route.notFound404);
 
 
 var server = app.listen(app.get('port'), function(err) {
