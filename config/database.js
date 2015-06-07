@@ -1,6 +1,11 @@
 // config/database.js
 module.exports = {
-
-    'url' : 'mongodb://localhost/newauth' // looks like mongodb://<user>:<pass>@mongo.onmodulus.net:27017/Mikha4ot
-
+    'connection': {
+        'host': 'localhost',
+        'user': 'root',
+        'password': 'root'
+    },
+	'database': 'my_schema',
+  'users_table': 'users',
+  'vehicule_table': 'vehicules'
 };
