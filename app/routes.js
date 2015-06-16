@@ -85,7 +85,9 @@ module.exports = function(app, passport) {
 	// FICHE RECEPTION VEHICULE SECTION =========================
 	// =====================================
 	app.get('/fvehicule', isLoggedIn, function(req, res) {
-		res.render('reception_vehicule.ejs');
+		res.render('reception_vehicule.ejs',{
+			user : req.user
+		});
 	});
 
 
