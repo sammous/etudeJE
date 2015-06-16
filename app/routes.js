@@ -90,6 +90,15 @@ module.exports = function(app, passport) {
 		});
 	});
 
+	// =====================================
+	// FICHE F44 SECTION =========================
+	// =====================================
+	app.get('/f44', isLoggedIn, function(req, res) {
+		res.render('f44.ejs',{
+			user : req.user
+		});
+	});
+
 
 	// =====================================
 	// ADMIN SECTION =========================
