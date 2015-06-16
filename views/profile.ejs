@@ -14,27 +14,13 @@
 
 	<div class="page-header text-center">
 		<h1><span class="fa fa-anchor"></span> Profile Page</h1>
-		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
+		<a href="/logout" class="btn btn-default btn-sm">Déconnexion</a>
 	</div>
 
-	<div class="row">
-
-		<!-- LOCAL INFORMATION -->
-		<div class="col-sm-6">
-			<div class="well">
-				<h3><span class="fa fa-user"></span> Local</h3>
-
-					<p>
-						<strong>id</strong>: <%= user.id %><br>
-						<strong>username</strong>: <%= user.username %><br>
-						<strong>password</strong>: <%= user.password %>
-						<strong>attribut</strong>: <%= user.attribut %>
-
-					</p>
-
-			</div>
-		</div>
-
+	<div class="btn-group btn-group-justified">
+    <a href="/fvehicule" class="btn btn-primary">Réception Véhicule</a>
+    <a href="#" class="btn btn-primary">Check in</a>
+    <a href="#" class="btn btn-primary">Préparation f44</a>
 	</div>
 
 </div>

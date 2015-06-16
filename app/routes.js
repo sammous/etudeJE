@@ -33,7 +33,7 @@ module.exports = function(app, passport) {
 
 	// process the login form
 	app.post('/login', passport.authenticate('local-login', {
-            successRedirect : '/admin', // redirect to the secure profile section
+            successRedirect : '/profile', // redirect to the secure profile section
             failureRedirect : '/login', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
 		}),
@@ -82,6 +82,14 @@ module.exports = function(app, passport) {
 
 
 	// =====================================
+	// FICHE RECEPTION VEHICULE SECTION =========================
+	// =====================================
+	app.get('/fvehicule', isLoggedIn, function(req, res) {
+		res.render('reception_vehicule.ejs');
+	});
+
+
+	// =====================================
 	// ADMIN SECTION =========================
 	// =====================================
 	// we will want this protected so you have to be logged in to visit
@@ -107,7 +115,7 @@ module.exports = function(app, passport) {
 // we will use route middleware to verify this (the isLoggedIn function)
 app.get('/vehicule', isLoggedIn, function(req, res) {
 
-	connection.query('use my_schema;');
+	  connection.query('use my_schema;');
 		connection.query('select * from vehicules', function(err,result2){
 		res.render('vehicule.ejs', {
 			 // get the user out of session and pass to template
@@ -123,13 +131,14 @@ app.get('/vehicule', isLoggedIn, function(req, res) {
 // we will use route middleware to verify this (the isLoggedIn function)
 app.get('/comptes', isLoggedIn, function(req, res) {
 
-	connection.query('use my_schema;');
+	  connection.query('use my_schema;');
 		connection.query('select * from users', function(err,result2){
 		res.render('comptes.ejs', {
 			 // get the user out of session and pass to template
 			rows : result2
 		});
 });
+
 });
 
 	// =====================================
