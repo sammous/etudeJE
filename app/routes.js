@@ -72,10 +72,9 @@ module.exports = function(app, passport) {
 	// we will use route middleware to verify this (the isLoggedIn function)
 	app.get('/profile', isLoggedIn, function(req, res) {
 		connection.query('select * from vehicules', function(err,result){
-
 		res.render('profile.ejs', {
 			user : req.user, // get the user out of session and pass to template
-			rows : result
+			rowsv : result
 		});
 		});
 	});
@@ -114,7 +113,7 @@ module.exports = function(app, passport) {
 				rows : result, // get the user out of session and pass to template
 				rowsv : result2
 			});
-			});
+		});
 	});
 });
 

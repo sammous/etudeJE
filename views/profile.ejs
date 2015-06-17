@@ -23,6 +23,31 @@
     <a href="/f44" class="btn btn-primary">Préparation f44</a>
 	</div>
 
+	<hr>
+
+	<div class="text-center">
+	<h1><span class="fa fa-road"></span> Liste véhicules</h1>
+  </div>
+
+	<table class = "table table-hover table-bordered">
+		<tr>
+		<th>MVA</th>
+		<th>Immatriculation</th>
+		<th>Statut</th>
+		<th>Nom agence</th>
+
+		</tr>
+	<% rowsv.forEach(function(vehicules){ %>
+			<tr>
+				<td> <%=vehicules.MVA%></td>
+				<td> <%=vehicules.IMMAT%></td>
+				<td> <%=vehicules.STATUT%></td>
+				<td> <%=vehicules.nom_agence%></td>
+
+			</tr>
+			<%})%>
+	</table>
+
 </div>
 </body>
 </html>
