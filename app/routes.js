@@ -7,10 +7,11 @@ var connection = mysql.createConnection(dbconfig.connection);
 module.exports = function(app, passport) {
 
 	// =====================================
-	// HOME PAGE (with login links) ========
+	// LOGIN ===============================
 	// =====================================
+	// show the login form
 	app.get('/', function(req, res) {
-		res.render('index.ejs'); // load the index.ejs file
+		res.render('login.ejs',{ message: req.flash('loginMessage') }); // load the index.ejs file
 	});
 
 
@@ -20,13 +21,6 @@ module.exports = function(app, passport) {
 	// =====================================
 	// show the login form
 	app.get('/login', function(req, res) {
-		connection.query('use my_schema;');
-		connection.query('select * from users;', function(err,rows){
-			if (err) throw err;
-			for (var i in rows){
-
-			}
-		});
 		// render the page and pass in any flash data if it exists
 		res.render('login.ejs', { message: req.flash('loginMessage') });
 	});
