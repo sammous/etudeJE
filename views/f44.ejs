@@ -6,13 +6,24 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 	<style>
 		body
-    { padding-top:80px;
+    { padding-top:0px;
       word-wrap:break-word;
     }
 	</style>
 
 </head>
 <body>
+
+	<div class="panel-footer">
+		<div class="row">
+    	<div class="col-md-6 previous">
+        	<button type="button" class="btn btn-default btn-lg" onClick="history.go(-1);return true;">
+        	<span class="glyphicon glyphicon-chevron-left"></span>
+        	</button>
+    	</div>
+		</div>
+	</div>
+
   <div class="container">
   <div class="col-md-4 col-md-offset-4">
       <div class="form-area">
@@ -36,6 +47,32 @@
             <li class="list-group-item" data-color="warning">Porta ac consectetur ac</li>
             <li class="list-group-item" data-color="danger">Vestibulum at eros</li>
           </ul>
+					<div class="form-group">
+					            <input type="checkbox" name="fancy-checkbox-primary" id="fancy-checkbox-primary" autocomplete="off" />
+					            <div class="btn-group ">
+					                <label for="fancy-checkbox-primary" class="btn btn-primary">
+					                    <span class="glyphicon glyphicon-ok"></span>
+					                    <span> </span>
+					                </label>
+					                <label for="fancy-checkbox-primary" class="btn btn-default active">
+					                    Primary Checkbox
+					                </label>
+					            </div>
+					</div>
+
+					<div class="form-group">
+											<input type="checkbox" name="fancy-checkbox-primary" id="fancy-checkbox-primary" autocomplete="off" />
+											<div class="btn-group ">
+													<label for="fancy-checkbox-primary" class="btn btn-primary">
+															<span class="glyphicon glyphicon-ok"></span>
+															<span> </span>
+													</label>
+													<label for="fancy-checkbox-primary" class="btn btn-default active">
+															Primary Checkbox
+													</label>
+											</div>
+					</div>
+
 
           <button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Envoyer</button>
           </form>
