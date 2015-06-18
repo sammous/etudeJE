@@ -153,6 +153,8 @@ app.get('/comptes', isLoggedIn, function(req, res) {
 		req.logout();
 		res.redirect('/');
 	});
+
+
 };
 
 // route middleware to make sure
