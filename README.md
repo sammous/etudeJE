@@ -1,11 +1,26 @@
 # Web application for rental car company
 
 ## Coming: 
-  -Database insert files + model :  Match ids for relations
+  -Database : 
+	Questions :
+ 
+	- qui remplit les fiches des véhicules à préparer?
+	- qui renseigne les véhicules reçues des clients ?
+	- qui renseigne les véhicules à transférer ? 
+	- qui renseigne les véhicules à récupérer ?
+	- qui renseigne les véhicules à livrer ? 
+	- qui renseigne les véhicules VO/bloqués ?
+	- lors de l'attribution des véhicules aux opérateurs, renseignement par nom ou par code associé ? 
+	- un opérateur se connecte et doit renseigner des infos sur le véhicule ou prévoir une fiche de véhicules qui lui sont assignés par un préparateur ? 
+	- 
+	
+	Remarques pour intégration:
+	- Base de véhicules totale, puis attribut agence ( pour avoir les véhicules par agence il suffit de faire un produit cartésien)
+	- Quel est le rôle de l'agence dans les process, juste pour dire que le véhicule appartient à ? 
     
-  -Typehead ( ajax search box )  :  Working for ids, still to resolve : strings
+  -Typehead ( ajax search box )  :  marche pour les ids to string, mais ne prend pas de string pour le moment.
     
-  -Modified process pages  :  Integration of sets 
+  -Modified process pages  :  il faut les renseigner toutes
   
 
 ## Instructions
