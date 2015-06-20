@@ -1,5 +1,12 @@
 # Web application for rental car company
 
+## Coming: 
+  -Database insert files + model :  Match ids for relations
+    
+  -Typehead ( ajax search box )  :  Working for ids, still to resolve : strings
+    
+  -Modified process pages  :  Integration of sets 
+  
 
 ## Instructions
 
