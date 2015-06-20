@@ -93,6 +93,15 @@ module.exports = function(app, passport) {
 		});
 	});
 
+	// =====================================
+	// FICHE F44 SECTION =========================
+	// =====================================
+	app.get('/checkin', isLoggedIn, function(req, res) {
+		res.render('checkin.ejs',{
+			user : req.user
+		});
+	});
+
 
 	// =====================================
 	// ADMIN SECTION =========================
