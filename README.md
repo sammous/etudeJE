@@ -1,10 +1,11 @@
 # Web application for rental car company
 
 ## On developpement: 
-  Database : 
+  ### Database : 
+  
   	- insert exemples
   		
-	Questions :
+  ### Questions :
  
 	- qui remplit les fiches des véhicules à préparer?
 	- qui renseigne les véhicules reçues des clients ?
