@@ -1,39 +1,127 @@
 <!doctype html>
 <html>
 <head>
-	<title>AVIS MANAGEMENT</title>
+	<title> Locanor  </title>
+	<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-	<style>
-		body
-    { padding-top:0px;
-      word-wrap:break-word;
-			#radioBtn .notActive{
-			color: #3276b1;
-			background-color: #fff;
-			}
-		}
-	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+	<style>
+		body 		{
+		background-image:url(/images/bg.jpg);background-size:100% auto;}
+
+	</style>
 </head>
+
 <body>
 
-	<div class="panel-footer">
-		<div class="row">
-    	<div class="col-md-6 previous">
-        	<button type="button" class="btn btn-default btn-lg" onClick="history.go(-1);return true;">
-        	<span class="glyphicon glyphicon-chevron-left"></span>
-        	</button>
-    	</div>
-		</div>
-	</div>
+<!--####-.-.-.-NAV_BAR-.-.-.-.-#########################################################-->
+
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <!-- display image -->
+	    <div class="navbar-header">
+				<a class="navbar-brand" href="#">
+	        <img alt="Brand" src="/images/logo.jpg">
+	      </a>
+
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+
+						<!--######-.-.-.-Véhicules-.-.-.-###################################################################-->
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><h3> <span class="fa fa-road"></span>  Vehicule <span class="caret"></span></h3></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="#">Liste des vehicules</a></li>
+							<li role="separator" class="divider"></li>
+	            <li><a href="#">Recupérer</a></li>
+	            <li><a href="#">Transférer</a></li>
+	            <li role="separator" class="divider"></li>
+	            <li><a href="#">À préparer</a></li>
+	          </ul>
+	        </li>
+
+
+				<!--######-.-.-.-Process-.-.-.-###################################################################-->
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><h3> <span class="glyphicon glyphicon-refresh"></span>  Process <span class="caret"></span></h3></a>
+					<ul class="dropdown-menu">
+						<li><a href="/f44"> Préparer </a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="/fvehicule"> Réception </a></li>
+						<li><a href="#"> Check-in</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#"> Tâches assignées </a></li>
+					</ul>
+				</li>
+
+
+			<!--######-.-.-.-Agence-.-.-.-###################################################################-->
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><h3> <span class="glyphicon glyphicon-home"></span>  Agence <span class="caret"></span></h3></a>
+				<ul class="dropdown-menu">
+					<li><a href="#"> Liste des agences </a></li>
+				</ul>
+			</li>
+
+
+		<!--######-.-.-.-Parkings-.-.-.-###################################################################-->
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><h3> <span class="glyphicon glyphicon-screenshot"></span>  Parking <span class="caret"></span></h3></a>
+			<ul class="dropdown-menu">
+				<li><a href="#"> Liste des parkings </a></li>
+			</ul>
+		</li>
+	</ul>
+
+	      <!--form class="navbar-form navbar-left" role="search">
+	        <div class="form-group">
+	          <input type="text" class="form-control" placeholder="Search">
+	        </div>
+	        <button type="submit" class="btn btn-default">Submit</button>
+	      </form-->
+
+	      <ul class="nav navbar-nav navbar-right">
+					<!--######-.-.-.-MON COMPTE -.-.-.-.###################################################################-->
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><h3><span class="fa fa-user"></span> Mon Compte</h3> <span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="/logout">Se Deconnecter</a></li>
+
+	            <li role="separator" class="divider"></li>
+	            <li><a href="#">Contacter l'administrateur</a></li>
+	          </ul>
+	        </li>
+	      </ul>
+
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+<!--#######-.-.-.-.-.-FIN NAV BAR -.-.-.-.-######################################################-->
+
 
   <div class="container">
   <div class="col-md-5 col-md-offset-4">
       <div class="form-area">
           <form role="form">
-          <br style="clear:both">
-                      <h3 style="margin-bottom: 25px; text-align: center;">Fiche F44</h3>
+          <br>
+					<div class="text-center">
+						<h2><span class="glyphicon glyphicon-refresh"></span> Fiche F44 </h2>
+						<br>
+
+					</div>
 
   					<div class="form-group">
   						<input type="number" class="form-control" id="mva" name="mva" placeholder="MVA" required>
@@ -179,5 +267,10 @@
 		})
 	</script>
 
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>	<script type="text/javascript">
+
+	</script>
 </body>
 </html>

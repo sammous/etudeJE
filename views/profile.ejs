@@ -10,7 +10,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 	<style>
-		body 		{ padding-top:40px; }
+		body 		{
+		background-image:url(/images/bg.jpg);background-size:100% auto;}
+
 	</style>
 </head>
 <body>
@@ -44,7 +46,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><h3> <span class="fa fa-road"></span>  Vehicule <span class="caret"></span></h3></a>
           <ul class="dropdown-menu">
-            <li><a href="/vehicule">Liste vehicules</a></li>
+            <li><a href="#">Liste des vehicules</a></li>
 						<li role="separator" class="divider"></li>
             <li><a href="#">Recupérer</a></li>
             <li><a href="#">Transférer</a></li>
@@ -96,7 +98,7 @@
       <ul class="nav navbar-nav navbar-right">
 				<!--######-.-.-.-MON COMPTE -.-.-.-.###################################################################-->
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><h2><span class="fa fa-user"></span> Mon Compte</h2> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><h3><span class="fa fa-user"></span> Mon Compte</h3> <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/logout">Se Deconnecter</a></li>
 
@@ -114,20 +116,19 @@
 <div class="container">
 
 
-	<hr>
-
 	<div class="text-center">
-	<h1><span class="fa fa-road"></span> Liste véhicules</h1>
+		<h1><span class="fa fa-road"></span> Liste véhicules</h1>
+		<br>
   </div>
 
-	<table class = "table table-hover table-bordered text-center">
+	<table  class = "table table-hover table-bordered text-center">
 		<div class="text-center">
-		<tr>
-		<th>MVA</th>
-		<th>Immatriculation</th>
-		<th>Statut</th>
-		<th>Nom agence</th>
-		</tr>
+			<tr>
+			<th> MVA</th>
+			<th> Immatriculation</th>
+			<th> Statut</th>
+			<th>Nom agence</th>
+			</tr>
 	</div>
 		<% rowsv.forEach(function(vehicules){ %>
 			<tr>
