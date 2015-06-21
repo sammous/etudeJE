@@ -1,27 +1,33 @@
 # Web application for rental car company
 
-## Coming: 
+## On developpement: 
   -Database : 
+  	- insert exemples
+  		
 	Questions :
  
-	- qui remplit les fiches des véhicules à préparer?
-	- qui renseigne les véhicules reçues des clients ?
-	- qui renseigne les véhicules à transférer ? 
-	- qui renseigne les véhicules à récupérer ?
-	- qui renseigne les véhicules à livrer ? 
-	- qui renseigne les véhicules VO/bloqués ?
-	- lors de l'attribution des véhicules aux opérateurs, renseignement par nom ou par code associé ? 
-	- un opérateur se connecte et doit renseigner des infos sur le véhicule ou prévoir une fiche de véhicules qui lui sont assignés par un préparateur ? 
+	- qui remplit les fiches des vÃ©hicules Ã  prÃ©parer?
+	- qui renseigne les vÃ©hicules reÃ§ues des clients ?
+	- qui renseigne les vÃ©hicules Ã  transfÃ©rer ? 
+	- qui renseigne les vÃ©hicules Ã  rÃ©cupÃ©rer ?
+	- qui renseigne les vÃ©hicules Ã  livrer ? 
+	- qui renseigne les vÃ©hicules VO/bloquÃ©s ?
+	- lors de l'attribution des vÃ©hicules aux opÃ©rateurs, renseignement par nom ou par code associÃ© ? 
+	- Quel est le rÃ´le de l'agence dans les process, juste pour dire que le vÃ©hicule appartient Ã  ?
+	- un opÃ©rateur se connecte et doit renseigner des infos sur le vÃ©hicule ou prÃ©voir une fiche de vÃ©hicules qui lui sont assignÃ©s par un prÃ©parateur ? 
 	- 
 	
-	Remarques pour intégration:
-	- Base de véhicules totale, puis attribut agence ( pour avoir les véhicules par agence il suffit de faire un produit cartésien)
-	- Quel est le rôle de l'agence dans les process, juste pour dire que le véhicule appartient à ? 
+	Remarques pour intÃ©gration:
+	- Base de vÃ©hicules totale, qui contient dont tous les vÃ©hicules.
+		- VÃ©hicule de l'agence A : faire un inner join cartÃ©sien 
+	 
     
-  -Typehead ( ajax search box )  :  marche pour les ids to string, mais ne prend pas de string pour le moment.
+  -Typeahead ( ajax search box )  :  marche pour les ids to string, mais ne prend pas de string pour le moment.
     
-  -Modified process pages  :  il faut les renseigner toutes
-  
+  -IntÃ©gration d'en tÃªte : fait. Il reste la crÃ©ation des pages indiquÃ©es. 
+	- amÃ©liorations accessoires : rendre la liste plus jolie
+  -IntÃ©gration des logos : fait.
+
 
 ## Instructions
 
