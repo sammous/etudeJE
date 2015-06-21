@@ -1,7 +1,7 @@
 # Web application for rental car company
 
 ## On developpement: 
-  -Database : 
+  Database : 
   	- insert exemples
   		
 	Questions :
@@ -22,11 +22,11 @@
 		- Véhicule de l'agence A : faire un inner join cartésien 
 	 
     
-  -Typeahead ( ajax search box )  :  marche pour les ids to string, mais ne prend pas de string pour le moment.
+  Typeahead ( ajax search box )  :  marche pour les ids to string, mais ne prend pas de string pour le moment.
     
-  -Intégration d'en tête : fait. Il reste la création des pages indiquées. 
+  Intégration d'en tête : fait. Il reste la création des pages indiquées. 
 	- améliorations accessoires : rendre la liste plus jolie
-  -Intégration des logos : fait.
+  Intégration des logos : fait.
 
 
 ## Instructions
