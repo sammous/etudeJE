@@ -1,7 +1,7 @@
 # Web application for rental car company
 
 ## On developpement: 
-  ## Database : 
+Database : 
   
   	- insert exemples
   		
