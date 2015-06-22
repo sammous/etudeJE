@@ -65,6 +65,9 @@ module.exports = function(app, passport) {
 	// we will want this protected so you have to be logged in to visit
 	// we will use route middleware to verify this (the isLoggedIn function)
 	app.get('/profile', isLoggedIn, function(req, res) {
+	  console.log(req.query);
+  	/*var	patate = querystring.parse(url.parse(req.url).query);
+	  console.log(request);*/
 		connection.query('use my_schema;');
 		connection.query('select * from vehicules', function(err,result){
 		res.render('profile.ejs', {
