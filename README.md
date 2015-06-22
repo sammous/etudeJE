@@ -1,4 +1,4 @@
-# Web application for rental car company
+﻿# Web application for rental car company
 
 ## On developpement:
 ## Database :
@@ -30,6 +30,10 @@
 	- améliorations accessoires : rendre la liste plus jolie
   Intégration des logos : fait.
 
+## Infos supplémentaires/TODO :
+1. Le dossier mySQL_Model contient à la fois le modèle graphique et un fichier de création des tables ( texte donc ).
+1. Toutes les pages qu'il reste à créer sont celles qui ne s'affichent pas lorsqu'on clique sur un <li> de la barre de navigation. Par exemple : à Préparer dans voitures. 
+1. Pour ces pages qui manquent, il suffit de traduire ce qui est mis sur les tables correspondantes. J'ai veillé à mettre en correspondance les ids, et mis tout ce qu'il faut mettre à partir de l'excel. 
 
 ## Instructions
 
