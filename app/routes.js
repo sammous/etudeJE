@@ -65,6 +65,17 @@ module.exports = function(app, passport) {
 	// we will want this protected so you have to be logged in to visit
 	// we will use route middleware to verify this (the isLoggedIn function)
 	app.get('/profile', isLoggedIn, function(req, res) {
+
+		if (req.user.attribut == "administrateur") {
+			console.log("Connected as admin");
+			connection.query('use my_schema;');
+			connection.query('select * from vehicules', function(err,result){
+			res.render('profile.ejs', {
+				user : req.user, // get the user out of session and pass to template
+				rowsv : result
+			});
+			});
+		} else {
 	  console.log(req.query);
   	/*var	patate = querystring.parse(url.parse(req.url).query);
 	  console.log(request);*/
@@ -75,6 +86,7 @@ module.exports = function(app, passport) {
 			rowsv : result
 		});
 		});
+	}
 	});
 
 
