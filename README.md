@@ -3,37 +3,26 @@
 ## On developpement:
 ## Database :
 
-  	- insert exemples
 
- 	Questions :
-	- qui remplit les fiches des véhicules à préparer?
-	- qui renseigne les véhicules reçues des clients ?
-	- qui renseigne les véhicules à transférer ?
-	- qui renseigne les véhicules à récupérer ?
-	- qui renseigne les véhicules à livrer ?
-	- qui renseigne les véhicules VO/bloqués ?
-	- lors de l'attribution des véhicules aux opérateurs, renseignement par nom ou par code associé ?
-	- quel est le rôle de l'agence dans les process, juste pour dire que le véhicule appartient à ?
-	- un opérateur se connecte et doit renseigner des infos sur le véhicule ou prévoir une fiche de véhicules qui lui sont assignés par un préparateur ?
+  - inserer des exemples pour commencer les tests une fois les pages créées.
 
-
-	Remarques pour intégration:
-	- Base de véhicules totale, qui contient dont tous les véhicules.
-	- Véhicule de l'agence A : faire un inner join cartésien
-	- Chaque modification ( réception, affectation à une préparation, transfert etc.) donne lieu à une ligne dans une nouvelle table afin de garder un historique des opérations.
-	- Deux parties peuvent remplir ces modifications, un opérateur ou un préparateur. L'attribution d'un process de préparation se fait en renseignant le nom de l'opérateur, mais la table doit pouvoir renseigner l'id de ce dernier.
-
-    
-  Typeahead ( ajax search box )  :  marche pour les int, et peut renvoyer des strings, mais ne prend pas de string en paramètre pour le moment. à regler/voir la twitter toolbox.
-
-  Intégration d'en tête : fait. Il reste la création des pages indiquées.
-	- améliorations accessoires : rendre la liste plus jolie
-  Intégration des logos : fait.
 
 ## Infos supplémentaires/TODO :
+
+
 1. Le dossier mySQL_Model contient à la fois le modèle graphique et un fichier de création des tables ( texte donc ).
-1. Toutes les pages qu'il reste à créer sont celles qui ne s'affichent pas lorsqu'on clique sur un <li> de la barre de navigation. Par exemple : à Préparer dans voitures. 
-1. Pour ces pages qui manquent, il suffit de traduire ce qui est mis sur les tables correspondantes. J'ai veillé à mettre en correspondance les ids, et mis tout ce qu'il faut mettre à partir de l'excel. 
+1. Pages à créer : traduire ce qui est mis sur les tables de la base de données ( regarder de manière graphique avec workbench, c'est plus parlant ). J'ai veillé à mettre en correspondance les ids, et les différentes informations. Les pages comporteront grosso modo les même choses ( champs de saisie, choix de G0 à G8, check boutton, date etc.. sauf si la date est réelle, dans ce cas elle est automatiquement insérée)
+1. Il y a eu une inversion entre la table préparateur et opérateur à la demande du client. J'ai veillé à ce que les ids soient biens mis comme il faut, donc normalement c'est bon, mais je n'ai pas double-checké chaque table.
+1. /!\ Préparateur = celui qui prépare le véhicule, donc qui fait les process checkin etc
+1. /!\ Opérateur = celui qui assigne un véhicule à préparer à un préparateur
+1. Ce qu'il faut comme exemple de page, la table check-in par exemple :
+  -reprise des informations sur la table, et mettre un bouton de confirmation une fois la saisie terminée.
+  -une fois le bouton de confirmation tapé, une fenêtre pose une question "etes vous sûr" ( comme quand on supprime une ligne de la table vehicule en page d'accueil).
+  -/\-un peu plus difficile, à faire une fois les pages construites.On commence à taper l'immat, il y a une proposition dans la liste de ce qu'on a, et en choisir une impose les autres (immat => mva, etc. de même nom préparateur impose son id) Je m'en occupe vu que j'ai commencé avec un typeahead.
+1. Le client veut que les comptes utilisateur soient du type prenom.nom, le mot de passe est accessible seulement pour l'administrateur, c'est lui qui le fournit ou le change.
+1. J'ai écrit une fonction ( en dur avec la request ) qui renvoie les informations d'un champs une fois saisies, et le boutton confirmation cliqué. je la mets dans le git il suffira de la copier coller dans le fichier route/les différentes pages afin de dialoguer avec la base.
+1. gérer le mode préparateur/opérateur/admin. donc rajouter un champs dans la table user (privilège : admin,opérateur,préparateur) et charger les pages en fonction du status.
+
 
 ## Instructions
 
