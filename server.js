@@ -4,12 +4,16 @@
 // get all the tools we need
 var express  = require('express');
 var app      = express();
-var port     = process.env.PORT || 8080;
+var port     = process.env.PORT || 80;
 
 var passport = require('passport');
 var flash    = require('connect-flash');
 
-
+//prevent server from crashing
+process.on('uncaughtException', function (err) {
+  console.error(err);
+  console.log("Node NOT Exiting...");
+});
 
 //to get css
 app.use(express.static(__dirname + '/public'));

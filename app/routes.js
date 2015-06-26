@@ -103,8 +103,10 @@ module.exports = function(app, passport) {
 	// FICHE F44 SECTION =========================
 	// =====================================
 	app.get('/f44', isLoggedIn, function(req, res) {
+		console.log()
 		res.render('f44.ejs',{
 			user : req.user
+
 		});
 	});
 
