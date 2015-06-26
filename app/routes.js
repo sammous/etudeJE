@@ -104,9 +104,26 @@ module.exports = function(app, passport) {
 	// =====================================
 	app.get('/f44', isLoggedIn, function(req, res) {
 		console.log()
-		res.render('f44.ejs',{
+		res.render('test_ajax.ejs',{
 			user : req.user
 
+		});
+	});
+
+	app.get('/search',function(req,res){
+	connection.query('use my_schema;');
+
+	connection.query('SELECT immat from vehicules where immat like "%'+req.query.key+'%"', function(err, rows, fields) {
+			//console.log('SELECT id from users where id = '+req.query.key+';');
+			if (err) throw err;
+			var data=[];
+			for(i=0;i<rows.length;i++)
+				{
+					console.log(rows[i].immat);
+					data.push(rows[i].immat);
+				}
+			res.end(JSON.stringify(data));
+		//  res.end(toString(rows[i].username))	;
 		});
 	});
 
