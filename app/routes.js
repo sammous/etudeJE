@@ -70,7 +70,7 @@ module.exports = function(app, passport) {
 			console.log("Connected as admin");
 			connection.query('use my_schema;');
 			connection.query('select * from vehicules', function(err,result){
-			res.render('profile.ejs', {
+			res.render('admin.ejs', {
 				user : req.user, // get the user out of session and pass to template
 				rowsv : result
 			});
@@ -133,7 +133,7 @@ module.exports = function(app, passport) {
 	// =====================================
 	// we will want this protected so you have to be logged in to visit
 	// we will use route middleware to verify this (the isLoggedIn function)
-	app.get('/admin', isLoggedIn, function(req, res) {
+	app.get('/admin', isLoggedIn, isAdmin, function(req, res) {
 
 		connection.query('use my_schema;');
 		connection.query('select * from users', function(err,result){
@@ -200,4 +200,12 @@ function isLoggedIn(req, res, next) {
 
 	// if they aren't redirect them to the home page
 	res.redirect('/');
+}
+
+//admin check
+function isAdmin(req,res,next) {
+	if (req.user.attribut == "administrateur")
+			return next()
+
+	res.redirect('/')
 }
