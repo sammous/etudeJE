@@ -27,7 +27,9 @@ module.exports = function(app, passport) {
 	});
 
  app.get('/ts', function(req,res){
-	res.render('post_data.ejs');
+	res.render('post_data.ejs',{
+		user : req.user
+	});
 });
 
 app.post('/data_f44', function(req,res){
@@ -132,6 +134,9 @@ app.get('/header', function(req,res){
 		res.render('checkin.ejs',{
 			user : req.user
 		});
+	});
+	app.get('/blank', isLoggedIn, function(req, res) {
+		res.render('blank.ejs');
 	});
 
 	// =====================================
