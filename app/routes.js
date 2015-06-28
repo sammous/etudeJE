@@ -144,7 +144,7 @@ app.get('/header', function(req,res){
 	// =====================================
 	app.get('/f44', isLoggedIn, function(req, res) {
 		console.log()
-		res.render('test_ajax.ejs',{
+		res.render('f44.ejs',{
 			user : req.user
 
 		});
