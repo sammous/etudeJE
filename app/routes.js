@@ -126,6 +126,15 @@ app.get('/header', function(req,res){
 	});
 
 	// =====================================
+	// FICHE CHECKIN SECTION =========================
+	// =====================================
+	app.get('/checkin', isLoggedIn, function(req, res) {
+		res.render('checkin.ejs',{
+			user : req.user
+		});
+	});
+
+	// =====================================
 	// FICHE F44 SECTION =========================
 	// =====================================
 	app.get('/f44', isLoggedIn, function(req, res) {
