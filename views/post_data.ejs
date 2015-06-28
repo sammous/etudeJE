@@ -4,6 +4,49 @@
 
   	<% include header.ejs %>
 
+    <style>
+      body 		{
+      background-image:url(/images/bg.jpg);background-size:100% auto;}
+      </style>
+      <style>
+      .tt-query, /* UPDATE: newer versions use tt-input instead of tt-query */
+      .tt-hint {
+          width: 396px;
+          height: 30px;
+          padding: 8px 12px;
+          font-size: 24px;
+          line-height: 30px;
+          border: 2px solid #ccc;
+          border-radius: 8px;
+          outline: none;
+      }
+
+      .tt-query { /* UPDATE: newer versions use tt-input instead of tt-query */
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      }
+
+      .tt-hint {
+          color: #999;
+      }
+
+      .tt-menu { /* UPDATE: newer versions use tt-menu instead of tt-dropdown-menu */
+          width: 422px;
+          margin-top: 12px;
+          padding: 8px 0;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          border-radius: 8px;
+          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+      }
+
+      .tt-suggestion {
+          padding: 3px 20px;
+          font-size: 18px;
+          line-height: 24px;
+      }
+    </style>
+
   <script  type="text/javascript" src="typeahead.min.js"></script>
   <script type="text/javascript">
 	$(document).ready(function(){
@@ -26,7 +69,40 @@
 
 <body>
 
+  <div class="container">
+    <div class="col-md-5 col-md-offset-4">
+        <div class="form-area">
+            <form role="form">
+            <br>
+              <div class="text-center">
 
+                <h1><span class="label label-info"> <span class="glyphicon glyphicon-refresh"></span> Fiche F44 </span> </h1>
+
+                <br>
+
+              </div>
+
+              <div class="form-group">
+                
+                <input id="myimmat" type="number" class="typeahead tt-query"  name="immat" placeholder="IMMAT" required>
+              </div>
+
+                <input type="number" class="form-control" id="mva" name="mva" placeholder="MVA" required>
+
+              <!--div class="form-group">
+                <input type="text" name="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="tapez l'immat">
+
+              </div-->
+              <div class="form-group">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Nom opérateur" required>
+              </div>
+
+
+          <button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Envoyer</button>
+          </form>
+      </div>
+  </div>
+  </div>
 
 
 <h1>This is my form</h1>
