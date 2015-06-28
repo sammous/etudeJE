@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+
+  	<% include header.ejs %>
+
+  <script  type="text/javascript" src="typeahead.min.js"></script>
+  <script type="text/javascript">
+	$(document).ready(function(){
+			$('#myimmat').typeahead({
+					name: 'immat',
+					remote: 'http://localhost:8080/search?key=%QUERY',
+					limit: 10
+			});
+	});
+  </script>
+
+	<style>
+		body 		{
+		background-image:url(/images/bg.jpg);
+
+    background-attachment: fixed;}
+
+	</style>
+</head>
+
+<body>
+
+
+
+
+<h1>This is my form</h1>
+<!-- local host to be changed?  -->
+<form action="/data_f44" method="POST">
+    IMMAT :
+    <input type="text" name="immat" value="">
+    <br>
+    MVA :
+    <input type="text" name="MVA" value="">
+    <br><br>
+    <input type="submit" value="Valider">
+</form>
+</body>
+</html>

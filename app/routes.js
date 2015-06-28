@@ -2,6 +2,18 @@ var mysql = require('mysql');
 var dbconfig = require('../config/database');
 var connection = mysql.createConnection(dbconfig.connection);
 
+/*CETTE PARTIE EST POUR LE SUBMIT DE FORMS A NOTRE DB
+==
+==
+*/
+
+/*
+==
+==
+npm install body-parser est nécessaire
+*/
+
+
 
 // app/routes.js
 module.exports = function(app, passport) {
@@ -14,6 +26,20 @@ module.exports = function(app, passport) {
 		res.render('login.ejs',{ message: req.flash('loginMessage') }); // load the index.ejs file
 	});
 
+ app.get('/ts', function(req,res){
+	res.render('post_data.ejs');
+});
+
+app.post('/data_f44', function(req,res){
+	console.log(req.body)
+	console.log('Fonctionnalité pour ajouter à SQL');
+	console.log(req.body.MVA);
+  console.log(req.body.immat);
+});
+
+app.get('/header', function(req,res){
+	res.render('header.ejs');
+});
 
 
 	// =====================================
