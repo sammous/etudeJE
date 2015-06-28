@@ -150,7 +150,7 @@ app.get('/header', function(req,res){
 		});
 	});
 
-	app.get('/search',function(req,res){
+	app.get('/search_immat',function(req,res){
 	connection.query('use my_schema;');
 
 	connection.query('SELECT immat from vehicules where immat like "%'+req.query.key+'%"', function(err, rows, fields) {
@@ -162,6 +162,24 @@ app.get('/header', function(req,res){
 					console.log(rows[i].immat);
 					data.push(rows[i].immat);
 				}
+			res.end(JSON.stringify(data));
+		//  res.end(toString(rows[i].username))	;
+		});
+	});
+
+	app.get('/search_mva',function(req,res){
+	connection.query('use my_schema;');
+
+	connection.query('SELECT mva from vehicules where immat like "%'+req.query.key+'%"', function(err, rows, fields) {
+			//console.log('SELECT id from users where id = '+req.query.key+';');
+			if (err) throw err;
+			var data=[];
+			for(i=0;i<rows.length;i++)
+				{
+					console.log(rows[i].mva);
+					data.push(rows[i].mva);
+				}
+				console.log(JSON.stringify(data));
 			res.end(JSON.stringify(data));
 		//  res.end(toString(rows[i].username))	;
 		});
