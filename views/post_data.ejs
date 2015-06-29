@@ -15,12 +15,15 @@ $(document).ready(function(){
         remote: 'http://localhost:8080/search_immat?key=%QUERY',
     });
 
-  });
+
+    });
+
 
     $('.typeahead.input-sm').siblings('input.tt-hint').addClass('hint-small');
     $('.typeahead.input-lg').siblings('input.tt-hint').addClass('hint-large');
 
   </script>
+
 
 
   <style>
@@ -123,7 +126,17 @@ $(document).ready(function(){
 
   					<div class="form-group">
 
-              <input type="text" id='myimmat' class="typeahead form-control" placeholder="Immat" />
+              <input type="text" id='myimmat'class="typeahead form-control" placeholder="Immat" />
+              <script>
+              $(function(){
+              $.ajax({
+                url: 'http://localhost:8080/search_mva?key='+$( '#myimmat' ).val()+'',
+                dataType: 'json',
+                success : function (data) {
+                  $( '#mva' ).val(data);
+                },
+              })});
+            </script>
   					</div>
 
   					<div class="form-group">
