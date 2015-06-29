@@ -80,6 +80,19 @@ $('#timepicker').timepicker();
               <span class=" glyphicon glyphicon-calendar"></span> <input type="text" id="datepicker" placeholder="Date retour"> <span class=" glyphicon glyphicon-time"></span><input type="text" id="timepicker" placeholder="Heure retour">
             </div>
 
+						<div class="form-group">
+		        <h3> Saisie dommage </h3>
+		        <div class="btn-group" data-toggle-name="saisie_dommage" data-toggle="buttons">
+		        <label class="btn btn-primary active">
+		        <input type="radio" name="options" id="id_saisie" autocomplete="off"> Oui
+		        </label>
+		        <label class="btn btn-primary">
+		        <input type="radio" name="options" id="id_saisie2" autocomplete="off" checked> Non
+		        </label>
+		        </div>
+		        </div>
+		        <input type="hidden" name="saisie_dommage" value=0 />
+
             <select name="carburant" class="form-group form-control select select-primary" data-toggle="select">
                 <option value="0" selected>Choisir le type de carburant</option>
                 <option value="g0">G0</option>
