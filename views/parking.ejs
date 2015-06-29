@@ -1,4 +1,4 @@
-<!-- views/agence.ejs -->
+<!-- views/parking.ejs -->
 <!doctype html>
 <html>
 	<head>
@@ -6,14 +6,12 @@
 	</head>
 <body>
 
-  <h1>Ajouter agence</h1>
+  <h1>Ajouter parking</h1>
   <!-- local host to be changed?  -->
   <form action="/agences" method="POST">
-      Nom agence :
-      <input type="text" name="nom_agence" value="">
+      Nom parking :
+      <input type="text" name="nom_parking" value="">
       <br>
-      Adresse Agence :
-      <input type="text" name="adresse_agence" value="">
       <br><br>
       <input type="submit" value="Ajouter">
   </form>
@@ -24,23 +22,21 @@
 <div class="container">
 
   <div class="text-center">
-    <h1><span class="fa fa-home"></span> Liste des agences</h1>
+    <h1><span class="fa fa-home"></span> Liste des parking</h1>
     <br>
   </div>
 
   <table  class = "table table-hover table-bordered text-center">
     <div class="text-center">
       <tr>
-      <th>id agence</th>
-      <th>Nom agence</th>
-      <th>Adresse agence</th>
+      <th>id parking</th>
+      <th>Nom parking</th>
       </tr>
   </div>
-    <% rows.forEach(function(agences){ %>
+    <% rows.forEach(function(parking){ %>
       <tr>
-        <td> <%=agences.idAgence%></td>
-        <td> <%=agences.nom%></td>
-        <td> <%=agences.adresse%></td>
+        <td> <%=parking.idParking%></td>
+        <td> <%=parking.nom%></td>
         <td>
           <p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p>
         </td>
@@ -85,11 +81,11 @@
 	    <div class="modal-content">
 	          <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-	        <h4 class="modal-title custom_align" id="Heading"> Supprimer cette agence </h4>
+	        <h4 class="modal-title custom_align" id="Heading"> Supprimer ce parking </h4>
 	      </div>
 	          <div class="modal-body">
 
-	       <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Etes-vous sûr de vouloir supprimer cette agence ? </div>
+	       <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Etes-vous sûr de vouloir supprimer ce parking ? </div>
 
 	      </div>
 	        <div class="modal-footer ">

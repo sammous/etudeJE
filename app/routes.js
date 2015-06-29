@@ -257,7 +257,8 @@ app.get('/agences', isLoggedIn, function(req, res) {
 		connection.query('select * from Agence', function(err,result2){
 		res.render('agence.ejs', {
 			 // get the user out of session and pass to template
-			rows : result2
+			rows : result2,
+		  message: req.flash('success')
 		});
 });
 });
@@ -271,12 +272,45 @@ app.post('/agences', function(req,res){
 	};
 	connection.query('INSERT INTO Agence (idAgence, nom, adresse) VALUES (?,?,?)', [post.id, post.nom, post.adresse], function(err,result){
 			if (err){
-				console.log("erreur");
+				req.flash("messages",{"error": "Une erreur est survenue"})
 			} else {
-				console.log(result);
+				req.flash("messages",{"success" : "Agence ajoutée"});
+				res.redirect("/agences");
 			}
 	});
 });
+
+// =====================================
+// PARKING SECTION =========================
+// =====================================
+app.get('/parking', isLoggedIn, function(req, res) {
+
+	  connection.query('use my_schema;');
+		connection.query('select * from Agence', function(err,result2){
+		res.render('parking.ejs', {
+			 // get the user out of session and pass to template
+			rows : result2,
+		  message: req.flash('success')
+		});
+});
+});
+
+app.post('/parking', function(req,res){
+	connection.query('use my_schema;');
+	var post = {
+		id :"",
+		nom : req.body.nom_parking,
+	};
+	connection.query('INSERT INTO Parking (idParking, nom) VALUES (?,?)', [post.id, post.nom], function(err,result){
+			if (err){
+				req.flash("messages",{"error": "Une erreur est survenue"})
+			} else {
+				req.flash("messages",{"success" : "Parking ajoutée"});
+				res.redirect("/parking");
+			}
+	});
+});
+
 	// =====================================
 	// LOGOUT ==============================
 	// =====================================
