@@ -4,9 +4,15 @@
 	<title> Locanor  </title>
 	<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
 
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
 
 	<style>
 		body 		{
@@ -15,7 +21,27 @@
 
 	</style>
 
-	<% include header.ejs %>
+	<script>
+  $(function() {
+	$( "#datepicker" ).datepicker({
+altField: "#datepicker",
+closeText: 'Fermer',
+prevText: 'Précédent',
+nextText: 'Suivant',
+currentText: 'Aujourd\'hui',
+monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
+dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
+dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+weekHeader: 'Sem.',
+dateFormat: 'dd-mm-yy'
+});
+$('#timepicker').timepicker();
+});
+</script>
+
+	<% include header_.ejs %>
 
 </head>
 
@@ -54,11 +80,10 @@
               <input type="number" class="form-control" id="km" name="km" placeholder="Km" required>
             </div>
 
-            <div class='form-group'>
-                  <input type='date' class="form-control" id='date' placeholder="Date Opération">
-                      <span class=" glyphicon glyphicon-calendar"></span>
-                  </span>
-            </div>
+
+						<div class='form-group'>
+							<span class=" glyphicon glyphicon-calendar"></span> <input type="text" id="datepicker" placeholder="Date retour"> <span class=" glyphicon glyphicon-time"></span><input type="text" id="timepicker" placeholder="Heure retour">
+						</div>
 
             <select name="carburant" class="form-group form-control select select-primary" data-toggle="select">
                 <option value="0" selected>Choisir le type de carburant</option>
