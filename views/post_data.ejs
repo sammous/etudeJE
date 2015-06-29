@@ -119,8 +119,11 @@ $(document).ready(function(){
 					<div class="text-center">
 						<h2><span class="glyphicon glyphicon-refresh"></span> Réception véhicule </h2>
 						<br>
-
 					</div>
+
+          <div class="form-group">
+            <input type="text" id='myimmat'class="form-control" placeholder="Immat" onFocus="updMVA()" />
+          </div>
 
       			<div class="form-group">
   						<input type="text" class="form-control" id="name" name="name" placeholder="Name" value=<%=user.username%> required>
@@ -130,11 +133,7 @@ $(document).ready(function(){
   						<input type="number" class="typeahead form-control" id="mva" name="mva" placeholder="MVA"  required>
   					</div>
 
-  					<div class="form-group">
 
-              <input type="text" id='myimmat'class="typeahead form-control" placeholder="Immat" onkeyup="updMVA()" />
-
-  					</div>
 
   					<div class="form-group">
   						<input type="text" class="form-control" id="modele" name="modele" placeholder="Modèle" required>

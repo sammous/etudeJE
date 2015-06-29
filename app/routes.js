@@ -150,6 +150,7 @@ app.get('/header', function(req,res){
 		});
 	});
 
+//?? pourquoi il y a un post sur f44 au lieu de data_f44 ?
 	app.post('/f44', function(req,res){
 		console.log(req.body)
 		console.log('Fonctionnalité pour ajouter à SQL');
@@ -172,6 +173,8 @@ app.get('/header', function(req,res){
 		//  res.end(toString(rows[i].username))	;
 		});
 	});
+
+	
 
 	app.get('/search_mva',function(req,res){
 	connection.query('use my_schema;');

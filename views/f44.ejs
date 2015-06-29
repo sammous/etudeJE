@@ -1,210 +1,275 @@
 <!doctype html>
 <html>
-<head>
+  <head>
+    <% include header.ejs %>
 
-  <script  type="text/javascript" src="typeahead.min.js"></script>
-  <script type="text/javascript">
-	$(document).ready(function(){
-			$('#myimmat').typeahead({
-					name: 'immat',
-					remote: 'http://localhost:8080/search?key=%QUERY',
-					limit: 10
-			});
-	});
-  </script>
-
-	<% include header.ejs %>
-
-</head>
-
-<body>
-
-  <div class="container">
-	  <div class="col-md-5 col-md-offset-4">
-	      <div class="form-area">
-
-	          <form role="form"  action="/data_f44" method="POST" >
-	          <br>
-
-							<div class="text-center">
-
-								<h2><span class="glyphicon glyphicon-refresh"></span> Fiche F44 </h2>
-								<br>
-
-							</div>
-
-  						<div class="form-group">
-								<input id="myimmat" type="number" class="typeahead tt-query"  name="immat" placeholder="IMMAT" required>
-								<br>
-  							<input type="number" class="form-control" id="mva" name="mva" placeholder="MVA" required>
-					 		</div>
-	  					<!--div class="form-group">
-								<input type="text" name="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="tapez l'immat">
-
-	  					</div-->
-	            <div class="form-group">
-	            	<input type="text" class="form-control" id="name" name="name" placeholder="Nom opérateur" required>
-          		</div>
-
-							<div class="form-group">
-								<input type="text" class="form-control" id="name" name="name" placeholder="Nom opérateur" required>
-							</div>
-
-							<div class="form-group">
-								<h3> Aspiration intérieure </h3>
-								<div class="btn-group" data-toggle-name="aspiration_interieur" data-toggle="buttons">
-									<label class="btn btn-primary active">
-										<input type="radio" name="options" id="id_aspiration_interieur" autocomplete="off"> Ok
-									</label>
-									<label class="btn btn-primary">
-										<input type="radio" name="options" id="id_aspiration_interieur2" autocomplete="off" checked> À faire
-									</label>
-								</div>
-							</div>
-							<input type="hidden" name="aspiration_interieur" value="0" />
-
-							<div class="form-group">
-								<h3> Lavage extérieure </h3>
-								<div class="btn-group" data-toggle-name="lavage_exterieur" data-toggle="buttons">
-									<label class="btn btn-primary active">
-										<input type="radio" name="options" id="id_lavage_exterieur" autocomplete="off"> Ok
-									</label>
-									<label class="btn btn-primary">
-										<input type="radio" name="options" id="id_lavage_exterieur2" autocomplete="off" checked> À faire
-									</label>
-								</div>
-							</div>
-							<input type="hidden" name="lavage_exterieur" value="0" />
-
-							<div class="form-group">
-								<h3> Nettoyage vitre </h3>
-								<div class="btn-group" data-toggle-name="nettoyage_vitre" data-toggle="buttons">
-									<label class="btn btn-primary active">
-										<input type="radio" name="options" id="id_nettoyage_vitre" autocomplete="off"> Ok
-									</label>
-									<label class="btn btn-primary">
-										<input type="radio" name="options" id="id_nettoyage_vitre2" autocomplete="off" checked> À faire
-									</label>
-								</div>
-							</div>
-							<input type="hidden" name="nettoyage_vitre" value="0" />
-
-							<div class="form-group">
-								<h3> Nettoyage parebrise intérieur </h3>
-								<div class="btn-group" data-toggle-name="nettoyage_parebrise_interieur" data-toggle="buttons">
-									<label class="btn btn-primary active">
-
-										<input type="radio" name="options" id="id_nettoyage_parebrise_interieur" autocomplete="off"> Ok
-									</label>
-									<label class="btn btn-primary">
-										<input type="radio" name="options" id="id_nettoyage_parebrise_interieur2" autocomplete="off" checked> À faire
-
-									</label>
-								</div>
-							</div>
-							<input type="hidden" name="nettoyage_parebrise_interieur" value="0" />
-
-							<div class="form-group">
-								<h3> Niveau huile </h3>
-								<div class="btn-group" data-toggle-name="niveau_huile" data-toggle="buttons">
-									<label class="btn btn-primary active">
-										<input type="radio" name="options" id="id_niveau_huile" autocomplete="off"> Ok
-									</label>
-									<label class="btn btn-primary">
-										<input type="radio" name="options" id="id_niveau_huile2" autocomplete="off" checked> À faire
-									</label>
-								</div>
-							</div>
-							<input type="hidden" name="niveau_huile" value="0" />
-
-							<div class="form-group">
-								<h3> Niveau lave-glace  </h3>
-								<div class="btn-group" data-toggle-name="niveau_lave_glace" data-toggle="buttons">
-									<label class="btn btn-primary active">
-										<input type="radio" name="options" id="id_niveau_lave_glace" autocomplete="off"> Ok
-									</label>
-									<label class="btn btn-primary">
-										<input type="radio" name="options" id="id_niveau_lave_glace2" autocomplete="off" checked> À faire
-									</label>
-								</div>
-							</div>
-							<input type="hidden" name="niveau_lave_glace" value="0" />
-
-							<div class="form-group">
-								<h3> Pression pneus </h3>
-								<div class="btn-group" data-toggle-name="pression_pneus" data-toggle="buttons">
-									<label class="btn btn-primary active">
-										<input type="radio" name="options" id="id_pression_pneus" autocomplete="off"> Ok
-									</label>
-									<label class="btn btn-primary">
-										<input type="radio" name="options" id="id_pression_pneus2" autocomplete="off" checked> À faire
-									</label>
-								</div>
-							</div>
-							<input type="hidden" name="pression_pneus" value="0" />
-
-							<div class="form-group">
-								<h3> Contrôle carrosserie </h3>
-								<div class="btn-group"  data-toggle-name="controle_carosserie" data-toggle="buttons">
-									<label class="btn btn-primary active">
-										<input type="radio" name="options" id="id_controle_carosserie" autocomplete="off"> Ok
-									</label>
-									<label class="btn btn-primary">
-										<input type="radio" name="options" id="id_controle_carosserie2" autocomplete="off" checked> À faire
-									</label>
-								</div>
-							</div>
-							<input type="hidden" name="controle_carosserie" value="0" />
-
-							<div class="form-group">
-								<h3> Contrôle intérieur </h3>
-
-								<div class="btn-group" data-toggle-name="controle_interieur" data-toggle="buttons">
-
-									<label class="btn btn-primary active">
-										<input type="radio" name="options" id="id_controle_interieur" autocomplete="off" value ="1"> Ok
-									</label>
-									<label class="btn btn-primary">
-										<input type="radio" name="options" id="id_controle_interieur2" autocomplete="off" value="0" checked> À faire
-									</label>
-								</div>
-							</div>
-							<input type="hidden" name="controle_interieur" value="0" />
-
-          <button type="submit" id="bsub" name="submit" class="btn btn-primary pull-right">Envoyer</button>
-          </form>
-
-      </div>
-  </div>
-  </div>
-
-
-	<script type="text/javascript">
-
-	$(function() {
-    $('div.btn-group[data-toggle-name]').each(function() {
-        var group = $(this);
-        var form = group.parents('form').eq(0);
-        var name = group.attr('data-toggle-name');
-        var hidden = $('input[name="' + name + '"]', form);
-        $('label', group).each(function() {
-            var button = $(this).find('input[type="radio"]');
-            $(this).on('click', function() {
-								console.log(button.val());
-                hidden.val($(this).val());
-            });
-            if (button.val() == hidden.val()) {
-                $(this).addClass('active');
-            }
+    <!--Scripts-->
+    <script  type="text/javascript" src="typeahead.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#myimmat').typeahead({
+            hint: true,
+            highlight: true,
+            minLength: 1,
+            name: 'users',
+            remote: 'http://localhost:8080/search_immat?key=%QUERY',
         });
-    });
-});
-	</script>
+      });
 
 
+    </script>
+    <script>
+      function updMVA(){
+        $.ajax({
+          url: 'http://localhost:8080/search_mva?key='+$( '#myimmat' ).val()+'',
+          dataType: 'json',
+          success : function (data) {
+            $( '#mva' ).val(data);
+          },
+        })
+      };
+    </script>
 
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>	<script type="text/javascript">
+    <!--Style Sheet pour corriger Bootstrap 2->3 -->
+    <style>
 
-	</script>
-</body>
+
+      .twitter-typeahead, .tt-hint { width: 100%; }
+      .tt-dropdown-menu {
+        width:100%;
+      }
+      .twitter-typeahead .tt-query, .twitter-typeahead .tt-hint {
+      margin-bottom: 0;
+      }
+      .twitter-typeahead .tt-hint {
+      display: block;
+      height: 34px;
+      padding: 6px 12px;
+      font-size: 14px;
+      line-height: 1.428571429;
+      border: 1px solid transparent;
+      border-radius:4px;
+      }
+      .twitter-typeahead .hint-small {
+      height: 30px;
+      padding: 5px 10px;
+      font-size: 12px;
+      border-radius: 3px;
+      line-height: 1.5;
+      }
+      .twitter-typeahead .hint-large {
+      height: 45px;
+      padding: 10px 16px;
+      font-size: 18px;
+      border-radius: 6px;
+      line-height: 1.33;
+      }
+      .tt-dropdown-menu {
+      min-width: 160px;
+      margin-top: 2px;
+      padding: 5px 0;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border: 1px solid rgba(0, 0, 0, .2);
+      *border-right-width: 2px;
+      *border-bottom-width: 2px;
+      -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+      border-radius: 6px;
+      -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+      -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+      -webkit-background-clip: padding-box;
+      -moz-background-clip: padding;
+      background-clip: padding-box;
+      }
+      .tt-suggestion {
+      display: block;
+      padding: 3px 20px;
+      }
+      .tt-suggestion.tt-is-under-cursor {
+      color: #fff;
+      background-color: #0081c2;
+      background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
+      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
+      background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
+      background-image: -o-linear-gradient(top, #0088cc, #0077b3);
+      background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+      background-repeat: repeat-x;
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
+      }
+      .tt-suggestion.tt-is-under-cursor a {
+      color: #fff;
+      }
+      .tt-suggestion p {
+      margin: 0;
+      }
+    </style>
+  </head>
+
+  <!--Body-->
+
+  <body>
+    <div class="container">
+    <div class="col-md-5 col-md-offset-4">
+      <div class="form-area">
+
+        <!--Form-->
+        <form role="form" action="/data_f44" method="POST" >
+          <br>
+          <div class="text-center">
+            <h2><span class="glyphicon glyphicon-refresh"></span> Fiche F44 </h2>
+            <br>
+          </div>
+          <div class="form-area">
+        <br>
+
+        <div class="form-group">
+          <input type="text" id='myimmat'class="typeahead form-control" placeholder="Immat" onFocus="updMVA()" />
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="name" placeholder="Nom" value=<%=user.username%> required>
+        </div>
+        <div class="form-group">
+          <input type="number" class="typeahead form-control" id="mva" name="MVA" placeholder="MVA"  required>
+        </div>
+
+        <div class="form-group">
+          <h3> Aspiration intérieure </h3>
+          <div class="btn-group" data-toggle-name="aspiration_interieur" data-toggle="buttons">
+            <label class="btn btn-primary active">
+              <input type="radio" name="n_aspiration_interieur" id="id_aspiration_interieur" autocomplete="off"> Ok
+            </label>
+
+            <label class="btn btn-primary">
+              <input type="radio" name="n_aspiration_interieur2" id="id_aspiration_interieur2" autocomplete="off" checked> À faire
+            </label>
+
+            <input type="hidden" name="aspiration_interieur" value="0" />
+          </div>
+        </div>
+
+        <div class="form-group">
+        <h3> Lavage extérieure </h3>
+        <div class="btn-group" data-toggle-name="lavage_exterieur" data-toggle="buttons">
+        <label class="btn btn-primary active">
+        <input type="radio" name="options" id="id_lavage_exterieur" autocomplete="off"> Ok
+        </label>
+        <label class="btn btn-primary">
+        <input type="radio" name="options" id="id_lavage_exterieur2" autocomplete="off" checked> À faire
+        </label>
+        </div>
+        </div>
+        <input type="hidden" name="lavage_exterieur" value="0" />
+        <div class="form-group">
+        <h3> Nettoyage vitre </h3>
+        <div class="btn-group" data-toggle-name="nettoyage_vitre" data-toggle="buttons">
+        <label class="btn btn-primary active">
+        <input type="radio" name="options" id="id_nettoyage_vitre" autocomplete="off"> Ok
+        </label>
+        <label class="btn btn-primary">
+        <input type="radio" name="options" id="id_nettoyage_vitre2" autocomplete="off" checked> À faire
+        </label>
+        </div>
+        </div>
+        <input type="hidden" name="nettoyage_vitre" value="0" />
+        <div class="form-group">
+        <h3> Nettoyage parebrise intérieur </h3>
+        <div class="btn-group" data-toggle-name="nettoyage_parebrise_interieur" data-toggle="buttons">
+        <label class="btn btn-primary active">
+        <input type="radio" name="options" id="id_nettoyage_parebrise_interieur" autocomplete="off"> Ok
+        </label>
+        <label class="btn btn-primary">
+        <input type="radio" name="options" id="id_nettoyage_parebrise_interieur2" autocomplete="off" checked> À faire
+        </label>
+        </div>
+        </div>
+        <input type="hidden" name="nettoyage_parebrise_interieur" value="0" />
+        <div class="form-group">
+        <h3> Niveau huile </h3>
+        <div class="btn-group" data-toggle-name="niveau_huile" data-toggle="buttons">
+        <label class="btn btn-primary active">
+        <input type="radio" name="options" id="id_niveau_huile" autocomplete="off"> Ok
+        </label>
+        <label class="btn btn-primary">
+        <input type="radio" name="options" id="id_niveau_huile2" autocomplete="off" checked> À faire
+        </label>
+        </div>
+        </div>
+        <input type="hidden" name="niveau_huile" value="0" />
+        <div class="form-group">
+        <h3> Niveau lave-glace  </h3>
+        <div class="btn-group" data-toggle-name="niveau_lave_glace" data-toggle="buttons">
+        <label class="btn btn-primary active">
+        <input type="radio" name="options" id="id_niveau_lave_glace" autocomplete="off"> Ok
+        </label>
+        <label class="btn btn-primary">
+        <input type="radio" name="options" id="id_niveau_lave_glace2" autocomplete="off" checked> À faire
+        </label>
+        </div>
+        </div>
+        <input type="hidden" name="niveau_lave_glace" value="0" />
+        <div class="form-group">
+        <h3> Pression pneus </h3>
+        <div class="btn-group" data-toggle-name="pression_pneus" data-toggle="buttons">
+        <label class="btn btn-primary active">
+        <input type="radio" name="options" id="id_pression_pneus" autocomplete="off"> Ok
+        </label>
+        <label class="btn btn-primary">
+        <input type="radio" name="options" id="id_pression_pneus2" autocomplete="off" checked> À faire
+        </label>
+        </div>
+        </div>
+        <input type="hidden" name="pression_pneus" value="0" />
+        <div class="form-group">
+        <h3> Contrôle carrosserie </h3>
+        <div class="btn-group"  data-toggle-name="controle_carosserie" data-toggle="buttons">
+        <label class="btn btn-primary active">
+        <input type="radio" name="options" id="id_controle_carosserie" autocomplete="off"> Ok
+        </label>
+        <label class="btn btn-primary">
+        <input type="radio" name="options" id="id_controle_carosserie2" autocomplete="off" checked> À faire
+        </label>
+        </div>
+        </div>
+        <input type="hidden" name="controle_carosserie" value="0" />
+        <div class="form-group">
+        <h3> Contrôle intérieur </h3>
+        <div class="btn-group" data-toggle-name="controle_interieur" data-toggle="buttons">
+        <label class="btn btn-primary active">
+        <input type="radio" name="options" id="id_controle_interieur" autocomplete="off" value ="1"> Ok
+        </label>
+        <label class="btn btn-primary">
+        <input type="radio" name="options" id="id_controle_interieur2" autocomplete="off" value="0" checked> À faire
+        </label>
+        </div>
+        </div>
+        <input type="hidden" name="controle_interieur" value="0" />
+        <button type="submit" id="bsub" name="submit" class="btn btn-primary pull-right">Envoyer</button>
+        </form>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      $(function() {
+         $('div.btn-group[data-toggle-name]').each(function() {
+             var group = $(this);
+             var form = group.parents('form').eq(0);
+             var name = group.attr('data-toggle-name');
+             var hidden = $('input[name="' + name + '"]', form);
+             $('label', group).each(function() {
+                 var button = $(this).find('input[type="radio"]');
+                 $(this).on('click', function() {
+
+                     hidden.val($(this).val());
+                 });
+                 if (button.val() == hidden.val()) {
+                     $(this).addClass('active');
+                 }
+             });
+         });
+      });
+    </script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>	<script type="text/javascript"></script>
+  </body>
 </html>
