@@ -30,6 +30,26 @@
       };
     </script>
 
+    <script>
+      function updB(){
+      var actual = ($( this ).val()+1)%3;
+      if (actual==0)
+        {
+           $(this).toggleClass('btn btn-primary');
+        }
+      if (actual==1)
+        {
+           $(this).toggleClass('btn btn-success');
+        }
+      if (actual==2)
+        {
+           $(this).toggleClass('btn btn-danger');
+        }
+      $( this ).val(actual);
+      };
+
+    </script>
+
     <!--Style Sheet pour corriger Bootstrap 2->3 -->
     <style>
 
@@ -125,15 +145,23 @@
         <br>
 
         <div class="form-group">
-          <input type="text" id='myimmat'class="typeahead form-control" placeholder="Immat" onFocus="updMVA()" />
-        </div>
-        <div class="form-group">
           <input type="text" class="form-control" name="name" placeholder="Nom" value=<%=user.username%> required>
         </div>
+
+        <div class="form-group">
+          <input type="text" id='myimmat'class="typeahead form-control" placeholder="Immat" onFocus="updMVA()" />
+        </div>
+
         <div class="form-group">
           <input type="number" class="typeahead form-control" id="mva" name="MVA" placeholder="MVA"  required>
         </div>
 
+        <div class="form-group">
+
+          <div class="btn">
+            <button type="button" name="testB" class="btn btn-default" id='testB' onClick="updB()" value='0'> <h4> test  </h3>
+          </button>
+        </div>
         <div class="form-group">
           <h3> Aspiration intérieure </h3>
           <div class="btn-group" data-toggle-name="aspiration_interieur" data-toggle="buttons">
@@ -145,7 +173,7 @@
               <input type="radio" name="n_aspiration_interieur2" id="id_aspiration_interieur2" autocomplete="off" checked> À faire
             </label>
 
-            <input type="hidden" name="aspiration_interieur" value="0" />
+            <input type="hidden" name="aspiration_interieur" value=0 />
           </div>
         </div>
 
@@ -160,7 +188,7 @@
         </label>
         </div>
         </div>
-        <input type="hidden" name="lavage_exterieur" value="0" />
+        <input type="hidden" name="lavage_exterieur" value=0 />
         <div class="form-group">
         <h3> Nettoyage vitre </h3>
         <div class="btn-group" data-toggle-name="nettoyage_vitre" data-toggle="buttons">
@@ -172,7 +200,7 @@
         </label>
         </div>
         </div>
-        <input type="hidden" name="nettoyage_vitre" value="0" />
+        <input type="hidden" name="nettoyage_vitre" value=0 />
         <div class="form-group">
         <h3> Nettoyage parebrise intérieur </h3>
         <div class="btn-group" data-toggle-name="nettoyage_parebrise_interieur" data-toggle="buttons">
@@ -184,7 +212,7 @@
         </label>
         </div>
         </div>
-        <input type="hidden" name="nettoyage_parebrise_interieur" value="0" />
+        <input type="hidden" name="nettoyage_parebrise_interieur" value=0 />
         <div class="form-group">
         <h3> Niveau huile </h3>
         <div class="btn-group" data-toggle-name="niveau_huile" data-toggle="buttons">
@@ -196,7 +224,7 @@
         </label>
         </div>
         </div>
-        <input type="hidden" name="niveau_huile" value="0" />
+        <input type="hidden" name="niveau_huile" value=0 />
         <div class="form-group">
         <h3> Niveau lave-glace  </h3>
         <div class="btn-group" data-toggle-name="niveau_lave_glace" data-toggle="buttons">
@@ -208,7 +236,7 @@
         </label>
         </div>
         </div>
-        <input type="hidden" name="niveau_lave_glace" value="0" />
+        <input type="hidden" name="niveau_lave_glace" value=0 />
         <div class="form-group">
         <h3> Pression pneus </h3>
         <div class="btn-group" data-toggle-name="pression_pneus" data-toggle="buttons">
@@ -220,7 +248,7 @@
         </label>
         </div>
         </div>
-        <input type="hidden" name="pression_pneus" value="0" />
+        <input type="hidden" name="pression_pneus" value=0 />
         <div class="form-group">
         <h3> Contrôle carrosserie </h3>
         <div class="btn-group"  data-toggle-name="controle_carosserie" data-toggle="buttons">
@@ -232,7 +260,7 @@
         </label>
         </div>
         </div>
-        <input type="hidden" name="controle_carosserie" value="0" />
+        <input type="hidden" name="controle_carosserie" value=0 />
         <div class="form-group">
         <h3> Contrôle intérieur </h3>
         <div class="btn-group" data-toggle-name="controle_interieur" data-toggle="buttons">
@@ -244,7 +272,7 @@
         </label>
         </div>
         </div>
-        <input type="hidden" name="controle_interieur" value="0" />
+        <input type="hidden" name="controle_interieur" value=0 />
         <button type="submit" id="bsub" name="submit" class="btn btn-primary pull-right">Envoyer</button>
         </form>
         </div>
@@ -270,6 +298,6 @@
          });
       });
     </script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>	<script type="text/javascript"></script>
+
   </body>
 </html>

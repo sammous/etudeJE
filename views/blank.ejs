@@ -2,114 +2,43 @@
 <!doctype html>
 <html>
 <head>
-  <title>vide pour test</title>
-  <link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+    <% include header.ejs %>
 
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <script>
 
+      function updB(){
 
-	<!--Scripts à mettre dans un footer éventuellement, pour optimiser le chargement-->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>	<script type="text/javascript"></script>
-
-  <script  type="text/javascript" src="typeahead.min.js"></script>
-  <script type="text/javascript">
-$(document).ready(function(){
-    $('input.typeahead').typeahead({
-        hint: true,
-        highlight: true,
-        minLength: 1,
-        name: 'users',
-        remote: 'http://localhost:8080/search?key=%QUERY',
-    });
-  });
-
-    $('.typeahead.input-sm').siblings('input.tt-hint').addClass('hint-small');
-    $('.typeahead.input-lg').siblings('input.tt-hint').addClass('hint-large');
-
-  </script>
+      var tm = $( '#testB' ).attr('value');
+      $( '#l' ).text(tm);
+      $( '#testB' ).attr('value',1);
+      var actual = $( '#testB' ).attr('class');
+      if (actual=='btn-danger')
+        {
+           $('#testB').attr('class', 'btn-primary');
 
 
+        }
+      if (actual=='btn-primary')
+        {
+           $('#testB').attr('class', 'btn-success');
+        }
+      if (actual=='btn-success')
+        {
+            $('#testB').attr('class', 'btn-danger');
+        }
 
-<style>
-    body {
-      padding: 40px;
-    }
-    .twitter-typeahead .tt-query, .twitter-typeahead .tt-hint {
-      margin-bottom: 0;
-    }
-    .twitter-typeahead .tt-hint {
-      display: block;
-      height: 34px;
-      padding: 6px 12px;
-      font-size: 14px;
-      line-height: 1.428571429;
-      border: 1px solid transparent;
-      border-radius:4px;
-    }
-    .twitter-typeahead .hint-small {
-      height: 30px;
-      padding: 5px 10px;
-      font-size: 12px;
-      border-radius: 3px;
-      line-height: 1.5;
-    }
-    .twitter-typeahead .hint-large {
-      height: 45px;
-      padding: 10px 16px;
-      font-size: 18px;
-      border-radius: 6px;
-      line-height: 1.33;
-    }
-    .tt-dropdown-menu {
-      min-width: 160px;
-      margin-top: 2px;
-      padding: 5px 0;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border: 1px solid rgba(0, 0, 0, .2);
-      *border-right-width: 2px;
-      *border-bottom-width: 2px;
-      -webkit-border-radius: 6px;
-      -moz-border-radius: 6px;
-      border-radius: 6px;
-      -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-      -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-      box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-      -webkit-background-clip: padding-box;
-      -moz-background-clip: padding;
-      background-clip: padding-box;
-    }
-    .tt-suggestion {
-      display: block;
-      padding: 3px 20px;
-    }
-    .tt-suggestion.tt-is-under-cursor {
-      color: #fff;
-      background-color: #0081c2;
-      background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
-      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
-      background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
-      background-image: -o-linear-gradient(top, #0088cc, #0077b3);
-      background-image: linear-gradient(to bottom, #0088cc, #0077b3);
-      background-repeat: repeat-x;
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
-    }
-    .tt-suggestion.tt-is-under-cursor a {
-      color: #fff;
-    }
-    .tt-suggestion p {
-      margin: 0;
-    }
-</style>
+      };
+
+    </script>
 
 </head>
 <body>
-  <div class="container">
-      <label>immat</label>
-      <input type="text" id='my' class="typeahead form-control" />
-  </div>
+
+  <span id='l' ><h1> text to test</h1> </span><br>
+  <div class="btn">
+    <button type="button" name="testB" class="btn-primary" id='testB' value=0 onClick="updB()" > <h4> test  </h3>
+  </button>
+</div>
 </body>
 
 </html>
