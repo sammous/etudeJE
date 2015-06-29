@@ -158,7 +158,7 @@
 
         <div class="form-group">
 
-          
+
         <div class="form-group">
           <h3> Aspiration intérieure </h3>
           <div class="btn-group" data-toggle-name="aspiration_interieur" data-toggle="buttons">
@@ -239,7 +239,7 @@
         <div class="btn-group" data-toggle-name="pression_pneus" data-toggle="buttons">
         <label class="btn btn-primary active">
         <input type="radio" name="options" id="id_pression_pneus" autocomplete="off"> Ok
-        </label>
+      </label>
         <label class="btn btn-primary">
         <input type="radio" name="options" id="id_pression_pneus2" autocomplete="off" checked> À faire
         </label>
@@ -270,7 +270,34 @@
         </div>
         </div>
         <input type="hidden" name="controle_interieur" value=0 />
-        <button type="submit" id="bsub" name="submit" class="btn btn-primary pull-right">Envoyer</button>
+
+			  <p data-toggle="tooltip" title="su"><button class="btn btn-primary pull-right"data-toggle="modal" data-target="#delete">Envoyer</button></p>
+
+        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+          <div class="modal-dialog">
+        <div class="modal-content">
+              <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+            <h4 class="modal-title custom_align" id="Heading"> Confirmer cette entrée </h4>
+          </div>
+              <div class="modal-body">
+
+           <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Merci de confirmer cotre saisie </div>
+
+          </div>
+            <div class="modal-footer ">
+            <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Confirmer </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Vérifier </button>
+          </div>
+          </div>
+        <!-- /.modal-content -->
+        </div>
+          <!-- /.modal-dialog -->
+        </div>
+
+        </div>
+
+        <!--button type="submit" id="bsub" name="submit" class="btn btn-primary pull-right">Envoyer</button-->
         </form>
         </div>
       </div>
