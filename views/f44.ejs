@@ -22,8 +22,10 @@
   <div class="container">
 	  <div class="col-md-5 col-md-offset-4">
 	      <div class="form-area">
-					<form role="form"  action="/data_f44" method="POST" >
-		          <br>
+
+	          <form role="form"  action="/data_f44" method="POST" >
+	          <br>
+
 							<div class="text-center">
 
 								<h2><span class="glyphicon glyphicon-refresh"></span> Fiche F44 </h2>
@@ -91,10 +93,12 @@
 								<h3> Nettoyage parebrise intérieur </h3>
 								<div class="btn-group" data-toggle-name="nettoyage_parebrise_interieur" data-toggle="buttons">
 									<label class="btn btn-primary active">
+
 										<input type="radio" name="options" id="id_nettoyage_parebrise_interieur" autocomplete="off"> Ok
 									</label>
 									<label class="btn btn-primary">
 										<input type="radio" name="options" id="id_nettoyage_parebrise_interieur2" autocomplete="off" checked> À faire
+
 									</label>
 								</div>
 							</div>
@@ -154,7 +158,9 @@
 
 							<div class="form-group">
 								<h3> Contrôle intérieur </h3>
+
 								<div class="btn-group" data-toggle-name="controle_interieur" data-toggle="buttons">
+
 									<label class="btn btn-primary active">
 										<input type="radio" name="options" id="id_controle_interieur" autocomplete="off" value ="1"> Ok
 									</label>
@@ -165,10 +171,9 @@
 							</div>
 							<input type="hidden" name="controle_interieur" value="0" />
 
+          <button type="submit" id="bsub" name="submit" class="btn btn-primary pull-right">Envoyer</button>
+          </form>
 
-          <button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Envoyer</button>
-					<br>
-			  </form>
       </div>
   </div>
   </div>
