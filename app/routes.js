@@ -253,16 +253,30 @@ app.get('/comptes', isLoggedIn, function(req, res) {
 // =====================================
 app.get('/agences', isLoggedIn, function(req, res) {
 
-	  connection.query('use mydb;');
+	  connection.query('use my_schema;');
 		connection.query('select * from Agence', function(err,result2){
 		res.render('agence.ejs', {
 			 // get the user out of session and pass to template
 			rows : result2
 		});
 });
-
 });
 
+app.post('/agences', function(req,res){
+	connection.query('use my_schema;');
+	var post = {
+		id :"",
+		nom : req.body.nom_agence,
+		adresse : req.body.adresse_agence
+	};
+	connection.query('INSERT INTO Agence (idAgence, nom, adresse) VALUES (?,?,?)', [post.id, post.nom, post.adresse], function(err,result){
+			if (err){
+				console.log("erreur");
+			} else {
+				console.log(result);
+			}
+	});
+});
 	// =====================================
 	// LOGOUT ==============================
 	// =====================================
