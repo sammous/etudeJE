@@ -21,7 +21,7 @@ USE `mydb` ;
 -- Table `mydb`.`Preparateur`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Preparateur` (
-  `idPreparateur` INT NOT NULL,
+  `idPreparateur` INT NOT NULL AUTO_INCREMENT,
   `nomPreparateur` VARCHAR(45) NULL,
   `agence` VARCHAR(45) NULL,
   PRIMARY KEY (`idPreparateur`),
@@ -33,7 +33,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Vehicule`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Vehicule` (
-  `idVehicule` INT NOT NULL,
+  `idVehicule` INT NOT NULL AUTO_INCREMENT,
   `mva` VARCHAR(45) NULL,
   `immat` VARCHAR(45) NULL,
   `modele` VARCHAR(45) NULL,
@@ -50,7 +50,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Parking`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Parking` (
-  `idParking` INT NOT NULL,
+  `idParking` INT NOT NULL AUTO_INCREMENT,
   `Nom` VARCHAR(45) NULL,
   PRIMARY KEY (`idParking`))
 ENGINE = InnoDB;
@@ -60,7 +60,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Agence`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Agence` (
-  `idAgence` INT NOT NULL,
+  `idAgence` INT NOT NULL AUTO_INCREMENT,
   `nom` VARCHAR(45) NULL,
   `adresse` VARCHAR(45) NULL,
   PRIMARY KEY (`idAgence`))
@@ -137,7 +137,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Vehicule_exterieur`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Vehicule_exterieur` (
-  `idVehicule_ext` INT NOT NULL,
+  `idVehicule_ext` INT NOT NULL AUTO_INCREMENT,
   `immat` VARCHAR(45) NULL,
   `mva` VARCHAR(45) NULL,
   `modele` VARCHAR(45) NULL,
@@ -199,7 +199,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Operateur`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Operateur` (
-  `idOperateur` INT NOT NULL,
+  `idOperateur` INT NOT NULL AUTO_INCREMENT,
   `nomOperateur` VARCHAR(45) NULL,
   PRIMARY KEY (`idOperateur`),
   UNIQUE INDEX `idPreparateur_UNIQUE` (`idOperateur` ASC))
@@ -320,7 +320,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Voiture_à_récuperer`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Voiture_à_récuperer` (
-  `idVoiture_à_récuperer` INT NOT NULL,
+  `idVoiture_à_récuperer` INT NOT NULL AUTO_INCREMENT,
   `idPreparateur` VARCHAR(45) NULL,
   `idVehicule` VARCHAR(45) NULL,
   `immat` VARCHAR(45) NULL,

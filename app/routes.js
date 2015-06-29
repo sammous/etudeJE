@@ -174,7 +174,7 @@ app.get('/header', function(req,res){
 		});
 	});
 
-	
+
 
 	app.get('/search_mva',function(req,res){
 	connection.query('use my_schema;');
@@ -240,6 +240,22 @@ app.get('/comptes', isLoggedIn, function(req, res) {
 	  connection.query('use my_schema;');
 		connection.query('select * from users', function(err,result2){
 		res.render('comptes.ejs', {
+			 // get the user out of session and pass to template
+			rows : result2
+		});
+});
+
+});
+
+
+// =====================================
+// AGENCE SECTION =========================
+// =====================================
+app.get('/agences', isLoggedIn, function(req, res) {
+
+	  connection.query('use mydb;');
+		connection.query('select * from Agence', function(err,result2){
+		res.render('agence.ejs', {
 			 // get the user out of session and pass to template
 			rows : result2
 		});
