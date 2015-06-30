@@ -53,6 +53,11 @@ $('.first').click(function(){
 });
 
 });
+
+submitForms = function(){
+    document.getElementById("form1").submit();
+    document.getElementById("form2").submit();
+}
 </script>
 
 	<% include header_.ejs %>
@@ -78,7 +83,7 @@ $('.first').click(function(){
    <div class="tab-content">
       <div class="tab-pane active" id="step1">
       <div class="form-area">
-          <form role="form">
+          <form role="form" id="form1" action="/fvehicule" method="post">
           <br>
 					<div class="text-center">
 						<h2><span class="glyphicon glyphicon-refresh"></span> Réception véhicule </h2>
@@ -134,12 +139,41 @@ $('.first').click(function(){
 
           </form>
       </div>
-			<a class="btn btn-default next" href="#">Continuer</a>
+			<a class="btn btn-primary next" href="#">Continuer</a>
 			<br><br>
 		</div>
 			<div class="tab-pane" id="step2">
-				<p>Here is the content for step 2...</p>
-				<button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Envoyer</button>
+				<div class="form-area">
+						<form role="form" id="form2" action="/fvehicule" method="post">
+						<br>
+						<select name="preparation" class="form-group form-control select select-primary" data-toggle="select" required>
+								<option value="0" selected>Statut Préparation</option>
+								<option value="achecker">A checker</option>
+								<option value="apreparercomplet">A préparer complet</option>
+								<option value="apreparerquickprep">A préparer quickprep</option>
+								<option value="encoursdeprep">En cours de préparation</option>
+								<option value="pret">prêt</option>
+								<option value="areparer">A réparer</option>
+						</select>
+						<br>
+						<select name="transfert" class="form-group form-control select select-primary" data-toggle="select" required>
+								<option value="0" selected>Statut transfert</option>
+								<option value="alocaliser">A localiser</option>
+								<option value="localise">Localisé</option>
+								<option value="atransferer">A transférer</option>
+								<option value="encoursdetransfert">En cours de transfert</option>
+						</select>
+						<br>
+						<select name="position" class="form-group form-control select select-primary" data-toggle="select" required>
+								<option value="0" selected>Position véhicule</option>
+								<option value="readyline">Ready line</option>
+								<option value="p1">P1</option>
+								<option value="p2">P2</option>
+								<option value="p3">P3</option>
+								<option value="p3">P3</option>
+						</select>
+						<br>
+				<button type="button" id="submit" name="submit" class="btn btn-success pull-right" onclick="submitForms()">Envoyer</button>
 			</div>
 
 		</div>
