@@ -23,6 +23,24 @@
 1. J'ai écrit une fonction ( en dur avec la request ) qui renvoie les informations d'un champs une fois saisies, et le boutton confirmation cliqué. je la mets dans le git il suffira de la copier coller dans le fichier route/les différentes pages afin de dialoguer avec la base.
 1. gérer le mode préparateur/opérateur/admin. donc rajouter un champs dans la table user (privilège : admin,opérateur,préparateur) et charger les pages en fonction du status.
 
+-Head Liste véhicule (voir fichier vehicule.sql)
+numéro de ligne :
+
+4
+5
+8
+10
+23
+24
+25
+26
+28
+87
+90
+
+
+Afficher checkin pour une immat donnée et du jour.
+
 
 ## Instructions
 

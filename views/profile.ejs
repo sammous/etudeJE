@@ -18,16 +18,31 @@
 			<tr>
 			<th> MVA</th>
 			<th> Immatriculation</th>
+			<th> Lieu actuel</th>
 			<th> Statut</th>
-			<th>Nom agence</th>
+			<th> Station départ</th>
+			<th> Station retour</th>
+			<th> Date départ</th>
+			<th> Date retour</th>
+			<th> Numéro contrat</th>
+			<th> Marque</th>
+			<th> Libellé modèle</th>
+
 			</tr>
 	</div>
 		<% rowsv.forEach(function(vehicules){ %>
 			<tr>
 				<td> <%=vehicules.MVA%></td>
 				<td> <%=vehicules.IMMAT%></td>
+				<td> <%=vehicules.CURRENT_LOCATION_STN%></td>
 				<td> <%=vehicules.STATUT%></td>
-				<td> <%=vehicules.nom_agence%></td>
+				<td> <%=vehicules.STATION_DEPART%></td>
+				<td> <%=vehicules.STATION_RETOUR%></td>
+				<td> <%=vehicules.DATE_DEPART%></td>
+				<td> <%=vehicules.DATE_RETOUR%></td>
+				<td> <%=vehicules.NUMERO_CONTRAT%></td>
+				<td> <%=vehicules.marque%></td>
+				<td> <%=vehicules.libell_mod_le%></td>
 				<td>
 					<p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p>
 				</td>
