@@ -127,14 +127,8 @@ app.get('/header', function(req,res){
 		});
 	});
 
-	// =====================================
-	// FICHE CHECKIN SECTION =========================
-	// =====================================
-	app.get('/checkin', isLoggedIn, function(req, res) {
-		res.render('checkin.ejs',{
-			user : req.user
-		});
-	});
+
+
 	app.get('/blank', isLoggedIn, function(req, res) {
 		res.render('blank.ejs');
 	});
@@ -258,7 +252,9 @@ app.get('/agences', isLoggedIn, function(req, res) {
 		res.render('agence.ejs', {
 			 // get the user out of session and pass to template
 			rows : result2,
-		  message: req.flash('success')
+		  message: req.flash('success'),
+			user : req.user
+
 		});
 });
 });
@@ -290,7 +286,9 @@ app.get('/parking', isLoggedIn, function(req, res) {
 		res.render('parking.ejs', {
 			 // get the user out of session and pass to template
 			rows : result2,
-		  message: req.flash('success')
+		  message: req.flash('success'),
+			user : req.user
+
 		});
 });
 });
