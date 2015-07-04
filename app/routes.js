@@ -75,13 +75,31 @@ app.get('/header', function(req,res){
 	// show the signup form
 	app.get('/admin/signup', isLoggedIn, isAdmin, function(req, res) {
 		// render the page and pass in any flash data if it exists
-		res.render('signup.ejs', { message: req.flash('signupMessage') });
+		res.render('signup.ejs', { user: req.user, message: req.flash('signupMessage') });
 	});
 
 	// process the signup form
 	app.post('/admin/signup', passport.authenticate('local-signup', {
 		successRedirect : '/admin/signup', // redirect to the secure profile section
 		failureRedirect : '/admin/signup', // redirect back to the signup page if there is an error
+		failureFlash : true // allow flash messages
+	})
+	);
+
+
+	// =====================================
+	// UPDATE PASSWORD ==============================
+	// =====================================
+	// show the signup form
+	app.get('/update', isLoggedIn, isAdmin, function(req, res) {
+		// render the page and pass in any flash data if it exists
+		res.render('update.ejs', { user: req.user, message: req.flash('updateMessage') });
+	});
+
+	// process the signup form
+	app.post('/update', passport.authenticate('local-update', {
+		successRedirect : '/update', // redirect to the secure profile section
+		failureRedirect : '/update', // redirect back to the signup page if there is an error
 		failureFlash : true // allow flash messages
 	})
 	);

@@ -53,7 +53,7 @@ module.exports = function(passport) {
                 if (err)
                     return done(err);
                 if (rows.length) {
-                    return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
+                    return done(null, false, req.flash('signupMessage', 'Cet identifiant est déjà pris.'));
                 } else {
                     // if there is no user with that username
                     // create the user
@@ -109,9 +109,44 @@ module.exports = function(passport) {
                     return done(null, false, req.flash('loginMessage', 'Oops! Mauvais mot de passe.')); // create the loginMessage and save it to session as flashdata
 
                 // all is well, return successful user
+
                 return done(null, rows[0]);
             });
         })
     );
+
+    // =========================================================================
+    // CHANGE LOGIN =============================================================
+    // =========================================================================
+    // we are using named strategies since we have one for login and one for signup
+    // by default, if there was no name, it would just be called 'local'
+
+    passport.use(
+        'local-update',
+        new LocalStrategy({
+            // by default, local strategy uses username and password, we will override with email
+            usernameField : 'username',
+            passwordField : 'password',
+            passReqToCallback : true // allows us to pass back the entire request to the callback
+        },
+        function(req, username, password, done) { // callback with email and password from our form
+            connection.query("SELECT * FROM users WHERE username = ?",[username], function(err, rows){
+                if (err)
+                    return done(err);
+                if (!rows.length) {
+                    return done(null, false, req.flash('updateMessage', 'Pas d\'utilisateur trouvé.')); // req.flash is the way to set flashdata using connect-flash
+                }
+
+                connection.query("UPDATE users SET password = ? WHERE username = ?",[bcrypt.hashSync(password, null, null),username], function(err, rows2){
+                    return done(null, req.flash('updateMessage','Mot de passe changé avec succès.'))
+                });
+
+
+                // all is well, return successful user
+                return done(null, rows[0]);
+            });
+        })
+    );
+
 
 };
