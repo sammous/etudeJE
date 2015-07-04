@@ -3,9 +3,18 @@
 <html>
 <head>
     <% include header.ejs %>
+<link href="bootstrap.css" rel="stylesheet">
+<link href="bootstrap-switch.css" rel="stylesheet">
+<script src="jquery.js"></script>
+<script src="bootstrap-switch.js"></script>
+
+
+
 
     <script>
-
+/*
+Fonction que j'ai écrite pour les types 'boutons simples' et qui peut être utile avec du ajax si la form ne marche pas.
+Mais ça prendra du temps à écrire car faut qu'on l'adapte élément par élément...je la garde au cas où*/
       function updB(){
 
       var tm = $( '#testB' ).attr('value');
@@ -34,11 +43,46 @@
 </head>
 <body>
 
-  <span id='l' ><h1> text to test</h1> </span><br>
-  <div class="btn">
-    <button type="button" name="testB" class="btn-primary" id='testB' value=0 onClick="updB()" > <h4> test  </h3>
-  </button>
-</div>
+  <!--Body-->
+    <div class="container">
+      <div class="col-md-5 col-md-offset-4">
+        <div class="form-area">
+          <form action="/data_f44" method="POST">
+                <h2 class="h4"> Sur la console, on peut voir les infos qui arrivent </h2>
+              <p>
+                <input name="test" id="switch-state" type="checkbox" checked>
+              </p>
+
+
+              <!--br>
+              <div class="text-center">
+                <h2><span class="glyphicon glyphicon-refresh"></span> Fiche F44 </h2>
+                <br>
+              </div>
+
+
+              <input id="chk_aliens" type="checkbox" name="wpuf_post_tags[]" class="vis-hidden new-post-tags" value="Aliens" />
+              <label for="chk_aliens">Aliens</label>
+
+              <input id="chk_ghosts" type="checkbox" name="wpuf_post_tags[]" class="vis-hidden new-post-tags" value="Ghosts" />
+              <label for="chk_ghosts">Ghosts</label>
+
+              <input id="chk_monsters" type="checkbox" name="wpuf_post_tags[]" class="vis-hidden new-post-tags" value="Monsters" />
+              <label for="chk_monsters">Monsters</label>
+
+          <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Confirmer </button>
+            <!button type="submit" id="bsub" name="submit" class="btn btn-primary pull-right">Envoyer</button-->
+            <input type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Confirmer </input>
+        </form>
+        </div>
+      </div>
+    </div>
+
+
+
+    <script>
+    $("[name='test']").bootstrapSwitch();
+    </script>
 </body>
 
 </html>

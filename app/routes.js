@@ -33,10 +33,9 @@ module.exports = function(app, passport) {
 });
 
 app.post('/data_f44', function(req,res){
+	console.log('Fonctionnalité pour ajouter à SQL. Info reçue :');
 	console.log(req.body)
-	console.log('Fonctionnalité pour ajouter à SQL');
-	console.log(req.body.MVA);
-  console.log(req.body.immat);
+
 });
 
 app.get('/header', function(req,res){
@@ -130,7 +129,9 @@ app.get('/header', function(req,res){
 
 
 	app.get('/blank', isLoggedIn, function(req, res) {
-		res.render('blank.ejs');
+		res.render('blank.ejs',{
+			user : req.user
+		});
 	});
 
 	// =====================================

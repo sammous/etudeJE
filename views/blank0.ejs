@@ -1,0 +1,94 @@
+<!-- views/signup.ejs -->
+<!doctype html>
+<html>
+<head>
+    <% include header.ejs %>
+
+    <script>
+
+      function updB(){
+
+      var tm = $( '#testB' ).attr('value');
+      $( '#l' ).text(tm);
+      $( '#testB' ).attr('value',1);
+      var actual = $( '#testB' ).attr('class');
+      if (actual=='btn-danger')
+        {
+           $('#testB').attr('class', 'btn-primary');
+
+
+        }
+      if (actual=='btn-primary')
+        {
+           $('#testB').attr('class', 'btn-success');
+        }
+      if (actual=='btn-success')
+        {
+            $('#testB').attr('class', 'btn-danger');
+        }
+
+      };
+
+    </script>
+
+</head>
+<body>
+
+  <!--Body-->
+    <div class="container">
+      <div class="col-md-5 col-md-offset-4">
+        <div class="form-area">
+
+        <!--Form-->
+          <form role="form" action="/data_f44" method="POST" >
+              <br>
+              <div class="text-center">
+                <h2><span class="glyphicon glyphicon-refresh"></span> Fiche F44 </h2>
+                <br>
+              </div>
+
+              
+                <br>
+                <p data-toggle="tooltip" title="su"><button class="btn btn-primary pull-right"data-toggle="modal" data-target="#delete">Envoyer</button></p>
+
+              <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                      <h4 class="modal-title custom_align" id="Heading"> Confirmer cette entrée </h4>
+                    </div>
+                    <div class="modal-body">
+                     <div class="alert alert-danger">
+                       <span class="glyphicon glyphicon-warning-sign"></span> Merci de confirmer cotre saisie
+                     </div>
+                    </div>
+                      <div class="modal-footer ">
+                        <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Confirmer </button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Vérifier </button>
+                    </div>
+              </div>
+            <!-- /.modal-content -->
+            </div>
+              <!-- /.modal-dialog -->
+            </div>
+
+
+
+            <span id='l' ><h1> text to test</h1> </span><br>
+            <div class="btn">
+              <button type="button" name="testB" class="btn-primary" id='testB' value=0 onClick="updB()" > <h4> test  </h3>
+            </button>
+          </div>
+            <!--button type="submit" id="bsub" name="submit" class="btn btn-primary pull-right">Envoyer</button-->
+        </form>
+        </div>
+      </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
