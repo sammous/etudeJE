@@ -39,6 +39,8 @@ weekHeader: 'Sem.',
 dateFormat: 'dd-mm-yy'
 });
 
+$("#datepicker").datepicker("setDate", new Date());
+
 $('.next').click(function(){
 
   var nextId = $(this).parents('.tab-pane').next().attr("id");
