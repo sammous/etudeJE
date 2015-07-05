@@ -243,6 +243,46 @@ app.get('/vehicule', isLoggedIn, function(req, res) {
 });
 });
 
+
+
+app.get('/transfertvehicule', isLoggedIn, function(req, res) {
+
+	  connection.query('use my_schema;');
+		connection.query('select * from vehicules where STATUT = "ON MOVE"', function(err,result){
+		res.render('transfert_vehicule.ejs', {
+			 // get the user out of session and pass to template
+			rowsv : result,
+			user: req.user
+		});
+});
+});
+
+
+app.get('/preparevehicule', isLoggedIn, function(req, res) {
+
+	  connection.query('use my_schema;');
+		connection.query('select * from vehicules where STATUT = "MARSHALL"', function(err,result){
+		res.render('prepare_vehicule.ejs', {
+			 // get the user out of session and pass to template
+			rowsv : result,
+			user: req.user
+		});
+});
+});
+
+
+app.get('/recuperervehicule', isLoggedIn, function(req, res) {
+
+	  connection.query('use my_schema;');
+		connection.query('select * from vehicules where STATUT = "ON HAND"', function(err,result){
+		res.render('recuperer_vehicule.ejs', {
+			 // get the user out of session and pass to template
+			rowsv : result,
+			user: req.user
+		});
+});
+});
+
 // =====================================
 // COMPTES SECTION =========================
 // =====================================
