@@ -26,6 +26,7 @@ process.on('uncaughtException', function (err) {
 //to get css
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/scripts'));
+app.use(express.static(__dirname + '.'));
 
 // configuration ===============================================================
 // connect to our database
