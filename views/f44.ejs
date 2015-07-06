@@ -1,13 +1,16 @@
 <!doctype html>
 <html>
   <head>
-    <% include header.ejs %>
+    <% include header0.ejs %>
     <link href="docs/css/bootstrap.min.css" rel="stylesheet">
     <link href="docs/css/highlight.css" rel="stylesheet">
     <link href="dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
     <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
     <link href="docs/css/main.css" rel="stylesheet">
     <!--Scripts-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
     <script  type="text/javascript" src="typeahead.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
@@ -152,7 +155,7 @@
         </div>
 
         <div class="form-group">
-          <input type="text" id='myimmat'class="typeahead form-control" placeholder="Immat" onFocus="updMVA()" />
+          <input type="text" id='myimmat' name="immat" class="typeahead form-control" placeholder="Immat" onFocus="updMVA()" />
         </div>
 
         <div class="form-group">
@@ -161,8 +164,8 @@
 
         <div class="form-group">
           <p>
-            <label for="Aspiration intérieure"> Aspiration intérieure  : </label>
-            <input id="Aspiration intérieure" name="Aspiration intérieure" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
+            <label for="Aspiration intérieure"> Aspiration intérieure  :  </label>
+            <input id="Aspiration intérieure" name="Contrôle intérieur" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
           </p>
         </div>
 
@@ -189,95 +192,41 @@
 
         <div class="form-group">
           <p>
-            <label for="Aspiration intérieure"> Aspiration intérieure  : </label>
-            <input id="Aspiration intérieure" name="Aspiration intérieure" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
+            <label for="Niveau huile"> Niveau huile  : </label>
+            <input id="Niveau huile" name="Niveau huile" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
           </p>
         </div>
 
         <div class="form-group">
           <p>
-            <label for="Aspiration intérieure"> Aspiration intérieure  : </label>
-            <input id="Aspiration intérieure" name="Aspiration intérieure" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
+            <label for="Niveau lave-glace"> Niveau lave-glace  : </label>
+            <input id="Niveau lave-glace" name="Niveau lave-glace" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
+          </p>
+        </div>
+
+        <div class="form-group">
+          <p>
+            <label for="Pression pneus"> Pression pneus  : </label>
+            <input id="Pression pneus" name="Pression pneus" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
+          </p>
+        </div>
+
+        <div class="form-group">
+          <p>
+            <label for="Contrôle carrosserie"> Contrôle carrosserie  : </label>
+            <input id="Contrôle carrosserie" name="Contrôle carrosserie" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait" default-value="lol">
+          </p>
+        </div>
+
+        <div class="form-group">
+          <p>
+            <label for="Contrôle intérieur"> Contrôle intérieur  : </label>
+            <input id="Contrôle intérieur" name="Aspiration intérieure" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
           </p>
         </div>
 
 
-        <div class="form-group">
-        <h3> Niveau huile </h3>
-        <div class="btn-group" data-toggle-name="niveau_huile" data-toggle="buttons">
-          <label class="btn btn-primary">
-          <input type="radio" name="options" id="id_niveau_huile2" autocomplete="off" checked> À faire
-          </label>
-
-        <label class="btn btn-primary active">
-        <input type="radio" name="options" id="id_niveau_huile" autocomplete="off"> Fait
-        </label>
-
-        </div>
-        </div>
-        <input type="hidden" name="niveau_huile" value=0 />
-        <div class="form-group">
-        <h3> Niveau lave-glace  </h3>
-        <div class="btn-group" data-toggle-name="niveau_lave_glace" data-toggle="buttons">
-
-          <label class="btn btn-primary">
-          <input type="radio" name="options" id="id_niveau_lave_glace2" autocomplete="off" checked> À faire
-          </label>
-
-        <label class="btn btn-primary active">
-        <input type="radio" name="options" id="id_niveau_lave_glace" autocomplete="off"> Fait
-        </label>
-
-        </div>
-        </div>
-        <input type="hidden" name="niveau_lave_glace" value=0 />
-        <div class="form-group">
-        <h3> Pression pneus </h3>
-        <div class="btn-group" data-toggle-name="pression_pneus" data-toggle="buttons">
-
-          <label class="btn btn-primary">
-          <input type="radio" name="options" id="id_pression_pneus2" autocomplete="off" checked> À faire
-          </label>
-
-        <label class="btn btn-primary active">
-        <input type="radio" name="options" id="id_pression_pneus" autocomplete="off"> Fait
-      </label>
-
-        </div>
-        </div>
-        <input type="hidden" name="pression_pneus" value=0 />
-        <div class="form-group">
-        <h3> Contrôle carrosserie </h3>
-        <div class="btn-group"  data-toggle-name="controle_carosserie" data-toggle="buttons">
-
-          <label class="btn btn-primary">
-          <input type="radio" name="options" id="id_controle_carosserie2" autocomplete="off" checked> À faire
-          </label>
-
-        <label class="btn btn-primary active">
-        <input type="radio" name="options" id="id_controle_carosserie" autocomplete="off"> Fait
-        </label>
-
-        </div>
-        </div>
-        <input type="hidden" name="controle_carosserie" value=0 />
-        <div class="form-group">
-        <h3> Contrôle intérieur </h3>
-        <div class="btn-group" data-toggle-name="controle_interieur" data-toggle="buttons">
-
-          <label class="btn btn-primary">
-          <input type="radio" name="options" id="id_controle_interieur2" autocomplete="off" checked> À faire
-          </label>
-
-        <label class="btn btn-primary active">
-        <input type="radio" name="options" id="id_controle_interieur" autocomplete="off"> Fait
-        </label>
-
-        </div>
-        </div>
-        <input type="hidden" name="controle_interieur" value=0 />
-
-			  <p data-toggle="tooltip" title="su"><button class="btn btn-primary pull-right"data-toggle="modal" data-target="#delete">Envoyer</button></p>
+			  <p data-toggle="tooltip" title="su"><button type="button" class="btn btn-primary pull-right"data-toggle="modal" data-target="#delete">Envoyer</button></p>
 
         <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
           <div class="modal-dialog">
@@ -308,32 +257,11 @@
         </div>
       </div>
     </div>
-    <script type="text/javascript">
-
-      $(function() {
-         $('div.btn-group[data-toggle-name]').each(function() {
-             var group = $(this);
-             var form = group.parents('form').eq(0);
-             var name = group.attr('data-toggle-name');
-             var hidden = $('input[name="' + name + '"]', form);
-             $('label', group).each(function() {
-                 var button = $(this).find('input[type="radio"]');
-                 $(this).on('click', function() {
-
-                     hidden.val($(this).val());
-                 });
-                 if (button.val() == hidden.val()) {
-                     $(this).addClass('active');
-                 }
-             });
-         });
-      });
-    </script>
-
 
     <script src="docs/js/highlight.js"></script>
     <script src="dist/js/bootstrap-switch.js"></script>
     <script src="docs/js/main.js"></script>
+
 
   </body>
 </html>
