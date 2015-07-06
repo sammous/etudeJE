@@ -2,7 +2,11 @@
 <html>
   <head>
     <% include header.ejs %>
-
+    <link href="docs/css/bootstrap.min.css" rel="stylesheet">
+    <link href="docs/css/highlight.css" rel="stylesheet">
+    <link href="dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
+    <link href="docs/css/main.css" rel="stylesheet">
     <!--Scripts-->
     <script  type="text/javascript" src="typeahead.min.js"></script>
     <script type="text/javascript">
@@ -135,13 +139,12 @@
       <div class="form-area">
 
         <!--Form-->
-        <form role="form" action="/data_f44" method="POST" >
-          <br>
+    <form role="form" action="/data_f44" method="POST" >
+        <br>
           <div class="text-center">
             <h2><span class="glyphicon glyphicon-refresh"></span> Fiche F44 </h2>
             <br>
           </div>
-          <div class="form-area">
         <br>
 
         <div class="form-group">
@@ -157,67 +160,48 @@
         </div>
 
         <div class="form-group">
-
-
-        <div class="form-group">
-          <h3> Aspiration intérieure </h3>
-          <div class="btn-group" data-toggle-name="aspiration_interieur" data-toggle="buttons">
-            <label class="btn btn-primary">
-              <input type="radio" name="n_aspiration_interieur2" id="id_aspiration_interieur2" autocomplete="off" checked> À faire
-            </label>
-
-            <label class="btn btn-primary active">
-              <input type="radio" name="n_aspiration_interieur" id="id_aspiration_interieur" autocomplete="off"> Fait
-            </label>
-
-            <input type="hidden" name="aspiration_interieur" value=0 />
-          </div>
+          <p>
+            <label for="Aspiration intérieure"> Aspiration intérieure  : </label>
+            <input id="Aspiration intérieure" name="Aspiration intérieure" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
+          </p>
         </div>
 
         <div class="form-group">
-        <h3> Lavage extérieure </h3>
-        <div class="btn-group" data-toggle-name="lavage_exterieur" data-toggle="buttons">
-          <label class="btn btn-primary">
-          <input type="radio" name="options" id="id_lavage_exterieur2" autocomplete="off" checked> À faire
-          </label>
-
-        <label class="btn btn-primary active">
-        <input type="radio" name="options" id="id_lavage_exterieur" autocomplete="off"> Fait
-        </label>
-
+          <p>
+            <label for="Lavage extérieure"> Lavage extérieure  : </label>
+            <input id="Lavage extérieure" name="Lavage extérieure" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
+          </p>
         </div>
-        </div>
-        <input type="hidden" name="lavage_exterieur" value=0 />
+
         <div class="form-group">
-        <h3> Nettoyage vitre </h3>
-        <div class="btn-group" data-toggle-name="nettoyage_vitre" data-toggle="buttons">
-
-        <label class="btn btn-primary">
-        <input type="radio" name="options" id="id_nettoyage_vitre2" autocomplete="off" checked> À faire
-        </label>
-
-        <label class="btn btn-primary active">
-        <input type="radio" name="options" id="id_nettoyage_vitre" autocomplete="off"> Fait
-        </label>
-
+          <p>
+            <label for="Nettoyage vitre"> Nettoyage vitre  : </label>
+            <input id="Nettoyage vitre" name="Nettoyage vitre" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
+          </p>
         </div>
-        </div>
-        <input type="hidden" name="nettoyage_vitre" value=0 />
+
         <div class="form-group">
-        <h3> Nettoyage parebrise intérieur </h3>
-        <div class="btn-group" data-toggle-name="nettoyage_parebrise_interieur" data-toggle="buttons">
-
-        <label class="btn btn-primary">
-        <input type="radio" name="options" id="id_nettoyage_parebrise_interieur2" autocomplete="off" checked> À faire
-        </label>
-
-        <label class="btn btn-primary active">
-        <input type="radio" name="options" id="id_nettoyage_parebrise_interieur" autocomplete="off"> Fait
-        </label>
-
+          <p>
+            <label for="Nettoyage parebrise intérieur"> Nettoyage parebrise intérieur  : </label>
+            <input id="Nettoyage parebrise intérieur" name="Nettoyage parebrise intérieur" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
+          </p>
         </div>
+
+        <div class="form-group">
+          <p>
+            <label for="Aspiration intérieure"> Aspiration intérieure  : </label>
+            <input id="Aspiration intérieure" name="Aspiration intérieure" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
+          </p>
         </div>
-        <input type="hidden" name="nettoyage_parebrise_interieur" value=0 />
+
+        <div class="form-group">
+          <p>
+            <label for="Aspiration intérieure"> Aspiration intérieure  : </label>
+            <input id="Aspiration intérieure" name="Aspiration intérieure" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
+          </p>
+        </div>
+
+
         <div class="form-group">
         <h3> Niveau huile </h3>
         <div class="btn-group" data-toggle-name="niveau_huile" data-toggle="buttons">
@@ -345,6 +329,11 @@
          });
       });
     </script>
+
+
+    <script src="docs/js/highlight.js"></script>
+    <script src="dist/js/bootstrap-switch.js"></script>
+    <script src="docs/js/main.js"></script>
 
   </body>
 </html>
