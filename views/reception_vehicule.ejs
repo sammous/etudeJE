@@ -39,7 +39,12 @@ weekHeader: 'Sem.',
 dateFormat: 'dd-mm-yy'
 });
 
+var newDate = new Date();
 $("#datepicker").datepicker("setDate", new Date());
+$("#timepicker").datepicker(newDate.timeNow());
+
+
+
 
 $('.next').click(function(){
 
@@ -176,7 +181,7 @@ submitForms = function(){
 						</select>
 						<br>
 				<button type="button" id="submit" name="submit" class="btn btn-success pull-right" onclick="submitForms()">Envoyer</button>
-			</div>	
+			</div>
 
 		</div>
   </div>
