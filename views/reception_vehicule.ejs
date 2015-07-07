@@ -16,6 +16,9 @@
 	<script src="dist/js/jquery.timepicker.js"></script>
 	<script src="docs/css/jquery.timepicker.css"></script>
 
+	<link href="docs/css/highlight.css" rel="stylesheet">
+	<link href="docs/css/bootstrap.min.css" rel="stylesheet">
+
 	<style>
 		body 		{
 		background-size:100% auto;
@@ -75,6 +78,32 @@ submitForms = function(){
 }
 </script>
 
+<script  type="text/javascript" src="typeahead.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#myimmat').typeahead({
+				hint: true,
+				highlight: true,
+				minLength: 1,
+				name: 'users',
+				remote: 'http://localhost:8080/search_immat?key=%QUERY',
+		});
+	});
+
+
+</script>
+<script>
+	function updMVA(){
+		$.ajax({
+			url: 'http://localhost:8080/search_mva?key='+$( '#myimmat' ).val()+'',
+			dataType: 'json',
+			success : function (data) {
+				$( '#mva' ).val(data);
+			},
+		})
+	};
+</script>
+
 	<% include header_.ejs %>
 
 </head>
@@ -110,7 +139,7 @@ submitForms = function(){
   						<input type="text" class="form-control" id="name" name="name" placeholder="Name" value=<%=user.username%> required>
   					</div>
 						<div class="form-group">
-							<input type="text" class="form-control" id="immat" name="immat" placeholder="Immatriculation" required>
+							<input type="text" id='myimmat' name="immat" class="typeahead form-control" placeholder="Immat" onFocus="updMVA()" />
 						</div>
   					<div class="form-group">
   						<input type="number" class="form-control" id="mva" name="mva" placeholder="MVA" required>
