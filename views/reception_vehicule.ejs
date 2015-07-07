@@ -13,6 +13,8 @@
 
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
+	<script src="dist/js/jquery.timepicker.js"></script>
+	<script src="docs/css/jquery.timepicker.css"></script>
 
 	<style>
 		body 		{
@@ -39,12 +41,18 @@ weekHeader: 'Sem.',
 dateFormat: 'dd-mm-yy'
 });
 
-var newDate = new Date();
 $("#datepicker").datepicker("setDate", new Date());
-$("#timepicker").datepicker(newDate.timeNow());
-
-
-
+$(document).ready(function(){
+$("#timepicker").timepicker({
+			timeFormat: 'HH:mm:ss',
+			defaultTime: 'now',
+			minTime: '11:45:00', // 11:45:00 AM,
+			maxHour: 20,
+			maxMinutes: 30,
+			startTime: new Date(0,0,0,15,0,0), // 3:00:00 PM - noon
+			interval: 15 // 15 minutes
+	});
+});
 
 $('.next').click(function(){
 
@@ -101,11 +109,11 @@ submitForms = function(){
       				<div class="form-group">
   						<input type="text" class="form-control" id="name" name="name" placeholder="Name" value=<%=user.username%> required>
   					</div>
+						<div class="form-group">
+							<input type="text" class="form-control" id="immat" name="immat" placeholder="Immatriculation" required>
+						</div>
   					<div class="form-group">
   						<input type="number" class="form-control" id="mva" name="mva" placeholder="MVA" required>
-  					</div>
-  					<div class="form-group">
-  						<input type="text" class="form-control" id="immat" name="immat" placeholder="Immatriculation" required>
   					</div>
   					<div class="form-group">
   						<input type="text" class="form-control" id="proprietaire" name="proprietaire" placeholder="Propriétaire" required>
