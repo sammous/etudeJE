@@ -41,6 +41,10 @@ numéro de ligne :
 
 Afficher checkin pour une immat donnée et du jour.
 
+## Fichier à lancer pour l'initialisation de la base de donnée :
+
+- /scripts  : node create_database.js
+- fichier sql : V_2.1.sql
 
 ## Instructions
 
