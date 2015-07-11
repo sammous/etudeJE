@@ -116,7 +116,7 @@ app.get('/header', function(req,res){
 
 		if (req.user.attribut == "administrateur") {
 			console.log("Connected as admin");
-			connection.query('use my_schema;');
+			connection.query('use mydb;');
 			connection.query('select * from vehicules', function(err,result){
 			res.render('admin.ejs', {
 				user : req.user, // get the user out of session and pass to template
@@ -127,7 +127,7 @@ app.get('/header', function(req,res){
 	  console.log(req.query);
   	/*var	patate = querystring.parse(url.parse(req.url).query);
 	  console.log(request);*/
-		connection.query('use my_schema;');
+		connection.query('use mydb;');
 		connection.query('select * from vehicules', function(err,result){
 		res.render('profile.ejs', {
 			user : req.user, // get the user out of session and pass to template
@@ -174,7 +174,7 @@ app.get('/header', function(req,res){
 
 
 	app.get('/search_immat',function(req,res){
-	connection.query('use my_schema;');
+	connection.query('use mydb;');
 
 	connection.query('SELECT immat from vehicules where immat like "%'+req.query.key+'%"', function(err, rows, fields) {
 			//console.log('SELECT id from users where id = '+req.query.key+';');
@@ -193,7 +193,7 @@ app.get('/header', function(req,res){
 
 
 	app.get('/search_mva',function(req,res){
-	connection.query('use my_schema;');
+	connection.query('use mydb;');
 
 	connection.query('SELECT mva from vehicules where immat like "%'+req.query.key+'%"', function(err, rows, fields) {
 			//console.log('SELECT id from users where id = '+req.query.key+';');
@@ -218,7 +218,7 @@ app.get('/header', function(req,res){
 	// we will use route middleware to verify this (the isLoggedIn function)
 	app.get('/admin', isLoggedIn, isAdmin, function(req, res) {
 
-		connection.query('use my_schema;');
+		connection.query('use mydb;');
 		connection.query('select * from users', function(err,result){
 			connection.query('select * from vehicules', function(err,result2){
 			res.render('admin.ejs', {
@@ -237,7 +237,7 @@ app.get('/header', function(req,res){
 // we will use route middleware to verify this (the isLoggedIn function)
 app.get('/vehicule', isLoggedIn, function(req, res) {
 
-	  connection.query('use my_schema;');
+	  connection.query('use mydb;');
 		connection.query('select * from vehicules', function(err,result2){
 		res.render('vehicule.ejs', {
 			 // get the user out of session and pass to template
@@ -250,7 +250,7 @@ app.get('/vehicule', isLoggedIn, function(req, res) {
 
 app.get('/transfertvehicule', isLoggedIn, function(req, res) {
 
-	  connection.query('use my_schema;');
+	  connection.query('use mydb;');
 		connection.query('select * from vehicules where STATUT = "ON MOVE"', function(err,result){
 		res.render('transfert_vehicule.ejs', {
 			 // get the user out of session and pass to template
@@ -263,7 +263,7 @@ app.get('/transfertvehicule', isLoggedIn, function(req, res) {
 
 app.get('/preparevehicule', isLoggedIn, function(req, res) {
 
-	  connection.query('use my_schema;');
+	  connection.query('use mydb;');
 		connection.query('select * from vehicules where STATUT = "MARSHALL"', function(err,result){
 		res.render('prepare_vehicule.ejs', {
 			 // get the user out of session and pass to template
@@ -276,7 +276,7 @@ app.get('/preparevehicule', isLoggedIn, function(req, res) {
 
 app.get('/recuperervehicule', isLoggedIn, function(req, res) {
 
-	  connection.query('use my_schema;');
+	  connection.query('use mydb;');
 		connection.query('select * from vehicules where STATUT = "ON HAND"', function(err,result){
 		res.render('recuperer_vehicule.ejs', {
 			 // get the user out of session and pass to template
@@ -293,7 +293,7 @@ app.get('/recuperervehicule', isLoggedIn, function(req, res) {
 // we will use route middleware to verify this (the isLoggedIn function)
 app.get('/comptes', isLoggedIn, function(req, res) {
 
-	  connection.query('use my_schema;');
+	  connection.query('use mydb;');
 		connection.query('select * from users', function(err,result2){
 		res.render('comptes.ejs', {
 			 // get the user out of session and pass to template
@@ -309,7 +309,7 @@ app.get('/comptes', isLoggedIn, function(req, res) {
 // =====================================
 app.get('/agences', isLoggedIn, function(req, res) {
 
-	  connection.query('use my_schema;');
+	  connection.query('use mydb;');
 		connection.query('select * from Agence', function(err,result2){
 		res.render('agence.ejs', {
 			 // get the user out of session and pass to template

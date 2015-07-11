@@ -1,4 +1,4 @@
-USE my_schema;
+USE mydb;
 
 CREATE TABLE vehicules (
     MVA INT,

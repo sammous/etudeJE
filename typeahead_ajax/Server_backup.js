@@ -21,7 +21,7 @@ res.render('index.ejs');
 });
 
 app.get('/search',function(req,res){
-connection.query('use my_schema;');
+connection.query('use mydb;');
 connection.query('SELECT * from users where id like '+req.query.key+'', function(err, rows, fields) {
     //console.log('SELECT id from users where id = '+req.query.key+';');
 	  if (err) throw err;
