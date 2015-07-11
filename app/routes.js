@@ -147,7 +147,13 @@ app.get('/header', function(req,res){
 		});
 	});
 
-
+	app.post('/fvehicule', function(req,res){
+		console.log("post received");
+		console.log(req.body)
+		res.render('confirmation.ejs',{
+			user : req.user
+		});
+	});
 
 	app.get('/blank', isLoggedIn, function(req, res) {
 		res.render('blank.ejs',{
@@ -315,22 +321,7 @@ app.get('/agences', isLoggedIn, function(req, res) {
 });
 });
 
-app.post('/agences', function(req,res){
-	connection.query('use my_schema;');
-	var post = {
-		id :"",
-		nom : req.body.nom_agence,
-		adresse : req.body.adresse_agence
-	};
-	connection.query('INSERT INTO Agence (idAgence, nom, adresse) VALUES (?,?,?)', [post.id, post.nom, post.adresse], function(err,result){
-			if (err){
-				req.flash("messages",{"error": "Une erreur est survenue"})
-			} else {
-				req.flash("messages",{"success" : "Agence ajoutée"});
-				res.redirect("/agences");
-			}
-	});
-});
+
 
 // =====================================
 // PARKING SECTION =========================
