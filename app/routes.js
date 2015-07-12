@@ -23,7 +23,14 @@ module.exports = function(app, passport) {
 	// =====================================
 	// show the login form
 	app.get('/', function(req, res) {
-		res.render('login.ejs',{ message: req.flash('loginMessage') }); // load the index.ejs file
+		connection.query('use mydb;');
+		connection.query('select * from users', function(err,result){
+		if (result.length != 0){
+			res.render('login.ejs',{ message: req.flash('loginMessage') }); // load the index.ejs file
+		} else {
+			res.render('init.ejs'); // load the index.ejs file
+		}
+	})
 	});
 
  app.get('/ts', function(req,res){
@@ -45,6 +52,12 @@ app.get('/header', function(req,res){
 	res.render('header.ejs');
 });
 
+app.post('/init', passport.authenticate('local-signup', {
+		successRedirect : '/', // redirect to the secure profile section
+		failureRedirect : '/init', // redirect back to the signup page if there is an error
+		failureFlash : true // allow flash messages
+	})
+);
 
 	// =====================================
 	// LOGIN ===============================
@@ -138,6 +151,10 @@ app.get('/header', function(req,res){
 	});
 
 
+	app.post('/profile', (function(req,res){
+		console.log('works');
+	})
+	);
 	// =====================================
 	// FICHE RECEPTION VEHICULE SECTION =========================
 	// =====================================
@@ -363,6 +380,7 @@ app.post('/parking', function(req,res){
 		req.logout();
 		res.redirect('/');
 	});
+
 
 
 };

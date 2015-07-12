@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Vehicule` (
   `mva` VARCHAR(45) NULL,
   `immat` VARCHAR(45) NULL,
   `modele` VARCHAR(45) NULL,
-  `statut wizzard` VARCHAR(45) NULL,
+  `statut wizard` VARCHAR(45) NULL,
   `km` VARCHAR(45) NULL,
   `carburant` VARCHAR(45) NULL,
   `Vehiculecol` VARCHAR(45) NULL,

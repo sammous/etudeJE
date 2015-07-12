@@ -2,6 +2,8 @@
 <!doctype html>
 <html>
 <head>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 
 	<style>
 		body {
@@ -13,8 +15,6 @@
 			}
 	</style>
 
-	<% include header.ejs %>
-
 </head>
 <body>
 
@@ -25,25 +25,21 @@
 
 	<h1><span class="fa fa-sign-in"></span> Créer Compte</h1>
 
-	<!-- show any messages that come back with authentication -->
-	<% if (message.length > 0) { %>
-		<div class="alert alert-danger"><%= message %></div>
-	<% } %>
 
 	<!-- LOGIN FORM -->
-	<form action="/signup" method="post">
+	<form action="/init" method="post">
 		<div class="form-group">
 			<label>Identifiant</label>
-			<input type="text" class="form-control" name="username">
+			<input type="text" class="form-control" name="username" value="admin">
 		</div>
 		<div class="form-group">
-			<label>Mot de passe</label>
+			<label>Choisir un mot de passe administrateur</label>
 			<input type="password" class="form -control" name="password">
 		</div>
 
 		<div class="form-group">
 
-			<select name="attribut" class="form-control select select-primary" data-toggle="select">
+			<select name="attribut" class="form-control select select-primary" data-toggle="select" value="administrateur">
 				  <option value="0" selected>Choisir type de privilège</option>
 					<option value="administrateur">Administrateur</option>
 					<option value="opérateur">Opérateur</option>
@@ -52,7 +48,7 @@
 
 		</div>
 
-		<button type="submit" class="btn btn-warning btn-lg">Signup</button>
+		<button type="submit" class="btn btn-warning btn-lg">Enregistrer</button>
 	</form>
 
 </div>

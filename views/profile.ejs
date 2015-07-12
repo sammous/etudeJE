@@ -31,6 +31,10 @@ $('#edit').on('show.bs.modal', function (event) {
   modal.find('.modal-body input').val(recipient)
 })
 
+$('#deleteButton').click(function(){
+	$.post('')
+});
+
 
 		</script>
 		<% include header.ejs %>
@@ -110,7 +114,7 @@ $('#edit').on('show.bs.modal', function (event) {
 	        </div>
 	      </div>
 	          <div class="modal-footer ">
-	        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Mettre à jour </button>
+	        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" id="editButton"><span class="glyphicon glyphicon-ok-sign"></span> Mettre à jour </button>
 	      </div>
 	        </div>
 	    <!-- /.modal-content -->
@@ -133,7 +137,7 @@ $('#edit').on('show.bs.modal', function (event) {
 
 	      </div>
 	        <div class="modal-footer ">
-	        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+	        <button type="button" class="btn btn-success" id="deleteButton" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
 	        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
 	      </div>
 	        </div>
