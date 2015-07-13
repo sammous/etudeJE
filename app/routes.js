@@ -100,7 +100,7 @@ app.get('/header', function(req,res){
 	});
 
 	// process the signup form
-	app.post('/admin/signup', passport.authenticate('local-signup', {
+	app.post('/signup', passport.authenticate('local-signup', {
 		successRedirect : '/admin/signup', // redirect to the secure profile section
 		failureRedirect : '/admin/signup', // redirect back to the signup page if there is an error
 		failureFlash : true // allow flash messages
