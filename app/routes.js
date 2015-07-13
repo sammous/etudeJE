@@ -51,6 +51,8 @@ app.get('/header', function(req,res){
 	});
 
 
+
+
 	// =====================================
 	// LOGIN ===============================
 	// =====================================
@@ -245,6 +247,13 @@ app.get('/header', function(req,res){
 		});
 	});
 
+	app.get('/ajouter_agence', isLoggedIn, function(req, res) {
+		console.log()
+		res.render('ajouter_agence.ejs',{
+			user : req.user
+		});
+	});
+
 
 	app.post('/data_chercher_agence', function(req,res){
 		console.log(req.body)
@@ -264,7 +273,11 @@ app.get('/header', function(req,res){
 		res.end(data);
 	});
 
-
+	app.get('/data_ajouter_agence', isLoggedIn, function(req, res) {
+ 	 console.log(req.query);
+ 	 var data="";
+ 	res.end(data);
+  });
 	// =====================================
 	// CHERCHER PARKING SECTION ============
 	// =====================================

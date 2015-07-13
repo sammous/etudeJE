@@ -1,8 +1,7 @@
 #TODO NOW !
 Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là et mets la pour pas que je la fasse en parallèle. Une fois que tu as terminé marque ce que tu as fait en bas.
 
-    - Régler le post pour ajout d'agences
-    - Régler le post pour ajout de parkings
+
     - ajouter les requêtes sur les tables process une fois les forms remplies
     - afficher les tables process
     - Ajouter tables en fonction des users : à transporter etc.
@@ -22,7 +21,8 @@ Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là 
 
 
   Mehdi
-    -Ajouter une page recherche parking et agences avec même modifs que vehicules.
+  - Régler le post pour ajout d'agences : bouton modifier/supprimer/ajouter
+  - Régler le post pour ajout de parkings
 
   Sami :
     - ?
@@ -30,12 +30,18 @@ Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là 
 
 #DONE
   Mehdi
+    13/07/2015
     - Ajouter un user admin/admin : FAIT
+    - Résoudre le problème de "paassport" et du crash lié au hash : FAIT
     - régler fatal error liée au hash  : FAIT
     - Enlever les boutons modifier/delete sur l'affichage des tables : FAIT
     - Intégrer la complétion automatique sur toutes les pages process : FAIT
-    - Recherche des tables, puis une fois la table localisée, modifier ou supprimer avec ajax. MODIFICATION UNIQUEMENT VIA CETTE METHODE : FAIT
+    - Recherche des tables véhicules, puis une fois la table localisée, modifier ou supprimer avec ajax. MODIFICATION UNIQUEMENT VIA CETTE METHODE : FAIT
+    - Ajouter une page recherche parking et modification : FAIT
+    - Ajouter une page recherche agence et modification : FAIT
 
+    14/07/2015
+    -
 
   Sami
 
