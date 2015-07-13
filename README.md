@@ -1,22 +1,23 @@
-﻿# Web application for rental car company
-
-## On developpement:
-## Database :
-
-
-##TODO NOW !
+#TODO NOW !
 - Régler le post pour ajout d'agences
 - Régler le post pour ajout de parkings
-- Intégrer la complétion automatique sur toutes les pages process
-- Recherche des tables, puis une fois la table localisée, modifier ou supprimer. MODIFICATION UNIQUEMENT VIA CETTE METHODE, car plus simple pour nous et plus sécurisée.
-- Enlever les boutons modifier/delete sur l'affichage des tables.
-- Ajouter tables en fonction des users : à transporter etc.
-- Complétion automatique immat.
 
-##DONE
-- Ajouter un user admin/admin : FAIT
-- régler fatal error liée au hash  : FAIT
--
+
+
+- Ajouter tables en fonction des users : à transporter etc.
+
+  Mehdi
+
+
+
+#DONE
+  Mehdi
+    - Ajouter un user admin/admin : FAIT
+    - régler fatal error liée au hash  : FAIT
+    - Complétion automatique immat : FAIT
+    - Enlever les boutons modifier/delete sur l'affichage des tables : FAIT
+    - Intégrer la complétion automatique sur toutes les pages process : FAIT
+    - Recherche des tables, puis une fois la table localisée, modifier ou supprimer. MODIFICATION UNIQUEMENT VIA CETTE METHODE, car plus simple pour nous et plus sécurisée : FAIT
 
 
 

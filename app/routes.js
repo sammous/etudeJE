@@ -46,6 +46,7 @@ app.get('/header', function(req,res){
 });
 
 
+
 	// =====================================
 	// LOGIN ===============================
 	// =====================================
@@ -117,7 +118,6 @@ app.get('/header', function(req,res){
 
 		if (req.user.attribut == "administrateur") {
 			console.log("Connected as admin");
-			connection.query('use mydb;');
 			connection.query('select * from vehicules LIMIT 50', function(err,result){
 			data=JSON.stringify(result);
 			res.render('admin.ejs', {
@@ -175,10 +175,32 @@ app.get('/header', function(req,res){
 		console.log()
 		res.render('f44.ejs',{
 			user : req.user
-
 		});
 	});
 
+	app.get('/chercher_vehicule', isLoggedIn, function(req, res) {
+		console.log()
+		res.render('chercher_vehicule.ejs',{
+			user : req.user
+		});
+	});
+
+
+	app.post('/data_chercher_vehicule', function(req,res){
+		console.log(req.body.immat)
+		connection.query('select * from vehicules where immat like "%'+req.body.immat+'%";', function(err,result){
+		res.render('chercher_vehicule_resp.ejs', {
+			rows : result,
+			user : req.user,
+		});
+		});
+	});
+
+	app.get('/modifier_vehicule', isLoggedIn, function(req, res) {
+		console.log(req.query);
+		var data="";
+    res.end(data);
+	});
 
 	app.get('/search_immat',function(req,res){
 	connection.query('SELECT immat from vehicules where immat like "%'+req.query.key+'%"', function(err, rows, fields) {
