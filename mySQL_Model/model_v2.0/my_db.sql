@@ -100,7 +100,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`Process_F44` (
   `idPreparateur` INT NOT NULL,
   `idVehicule` INT NOT NULL,
-  `Numero` INT NOT NULL,
+  `Numero` INT NOT NULL AUTO_INCREMENT=1,
   `mva` VARCHAR(45) NULL,
   `immat` VARCHAR(45) NULL,
   `aspiration_interieur` TINYINT(1) NULL,

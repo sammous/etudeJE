@@ -33,7 +33,9 @@ module.exports = function(app, passport) {
 });
 
 app.post('/data_f44', function(req,res){
-	console.log(req.body)
+	console.log(req.body.MVA);
+	var insertQueryf44='INSERT INTO Process_F44 (idPreparateur,idVehicule,Numero,mva,immat,aspiration_interieur,lavage_exterieur,nettoyage_vitre,nettoyage_parebrise_interieur,niveau_huile,niveau_lave_glace,pression_pneus,controle_carosserie,controle_interieur,remplissage_carburant) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+	connection.query(insertQueryf44,[req.body.name,req.body.immat,"",req.body.MVA,req.body.immat,req.body.Aspiration_intérieur,req.body.Lavage_extérieure,req.body.Nettoyage_vitre,req.body.Nettoyage_parebrise_intérieur,req.body.Niveau_huile,req.body.Niveau_lave_glace,req.body.Pression_pneus,req.body.Contrôle_carrosserie,req.body.Aspiration_intérieure,"carburant"]);
 	res.render('confirmation.ejs',{
 		user : req.user
 	});
