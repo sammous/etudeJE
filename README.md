@@ -1,9 +1,4 @@
 #TODO NOW !
-<<<<<<< HEAD
-
-=======
->>>>>>> 943a840912b1d3475d373e985da621dd53660b97
-
 Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là et mets la pour pas que je la fasse en parallèle. Une fois que tu as terminé marque ce que tu as fait en bas.
 
     - Régler le post pour ajout d'agences
@@ -13,11 +8,9 @@ Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là 
     - Ajouter tables en fonction des users : à transporter etc.
 
 
-<<<<<<< HEAD
-=======
+
   Mehdi
     -Ajouter une page recherche parking et agences avec même modifs que vehicules.
->>>>>>> 943a840912b1d3475d373e985da621dd53660b97
 
   Sami :
     - ?
@@ -31,15 +24,11 @@ Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là 
     - Intégrer la complétion automatique sur toutes les pages process : FAIT
     - Recherche des tables, puis une fois la table localisée, modifier ou supprimer avec ajax. MODIFICATION UNIQUEMENT VIA CETTE METHODE : FAIT
 
-<<<<<<< HEAD
+
   Sami
     - Régler le post pour ajout d'agences
     - Régler le post pour ajout de parkings
 
-=======
-  Sami :
-    -
->>>>>>> 943a840912b1d3475d373e985da621dd53660b97
 
 
 ## Infos supplémentaires
