@@ -1,58 +1,114 @@
-<!-- views/admin.ejs -->
+<!-- views/profile.ejs -->
 <!doctype html>
 <html>
-<head>
-	<!-- DataTables CSS -->
-	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+	<head>
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<script>
+			$('#edit').on('show.bs.modal', function(e) {
+					console.log("testetete");
+			});
 
-	<!-- jQuery -->
-	<script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+	$(".modal-dialog").click(function() {
+    var $row = $(this).closest("tr");    // Find the row
+    var $text = $row.find(".mva").text(); // Find the text
 
-	<!-- DataTables -->
-	<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.js"></script>
+    // Let's test it out
+    alert($text);
+});
 
-	<% include header.ejs %>
 
-	<!--script type="text/javascript">
-	$(document).ready(function(){
-	    $('#myTable').DataTable(); //????
-	});
-</script-->
-</head>
+$('#myTable > tr').click(function() {
+    // row was clicked
+		alert("rowclicked");
+});
 
-<body>
+$('#edit').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-body input').val(recipient)
+})
+
+$('#deleteButton').click(function(){
+	$.post('')
+});
+
+$('#deleteButton').click(function(){
+	$.post('')
+});
+
+var data = [
+    {
+        "name": "bootstrap-table",
+        "stargazers_count": "526",
+        "forks_count": "122",
+        "description": "An extended Bootstrap table with radio, checkbox, sort, pagination, and other added features. (supports twitter bootstrap v2 and v3) "
+    },
+    {
+        "name": "multiple-select",
+        "stargazers_count": "288",
+        "forks_count": "150",
+        "description": "A jQuery plugin to select multiple elements with checkboxes :)"
+    },
+    {
+        "name": "bootstrap-show-password",
+        "stargazers_count": "32",
+        "forks_count": "11",
+        "description": "Show/hide password plugin for twitter bootstrap."
+    },
+    {
+        "name": "blog",
+        "stargazers_count": "13",
+        "forks_count": "4",
+        "description": "my blog"
+    },
+    {
+        "name": "scutech-redmine",
+        "stargazers_count": "6",
+        "forks_count": "3",
+        "description": "Redmine notification tools for chrome extension."
+    }
+];
+
+$(function () {
+    $('#table').bootstrapTable({
+        data: data
+    });
+});
+		</script>
+		<% include header.ejs %>
+	</head>
 
 <div class="container">
 
 
 	<div class="text-center">
-		<h1><span class="fa fa-road"></span> Liste véhicules</h1>
+		<h1><span class="fa fa-road"></span> Liste de véhicules</h1>
 		<br>
   </div>
 
-	<table  class = "table table-hover table-bordered text-center" id="myTable">
+	<table  data-toggle="table" id="myTable" data-toggle="table" data-pagination="true" data-search="true" data-height="400" data-page-list="[5, 10, 20, 50, 100, 200]">
 		<div class="text-center">
-			<thead>
 			<tr>
-			<th> MVA</th>
-			<th> Immatriculation</th>
-			<th> Lieu actuel</th>
-			<th> Statut</th>
-			<th> Station départ</th>
-			<th> Station retour</th>
-			<th> Date départ</th>
-			<th> Date retour</th>
-			<th> Numéro contrat</th>
-			<th> Marque</th>
-			<th> Libellé modèle</th>
+			<th data-field="MVA">MVA</th>
+			<th data-field="Immatriculation" data-sortable="true">Immatriculation</th>
+			<th data-field="Lieu actuel" data-sortable="true">Lieu actuel</th>
+			<th data-field="Statut" data-sortable="true">Statut</th>
+			<th data-field="Station départ" data-sortable="true">Station départ</th>
+			<th data-field="Station retour" data-sortable="true">Station retour</th>
+			<th data-field="Date départ" data-sortable="true">Date départ</th>
+			<th data-field="Date retour" data-sortable="true">Date retour</th>
+			<th data-field="Numéro contrat" data-sortable="true">Numéro contrat</th>
+			<th data-field="Marque" data-sortable="true">Marque</th>
+			<th data-field="Libellé modèle" data-sortable="true">Libellé modèle</th>
+
 			</tr>
-		</thead>
-	<tbody>
 	</div>
 		<% rowsv.forEach(function(vehicules){ %>
-			<tr id=<%=vehicules.IMMAT%> >
-
-				<td> <div contenteditable  </div><%=vehicules.MVA%> </td>
+			<tr onclick="input" data-toggle="modal" data-target="#edit" data-whatever="<%=vehicules.MVA%>" >
+				<td class="mva"> <%=vehicules.MVA%> </td>
 				<td> <%=vehicules.IMMAT%></td>
 				<td> <%=vehicules.CURRENT_LOCATION_STN%></td>
 				<td> <%=vehicules.STATUT%></td>
@@ -64,7 +120,7 @@
 				<td> <%=vehicules.marque%></td>
 				<td> <%=vehicules.libell_mod_le%></td>
 				<td>
-					<p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p>
+					<p data-placement="top" data-toggle="s" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p>
 				</td>
 				<td>
 					<p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p>
@@ -73,7 +129,6 @@
 
 			</tr>
 			<%})%>
-		</tbody>
 	</table>
 
 
@@ -85,9 +140,22 @@
 	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
 	        <h4 class="modal-title custom_align" id="Heading">Modifier les éléments d'un véhicule </h4>
 	      </div>
+	          <div class="modal-body">
+	          <div class="form-group">
+	        <input class="form-control " type="text" placeholder="MVA" value="">
+	        </div>
+	        <div class="form-group">
 
+	        <input class="form-control " type="text" placeholder="Agence">
+	        </div>
+	        <div class="form-group">
+	        <textarea rows="2" class="form-control" placeholder="Commentaire : "></textarea>
+
+
+	        </div>
+	      </div>
 	          <div class="modal-footer ">
-	        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Mettre à jour </button>
+	        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" id="editButton"><span class="glyphicon glyphicon-ok-sign"></span> Mettre à jour </button>
 	      </div>
 	        </div>
 	    <!-- /.modal-content -->
@@ -110,7 +178,7 @@
 
 	      </div>
 	        <div class="modal-footer ">
-	        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+	        <button type="button" class="btn btn-success" id="deleteButton" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
 	        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
 	      </div>
 	        </div>
