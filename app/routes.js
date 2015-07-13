@@ -46,6 +46,21 @@ app.get('/header', function(req,res){
 });
 
 
+	app.post('/data_chercher_vehicule', function(req,res){
+		console.log(req.body.immat)
+		connection.query('select * from vehicules where immat like "%'+req.body.immat+'%";', function(err,result){
+		res.render('chercher_vehicule_resp.ejs', {
+			rows : result,
+			user : req.user,
+		});
+		});
+	});
+
+	app.get('/modifier_vehicule', isLoggedIn, function(req, res) {
+		console.log(req.query);
+		var data="";
+    res.end(data);
+	});
 
 	// =====================================
 	// LOGIN ===============================
@@ -344,6 +359,22 @@ app.get('/agences', isLoggedIn, function(req, res) {
 });
 });
 
+
+app.post('/agences', function(req,res){
+	var post = {
+		id :"",
+		nom : req.body.nom_agence,
+		adresse : req.body.adresse_agence
+	};
+	connection.query('INSERT INTO Agence (idAgence, nom, adresse) VALUES (?,?,?)', [post.id, post.nom, post.adresse], function(err,result){
+			if (err){
+				req.flash("messages",{"error": "Une erreur est survenue"})
+			} else {
+				req.flash("messages",{"success" : "Agence ajoutée"});
+				res.redirect("/agences");
+			}
+	});
+});
 
 
 // =====================================
