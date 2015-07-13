@@ -33,7 +33,6 @@ module.exports = function(app, passport) {
 });
 
 app.post('/data_f44', function(req,res){
-	console.log('Fonctionnalité pour ajouter à SQL. Info reçue :');
 	console.log(req.body)
 	res.render('confirmation.ejs',{
 		user : req.user
@@ -59,7 +58,7 @@ app.get('/header', function(req,res){
 	app.get('/modifier_vehicule', isLoggedIn, function(req, res) {
 		console.log(req.query);
 		var data="";
-    res.end(data);
+    	res.end(data);
 	});
 
 	// =====================================
