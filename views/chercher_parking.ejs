@@ -14,11 +14,11 @@
     <script  type="text/javascript" src="typeahead.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
-        $('#myimmat').typeahead({
+        $('#myagence').typeahead({
             hint: true,
             highlight: true,
             minLength: 1,
-            remote: 'http://localhost:8080/search_immat?key=%QUERY',
+            remote: 'http://localhost:8080/search_agence?key=%QUERY',
         });
       });
     </script>
@@ -105,15 +105,15 @@
         <div class="form-area">
 
           <!--Form-->
-          <form role="form" action="/data_chercher_vehicule" method="POST" >
+          <form role="form" action="/data_chercher_agence" method="POST" >
             <br>
               <div class="text-center">
-                <h2><span class="glyphicon glyphicon-refresh"></span> Chercher un véhicule </h2>
+                <h2><span class="glyphicon glyphicon-refresh"></span> Chercher une agence </h2>
                 <br>
               </div>
             <br>
             <div class="form-group">
-              <input type="text" id='myimmat' name="immat" class="typeahead form-control" placeholder="Immat" onFocus="updMVA()" />
+              <input type="text" id='myagence' name="agence" class="typeahead form-control" placeholder="Agence" />
             </div>
 
     			  <button type="submit" class="btn btn-primary pull-right" ><span class="glyphicon glyphicon-ok-sign"></span> Chercher </button>

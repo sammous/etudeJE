@@ -14,12 +14,12 @@
     <script  type="text/javascript" src="typeahead.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
-        $('#myimmat').typeahead({
+        $('#myparking').typeahead({
             hint: true,
             highlight: true,
             minLength: 1,
             name: 'users',
-            remote: 'http://localhost:8080/search_immat?key=%QUERY',
+            remote: 'http://localhost:8080/search_parking?key=%QUERY',
         });
       });
     </script>
@@ -108,15 +108,15 @@
         <div class="form-area">
 
           <!--Form-->
-          <form role="form" action="/data_chercher_vehicule" method="POST" >
+          <form role="form" action="/data_chercher_parking" method="POST" >
             <br>
               <div class="text-center">
-                <h2><span class="glyphicon glyphicon-refresh"></span> Chercher un véhicule </h2>
+                <h2><span class="glyphicon glyphicon-refresh"></span> Chercher une parking </h2>
                 <br>
               </div>
             <br>
             <div class="form-group">
-              <input type="text" id='myimmat' name="immat" class="typeahead form-control" placeholder="Immat" onFocus="updMVA()" />
+              <input type="text" id='myparking' name="parking" class="typeahead form-control" placeholder="Parking" />
             </div>
 
     			  <button type="submit" class="btn btn-primary pull-right" ><span class="glyphicon glyphicon-ok-sign"></span> Chercher </button>
@@ -137,36 +137,17 @@
     <table  class = "table table-hover table-bordered text-center" id="myTable">
   		<div class="text-center">
   			<tr>
-  			<th> MVA</th>
-  			<th> Immatriculation</th>
-  			<th> Lieu actuel</th>
-  			<th> Statut</th>
-  			<th> Station départ</th>
-  			<th> Station retour</th>
-  			<th> Date départ</th>
-  			<th> Date retour</th>
-  			<th> Numéro contrat</th>
-  			<th> Marque</th>
+  			<th> Nom </th>
+  			<th> Agence </th>
+
   			</tr>
   	</div>
-  		<% rows.forEach(function(vehicules){ %>
+  		<% rows.forEach(function(parking){ %>
   			<tr >
-  				<td ><div contenteditable><span id = 'MVA'> <%=vehicules.MVA%>  </span> </div></td>
-  				<td> <div contenteditable><span id = 'IMMAT'> <%=vehicules.IMMAT%> </span> </div> </td>
-  				<td><div contenteditable><span id = 'CURRENT_LOCATION_STN'> <%=vehicules.CURRENT_LOCATION_STN%> </span> </div> </td>
-  				<td><div contenteditable><span id = 'STATUT'> <%=vehicules.STATUT%> </span> </div> </td>
-  				<td><div contenteditable><span id = 'STATION_DEPART'> <%=vehicules.STATION_DEPART%> </span> </div> </td>
-  				<td> <div contenteditable><span id = 'STATION_RETOUR'><%=vehicules.STATION_RETOUR%> </span> </div> </td>
-  				<td> <div contenteditable><span id = 'DATE_DEPART'><%=vehicules.DATE_DEPART%> </span> </div> </td>
-  				<td><div contenteditable><span id = 'DATE_RETOUR'> <%=vehicules.DATE_RETOUR%> </span> </div> </td>
-  				<td> <div contenteditable><span id = 'NUMERO_CONTRAT'><%=vehicules.NUMERO_CONTRAT%> </span> </div> </td>
-  				<td><div contenteditable><span id = 'marque'> <%=vehicules.marque%> </span> </div> </td>
+  				<td ><div contenteditable><span id = 'nom'> <%=parking.nom%>  </span> </div></td>
+  				<td> <div contenteditable><span id = 'agence'> <%=parking.agence%> </span> </div> </td>
+
   			</tr>
-
-
-
-
-
 
   			<%})%>
   	</table>
@@ -183,7 +164,7 @@
       <div class="modal-body">
 
    <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Merci de confirmer votre saisie </div>
-   
+
   </div>
     <div class="modal-footer ">
     <button type="button" class="btn btn-success" onclick='modif()' ><span class="glyphicon glyphicon-ok-sign" ></span> Confirmer </button>
@@ -201,18 +182,10 @@
         function modif(){
 
         		$.ajax({
-        			url: 'http://localhost:8080/modifier_vehicule',
+        			url: 'http://localhost:8080/modifier_parking',
         			data : {
-        			MVA : $( '#MVA' ).html(),
-        			IMMAT : $( '#IMMAT' ).html(),
-        			CURRENT_LOCATION_STN : $( '#CURRENT_LOCATION_STN' ).html(),
-              STATUT : $( '#STATUT' ).html(),
-              STATION_DEPART  : $( '#STATION_DEPART' ).html(),
-              STATION_RETOUR : $( '#STATION_RETOUR' ).html(),
-              DATE_DEPART : $( '#DATE_DEPART' ).html(),
-              DATE_RETOUR : $( '#DATE_RETOUR' ).html(),
-              NUMERO_CONTRAT : $( '#NUMERO_CONTRAT' ).html(),
-              marque : $( '#marque' ).html(),
+        			nom : $( '#nom' ).html(),
+        			adresse : $( '#agence' ).html()
         				},
 
         			success : function (data) {

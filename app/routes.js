@@ -2,20 +2,7 @@ var mysql = require('mysql');
 var dbconfig = require('../config/database');
 var connection = mysql.createConnection(dbconfig.connection);
 connection.query('USE ' + dbconfig.database);
-/*CETTE PARTIE EST POUR LE SUBMIT DE FORMS A NOTRE DB
-==
-==
-*/
 
-/*
-==
-==
-npm install body-parser est nécessaire
-*/ 
-
-
-
-// app/routes.js
 module.exports = function(app, passport) {
 
 	// =====================================
@@ -62,6 +49,7 @@ app.get('/header', function(req,res){
 		var data="";
     	res.end(data);
 	});
+
 
 	// =====================================
 	// LOGIN ===============================
@@ -147,8 +135,7 @@ app.get('/header', function(req,res){
 		console.log(data);
 		} else {
 	  console.log(req.query);
-  	/*var	patate = querystring.parse(url.parse(req.url).query);
-	  console.log(request);*/
+
 		connection.query('use mydb;');
 		connection.query('select * from vehicules LIMIT 50', function(err,result){
 		data=JSON.stringify(result);
@@ -162,6 +149,28 @@ app.get('/header', function(req,res){
 	console.log(data);
 	});
 
+
+	app.get('/confirmation', function(req,res){
+ 	res.render('confirmation.ejs',{
+ 		user : req.user
+ 	});
+ });
+
+ // =====================================
+ // data_f44 ============================
+ // =====================================
+ // show the login form
+ app.post('/data_f44', function(req,res){
+ 	console.log(req.body)
+ 	res.render('confirmation.ejs',{
+ 		user : req.user
+ 	});
+
+ });
+
+ 	app.get('/header', function(req,res){
+ 		res.render('header.ejs');
+ 	});
 
 	// =====================================
 	// FICHE RECEPTION VEHICULE SECTION =========================
@@ -187,7 +196,7 @@ app.get('/header', function(req,res){
 	});
 
 	// =====================================
-	// FICHE F44 SECTION =========================
+	// FICHE F44 SECTION ===================
 	// =====================================
 	app.get('/f44', isLoggedIn, function(req, res) {
 		console.log()
@@ -196,6 +205,10 @@ app.get('/header', function(req,res){
 		});
 	});
 
+
+	// =====================================
+	// CHERCHER VEHICULE SECTION ===========
+	// =====================================
 	app.get('/chercher_vehicule', isLoggedIn, function(req, res) {
 		console.log()
 		res.render('chercher_vehicule.ejs',{
@@ -220,6 +233,71 @@ app.get('/header', function(req,res){
     res.end(data);
 	});
 
+
+	// =====================================
+	// CHERCHER AGENCE SECTION =============
+	// =====================================
+
+	app.get('/chercher_agence', isLoggedIn, function(req, res) {
+		console.log()
+		res.render('chercher_agence.ejs',{
+			user : req.user
+		});
+	});
+
+
+	app.post('/data_chercher_agence', function(req,res){
+		console.log(req.body)
+		connection.query('select * from agence where nom like "%'+req.body.agence+'%";', function(err,result){
+			console.log("voici")
+			console.log(result)
+		res.render('chercher_agence_resp.ejs', {
+			rows : result,
+			user : req.user,
+		});
+		});
+	});
+
+	app.get('/modifier_agence', isLoggedIn, function(req, res) {
+		console.log(req.query);
+		var data="";
+		res.end(data);
+	});
+
+
+	// =====================================
+	// CHERCHER PARKING SECTION ============
+	// =====================================
+
+	app.get('/chercher_parking', isLoggedIn, function(req, res) {
+		console.log()
+		res.render('chercher_parking.ejs',{
+			user : req.user
+		});
+	});
+
+
+	app.post('/data_chercher_parking', function(req,res){
+		console.log(req.body.nom)
+		connection.query('select * from parking where nom like "%'+req.body.nom+'%";', function(err,result){
+		res.render('chercher_parking_resp.ejs', {
+			rows : result,
+			user : req.user,
+		});
+		});
+	});
+
+	app.get('/modifier_parking', isLoggedIn, function(req, res) {
+		console.log(req.query);
+		var data="";
+		res.end(data);
+	});
+
+	// =====================================
+	// CHERCHER IMMAT  =====================
+	// =====================================
+
+
 	app.get('/search_immat',function(req,res){
 	connection.query('SELECT immat from vehicules where immat like "%'+req.query.key+'%"', function(err, rows, fields) {
 			//console.log('SELECT id from users where id = '+req.query.key+';');
@@ -235,8 +313,9 @@ app.get('/header', function(req,res){
 		});
 	});
 
-
-
+	// =====================================
+	// CHERCHER MVA  =======================
+	// =====================================
 	app.get('/search_mva',function(req,res){
 	connection.query('SELECT mva from vehicules where immat like "%'+req.query.key+'%"', function(err, rows, fields) {
 			//console.log('SELECT id from users where id = '+req.query.key+';');
@@ -246,6 +325,25 @@ app.get('/header', function(req,res){
 				{
 					console.log(rows[i].mva);
 					data.push(rows[i].mva);
+				}
+				console.log(JSON.stringify(data));
+			res.end(JSON.stringify(data));
+		//  res.end(toString(rows[i].username))	;
+		});
+	});
+
+	// =====================================
+	// CHERCHER MVA  =======================
+	// =====================================
+	app.get('/search_agence',function(req,res){
+	connection.query('SELECT nom from agence where nom like "%'+req.query.key+'%"', function(err, rows, fields) {
+			//console.log('SELECT id from users where id = '+req.query.key+';');
+			if (err) throw err;
+			var data=[];
+			for(i=0;i<rows.length;i++)
+				{
+					console.log(rows[i].nom);
+					data.push(rows[i].nom);
 				}
 				console.log(JSON.stringify(data));
 			res.end(JSON.stringify(data));
