@@ -94,7 +94,9 @@ app.get('/header', function(req,res){
 	// show the signup form
 	app.get('/admin/signup', isLoggedIn, isAdmin, function(req, res) {
 		// render the page and pass in any flash data if it exists
-		res.render('signup.ejs', { user: req.user, message: req.flash('signupMessage') });
+		connection.query('select nom from Agence', function(err,result){
+			res.render('signup.ejs', { user: req.user, message: req.flash('signupMessage'), agence: result});
+		});
 	});
 
 	// process the signup form

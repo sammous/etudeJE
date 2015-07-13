@@ -49,6 +49,14 @@
 					<option value="opérateur">Opérateur</option>
 					<option value="utilisateur">Utilisateur</option>
 			</select>
+			<br>
+			<select name="agence" class="form-control select select-primary" data-toggle="select">
+				  	<option value="0" selected>Choisir l'agence de résidence</option>
+				  	<% agence.forEach(function(agence){ %>
+					<option value="<%=agence.nom%>"><%=agence.nom%></option>
+				  	<%})%>
+
+			</select>
 
 		</div>
 

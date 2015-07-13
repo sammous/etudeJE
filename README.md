@@ -1,12 +1,10 @@
 #TODO NOW !
-- Régler le post pour ajout d'agences
-- Régler le post pour ajout de parkings
+
 
 
 
 - Ajouter tables en fonction des users : à transporter etc.
 
-  Mehdi
 
 
 
@@ -18,6 +16,10 @@
     - Enlever les boutons modifier/delete sur l'affichage des tables : FAIT
     - Intégrer la complétion automatique sur toutes les pages process : FAIT
     - Recherche des tables, puis une fois la table localisée, modifier ou supprimer. MODIFICATION UNIQUEMENT VIA CETTE METHODE, car plus simple pour nous et plus sécurisée : FAIT
+
+  Sami
+    - Régler le post pour ajout d'agences
+    - Régler le post pour ajout de parkings
 
 
 
