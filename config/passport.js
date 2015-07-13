@@ -109,6 +109,7 @@ module.exports = function(passport) {
                     return done(null, false, req.flash('loginMessage', 'Oops! Mauvais mot de passe.')); // create the loginMessage and save it to session as flashdata
 
                 // all is well, return successful user
+
                 return done(null, rows[0]);
             });
         })
@@ -146,35 +147,6 @@ module.exports = function(passport) {
             });
         })
     );
-
-    passport.use(
-        'init-signup',
-        new LocalStrategy({
-            // by default, local strategy uses username and password, we will override with email
-            usernameField : 'username',
-            passwordField : 'password',
-            passReqToCallback : true // allows us to pass back the entire request to the callback
-        },
-        function(req, username, password, done) {
-            // find a user whose email is the same as the forms email
-            // we are checking to see if the user trying to login already exists
-                    var newUserMysql = {
-                        username: username,
-                        password: bcrypt.hashSync(password, null, null),  // use the generateHash function in our user model
-                        attribut: req.body.attribut,
-                    };
-
-
-                    var insertQuery = "INSERT INTO users ( username, password, attribut ) values (?,?,?)";
-
-                    connection.query(insertQuery,[newUserMysql.username, newUserMysql.password, newUserMysql.attribut],function(err, rows) {
-                        newUserMysql.id = rows.insertId;
-                        console.log('compte créé');
-                        return done(null, newUserMysql,req.flash('signupMessage','SUCCES : Compte créé.'));
-                    });
-              })
-          );
-
 
 
 };
