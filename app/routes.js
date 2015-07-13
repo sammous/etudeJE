@@ -1,7 +1,7 @@
 var mysql = require('mysql');
 var dbconfig = require('../config/database');
 var connection = mysql.createConnection(dbconfig.connection);
-
+connection.query('USE ' + dbconfig.database);
 /*CETTE PARTIE EST POUR LE SUBMIT DE FORMS A NOTRE DB
 ==
 ==
@@ -23,14 +23,7 @@ module.exports = function(app, passport) {
 	// =====================================
 	// show the login form
 	app.get('/', function(req, res) {
-		connection.query('use mydb;');
-		connection.query('select * from users', function(err,result){
-		if (result.length != 0){
-			res.render('login.ejs',{ message: req.flash('loginMessage') }); // load the index.ejs file
-		} else {
-			res.render('init.ejs'); // load the index.ejs file
-		}
-	})
+		res.render('login.ejs',{ message: req.flash('loginMessage') }); // load the index.ejs file
 	});
 
  app.get('/ts', function(req,res){
@@ -52,12 +45,6 @@ app.get('/header', function(req,res){
 	res.render('header.ejs');
 });
 
-app.post('/init', passport.authenticate('local-signup', {
-		successRedirect : '/', // redirect to the secure profile section
-		failureRedirect : '/init', // redirect back to the signup page if there is an error
-		failureFlash : true // allow flash messages
-	})
-);
 
 	// =====================================
 	// LOGIN ===============================
@@ -158,10 +145,6 @@ app.post('/init', passport.authenticate('local-signup', {
 	});
 
 
-	app.post('/profile', (function(req,res){
-		console.log('works');
-	})
-	);
 	// =====================================
 	// FICHE RECEPTION VEHICULE SECTION =========================
 	// =====================================
@@ -198,8 +181,6 @@ app.post('/init', passport.authenticate('local-signup', {
 
 
 	app.get('/search_immat',function(req,res){
-	connection.query('use mydb;');
-
 	connection.query('SELECT immat from vehicules where immat like "%'+req.query.key+'%"', function(err, rows, fields) {
 			//console.log('SELECT id from users where id = '+req.query.key+';');
 			if (err) throw err;
@@ -217,8 +198,6 @@ app.post('/init', passport.authenticate('local-signup', {
 
 
 	app.get('/search_mva',function(req,res){
-	connection.query('use mydb;');
-
 	connection.query('SELECT mva from vehicules where immat like "%'+req.query.key+'%"', function(err, rows, fields) {
 			//console.log('SELECT id from users where id = '+req.query.key+';');
 			if (err) throw err;
@@ -241,8 +220,6 @@ app.post('/init', passport.authenticate('local-signup', {
 	// we will want this protected so you have to be logged in to visit
 	// we will use route middleware to verify this (the isLoggedIn function)
 	app.get('/admin', isLoggedIn, isAdmin, function(req, res) {
-		var data;
-		connection.query('use mydb;');
 		connection.query('select * from users', function(err,result){
 			connection.query('select * from vehicules LIMIT 50', function(err,result2){
 			data = JSON.stringify(result2)
@@ -264,8 +241,7 @@ app.post('/init', passport.authenticate('local-signup', {
 // we will use route middleware to verify this (the isLoggedIn function)
 app.get('/vehicule', isLoggedIn, function(req, res) {
 
-	  connection.query('use mydb;');
-		connection.query('select * from vehicules', function(err,result2){
+  	connection.query('select * from vehicules', function(err,result2){
 		res.render('vehicule.ejs', {
 			 // get the user out of session and pass to template
 			rowsv : result2
@@ -277,7 +253,6 @@ app.get('/vehicule', isLoggedIn, function(req, res) {
 
 app.get('/transfertvehicule', isLoggedIn, function(req, res) {
 
-	  connection.query('use mydb;');
 		connection.query('select * from vehicules where STATUT = "ON MOVE"', function(err,result){
 		res.render('transfert_vehicule.ejs', {
 			 // get the user out of session and pass to template
@@ -290,7 +265,6 @@ app.get('/transfertvehicule', isLoggedIn, function(req, res) {
 
 app.get('/preparevehicule', isLoggedIn, function(req, res) {
 
-	  connection.query('use mydb;');
 		connection.query('select * from vehicules where STATUT = "MARSHALL"', function(err,result){
 		res.render('prepare_vehicule.ejs', {
 			 // get the user out of session and pass to template
@@ -303,7 +277,6 @@ app.get('/preparevehicule', isLoggedIn, function(req, res) {
 
 app.get('/recuperervehicule', isLoggedIn, function(req, res) {
 
-	  connection.query('use mydb;');
 		connection.query('select * from vehicules where STATUT = "ON HAND"', function(err,result){
 		res.render('recuperer_vehicule.ejs', {
 			 // get the user out of session and pass to template
@@ -320,7 +293,6 @@ app.get('/recuperervehicule', isLoggedIn, function(req, res) {
 // we will use route middleware to verify this (the isLoggedIn function)
 app.get('/comptes', isLoggedIn, function(req, res) {
 
-	  connection.query('use mydb;');
 		connection.query('select * from users', function(err,result2){
 		res.render('comptes.ejs', {
 			 // get the user out of session and pass to template
@@ -336,7 +308,6 @@ app.get('/comptes', isLoggedIn, function(req, res) {
 // =====================================
 app.get('/agences', isLoggedIn, function(req, res) {
 
-	  connection.query('use mydb;');
 		connection.query('select * from Agence', function(err,result2){
 		res.render('agence.ejs', {
 			 // get the user out of session and pass to template
@@ -355,7 +326,6 @@ app.get('/agences', isLoggedIn, function(req, res) {
 // =====================================
 app.get('/parking', isLoggedIn, function(req, res) {
 
-	  connection.query('use my_schema;');
 		connection.query('select * from Parking', function(err,result2){
 		res.render('parking.ejs', {
 			 // get the user out of session and pass to template
@@ -368,7 +338,6 @@ app.get('/parking', isLoggedIn, function(req, res) {
 });
 
 app.post('/parking', function(req,res){
-	connection.query('use my_schema;');
 	var post = {
 		id :"",
 		nom : req.body.nom_parking,
@@ -390,7 +359,6 @@ app.post('/parking', function(req,res){
 		req.logout();
 		res.redirect('/');
 	});
-
 
 
 };

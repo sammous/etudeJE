@@ -4,10 +4,23 @@
 ## Database :
 
 
-  - inserer des exemples pour commencer les tests une fois les pages créées.
+##TODO NOW !
+- Régler le post pour ajout d'agences
+- Régler le post pour ajout de parkings
+- Intégrer la complétion automatique sur toutes les pages process
+- Recherche des tables, puis une fois la table localisée, modifier ou supprimer. MODIFICATION UNIQUEMENT VIA CETTE METHODE, car plus simple pour nous et plus sécurisée.
+- Enlever les boutons modifier/delete sur l'affichage des tables.
+- Ajouter tables en fonction des users : à transporter etc.
+- Complétion automatique immat.
+
+##DONE
+- Ajouter un user admin/admin : FAIT
+- régler fatal error liée au hash  : FAIT
+-
 
 
-## Infos supplémentaires/TODO :
+
+## Infos supplémentaires
 
 
 1. Le dossier mySQL_Model contient à la fois le modèle graphique et un fichier de création des tables ( texte donc ).
