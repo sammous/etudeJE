@@ -24,6 +24,8 @@
       });
     </script>
 
+
+
     <style>
       .twitter-typeahead, .tt-hint { width: 100%; }
       .tt-dropdown-menu {
@@ -117,7 +119,7 @@
               <input type="text" id='myimmat' name="immat" class="typeahead form-control" placeholder="Immat" onFocus="updMVA()" />
             </div>
 
-    			  <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Chercher </button>
+    			  <button type="submit" class="btn btn-primary pull-right" ><span class="glyphicon glyphicon-ok-sign"></span> Chercher </button>
 
 
 
@@ -125,7 +127,12 @@
           </form>
         </div>
       </div>
+    </div>
+  <br>
+  <br>
+  <br>
 
+  <div class="container">
 
     <table  class = "table table-hover table-bordered text-center" id="myTable">
   		<div class="text-center">
@@ -144,21 +151,57 @@
   	</div>
   		<% rows.forEach(function(vehicules){ %>
   			<tr >
-  				<td ><%=vehicules.MVA%> </td>
-  				<td> <%=vehicules.IMMAT%></td>
-  				<td> <%=vehicules.CURRENT_LOCATION_STN%></td>
-  				<td> <%=vehicules.STATUT%></td>
-  				<td> <%=vehicules.STATION_DEPART%></td>
-  				<td> <%=vehicules.STATION_RETOUR%></td>
-  				<td> <%=vehicules.DATE_DEPART%></td>
-  				<td> <%=vehicules.DATE_RETOUR%></td>
-  				<td> <%=vehicules.NUMERO_CONTRAT%></td>
-  				<td> <%=vehicules.marque%></td>
+  				<td ><div contenteditable><span id = 'MVA'> <%=vehicules.MVA%>  </span> </div></td>
+  				<td> <div contenteditable><span id = 'IMMAT'> <%=vehicules.IMMAT%> </span> </div> </td>
+  				<td><div contenteditable><span id = 'CURRENT_LOCATION_STN'> <%=vehicules.CURRENT_LOCATION_STN%> </span> </div> </td>
+  				<td><div contenteditable><span id = 'STATUT'> <%=vehicules.STATUT%> </span> </div> </td>
+  				<td><div contenteditable><span id = 'STATION_DEPART'> <%=vehicules.STATION_DEPART%> </span> </div> </td>
+  				<td> <div contenteditable><span id = 'STATION_RETOUR'><%=vehicules.STATION_RETOUR%> </span> </div> </td>
+  				<td> <div contenteditable><span id = 'DATE_DEPART'><%=vehicules.DATE_DEPART%> </span> </div> </td>
+  				<td><div contenteditable><span id = 'DATE_RETOUR'> <%=vehicules.DATE_RETOUR%> </span> </div> </td>
+  				<td> <div contenteditable><span id = 'NUMERO_CONTRAT'><%=vehicules.NUMERO_CONTRAT%> </span> </div> </td>
+  				<td><div contenteditable><span id = 'marque'> <%=vehicules.marque%> </span> </div> </td>
   			</tr>
+
+
+
+
+
 
   			<%})%>
   	</table>
-    </div>
+
+<button class="btn btn-danger pull-right" onclick='modif()'>Modifier</button>
+</div>
+
+            <script>
+        function modif(){
+
+        		$.ajax({
+        			url: 'http://localhost:8080/modifier_vehicule',
+        			data : {
+        			MVA : $( '#MVA' ).html(),
+        			IMMAT : $( '#IMMAT' ).html(),
+        			CURRENT_LOCATION_STN : $( '#CURRENT_LOCATION_STN' ).html(),
+              STATUT : $( '#STATUT' ).html(),
+              STATION_DEPART  : $( '#STATION_DEPART' ).html(),
+              STATION_RETOUR : $( '#STATION_RETOUR' ).html(),
+              DATE_DEPART : $( '#DATE_DEPART' ).html(),
+              DATE_RETOUR : $( '#DATE_RETOUR' ).html(),
+              NUMERO_CONTRAT : $( '#NUMERO_CONTRAT' ).html(),
+              marque : $( '#marque' ).html(),
+        				},
+
+        			success : function (data) {
+                alert("modification prise en compte");
+        				console.log(data)
+        	}
+        });
+        };
+        </script>
+
+
+
     <script src="docs/js/highlight.js"></script>
     <script src="dist/js/bootstrap-switch.js"></script>
     <script src="docs/js/main.js"></script>
