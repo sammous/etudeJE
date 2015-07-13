@@ -113,35 +113,26 @@ app.get('/header', function(req,res){
 	// we will want this protected so you have to be logged in to visit
 	// we will use route middleware to verify this (the isLoggedIn function)
 	app.get('/profile', isLoggedIn, function(req, res) {
-		var data =[];
 
 		if (req.user.attribut == "administrateur") {
 			console.log("Connected as admin");
-			connection.query('use mydb;');
-			connection.query('select * from vehicules LIMIT 50', function(err,result){
-			data=JSON.stringify(result);
+			connection.query('select * from vehicules', function(err,result){
 			res.render('admin.ejs', {
 				user : req.user, // get the user out of session and pass to template
-				rowsv : result,
-				data: JSON.stringify(result)
+				rowsv : result
 			});
 			});
-		console.log(data);
 		} else {
 	  console.log(req.query);
   	/*var	patate = querystring.parse(url.parse(req.url).query);
 	  console.log(request);*/
-		connection.query('use mydb;');
-		connection.query('select * from vehicules LIMIT 50', function(err,result){
-		data=JSON.stringify(result);
+		connection.query('select * from vehicules', function(err,result){
 		res.render('profile.ejs', {
 			user : req.user, // get the user out of session and pass to template
-			rowsv : result,
-			data: JSON.stringify(result)
+			rowsv : result
 		});
 		});
 	}
-	console.log(data);
 	});
 
 
@@ -220,17 +211,15 @@ app.get('/header', function(req,res){
 	// we will want this protected so you have to be logged in to visit
 	// we will use route middleware to verify this (the isLoggedIn function)
 	app.get('/admin', isLoggedIn, isAdmin, function(req, res) {
+
 		connection.query('select * from users', function(err,result){
-			connection.query('select * from vehicules LIMIT 50', function(err,result2){
-			data = JSON.stringify(result2)
+			connection.query('select * from vehicules', function(err,result2){
 			res.render('admin.ejs', {
 				rows : result, // get the user out of session and pass to template
-				rowsv : result2,
-				data: data
+				rowsv : result2
 			});
 		});
 	});
-		console.log(data);
 });
 
 
