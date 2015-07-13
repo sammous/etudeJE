@@ -11,7 +11,7 @@ connection.query('USE ' + dbconfig.database);
 ==
 ==
 npm install body-parser est nécessaire
-*/
+*/ 
 
 
 
@@ -113,7 +113,7 @@ app.get('/header', function(req,res){
 	// we will want this protected so you have to be logged in to visit
 	// we will use route middleware to verify this (the isLoggedIn function)
 	app.get('/profile', isLoggedIn, function(req, res) {
-		var data =[];
+		var data ='';
 
 		if (req.user.attribut == "administrateur") {
 			console.log("Connected as admin");
@@ -220,16 +220,19 @@ app.get('/header', function(req,res){
 	// we will want this protected so you have to be logged in to visit
 	// we will use route middleware to verify this (the isLoggedIn function)
 	app.get('/admin', isLoggedIn, isAdmin, function(req, res) {
+		var data='';
 		connection.query('select * from users', function(err,result){
 			connection.query('select * from vehicules LIMIT 50', function(err,result2){
 			data = JSON.stringify(result2)
 			res.render('admin.ejs', {
+				user:req.user,
 				rows : result, // get the user out of session and pass to template
 				rowsv : result2,
 				data: data
 			});
 		});
 	});
+		console.log('teeeest');
 		console.log(data);
 });
 
