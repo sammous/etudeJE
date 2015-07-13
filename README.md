@@ -6,7 +6,19 @@ Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là 
     - ajouter les requêtes sur les tables process une fois les forms remplies
     - afficher les tables process
     - Ajouter tables en fonction des users : à transporter etc.
-
+    - Régler le post pour ajout d'agences et enlever les boutons modifier/delete.
+    - Régler le post pour ajout de parkings et enlever les boutons modifier/delete.
+    - mettre les requêtes sql pour :
+      - Agences
+      - Parking
+      - F44
+      - Reception vehicule
+      - Modifier vehicule
+      - Tâches assignées
+    - Afficher l'historique des process par véhicule
+    - Retravailler l'aspect des Agences et Parking
+    - Connecter les positions par parking/agence aux véhicules
+    - Séparer les véhicules exterieurs et intérieurs sur le site (button ajouter si pas d'immat proposé)
 
 
   Mehdi
@@ -26,8 +38,7 @@ Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là 
 
 
   Sami
-    - Régler le post pour ajout d'agences
-    - Régler le post pour ajout de parkings
+
 
 
 
