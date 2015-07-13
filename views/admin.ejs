@@ -1,77 +1,58 @@
-<!-- views/profile.ejs -->
+<!-- views/admin.ejs -->
 <!doctype html>
 <html>
-	<head>
-	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-		<script>
-			$('#edit').on('show.bs.modal', function(e) {
-					console.log("testetete");
-			});
+<head>
+	<!-- DataTables CSS -->
+	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
 
-	$(".modal-dialog").click(function() {
-    var $row = $(this).closest("tr");    // Find the row
-    var $text = $row.find(".mva").text(); // Find the text
+	<!-- jQuery -->
+	<script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 
-    // Let's test it out
-    alert($text);
-});
+	<!-- DataTables -->
+	<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.js"></script>
 
+	<% include header.ejs %>
 
-$('#myTable > tr').click(function() {
-    // row was clicked
-		alert("rowclicked");
-});
+	<!--script type="text/javascript">
+	$(document).ready(function(){
+	    $('#myTable').DataTable(); //????
+	});
+</script-->
+</head>
 
-$('#edit').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('whatever') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-body input').val(recipient)
-})
-
-$('#deleteButton').click(function(){
-	$.post('')
-});
-
-$('#deleteButton').click(function(){
-	$.post('')
-});
-
-
-		</script>
-		<% include header.ejs %>
-	</head>
+<body>
 
 <div class="container">
 
 
 	<div class="text-center">
-		<h1><span class="fa fa-road"></span> Liste de véhicules</h1>
+		<h1><span class="fa fa-road"></span> Liste véhicules</h1>
 		<br>
   </div>
 
-	<table id="myTable">
+	<table  class = "table table-hover table-bordered text-center" id="myTable">
 		<div class="text-center">
+			<thead>
 			<tr>
-			<th data-field="MVA">MVA</th>
-			<th data-field="Immatriculation" data-sortable="true">Immatriculation</th>
-			<th data-field="Lieu actuel" data-sortable="true">Lieu actuel</th>
-			<th data-field="Statut" data-sortable="true">Statut</th>
-			<th data-field="Station départ" data-sortable="true">Station départ</th>
-			<th data-field="Station retour" data-sortable="true">Station retour</th>
-			<th data-field="Date départ" data-sortable="true">Date départ</th>
-			<th data-field="Date retour" data-sortable="true">Date retour</th>
-			<th data-field="Numéro contrat" data-sortable="true">Numéro contrat</th>
-			<th data-field="Marque" data-sortable="true">Marque</th>
-			<th data-field="Libellé modèle" data-sortable="true">Libellé modèle</th>
-
+			<th> MVA</th>
+			<th> Immatriculation</th>
+			<th> Lieu actuel</th>
+			<th> Statut</th>
+			<th> Station départ</th>
+			<th> Station retour</th>
+			<th> Date départ</th>
+			<th> Date retour</th>
+			<th> Numéro contrat</th>
+			<th> Marque</th>
+			<th> Libellé modèle</th>
 			</tr>
+		</thead>
+	<tbody>
 	</div>
 		<% rowsv.forEach(function(vehicules){ %>
-			<tr onclick="input" data-toggle="modal" data-target="#edit" data-whatever="<%=vehicules.MVA%>" >
-				<td class="mva"> <%=vehicules.MVA%> </td>
+			<tr id=<%=vehicules.IMMAT%> >
+
+				<td> <div contenteditable  </div><%=vehicules.MVA%> </td>
 				<td> <%=vehicules.IMMAT%></td>
 				<td> <%=vehicules.CURRENT_LOCATION_STN%></td>
 				<td> <%=vehicules.STATUT%></td>
@@ -82,10 +63,12 @@ $('#deleteButton').click(function(){
 				<td> <%=vehicules.NUMERO_CONTRAT%></td>
 				<td> <%=vehicules.marque%></td>
 				<td> <%=vehicules.libell_mod_le%></td>
-				<td>
 			</tr>
 			<%})%>
+		</tbody>
 	</table>
+
+
 
 </div>
 
