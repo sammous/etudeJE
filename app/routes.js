@@ -41,9 +41,20 @@ app.post('/data_f44', function(req,res){
 
 });
 
+app.post('/data_chercher_vehicule', function(req,res){
+	console.log(req.body.immat)
+	connection.query('select * from vehicules where immat like "%'+req.body.immat+'%";', function(err,result){
+	res.render('chercher_vehicule_resp.ejs', {
+		rows : result,
+		user : req.user,
+	});
+	});
+});
+
 app.get('/header', function(req,res){
 	res.render('header.ejs');
 });
+
 
 
 	// =====================================
@@ -116,8 +127,6 @@ app.get('/header', function(req,res){
 		var data =[];
 
 		if (req.user.attribut == "administrateur") {
-			console.log("Connected as admin");
-			connection.query('use mydb;');
 			connection.query('select * from vehicules LIMIT 50', function(err,result){
 			data=JSON.stringify(result);
 			res.render('admin.ejs', {
@@ -129,9 +138,7 @@ app.get('/header', function(req,res){
 		console.log(data);
 		} else {
 	  console.log(req.query);
-  	/*var	patate = querystring.parse(url.parse(req.url).query);
-	  console.log(request);*/
-		connection.query('use mydb;');
+
 		connection.query('select * from vehicules LIMIT 50', function(err,result){
 		data=JSON.stringify(result);
 		res.render('profile.ejs', {
@@ -175,7 +182,13 @@ app.get('/header', function(req,res){
 		console.log()
 		res.render('f44.ejs',{
 			user : req.user
+		});
+	});
 
+	app.get('/chercher_vehicule', isLoggedIn, function(req, res) {
+		console.log()
+		res.render('chercher_vehicule.ejs',{
+			user : req.user
 		});
 	});
 
