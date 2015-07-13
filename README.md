@@ -1,24 +1,31 @@
 #TODO NOW !
-- Régler le post pour ajout d'agences
-- Régler le post pour ajout de parkings
 
+Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là et mets la pour pas que je la fasse en parallèle. Une fois que tu as terminé marque ce que tu as fait en bas.
 
+    - Régler le post pour ajout d'agences
+    - Régler le post pour ajout de parkings
+    - ajouter les requêtes sur les tables process une fois les forms remplies
+    - afficher les tables process
+    - Ajouter tables en fonction des users : à transporter etc.
 
-- Ajouter tables en fonction des users : à transporter etc.
 
   Mehdi
+    -Ajouter une page recherche parking et agences avec même modifs que vehicules.
 
+  Sami :
+    - ?
 
 
 #DONE
   Mehdi
     - Ajouter un user admin/admin : FAIT
     - régler fatal error liée au hash  : FAIT
-    - Complétion automatique immat : FAIT
     - Enlever les boutons modifier/delete sur l'affichage des tables : FAIT
     - Intégrer la complétion automatique sur toutes les pages process : FAIT
-    - Recherche des tables, puis une fois la table localisée, modifier ou supprimer. MODIFICATION UNIQUEMENT VIA CETTE METHODE, car plus simple pour nous et plus sécurisée : FAIT
+    - Recherche des tables, puis une fois la table localisée, modifier ou supprimer avec ajax. MODIFICATION UNIQUEMENT VIA CETTE METHODE : FAIT
 
+  Sami :
+    -
 
 
 ## Infos supplémentaires

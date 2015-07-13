@@ -365,7 +365,7 @@ app.post('/parking', function(req,res){
 			if (err){
 				req.flash("messages",{"error": "Une erreur est survenue"})
 			} else {
-				req.flash("messages",{"success" : "Parking ajoutée"});
+				req.flash("messages",{"success" : "Parking ajouté"});
 				res.redirect("/parking");
 			}
 	});
