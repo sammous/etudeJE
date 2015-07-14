@@ -248,7 +248,6 @@ app.get('/header', function(req,res){
 	});
 
 	app.get('/ajouter_agence', isLoggedIn, function(req, res) {
-		console.log()
 		res.render('ajouter_agence.ejs',{
 			user : req.user
 		});
@@ -274,7 +273,8 @@ app.get('/header', function(req,res){
 	});
 
 	app.get('/data_ajouter_agence', isLoggedIn, function(req, res) {
- 	 console.log(req.query);
+		var insertQueryAgence='INSERT INTO agence (nom,adresse) values(?,?)';
+ 	 connection.query(insertQueryAgence,[req.query.nom,req.query.adresse]);
  	 var data="";
  	res.end(data);
   });
@@ -313,7 +313,8 @@ app.get('/header', function(req,res){
 	});
 
 	app.get('/data_ajouter_parking', isLoggedIn, function(req, res) {
- 	 console.log(req.query);
+		var insertQueryAgence='INSERT INTO parking (nom,agence) values(?,?)';
+  	 connection.query(insertQueryAgence,[req.query.nom,req.query.agence]);
  	 var data="";
  	res.end(data);
   });

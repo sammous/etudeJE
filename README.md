@@ -5,11 +5,7 @@ Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là 
     - Ajouter tables en fonction des users : à transporter etc.
     - Ajouter une rubrique assigner tâche
     - mettre les requêtes sql pour :
-      - Agences
-      - Parking
-      - F44
       - Reception vehicule
-      - Modifier vehicule
       - Tâches assignées
     - Afficher l'historique des process par véhicule
     - Afficher les tables process (historique)
@@ -18,7 +14,10 @@ Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là 
 
 #IN_PROGRESS
   Mehdi
-    - manger
+    requêtes :
+    - Modifier vehicule
+    - Modifier agence
+    - Modifier parking
 
 
   Sami :
@@ -42,7 +41,9 @@ Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là 
     - Ajouter des parkings + modif du header : FAIT
     - Retravailler l'aspect des Agences et Parking : FAIT
     - Auto-incrementation des id la base de données et mise à jour des infos sans ids : FAIT
-
+    - mettre les requêtes sql pour :
+      - Agences
+      - Parking
   Sami :
     - ?
 
