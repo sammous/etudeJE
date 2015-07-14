@@ -21,7 +21,7 @@ module.exports = function(app, passport) {
 
 app.post('/data_f44', function(req,res){
 	console.log(req.body.MVA);
-	var insertQueryf44='INSERT INTO process_f44 (mva,immat,aspiration_interieur,lavage_exterieur,nettoyage_vitre,nettoyage_parebrise_interieur,niveau_huile,niveau_lave_glace,pression_pneus,controle_carosserie,controle_interieur,remplissage_carburant,nomOperateur) values(?,?,?,?,?,?,?,?,?,?,?,?,?)';
+	var insertQueryf44='INSERT INTO process_f44 (mva,immat,remplissage_carburant,aspiration_interieur,lavage_exterieur,nettoyage_vitre,nettoyage_parebrise_interieur,niveau_huile,niveau_lave_glace,pression_pneus,controle_carosserie,controle_interieur,nomOperateur) values(?,?,?,?,?,?,?,?,?,?,?,?,?)';
 	connection.query(insertQueryf44,[req.body.MVA,req.body.immat,req.body.Aspiration_intérieur,req.body.Lavage_extérieure,req.body.Nettoyage_vitre,req.body.Nettoyage_parebrise_intérieur,req.body.Niveau_huile,req.body.Niveau_lave_glace,req.body.Pression_pneus,req.body.Contrôle_carrosserie,req.body.Aspiration_intérieure,req.body.remplissage_carburant,req.body.name]);
 	res.render('confirmation.ejs',{
 		user : req.userproximity
@@ -37,10 +37,14 @@ app.get('/header', function(req,res){
 	app.post('/data_chercher_vehicule', function(req,res){
 		console.log(req.body.immat)
 		connection.query('select * from vehicules where immat like "%'+req.body.immat+'%";', function(err,result){
+			connection.query('select * from process_f44 where immat like"%'+req.body.immat+'%";', function(err,result2){
+
 		res.render('chercher_vehicule_resp.ejs', {
 			rows : result,
-			user : req.user,
+			rows2 : result2,
+			user : req.user
 		});
+			});
 		});
 	});
 

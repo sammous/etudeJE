@@ -132,44 +132,54 @@
   <br>
   <br>
 
+           <br>
+              <div class="text-center">
+                <h2><span class="glyphicon glyphicon-info-sign"></span> Information du véhicule </h2>
+                <br>
+              </div>
+            <br>
+
   <div class="container">
 
     <table  class = "table table-hover table-bordered text-center" id="myTable">
-  		<div class="text-center">
-  			<tr>
-  			<th> MVA</th>
-  			<th> Immatriculation</th>
-  			<th> Lieu actuel</th>
-  			<th> Statut</th>
-  			<th> Station départ</th>
-  			<th> Station retour</th>
-  			<th> Date départ</th>
-  			<th> Date retour</th>
-  			<th> Numéro contrat</th>
-  			<th> Marque</th>
-  			</tr>
-  	</div>
-  		<% rows.forEach(function(vehicules){ %>
-  			<tr >
-  				<td ><div contenteditable><span id = 'MVA'> <%=vehicules.MVA%>  </span> </div></td>
-  				<td> <div contenteditable><span id = 'IMMAT'> <%=vehicules.IMMAT%> </span> </div> </td>
-  				<td><div contenteditable><span id = 'CURRENT_LOCATION_STN'> <%=vehicules.CURRENT_LOCATION_STN%> </span> </div> </td>
-  				<td><div contenteditable><span id = 'STATUT'> <%=vehicules.STATUT%> </span> </div> </td>
-  				<td><div contenteditable><span id = 'STATION_DEPART'> <%=vehicules.STATION_DEPART%> </span> </div> </td>
-  				<td> <div contenteditable><span id = 'STATION_RETOUR'><%=vehicules.STATION_RETOUR%> </span> </div> </td>
-  				<td> <div contenteditable><span id = 'DATE_DEPART'><%=vehicules.DATE_DEPART%> </span> </div> </td>
-  				<td><div contenteditable><span id = 'DATE_RETOUR'> <%=vehicules.DATE_RETOUR%> </span> </div> </td>
-  				<td> <div contenteditable><span id = 'NUMERO_CONTRAT'><%=vehicules.NUMERO_CONTRAT%> </span> </div> </td>
-  				<td><div contenteditable><span id = 'marque'> <%=vehicules.marque%> </span> </div> </td>
-  			</tr>
+      <div class="text-center">
+        <tr>
+        <th> MVA</th>
+        <th> Immatriculation</th>
+        <th> Lieu actuel</th>
+        <th> Statut</th>
+        <th> Station départ</th>
+        <th> Station retour</th>
+        <th> Date départ</th>
+        <th> Date retour</th>
+        <th> Numéro contrat</th>
+        <th> Marque</th>
+        </tr>
+    </div>
+      <% rows.forEach(function(vehicules){ %>
+        <tr >
+          <td ><div contenteditable><span id = 'MVA'> <%=vehicules.MVA%>  </span> </div></td>
+          <td> <div contenteditable><span id = 'IMMAT'> <%=vehicules.IMMAT%> </span> </div> </td>
+          <td><div contenteditable><span id = 'CURRENT_LOCATION_STN'> <%=vehicules.CURRENT_LOCATION_STN%> </span> </div> </td>
+          <td><div contenteditable><span id = 'STATUT'> <%=vehicules.STATUT%> </span> </div> </td>
+          <td><div contenteditable><span id = 'STATION_DEPART'> <%=vehicules.STATION_DEPART%> </span> </div> </td>
+          <td> <div contenteditable><span id = 'STATION_RETOUR'><%=vehicules.STATION_RETOUR%> </span> </div> </td>
+          <td> <div contenteditable><span id = 'DATE_DEPART'><%=vehicules.DATE_DEPART%> </span> </div> </td>
+          <td><div contenteditable><span id = 'DATE_RETOUR'> <%=vehicules.DATE_RETOUR%> </span> </div> </td>
+          <td> <div contenteditable><span id = 'NUMERO_CONTRAT'><%=vehicules.NUMERO_CONTRAT%> </span> </div> </td>
+          <td><div contenteditable><span id = 'marque'> <%=vehicules.marque%> </span> </div> </td>
+        </tr>
 
 
 
 
 
 
-  			<%})%>
-  	</table>
+        <%})%>
+    </table>
+
+<br>
+<br>
 
 <p data-toggle="tooltip" title="su"><button type="button" class="btn btn-danger pull-right"data-toggle="modal" data-target="#delete">Modifier</button></p>
 
@@ -194,6 +204,56 @@
 </div>
   <!-- /.modal-dialog -->
 </div>
+    <br>
+
+            <br>
+              <div class="text-center">
+                <h2><span class="glyphicon glyphicon-list"></span> Historique F44 du véhicule </h2>
+                <br>
+              </div>
+            <br>
+
+<table  class = "table table-hover table-bordered text-center" id="myTable">
+      <div class="text-center">
+        <tr>
+        <th> Numéro F44</th>
+        <th> MVA</th>
+        <th> Immatriculation</th>
+        <th> Aspiration Intérieur</th>
+        <th> Lavage extérieur</th>
+        <th> Nettoyage Vitre</th>
+        <th> Nettoyage Parebrise Intérieur</P></th>
+        <th> Niveau Huile</th>
+        <th> Niveau Lave Glace</th>
+        <th> Pression Pneus</th>
+        <th> Contrôle Carosserie</th>
+        <th> Contrôle Intérieur</th>
+        <th> Remplissage Carburant</th>
+        <th> Nom Opérateur</th>
+        </tr>
+    </div>
+      <% rows2.forEach(function(f44){ %>
+        <tr >
+          <td ><div contenteditable><span id = 'Numero'> <%=f44.Numero%>  </span> </div></td>
+          <td ><div contenteditable><span id = 'MVA'> <%=f44.mva%>  </span> </div></td>
+          <td> <div contenteditable><span id = 'IMMAT'> <%=f44.IMMAT%> </span> </div> </td>
+          <td><div contenteditable><span id = 'aspiration_interieur'> <%=f44.aspiration_interieur%> </span> </div> </td>
+          <td><div contenteditable><span id = 'lavage_exterieur'> <%=f44.lavage_exterieur%> </span> </div> </td>
+          <td><div contenteditable><span id = 'nettoyage_vitre'> <%=f44.nettoyage_vitre%> </span> </div> </td>
+          <td> <div contenteditable><span id = 'nettoyage_parebrise_interieur'><%=f44.nettoyage_parebrise_interieur%> </span> </div> </td>
+          <td> <div contenteditable><span id = 'niveau_huile'><%=f44.niveau_huile%> </span> </div> </td>
+          <td><div contenteditable><span id = 'niveau_lave_glace'> <%=f44.niveau_lave_glace%> </span> </div> </td>
+          <td> <div contenteditable><span id = 'pression_pneus'><%=f44.pression_pneus%> </span> </div> </td>
+          <td><div contenteditable><span id = 'controle_carosserie'> <%=f44.controle_carosserie%> </span> </div> </td>
+          <td><div contenteditable><span id = 'controle_interieur'> <%=f44.controle_interieur%> </span> </div> </td>
+          <td><div contenteditable><span id = 'remplissage_carburant'> <%=f44.remplissage_carburant%> </span> </div> </td>
+          <td><div contenteditable><span id = 'nomOperateur'> <%=f44.nomOperateur%> </span> </div> </td>
+
+        </tr>
+
+        <%})%>
+    </table>
+    <br>
 
 </div>
 
