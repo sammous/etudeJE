@@ -20,12 +20,14 @@
       <tr>
       <th>id parking</th>
       <th>Nom parking</th>
+			<th>Agence</th>
       </tr>
   </div>
     <% rows.forEach(function(parking){ %>
       <tr>
         <td> <%=parking.idParking%></td>
-        <td> <%=parking.Nom%></td>
+        <td> <%=parking.nom%></td>
+				<td> <%=parking.agence%></td>
 
       </tr>
     <%})%>

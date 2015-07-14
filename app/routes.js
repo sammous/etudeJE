@@ -54,21 +54,13 @@ app.get('/header', function(req,res){
 
 	app.post('/data_chercher_process', function(req,res){
 		connection.query('select * from process_f44 where Numero like "%'+req.body.numero+'%";', function(err,result){
-		console.log(result);	
+		console.log(result);
 		res.render('chercher_process_resp.ejs', {
 			rows : result,
 			user : req.user
 			});
 		});
 	});
-
-
-	app.get('/modifier_vehicule', isLoggedIn, function(req, res) {
-		console.log(req.query);
-		var data="";
-    	res.end(data);
-	});
-
 
 
 
@@ -256,9 +248,10 @@ app.get('/header', function(req,res){
 
 	app.get('/modifier_vehicule', isLoggedIn, function(req, res) {
 		console.log(req.query);
-		var updateQuery = 'UPDATE Vehicule SET mva = ?, immat = ?, modele = ?, statut w'
+		connection.query('UPDATE vehicules SET MVA = ? , IMMAT = ? , CURRENT_LOCATION_STN = ? , STATUT = ? , STATION_DEPART = ? , STATION_RETOUR = ? , DATE_DEPART = ? , DATE_RETOUR = ? , NUMERO_CONTRAT = ?  , marque = ?  WHERE IMMAT = ?', [req.query.MVA , req.query.IMMAT , req.query.CURRENT_LOCATION_STN , req.query.STATUT , req.query.STATION_DEPART , req.query.STATION_RETOUR , req.query.DATE_DEPART , req.query.DATE_RETOUR , req.query.NUMERO_CONTRAT , req.query.marque , req.query.IMMAT]);
+	//	connection.query('UPDATE vehicules SET MVA = ?  WHERE IMMAT = ?', [req.query.MVA , req.query.IMMAT]);
 		var data="";
-    	res.end(data);
+    res.end(data);
 	});
 
 
@@ -293,7 +286,7 @@ app.get('/header', function(req,res){
 	});
 
 	app.get('/modifier_agence', isLoggedIn, function(req, res) {
-		console.log(req.query);
+	connection.query('UPDATE agence SET nom = ?, adresse = ? WHERE idAgence = ?', [req.query.nom, req.query.adresse, req.query.id])
 		var data="";
 		res.end(data);
 	});
@@ -323,8 +316,8 @@ app.get('/header', function(req,res){
 	});
 
 	app.post('/data_chercher_parking', function(req,res){
-		console.log(req.body.nom)
-		connection.query('select * from parking where nom like "%'+req.body.nom+'%";', function(err,result){
+		console.log(req.body)
+		connection.query('select * from parking where nom like "%'+req.body.parking+'%";', function(err,result){
 		res.render('chercher_parking_resp.ejs', {
 			rows : result,
 			user : req.user,
@@ -333,17 +326,20 @@ app.get('/header', function(req,res){
 	});
 
 	app.get('/modifier_parking', isLoggedIn, function(req, res) {
-		console.log(req.query);
-		var data="";
+
+		connection.query('UPDATE parking SET nom = ?, agence = ? WHERE idParking = ?', [req.query.nom, req.query.agence, req.query.id])
+		data="";
 		res.end(data);
 	});
 
 	app.get('/data_ajouter_parking', isLoggedIn, function(req, res) {
-		var insertQueryAgence='INSERT INTO parking (nom,agence) values(?,?)';
-  	 connection.query(insertQueryAgence,[req.query.nom,req.query.agence]);
+		var insertQueryParking='INSERT INTO parking (nom,agence) values(?,?)';
+  	 connection.query(insertQueryParking,[req.query.nom,req.query.agence]);
  	 var data="";
  	res.end(data);
   });
+
+
 
 
 	// =====================================
@@ -426,6 +422,24 @@ app.get('/header', function(req,res){
 		//  res.end(toString(rows[i].username))	;
 		});
 	});
+
+	app.get('/search_parking',function(req,res){
+	connection.query('SELECT nom from parking where nom like "%'+req.query.key+'%"', function(err, rows, fields) {
+			//console.log('SELECT id from users where id = '+req.query.key+';');
+			if (err) throw err;
+			var data=[];
+			for(i=0;i<rows.length;i++)
+				{
+					console.log(rows[i].nom);
+					data.push(rows[i].nom);
+				}
+				console.log(JSON.stringify(data));
+			res.end(JSON.stringify(data));
+		//  res.end(toString(rows[i].username))	;
+		});
+	});
+
+
 
 
 	// =====================================

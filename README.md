@@ -5,24 +5,20 @@ Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là 
     - Ajouter tables en fonction des users : à transporter etc.
     - Ajouter une rubrique assigner tâche
     - mettre les requêtes sql pour :
-      - Reception vehicule
+      -
       - Tâches assignées
-    - 
+
     - Afficher les tables process (historique)
     - Afficher les déplacements d'un véhicule ( recherche dans la table est-stationné par immat.)
     - Séparer les véhicules exterieurs et intérieurs sur le site (button ajouter si pas d'immat proposé)
 
 #IN_PROGRESS
   Mehdi
-    requêtes :
-    - Modifier vehicule
-    - Modifier agence
-    - Modifier parking
+    -Reception vehicule
 
 
   Sami :
     - requete SQL F44
-
     - Afficher l'historique des process par véhicule
 
 
@@ -46,6 +42,10 @@ Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là 
     - mettre les requêtes sql pour :
       - Agences
       - Parking
+      - Modifier vehicule
+      - Modifier agence
+      - Modifier parking
+
   Sami :
     - ?
 
