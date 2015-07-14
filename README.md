@@ -2,8 +2,6 @@
 Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là et mets la pour pas que je la fasse en parallèle. Une fois que tu as terminé marque ce que tu as fait en bas.
 
 
-    - ajouter les requêtes sur les tables process une fois les forms remplies
-    - afficher les tables process
     - Ajouter tables en fonction des users : à transporter etc.
     - Régler le post pour ajout d'agences et enlever les boutons modifier/delete.
     - Régler le post pour ajout de parkings et enlever les boutons modifier/delete.
@@ -15,14 +13,13 @@ Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là 
       - Modifier vehicule
       - Tâches assignées
     - Afficher l'historique des process par véhicule
-    - Retravailler l'aspect des Agences et Parking
     - Connecter les positions par parking/agence aux véhicules
     - Séparer les véhicules exterieurs et intérieurs sur le site (button ajouter si pas d'immat proposé)
 
-
+#IN_PROGRESS
   Mehdi
+    - afficher les tables process
 
-  - Régler le post pour ajout de parkings
 
   Sami :
     - ?
@@ -32,7 +29,7 @@ Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là 
   Mehdi
     13/07/2015
     - Ajouter un user admin/admin : FAIT
-    - Résoudre le problème de "paassport" et du crash lié au hash : FAIT
+    - Résoudre le problème de "passport" et du crash lié au hash : FAIT
     - régler fatal error liée au hash  : FAIT
     - Enlever les boutons modifier/delete sur l'affichage des tables : FAIT
     - Intégrer la complétion automatique sur toutes les pages process : FAIT
@@ -41,9 +38,12 @@ Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là 
     - Ajouter une page recherche agence et modification : FAIT
 
     14/07/2015
-    - Régler le post pour ajout d'agences : bouton modifier/ajouter
+    - Ajouter des agences + modif du header : FAIT
+    - Ajouter des parkings + modif du header : FAIT
+    - Retravailler l'aspect des Agences et Parking : FAIT
 
-  Sami
+  Sami :
+    - ?
 
 
 
