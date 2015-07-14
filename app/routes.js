@@ -48,6 +48,25 @@ app.get('/header', function(req,res){
 		});
 	});
 
+
+
+
+
+	app.post('/data_chercher_vehicule', function(req,res){
+		console.log(req.body.immat)
+		connection.query('select * from vehicules where immat like "%'+req.body.immat+'%";', function(err,result){
+			connection.query('select * from process_f44 where immat like"%'+req.body.immat+'%";', function(err,result2){
+
+		res.render('chercher_vehicule_resp.ejs', {
+			rows : result,
+			rows2 : result2,
+			user : req.user
+		});
+			});
+		});
+	});
+
+
 	app.get('/modifier_vehicule', isLoggedIn, function(req, res) {
 		console.log(req.query);
 		var data="";
@@ -212,6 +231,13 @@ app.get('/header', function(req,res){
 	});
 
 
+	app.get('/historique_f44', isLoggedIn, function(req, res) {
+		console.log()
+		res.render('chercher_process.ejs',{
+			user : req.user
+		});
+	});
+
 	// =====================================
 	// CHERCHER VEHICULE SECTION ===========
 	// =====================================
@@ -235,8 +261,9 @@ app.get('/header', function(req,res){
 
 	app.get('/modifier_vehicule', isLoggedIn, function(req, res) {
 		console.log(req.query);
+		var updateQuery = 'UPDATE Vehicule SET mva = ?, immat = ?, modele = ?, statut w'
 		var data="";
-    res.end(data);
+    	res.end(data);
 	});
 
 
@@ -343,6 +370,29 @@ app.get('/header', function(req,res){
 		//  res.end(toString(rows[i].username))	;
 		});
 	});
+
+
+
+	// =====================================
+	// CHERCHER IMMAT  =====================
+	// =====================================
+
+
+	app.get('/search_num',function(req,res){
+	connection.query('SELECT Numéro from vehicules where immat like "%'+req.query.key+'%"', function(err, rows, fields) {
+			//console.log('SELECT id from users where id = '+req.query.key+';');
+			if (err) throw err;
+			var data=[];
+			for(i=0;i<rows.length;i++)
+				{
+					console.log(rows[i].immat);
+					data.push(rows[i].immat);
+				}
+			res.end(JSON.stringify(data));
+		//  res.end(toString(rows[i].username))	;
+		});
+	});
+
 
 	// =====================================
 	// CHERCHER MVA  =======================

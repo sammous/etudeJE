@@ -14,7 +14,7 @@
     <script  type="text/javascript" src="typeahead.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
-        $('#myimmat').typeahead({
+        $('#num').typeahead({
             hint: true,
             highlight: true,
             minLength: 1,
@@ -111,12 +111,12 @@
           <form role="form" action="/data_chercher_vehicule" method="POST" >
             <br>
               <div class="text-center">
-                <h2><span class="glyphicon glyphicon-refresh"></span> Chercher un véhicule </h2>
+                <h2><span class="glyphicon glyphicon-refresh"></span> Chercher un process </h2>
                 <br>
               </div>
             <br>
             <div class="form-group">
-              <input type="text" id='myimmat' name="immat" class="typeahead form-control" placeholder="Immat" onFocus="updMVA()" />
+              <input type="text" id='num' name="Numero" class="typeahead form-control" placeholder="Numéro" onFocus="updMVA()" />
             </div>
 
     			  <button type="submit" class="btn btn-primary pull-right" ><span class="glyphicon glyphicon-ok-sign"></span> Chercher </button>
@@ -132,106 +132,15 @@
   <br>
   <br>
 
-           <br>
-              <div class="text-center">
-                <h2><span class="glyphicon glyphicon-info-sign"></span> Information du véhicule </h2>
-                <br>
-              </div>
-            <br>
 
   <div class="container">
 
-    <table  class = "table table-hover table-bordered text-center" id="myTable">
-      <div class="text-center">
-        <tr>
-        <th> MVA</th>
-        <th> Immatriculation</th>
-        <th> Lieu actuel</th>
-        <th> Statut</th>
-        <th> Station départ</th>
-        <th> Station retour</th>
-        <th> Date départ</th>
-        <th> Date retour</th>
-        <th> Numéro contrat</th>
-        <th> Marque</th>
-        </tr>
-    </div>
-      <% rows.forEach(function(vehicules){ %>
-        <tr >
-          <td ><div contenteditable><span id = 'MVA'> <%=vehicules.MVA%>  </span> </div></td>
-          <td> <div contenteditable><span id = 'IMMAT'> <%=vehicules.IMMAT%> </span> </div> </td>
-          <td><div contenteditable><span id = 'CURRENT_LOCATION_STN'> <%=vehicules.CURRENT_LOCATION_STN%> </span> </div> </td>
-          <td><div contenteditable><span id = 'STATUT'> <%=vehicules.STATUT%> </span> </div> </td>
-          <td><div contenteditable><span id = 'STATION_DEPART'> <%=vehicules.STATION_DEPART%> </span> </div> </td>
-          <td> <div contenteditable><span id = 'STATION_RETOUR'><%=vehicules.STATION_RETOUR%> </span> </div> </td>
-          <td> <div contenteditable><span id = 'DATE_DEPART'><%=vehicules.DATE_DEPART%> </span> </div> </td>
-          <td><div contenteditable><span id = 'DATE_RETOUR'> <%=vehicules.DATE_RETOUR%> </span> </div> </td>
-          <td> <div contenteditable><span id = 'NUMERO_CONTRAT'><%=vehicules.NUMERO_CONTRAT%> </span> </div> </td>
-          <td><div contenteditable><span id = 'marque'> <%=vehicules.marque%> </span> </div> </td>
-        </tr>
-        <%})%>
-    </table>
 
-<br>
-<br>
-
-<div class="row">
-<p data-toggle="tooltip" title="su"><button type="button" class="btn btn-warning pull-right"data-toggle="modal" data-target="#edit">Modifier</button></p>
-
-
-<p data-toggle="tooltip" title="su"><button type="button" class="btn btn-danger pull-right"data-toggle="modal" data-target="#delete">Supprimer</button></p>
-
-<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-  <div class="modal-dialog">
-<div class="modal-content">
-      <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-    <h4 class="modal-title custom_align" id="Heading"> Confirmer cette entrée </h4>
-  </div>
-      <div class="modal-body">
-
-   <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Merci de confirmer votre saisie </div>
-   
-  </div>
-    <div class="modal-footer ">
-    <button type="button" class="btn btn-success" onclick='modif()' ><span class="glyphicon glyphicon-ok-sign" ></span> Confirmer </button>
-    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Vérifier </button>
-  </div>
-  </div>
-<!-- /.modal-content -->
-</div>
-  <!-- /.modal-dialog -->
-</div>
-
-
-<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-  <div class="modal-dialog">
-<div class="modal-content">
-      <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-    <h4 class="modal-title custom_align" id="Heading"> Confirmer cette entrée </h4>
-  </div>
-      <div class="modal-body">
-
-   <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Merci de confirmer votre saisie </div>
-   
-  </div>
-    <div class="modal-footer ">
-    <button type="button" class="btn btn-success" onclick='modif()' ><span class="glyphicon glyphicon-ok-sign" ></span> Confirmer </button>
-    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Vérifier </button>
-  </div>
-  </div>
-<!-- /.modal-content -->
-</div>
-  <!-- /.modal-dialog -->
-</div>
-
-</div>
     <br>
 
             <br>
               <div class="text-center">
-                <h2><span class="glyphicon glyphicon-list"></span> Historique F44 du véhicule </h2>
+                <h2><span class="glyphicon glyphicon-list"></span> Historique F44 </h2>
                 <br>
               </div>
             <br>
@@ -280,36 +189,10 @@
 
 </div>
 
-            <script>
-        function modif(){
-
-        		$.ajax({
-        			url: 'http://localhost:8080/modifier_vehicule',
-        			data : {
-        			MVA : $( '#MVA' ).html(),
-        			IMMAT : $( '#IMMAT' ).html(),
-        			CURRENT_LOCATION_STN : $( '#CURRENT_LOCATION_STN' ).html(),
-              STATUT : $( '#STATUT' ).html(),
-              STATION_DEPART  : $( '#STATION_DEPART' ).html(),
-              STATION_RETOUR : $( '#STATION_RETOUR' ).html(),
-              DATE_DEPART : $( '#DATE_DEPART' ).html(),
-              DATE_RETOUR : $( '#DATE_RETOUR' ).html(),
-              NUMERO_CONTRAT : $( '#NUMERO_CONTRAT' ).html(),
-              marque : $( '#marque' ).html(),
-        				},
-
-        			success : function (data) {
-                $(location).attr('href','/confirmation');
-        				console.log(data)
-        	}
-        });
-        };
-        </script>
 
 
 
     <script src="docs/js/highlight.js"></script>
-    <script src="dist/js/bootstrap-switch.js"></script>
     <script src="docs/js/main.js"></script>
 
 
