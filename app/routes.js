@@ -289,6 +289,12 @@ app.get('/header', function(req,res){
 		});
 	});
 
+	app.get('/ajouter_parking', isLoggedIn, function(req, res) {
+		console.log()
+		res.render('ajouter_parking.ejs',{
+			user : req.user
+		});
+	});
 
 	app.post('/data_chercher_parking', function(req,res){
 		console.log(req.body.nom)
@@ -305,6 +311,13 @@ app.get('/header', function(req,res){
 		var data="";
 		res.end(data);
 	});
+
+	app.get('/data_ajouter_parking', isLoggedIn, function(req, res) {
+ 	 console.log(req.query);
+ 	 var data="";
+ 	res.end(data);
+  });
+
 
 	// =====================================
 	// CHERCHER IMMAT  =====================
