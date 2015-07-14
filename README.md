@@ -3,7 +3,7 @@ Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là 
 
 
     - Ajouter tables en fonction des users : à transporter etc.
-
+    - Ajouter une rubrique assigner tâche
     - mettre les requêtes sql pour :
       - Agences
       - Parking
@@ -11,14 +11,14 @@ Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là 
       - Reception vehicule
       - Modifier vehicule
       - Tâches assignées
-
     - Afficher l'historique des process par véhicule
-    - Connecter les positions par parking/agence aux véhicules
+    - Afficher les tables process (historique)
+    - Afficher les déplacements d'un véhicule ( recherche dans la table est-stationné par immat.)
     - Séparer les véhicules exterieurs et intérieurs sur le site (button ajouter si pas d'immat proposé)
 
 #IN_PROGRESS
   Mehdi
-    - afficher les tables process
+    - manger
 
 
   Sami :
