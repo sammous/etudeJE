@@ -41,6 +41,7 @@ Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là 
     - Ajouter des agences + modif du header : FAIT
     - Ajouter des parkings + modif du header : FAIT
     - Retravailler l'aspect des Agences et Parking : FAIT
+    - Auto-incrementation des id la base de données et mise à jour des infos sans ids : FAIT
 
   Sami :
     - ?
