@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Process_F44` (
   PRIMARY KEY (`idPreparateur`, `idVehicule`, `Numero`),
   UNIQUE INDEX `Numero_UNIQUE` (`Numero` ASC),
   INDEX `fk_Process_F44_Vehicule1_idx` (`idVehicule` ASC),
-  INDEX `fk_Process_F44_Operateur1_idx` (`idPreparateur` ASC),
+  INDEX `fk_Process_F44_Operateur1_idx` (`idPreparateur` ASC)/*,
   CONSTRAINT `fk_Process_F44_Vehicule1`
     FOREIGN KEY (`idVehicule`)
     REFERENCES `mydb`.`Vehicule` (`idVehicule`)
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Process_F44` (
     FOREIGN KEY (`idPreparateur`)
     REFERENCES `mydb`.`Preparateur` (`idPreparateur`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION*/)
 ENGINE = InnoDB;
 
 
