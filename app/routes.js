@@ -204,7 +204,6 @@ app.get('/header', function(req,res){
 
 	app.post('/fvehicule', function(req,res){
 		console.log("post received");
-		console.log(req.body)
 		res.render('confirmation.ejs',{
 			user : req.user
 		});
@@ -375,14 +374,14 @@ app.get('/header', function(req,res){
 
 
 	app.get('/search_num',function(req,res){
-	connection.query('SELECT Numero from vehicules where Numero like "%'+req.query.key+'%"', function(err, rows, fields) {
+	connection.query('SELECT Numero from process_f44 where Numero like "%'+req.query.key+'%"', function(err, rows, fields) {
 			//console.log('SELECT id from users where id = '+req.query.key+';');
 			if (err) throw err;
 			var data=[];
 			for(i=0;i<rows.length;i++)
 				{
-					console.log(rows[i].immat);
-					data.push(rows[i].immat);
+					console.log(rows[i].Numero);
+					data.push(rows[i].Numero);
 				}
 			res.end(JSON.stringify(data));
 		//  res.end(toString(rows[i].username))	;
