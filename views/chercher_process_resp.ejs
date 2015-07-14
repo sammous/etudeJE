@@ -19,7 +19,7 @@
             highlight: true,
             minLength: 1,
             name: 'users',
-            remote: 'http://localhost:8080/search_immat?key=%QUERY',
+            remote: 'http://localhost:8080/search_num?key=%QUERY',
         });
       });
     </script>
@@ -108,7 +108,7 @@
         <div class="form-area">
 
           <!--Form-->
-          <form role="form" action="/data_chercher_vehicule" method="POST" >
+          <form role="form" action="/data_chercher_process" method="POST" >
             <br>
               <div class="text-center">
                 <h2><span class="glyphicon glyphicon-refresh"></span> Chercher un process </h2>
@@ -164,7 +164,7 @@
         <th> Nom Opérateur</th>
         </tr>
     </div>
-      <% rows2.forEach(function(f44){ %>
+      <% rows.forEach(function(f44){ %>
         <tr >
           <td ><div contenteditable><span id = 'Numero'> <%=f44.Numero%>  </span> </div></td>
           <td ><div contenteditable><span id = 'MVA'> <%=f44.mva%>  </span> </div></td>

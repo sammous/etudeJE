@@ -52,16 +52,12 @@ app.get('/header', function(req,res){
 
 
 
-	app.post('/data_chercher_vehicule', function(req,res){
-		console.log(req.body.immat)
-		connection.query('select * from vehicules where immat like "%'+req.body.immat+'%";', function(err,result){
-			connection.query('select * from process_f44 where immat like"%'+req.body.immat+'%";', function(err,result2){
-
-		res.render('chercher_vehicule_resp.ejs', {
+	app.post('/data_chercher_process', function(req,res){
+		connection.query('select * from process_f44 where Numero like "%'+req.body.numero+'%";', function(err,result){
+		console.log(result);	
+		res.render('chercher_process_resp.ejs', {
 			rows : result,
-			rows2 : result2,
 			user : req.user
-		});
 			});
 		});
 	});
@@ -379,7 +375,7 @@ app.get('/header', function(req,res){
 
 
 	app.get('/search_num',function(req,res){
-	connection.query('SELECT Numéro from vehicules where immat like "%'+req.query.key+'%"', function(err, rows, fields) {
+	connection.query('SELECT Numero from vehicules where Numero like "%'+req.query.key+'%"', function(err, rows, fields) {
 			//console.log('SELECT id from users where id = '+req.query.key+';');
 			if (err) throw err;
 			var data=[];
