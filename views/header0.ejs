@@ -69,6 +69,10 @@
 						<li><a href="/f44"> Préparer </a></li>
 						<li role="separator" class="divider"></li>
 						<li><a href="/fvehicule"> Réception/Checkin </a></li>
+						<% if (user.attribut == "administrateur" || user.attribut == "opérateur") { %>
+						<li role="separator" class="divider"></li>
+						<li><a href="/assigner_tache">Assigner une tâche</a></li>
+						<% } %>
 						<li role="separator" class="divider"></li>
 						<li><a href="#"> Tâches assignées </a></li>
 					</ul>

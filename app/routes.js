@@ -553,6 +553,40 @@ app.post('/agences', function(req,res){
 	});
 });
 
+// =====================================
+// TACHE SECTION =========================
+// =====================================
+app.get('/assigner_tache', isLoggedIn, function(req, res) {
+
+		connection.query('select * from Agence', function(err,result2){
+		res.render('agence.ejs', {
+			 // get the user out of session and pass to template
+			rows : result2,
+		  message: req.flash('success'),
+			user : req.user
+
+		});
+});
+});
+
+
+app.post('/assigner_tache', function(req,res){
+	var post = {
+		id :"",
+		nom : req.body.nom_agence,
+		adresse : req.body.adresse_agence
+	};
+	connection.query('INSERT INTO Agence (idAgence, nom, adresse) VALUES (?,?,?)', [post.id, post.nom, post.adresse], function(err,result){
+			if (err){
+				req.flash("messages",{"error": "Une erreur est survenue"})
+			} else {
+				req.flash("messages",{"success" : "Agence ajoutée"});
+				res.redirect("/agences");
+			}
+	});
+});
+
+
 
 // =====================================
 // PARKING SECTION =========================
