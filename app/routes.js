@@ -22,7 +22,7 @@ module.exports = function(app, passport) {
 app.post('/data_f44', function(req,res){
 	console.log(req.body.MVA);
 	var insertQueryf44='INSERT INTO process_f44 (mva,immat,aspiration_interieur,lavage_exterieur,nettoyage_vitre,nettoyage_parebrise_interieur,niveau_huile,niveau_lave_glace,pression_pneus,controle_carosserie,controle_interieur,remplissage_carburant,nomOperateur) values(?,?,?,?,?,?,?,?,?,?,?,?,?)';
-	connection.query(insertQueryf44,[req.body.MVA,req.body.immat,req.body.Aspiration_intérieur,req.body.Lavage_extérieure,req.body.Nettoyage_vitre,req.body.Nettoyage_parebrise_intérieur,req.body.Niveau_huile,req.body.Niveau_lave_glace,req.body.Pression_pneus,req.body.Contrôle_carrosserie,req.body.Aspiration_intérieure,10,req.body.name]);
+	connection.query(insertQueryf44,[req.body.MVA,req.body.immat,req.body.Aspiration_intérieur,req.body.Lavage_extérieure,req.body.Nettoyage_vitre,req.body.Nettoyage_parebrise_intérieur,req.body.Niveau_huile,req.body.Niveau_lave_glace,req.body.Pression_pneus,req.body.Contrôle_carrosserie,req.body.Aspiration_intérieure,req.body.remplissage_carburant,req.body.name]);
 	res.render('confirmation.ejs',{
 		user : req.userproximity
 	});
