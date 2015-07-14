@@ -21,7 +21,7 @@ Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là 
 
 
   Mehdi
-  - Régler le post pour ajout d'agences : bouton modifier/supprimer/ajouter
+
   - Régler le post pour ajout de parkings
 
   Sami :
@@ -41,7 +41,7 @@ Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là 
     - Ajouter une page recherche agence et modification : FAIT
 
     14/07/2015
-    -
+    - Régler le post pour ajout d'agences : bouton modifier/ajouter
 
   Sami
 
