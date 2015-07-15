@@ -17,8 +17,6 @@
         $('#num').typeahead({
             hint: true,
             highlight: true,
-            minLength: 1,
-            name: 'users',
             remote: 'http://localhost:8080/search_num?key=%QUERY',
         });
       });
@@ -116,7 +114,7 @@
               </div>
             <br>
             <div class="form-group">
-              <input type="text" id='num' name="Numero" class="typeahead form-control" placeholder="Numéro" onFocus="updMVA()" />
+              <input type="text" id='num' name="Numero" class="typeahead form-control" placeholder="Numéro"/>
             </div>
 
     			  <button type="submit" class="btn btn-primary pull-right" ><span class="glyphicon glyphicon-ok-sign"></span> Chercher </button>

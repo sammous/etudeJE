@@ -104,17 +104,16 @@
 
   <body>
     <div class="container">
-      <div class="text-center">
-        <h2><span class="glyphicon glyphicon-refresh"></span> Chercher un véhicule </h2>
-        <br>
-      </div>
       <div class="col-md-5 col-md-offset-4">
         <div class="form-area">
 
           <!--Form-->
           <form role="form" action="/data_chercher_vehicule" method="POST" >
             <br>
-
+              <div class="text-center">
+                <h2><span class="glyphicon glyphicon-refresh"></span> Chercher un véhicule </h2>
+                <br>
+              </div>
             <br>
             <div class="form-group">
               <input type="text" id='myimmat' name="immat" class="typeahead form-control" placeholder="Immat" onFocus="updMVA()" />
@@ -159,16 +158,16 @@
     </div>
       <% rows.forEach(function(vehicules){ %>
         <tr >
-          <td ><div contenteditable><span id = 'MVA'><%=vehicules.MVA%></span></div></td>
-          <td> <div contenteditable><span id = 'IMMAT'><%=vehicules.IMMAT%> </span></div> </td>
-          <td><div contenteditable><span id = 'CURRENT_LOCATION_STN'><%=vehicules.CURRENT_LOCATION_STN%></span></div> </td>
-          <td><div contenteditable><span id = 'STATUT'><%=vehicules.STATUT%></span></div></td>
-          <td><div contenteditable><span id = 'STATION_DEPART'><%=vehicules.STATION_DEPART%></span></div> </td>
-          <td> <div contenteditable><span id = 'STATION_RETOUR'><%=vehicules.STATION_RETOUR%></span></div> </td>
-          <td> <div contenteditable><span id = 'DATE_DEPART'><%=vehicules.DATE_DEPART%></span> </div></td>
-          <td><div contenteditable><span id = 'DATE_RETOUR'><%=vehicules.DATE_RETOUR%></span></div> </td>
-          <td> <div contenteditable><span id = 'NUMERO_CONTRAT'><%=vehicules.NUMERO_CONTRAT%></span></div> </td>
-          <td><div contenteditable><span id = 'marque'><%=vehicules.marque%></span></div> </td>
+          <td ><div contenteditable><span id = 'MVA'> <%=vehicules.MVA%>  </span> </div></td>
+          <td> <div contenteditable><span id = 'IMMAT'> <%=vehicules.IMMAT%> </span> </div> </td>
+          <td><div contenteditable><span id = 'CURRENT_LOCATION_STN'> <%=vehicules.CURRENT_LOCATION_STN%> </span> </div> </td>
+          <td><div contenteditable><span id = 'STATUT'> <%=vehicules.STATUT%> </span> </div> </td>
+          <td><div contenteditable><span id = 'STATION_DEPART'> <%=vehicules.STATION_DEPART%> </span> </div> </td>
+          <td> <div contenteditable><span id = 'STATION_RETOUR'><%=vehicules.STATION_RETOUR%> </span> </div> </td>
+          <td> <div contenteditable><span id = 'DATE_DEPART'><%=vehicules.DATE_DEPART%> </span> </div> </td>
+          <td><div contenteditable><span id = 'DATE_RETOUR'> <%=vehicules.DATE_RETOUR%> </span> </div> </td>
+          <td> <div contenteditable><span id = 'NUMERO_CONTRAT'><%=vehicules.NUMERO_CONTRAT%> </span> </div> </td>
+          <td><div contenteditable><span id = 'marque'> <%=vehicules.marque%> </span> </div> </td>
         </tr>
         <%})%>
     </table>
@@ -177,7 +176,7 @@
 <br>
 
 <div class="row">
-<button type="button" class="btn btn-warning pull-right"data-toggle="modal" data-target="#edit">Modifier</button> <br><br>
+<button type="button" class="btn btn-warning pull-right"data-toggle="modal" data-target="#edit">Modifier</button> <br><br> <button type="button" class="btn btn-danger pull-right"data-toggle="modal" data-target="#delete">Supprimer</button>
 </div>
 
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
@@ -190,7 +189,7 @@
       <div class="modal-body">
 
    <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Merci de confirmer votre saisie </div>
-
+   
   </div>
     <div class="modal-footer ">
     <button type="button" class="btn btn-success" onclick='modif()' ><span class="glyphicon glyphicon-ok-sign" ></span> Confirmer </button>
@@ -203,10 +202,29 @@
 </div>
 
 
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+  <div class="modal-dialog">
+<div class="modal-content">
+      <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+    <h4 class="modal-title custom_align" id="Heading"> Confirmer cette entrée </h4>
+  </div>
+      <div class="modal-body">
+
+   <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Merci de confirmer votre saisie </div>
+   
+  </div>
+    <div class="modal-footer ">
+    <button type="button" class="btn btn-success" onclick='modif()' ><span class="glyphicon glyphicon-ok-sign" ></span> Confirmer </button>
+    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Vérifier </button>
+  </div>
+  </div>
 <!-- /.modal-content -->
 </div>
   <!-- /.modal-dialog -->
+</div>
 
+</div>
     <br>
 
             <br>
@@ -215,7 +233,7 @@
                 <br>
               </div>
             <br>
-<div class="container">
+
 <table  class = "table table-hover table-bordered text-center" id="myTable">
       <div class="text-center">
         <tr>
@@ -237,28 +255,28 @@
     </div>
       <% rows2.forEach(function(f44){ %>
         <tr >
-          <td ><%=f44.Numero%></span> </td>
-          <td ><%=f44.mva%></span></td>
-          <td><%=f44.immat%></span></td>
-          <td><%=f44.aspiration_interieur ? 'Fait' : 'Non fait'%></span></td>
-          <td><%=f44.lavage_exterieur ? 'Fait' : 'Non fait'%></span>  </td>
-          <td><%=f44.nettoyage_vitre ? 'Fait' : 'Non fait'%></span>  </td>
-          <td><%=f44.nettoyage_parebrise_interieur ? 'Fait' : 'Non fait'%></span>  </td>
-          <td><%=f44.niveau_huile ? 'Fait' : 'Non fait'%></span></td>
-          <td><%=f44.niveau_lave_glace ? 'Fait' : 'Non fait'%></span></td>
-          <td><%=f44.pression_pneus ? 'Fait' : 'Non fait'%></span>  </td>
-          <td><%=f44.controle_carosserie ? 'Fait' : 'Non fait'%></span>  </td>
-          <td><%=f44.controle_interieur ? 'Fait' : 'Non fait'%></span>  </td>
-          <td><%=f44.remplissage_carburant%></span>  </td>
-          <td><%=f44.nomOperateur%> </span></td>
+          <td ><div contenteditable><span id = 'Numero'> <%=f44.Numero%>  </span> </div></td>
+          <td ><div contenteditable><span id = 'MVA'> <%=f44.mva%>  </span> </div></td>
+          <td> <div contenteditable><span id = 'IMMAT'> <%=f44.IMMAT%> </span> </div> </td>
+          <td><div contenteditable><span id = 'aspiration_interieur'> <%=f44.aspiration_interieur%> </span> </div> </td>
+          <td><div contenteditable><span id = 'lavage_exterieur'> <%=f44.lavage_exterieur%> </span> </div> </td>
+          <td><div contenteditable><span id = 'nettoyage_vitre'> <%=f44.nettoyage_vitre%> </span> </div> </td>
+          <td> <div contenteditable><span id = 'nettoyage_parebrise_interieur'><%=f44.nettoyage_parebrise_interieur%> </span> </div> </td>
+          <td> <div contenteditable><span id = 'niveau_huile'><%=f44.niveau_huile%> </span> </div> </td>
+          <td><div contenteditable><span id = 'niveau_lave_glace'> <%=f44.niveau_lave_glace%> </span> </div> </td>
+          <td> <div contenteditable><span id = 'pression_pneus'><%=f44.pression_pneus%> </span> </div> </td>
+          <td><div contenteditable><span id = 'controle_carosserie'> <%=f44.controle_carosserie%> </span> </div> </td>
+          <td><div contenteditable><span id = 'controle_interieur'> <%=f44.controle_interieur%> </span> </div> </td>
+          <td><div contenteditable><span id = 'remplissage_carburant'> <%=f44.remplissage_carburant%> </span> </div> </td>
+          <td><div contenteditable><span id = 'nomOperateur'> <%=f44.nomOperateur%> </span> </div> </td>
 
         </tr>
 
         <%})%>
     </table>
     <br>
-</div>
 
+</div>
 
             <script>
         function modif(){
@@ -275,7 +293,7 @@
               DATE_DEPART : $( '#DATE_DEPART' ).html(),
               DATE_RETOUR : $( '#DATE_RETOUR' ).html(),
               NUMERO_CONTRAT : $( '#NUMERO_CONTRAT' ).html(),
-              marque : $( '#marque' ).html()
+              marque : $( '#marque' ).html(),
         				},
 
         			success : function (data) {

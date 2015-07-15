@@ -218,7 +218,7 @@ app.get('/header', function(req,res){
 
 
 	app.get('/historique_f44', isLoggedIn, function(req, res) {
-		console.log()
+
 		res.render('chercher_process.ejs',{
 			user : req.user
 		});

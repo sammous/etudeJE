@@ -17,8 +17,6 @@
         $('#num').typeahead({
             hint: true,
             highlight: true,
-            minLength: 1,
-            name: 'users',
             remote: 'http://localhost:8080/search_num?key=%QUERY',
         });
       });
@@ -116,7 +114,7 @@
               </div>
             <br>
             <div class="form-group">
-              <input type="text" id='num' name="Numero" class="typeahead form-control" placeholder="Numéro" onFocus="updMVA()" />
+              <input type="text" id='num' name="Numero" class="typeahead form-control" placeholder="Numéro" />
             </div>
 
     			  <button type="submit" class="btn btn-primary pull-right" ><span class="glyphicon glyphicon-ok-sign"></span> Chercher </button>
@@ -166,20 +164,20 @@
     </div>
       <% rows.forEach(function(f44){ %>
         <tr >
-          <td ><div contenteditable><span id = 'Numero'> <%=f44.Numero%>  </span> </div></td>
-          <td ><div contenteditable><span id = 'MVA'> <%=f44.mva%>  </span> </div></td>
-          <td> <div contenteditable><span id = 'IMMAT'> <%=f44.IMMAT%> </span> </div> </td>
-          <td><div contenteditable><span id = 'aspiration_interieur'> <%=f44.aspiration_interieur%> </span> </div> </td>
-          <td><div contenteditable><span id = 'lavage_exterieur'> <%=f44.lavage_exterieur%> </span> </div> </td>
-          <td><div contenteditable><span id = 'nettoyage_vitre'> <%=f44.nettoyage_vitre%> </span> </div> </td>
-          <td> <div contenteditable><span id = 'nettoyage_parebrise_interieur'><%=f44.nettoyage_parebrise_interieur%> </span> </div> </td>
-          <td> <div contenteditable><span id = 'niveau_huile'><%=f44.niveau_huile%> </span> </div> </td>
-          <td><div contenteditable><span id = 'niveau_lave_glace'> <%=f44.niveau_lave_glace%> </span> </div> </td>
-          <td> <div contenteditable><span id = 'pression_pneus'><%=f44.pression_pneus%> </span> </div> </td>
-          <td><div contenteditable><span id = 'controle_carosserie'> <%=f44.controle_carosserie%> </span> </div> </td>
-          <td><div contenteditable><span id = 'controle_interieur'> <%=f44.controle_interieur%> </span> </div> </td>
-          <td><div contenteditable><span id = 'remplissage_carburant'> <%=f44.remplissage_carburant%> </span> </div> </td>
-          <td><div contenteditable><span id = 'nomOperateur'> <%=f44.nomOperateur%> </span> </div> </td>
+          <td ><%=f44.Numero%>  </span> </td>
+          <td ><%=f44.mva%>  </span> </td>
+          <td><%=f44.IMMAT%> </span>  </td>
+          <td><%=f44.aspiration_interieur%> </span>  </td>
+          <td><%=f44.lavage_exterieur%> </span>  </td>
+          <td><%=f44.nettoyage_vitre%> </span>  </td>
+          <td><%=f44.nettoyage_parebrise_interieur%> </span>  </td>
+          <td> <%=f44.niveau_huile%> </span>  </td>
+          <td><%=f44.niveau_lave_glace%> </span>  </td>
+          <td> <%=f44.pression_pneus%> </span>  </td>
+          <td><%=f44.controle_carosserie%> </span>  </td>
+          <td><%=f44.controle_interieur%> </span>  </td>
+          <td><%=f44.remplissage_carburant%> </span>  </td>
+          <td><%=f44.nomOperateur%> </span>  </td>
 
         </tr>
 
