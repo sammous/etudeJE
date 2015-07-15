@@ -20,9 +20,10 @@ module.exports = function(app, passport) {
 });
 
 app.post('/data_f44', function(req,res){
-	console.log(req.body.MVA);
+	console.log(req.body.Aspiration_intérieur ? 1 : 0 );
 	var insertQueryf44='INSERT INTO process_f44 (mva,immat,remplissage_carburant,aspiration_interieur,lavage_exterieur,nettoyage_vitre,nettoyage_parebrise_interieur,niveau_huile,niveau_lave_glace,pression_pneus,controle_carosserie,controle_interieur,nomOperateur) values(?,?,?,?,?,?,?,?,?,?,?,?,?)';
-	connection.query(insertQueryf44,[req.body.MVA,req.body.immat,req.body.Aspiration_intérieur,req.body.Lavage_extérieure,req.body.Nettoyage_vitre,req.body.Nettoyage_parebrise_intérieur,req.body.Niveau_huile,req.body.Niveau_lave_glace,req.body.Pression_pneus,req.body.Contrôle_carrosserie,req.body.Aspiration_intérieure,req.body.remplissage_carburant,req.body.name]);
+	connection.query(insertQueryf44,[req.body.MVA,req.body.immat,req.body.Aspiration_intérieur ? 1 : 0 ,req.body.Lavage_extérieure ? 1 : 0 ,req.body.Nettoyage_vitre ? 1 : 0 ,req.body.Nettoyage_parebrise_intérieur ? 1 : 0  ,req.body.Niveau_huile ? 1 : 0  ,req.body.Niveau_lave_glace ? 1 : 0 ,
+		 req.body.Pression_pneus ? 1 : 0 ,req.body.Contrôle_carrosserie ? 1 : 0 ,req.body.Aspiration_intérieure ? 1 : 0 ,req.body.remplissage_carburant ? 1 : 0 ,req.body.name]);
 	res.render('confirmation.ejs',{
 		user : req.userproximity
 	});
@@ -148,8 +149,6 @@ app.get('/header', function(req,res){
 		console.log(data);
 		} else {
 	  console.log(req.query);
-
-		connection.query('use mydb;');
 		connection.query('select * from vehicules LIMIT 50', function(err,result){
 		data=JSON.stringify(result);
 		res.render('profile.ejs', {
@@ -249,7 +248,6 @@ app.get('/header', function(req,res){
 	app.get('/modifier_vehicule', isLoggedIn, function(req, res) {
 		console.log(req.query);
 		connection.query('UPDATE vehicules SET MVA = ? , IMMAT = ? , CURRENT_LOCATION_STN = ? , STATUT = ? , STATION_DEPART = ? , STATION_RETOUR = ? , DATE_DEPART = ? , DATE_RETOUR = ? , NUMERO_CONTRAT = ?  , marque = ?  WHERE IMMAT = ?', [req.query.MVA , req.query.IMMAT , req.query.CURRENT_LOCATION_STN , req.query.STATUT , req.query.STATION_DEPART , req.query.STATION_RETOUR , req.query.DATE_DEPART , req.query.DATE_RETOUR , req.query.NUMERO_CONTRAT , req.query.marque , req.query.IMMAT]);
-	//	connection.query('UPDATE vehicules SET MVA = ?  WHERE IMMAT = ?', [req.query.MVA , req.query.IMMAT]);
 		var data="";
     res.end(data);
 	});
