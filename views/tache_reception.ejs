@@ -1,17 +1,33 @@
 <!doctype html>
 <html>
   <head>
-    <% include header0.ejs %>
-    <link href="docs/css/bootstrap.min.css" rel="stylesheet">
-    <link href="docs/css/highlight.css" rel="stylesheet">
+    <% include header_.ejs %>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+        <script src="docs/js/highlight.js"></script>
+        <script src="docs/js/main.js"></script>
+
+  	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
     <link href="dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
+        <script src="dist/js/bootstrap-switch.js"></script>
+
+        <script src="dist/js/jquery.timepicker.js"></script>
+      	<script src="docs/css/jquery.timepicker.css"></script>
+
     <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
-    <link href="docs/css/main.css" rel="stylesheet">
-    <!--Scripts-->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
+
+
+  	<link href="docs/css/bootstrap.min.css" rel="stylesheet">
+
+
     <script  type="text/javascript" src="typeahead.min.js"></script>
+
     <script type="text/javascript">
       $(document).ready(function(){
         $('#myimmat').typeahead({
@@ -22,9 +38,19 @@
             remote: 'http://localhost:8080/search_immat?key=%QUERY',
         });
       });
-
-
     </script>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#name').typeahead({
+            hint: true,
+            highlight: true,
+            minLength: 1,
+            remote: 'http://localhost:8080/search_name?key=%QUERY', //opérateur
+        });
+      });
+    </script>
+
     <script>
       function updMVA(){
         $.ajax({
@@ -35,6 +61,31 @@
           },
         })
       };
+    </script>
+
+    <script>
+    /*
+    $(function() {
+    $( "#datepicker" ).datepicker({
+    altField: "#datepicker",
+    closeText: 'Fermer',
+    prevText: 'Précédent',
+    nextText: 'Suivant',
+    currentText: 'Aujourd\'hui',
+    monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+    monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
+    dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+    dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
+    dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+    weekHeader: 'Sem.',
+    dateFormat: 'dd.mm.yy'
+    });
+
+    $("#datepicker").datepicker("setDate", new Date());
+
+  });*/
+
+
     </script>
 
     <!--Style Sheet pour corriger Bootstrap 2->3 -->
@@ -121,23 +172,27 @@
 
 
     <div class="btn-group btn-group-lg" role="group">
-        <a type="button" class="btn btn-default" href="/historique_f44"><span class="glyphicon glyphicon-list"> Historique</a>
+        <a type="button" class="btn btn-default" href="/historique_tache_reception"><span class="glyphicon glyphicon-list">Historique</a>
     </div>
 
     <div class="col-md-5 col-md-offset-4">
       <div class="form-area">
 
         <!--Form-->
-    <form role="form" action="/data_f44" method="POST" >
+    <form role="form" action="/ajouter_tache_reception" method="POST" >
         <br>
           <div class="text-center">
-            <h2><span class="glyphicon glyphicon-refresh"></span> Fiche F44 </h2>
+            <h2><span class="glyphicon glyphicon-refresh"></span>Assigner réception</h2>
             <br>
           </div>
         <br>
 
         <div class="form-group">
-          <input type="text" class="form-control" name="name" placeholder="Nom" value=<%=user.username%> required>
+          <input type="text" class="form-control" name="nomPreparateur" placeholder="nomPreparateur" value=<%=user.username%> >
+        </div>
+
+        <div class="form-group">
+          <input type="text" id='name' class="typeahead form-control" name="nomOperateur" placeholder="Nom de l'opérateur" >
         </div>
 
         <div class="form-group">
@@ -148,71 +203,14 @@
           <input type="number" class="typeahead form-control" id="mva" name="MVA" placeholder="MVA"  required>
         </div>
 
-        <div class="form-group">
-          <input type="text"  name="remplissage_carburant" class="typeahead form-control" placeholder="Remplissage Carburant"  />
+        <div class='form-group'>
+          <span class=" glyphicon glyphicon-calendar"></span> <input name="date" type="date" id="datepicker" placeholder="Date prévue">
         </div>
-
-
+      
         <div class="form-group">
           <p>
-            <label for="Aspiration intérieure"> Aspiration intérieure  :  </label>
-            <input id="Aspiration intérieure" name="Aspiration_intérieur" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
-          </p>
-        </div>
-
-        <div class="form-group">
-          <p>
-            <label for="Lavage extérieure"> Lavage extérieure  : </label>
-            <input id="Lavage extérieure" name="Lavage_extérieure" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
-          </p>
-        </div>
-
-        <div class="form-group">
-          <p>
-            <label for="Nettoyage vitre"> Nettoyage vitre  : </label>
-            <input id="Nettoyage vitre" name="Nettoyage_vitre" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
-          </p>
-        </div>
-
-        <div class="form-group">
-          <p>
-            <label for="Nettoyage_parebrise_intérieur"> Nettoyage parebrise intérieur  : </label>
-            <input id="Nettoyage parebrise intérieur" name="Nettoyage_parebrise_intérieur" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
-          </p>
-        </div>
-
-        <div class="form-group">
-          <p>
-            <label for="Niveau huile"> Niveau huile  : </label>
-            <input id="Niveau huile" name="Niveau_huile" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
-          </p>
-        </div>
-
-        <div class="form-group">
-          <p>
-            <label for="Niveau lave-glace"> Niveau lave-glace  : </label>
-            <input id="Niveau lave-glace" name="Niveau_lave_glace" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
-          </p>
-        </div>
-
-        <div class="form-group">
-          <p>
-            <label for="Pression pneus"> Pression pneus  : </label>
-            <input id="Pression pneus" name="Pression_pneus" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
-          </p>
-        </div>
-
-        <div class="form-group">
-          <p>
-            <label for="Contrôle carrosserie"> Contrôle carrosserie  : </label>
-            <input id="Contrôle carrosserie" name="Contrôle_carrosserie" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait" default-value="lol">
-          </p>
-        </div>
-
-        <div class="form-group">
-          <p>
-            <label for="Contrôle intérieur"> Contrôle intérieur  : </label>
-            <input id="Contrôle intérieur" name="Aspiration_intérieure" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
+            <label for="Contrôle intérieur"> Accompli </label>
+            <input id="accompli" name="accompli" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
           </p>
         </div>
 
@@ -250,9 +248,6 @@
       </div>
     </div>
 
-    <script src="docs/js/highlight.js"></script>
-    <script src="dist/js/bootstrap-switch.js"></script>
-    <script src="docs/js/main.js"></script>
 
 
   </body>

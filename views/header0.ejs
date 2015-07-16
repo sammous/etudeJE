@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 	<meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=yes, width=device-width">
+  <!--meta name="viewport" content="width=device-width"-->
   <!--meta name="viewport" content="width=device-width, initial-scale=1" /-->
 	<!--Scripts à mettre dans un footer éventuellement, pour optimiser le chargement-->
 
@@ -71,7 +71,7 @@
 						<li><a href="/fvehicule"> Réception/Checkin </a></li>
 						<% if (user.attribut == "administrateur" || user.attribut == "opérateur") { %>
 						<li role="separator" class="divider"></li>
-						<li><a href="#">Assigner une tâche</a></li>
+						<li><a href="/tache_reception">Assigner une réception</a></li>
 						<% } %>
 						<li role="separator" class="divider"></li>
 						<li><a href="#"> Tâches assignées </a></li>
@@ -135,5 +135,6 @@
 
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
+		<br><br>
 	</nav>
 <!--#######-.-.-.-.-.-FIN NAV BAR -.-.-.-.-######################################################-->

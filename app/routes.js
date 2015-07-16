@@ -19,6 +19,8 @@ module.exports = function(app, passport) {
 	});
 });
 
+
+
 app.post('/data_f44', function(req,res){
 	console.log(req.body.Aspiration_intérieur ? 1 : 0 );
 	var insertQueryf44='INSERT INTO process_f44 (mva,immat,remplissage_carburant,aspiration_interieur,lavage_exterieur,nettoyage_vitre,nettoyage_parebrise_interieur,niveau_huile,niveau_lave_glace,pression_pneus,controle_carosserie,controle_interieur,nomOperateur) values(?,?,?,?,?,?,?,?,?,?,?,?,?)';
@@ -168,6 +170,31 @@ app.get('/header', function(req,res){
  	});
  });
 
+ // =====================================
+ // ASSIGNER_RECEPTION ===============================
+ // =====================================
+ app.get('/tache_reception', function(req,res){
+  res.render('tache_reception.ejs',{
+ 	 user : req.user
+  });
+ });
+
+ app.post('/ajouter_tache_reception', isLoggedIn, function(req, res) {
+	 var insertQueryRecup='INSERT INTO recuperation (immat , prev_date , accompli , nomOperateur , nomPreparateur) values(?,?,?,?,?)';
+	 connection.query(insertQueryRecup,[req.body.immat , req.body.date ,req.body.accompli ? 1 : 0 , req.body.nomOperateur, req.body.nomPreparateur ]);
+	 res.redirect('/confirmation');
+ });
+
+
+ app.get('/historique_tache_reception', function(req,res){
+
+	 connection.query('select * from recuperation;', function(err,result){
+	 res.render('historique_tache_reception.ejs', {
+		 rows : result,
+		 user : req.user,
+	 });
+	 });
+ });
  // =====================================
  // data_f44 ============================
  // =====================================
@@ -382,6 +409,21 @@ app.get('/header', function(req,res){
 		});
 	});
 
+
+	app.get('/search_name',function(req,res){
+	connection.query('SELECT nomOperateur from operateur where nomOperateur like "%'+req.query.key+'%"', function(err, rows, fields) {
+			//console.log('SELECT id from users where id = '+req.query.key+';');
+			if (err) throw err;
+			var data=[];
+			for(i=0;i<rows.length;i++)
+				{
+					console.log(rows[i].nomOperateur);
+					data.push(rows[i].nomOperateur);
+				}
+			res.end(JSON.stringify(data));
+		//  res.end(toString(rows[i].username))	;
+		});
+	});
 
 	// =====================================
 	// CHERCHER MVA  =======================
