@@ -36,6 +36,11 @@ app.get('/header', function(req,res){
 	res.render('header.ejs');
 });
 
+/*
+app.get('/liste_vehicules', function(req,res){
+	res.render('liste_vehicules.ejs');
+});*/
+
 
 	app.post('/data_chercher_vehicule', function(req,res){
 		console.log(req.body.immat)
@@ -135,6 +140,30 @@ app.get('/header', function(req,res){
 	// =====================================
 	// we will want this protected so you have to be logged in to visit
 	// we will use route middleware to verify this (the isLoggedIn function)
+	app.get('/liste_vehicules', isLoggedIn, function(req, res) {
+		var data ='';
+
+		if (req.user.attribut == "administrateur") {
+
+			connection.query('select * from vehicules LIMIT 50', function(err,result){
+			data=JSON.stringify(result);
+			res.render('liste_vehicules.ejs', {
+				user : req.user, // get the user out of session and pass to template
+				rowsv : result,
+				data: JSON.stringify(result)
+			});
+			});
+		console.log(data);
+		} else {
+	  console.log(req.query);
+		res.render('liste_vehicules.ejs', {
+			user : req.user, // get the user out of session and pass to template
+			rowsv : []
+		});
+	};
+	console.log(data);
+	});
+
 	app.get('/profile', isLoggedIn, function(req, res) {
 		var data ='';
 
