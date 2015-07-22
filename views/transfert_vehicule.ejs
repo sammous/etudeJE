@@ -19,9 +19,9 @@
 			<th> MVA</th>
 			<th> Immatriculation</th>
 			<th> Lieu actuel</th>
-			<th> Statut</th>
-			<th> Station départ</th>
+			<th> Position </th>
 			<th> Station retour</th>
+			<th> Statut</th>
 			<th> Date départ</th>
 			<th> Date retour</th>
 			<th> Numéro contrat</th>
@@ -35,6 +35,8 @@
 				<td> <%=vehicules.MVA%> </td>
 				<td> <%=vehicules.IMMAT%></td>
 				<td> <%=vehicules.CURRENT_LOCATION_STN%></td>
+				<td> <%=vehicules.position%></td>
+				<td> <%=vehicules.Agence_retour%></td>
 				<td> <%=vehicules.STATUT%></td>
 				<td> <%=vehicules.STATION_DEPART%></td>
 				<td> <%=vehicules.STATION_RETOUR%></td>
@@ -43,7 +45,7 @@
 				<td> <%=vehicules.NUMERO_CONTRAT%></td>
 				<td> <%=vehicules.marque%></td>
 				<td> <%=vehicules.libell_mod_le%></td>
-				
+
 			</tr>
 			<%})%>
 	</table>
