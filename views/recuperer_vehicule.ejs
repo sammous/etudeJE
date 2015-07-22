@@ -20,6 +20,7 @@
 			<th> MVA</th>
 			<th> Immatriculation</th>
 			<th> Lieu actuel</th>
+			<th> Agence retour </th>
 			<th> Statut</th>
 			<th> Station départ</th>
 			<th> Station retour</th>
@@ -29,6 +30,7 @@
 			<th> Marque</th>
 			<th> Libellé modèle</th>
 
+
 			</tr>
 	</div>
 		<% rowsv.forEach(function(vehicules){ %>
@@ -36,6 +38,7 @@
 				<td> <%=vehicules.MVA%> </td>
 				<td> <%=vehicules.IMMAT%></td>
 				<td> <%=vehicules.CURRENT_LOCATION_STN%></td>
+				<td> <%=vehicules.Agence_retour%></td>
 				<td> <%=vehicules.STATUT%></td>
 				<td> <%=vehicules.STATION_DEPART%></td>
 				<td> <%=vehicules.STATION_RETOUR%></td>
