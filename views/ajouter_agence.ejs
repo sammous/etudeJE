@@ -13,6 +13,12 @@
 
     <script  type="text/javascript" src="typeahead.min.js"></script>
 
+    <style type="text/css">
+      .modal-backdrop{
+        bottom: 0;
+        position: fixed;
+      }
+    </style>
     </head>
 
   <!--Body-->
@@ -39,7 +45,7 @@
   			</tr>
   	</table>
 
-<p data-toggle="tooltip" title="su"><button type="button" class="btn btn-warning pull-right"data-toggle="modal" data-target="#delete">Ajouter</button></p>
+<p data-toggle="tooltip" title="ajouter"><button type="button" class="btn btn-warning pull-right"data-toggle="modal" data-target="#delete">Ajouter</button></p>
 
 <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
   <div class="modal-dialog">
@@ -55,7 +61,7 @@
   </div>
     <div class="modal-footer ">
     <button type="button" class="btn btn-success" onclick='ajout()' ><span class="glyphicon glyphicon-ok-sign" ></span> Confirmer </button>
-    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Vérifier </button>
+    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Retour </button>
   </div>
   </div>
 <!-- /.modal-content -->
