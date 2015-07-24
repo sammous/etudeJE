@@ -727,7 +727,5 @@ function isLoggedIn(req, res, next) {
 //admin check
 function isAdmin(req,res,next) {
 	if (req.user.attribut == "administrateur")
-			return next()
-
-	res.redirect('/')
+		return next()
 }

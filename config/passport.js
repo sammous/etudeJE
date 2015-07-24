@@ -70,7 +70,7 @@ module.exports = function(passport) {
                     connection.query(insertQuery,[newUserMysql.username, newUserMysql.password, newUserMysql.attribut],function(err, rows) {
                         newUserMysql.id = rows.insertId;
 
-                        return done(null, newUserMysql,req.flash('signupMessage','SUCCES : Compte créé.'));
+                        return done(null, false,req.flash('signupMessage','SUCCES : Compte créé.'));
                     });
                 } else {
                     return done(null,false,req.flash('signupMessage', 'Choisir un attribut.'));
