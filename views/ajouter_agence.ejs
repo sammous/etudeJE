@@ -35,12 +35,10 @@
       <br>
   			<tr>
   			<th>  Nom  </th>
-  			<th>  Adresse </th>
   			</tr>
   	</div>
   			<tr >
   				<td ><div contenteditable><span id = 'nom'> Mettre le nom ici </span> </div></td>
-  				<td> <div contenteditable><span id = 'adresse'> Mettre l'adresse ici </span> </div> </td>
 
   			</tr>
   	</table>
@@ -77,8 +75,7 @@
         		$.ajax({
         			url: 'http://localhost:8080/data_ajouter_agence',
         			data : {
-        			nom : $( '#nom' ).html(),
-        			adresse : $( '#adresse' ).html()
+        			nom : $( '#nom' ).html()
         				},
 
         			success : function (data) {
