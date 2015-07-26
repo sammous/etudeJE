@@ -228,10 +228,26 @@ submitForms = function(){
 							<input type="text" class="form-control" id="modele" name="modele" placeholder="Modèle" required>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" id="statutwizard" name="statutwizard" placeholder="Statut Wizard" required>
+
+									<select name="statutwizard" class="form-control select select-primary" data-toggle="select">
+				  						<option value="0" selected>Choisir un statut Wizard</option>
+										<option value="ON HAND">ON HAND</option>
+										<option value="ON MOVE">ON MOVE</option>
+										<option value="REG">REG</option>
+										<option value="MARSHALLED">MARSHALLED</option>
+									</select>
+
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" id="statutagence" name="statutagence" placeholder="Statut Agence" required>
+
+									<select name="statutagence" class="form-control select select-primary" data-toggle="select">
+				  						<option value="0" selected>Choisir un statut Agence</option>
+										<option value="a_localiser">A Localiser</option>
+										<option value="localisé">Localisé</option>
+										<option value="a_transferer">A Transférer</option>
+										<option value="transfert_en_cours">Transfert en cours</option>
+									</select>
+									
 						</div>
             <div class="form-group">
               <input type="text" pattern="[0-9]*" class="form-control" id="num_contrat" name="num_contrat" placeholder="Numéro Contrat">
