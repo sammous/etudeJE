@@ -1,9 +1,59 @@
-var mysql = require('mysql');
+/*var mysql = require('mysql');
 var dbconfig = require('../config/database');
-var connection = mysql.createConnection(dbconfig.connection);
-connection.query('USE ' + dbconfig.database);
+function handleDisconnect() {
+	var connection = mysql.createConnection(dbconfig.connection); // Recreate the connection, since
+  connection.query('USE ' + dbconfig.database);                                                // the old one cannot be reused.
+  connection.connect(function(err) {              // The server is either down
+    if(err) {                                     // or restarting (takes a while sometimes).
+      console.log('error when connecting to db:', err);
+      setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
+    }                                     // to avoid a hot loop, and to allow our node script to
+  });                                     // process asynchronous requests in the meantime.
+                                          // If you're also serving http, display a 503 error.
+  connection.on('error', function(err) {
+    console.log('db error', err);
+    if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
+      handleDisconnect();                         // lost due to either server restart, or a
+    } else {                                      // connnection idle timeout (the wait_timeout
+      throw err;                                  // server variable configures this)
+    }
+  });
+}
 
-module.exports = function(app, passport) {
+handleDisconnect();*/
+//var connection = mysql.createConnection(dbconfig.connection);
+/*
+var del = connection._protocol._delegateError;
+connection._protocol._delegateError = function(err, sequence){
+  if (err.fatal) {
+    console.trace('fatal error: ' + err.message);
+  }
+  return del.call(this, err, sequence);
+};*/
+
+/*
+function handleDisconnect() {
+	var connection = mysql.createConnection(dbconfig.connection); // Recreate the connection, since
+  connection.query('USE ' + dbconfig.database);                                                // the old one cannot be reused.
+  connection.connect(function(err) {              // The server is either down
+    if(err) {                                     // or restarting (takes a while sometimes).
+      console.log('error when connecting to db:', err);
+      setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
+    }                                     // to avoid a hot loop, and to allow our node script to
+  });                                     // process asynchronous requests in the meantime.
+                                          // If you're also serving http, display a 503 error.
+  connection.on('error', function(err) {
+    console.log('db error', err);
+    if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
+      handleDisconnect();                         // lost due to either server restart, or a
+    } else {                                      // connnection idle timeout (the wait_timeout
+      throw err;                                  // server variable configures this)
+    }
+  });
+}*/
+
+
+module.exports = function(app, passport,connection) {
 
 	// =====================================
 	// LOGIN ===============================
@@ -245,7 +295,7 @@ app.get('/liste_vehicules', function(req,res){
 	});
 
 	app.post('/fvehicule', function(req,res){
-		console.log("post received");
+		console.log(req.body);
 		res.render('confirmation.ejs',{
 			user : req.user
 		});
