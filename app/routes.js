@@ -676,7 +676,8 @@ app.post('/assigner_tache', function(req,res){
 // =====================================
 app.get('/parking', isLoggedIn, function(req, res) {
 
-		connection.query('select * from Parking', function(err,result2){
+		connection.query('select * from Parking order by agence', function(err,result2){
+			console.log(result2);
 		res.render('parking.ejs', {
 			 // get the user out of session and pass to template
 			rows : result2,
