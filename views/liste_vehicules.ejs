@@ -16,18 +16,20 @@
 
 	<table  class = "table table-hover table-bordered text-center">
 		<div class="text-center">
-			<tr>
+			<tr class="warning">
 			<th> MVA</th>
 			<th> Immatriculation</th>
-			<th> Lieu actuel</th>
-			<th> Statut</th>
-			<th> Station départ</th>
-			<th> Station retour</th>
+			<th> Localisation agence </th>
+			<th> Position agence </th>
+			<th> Statut agence</th>
+			<th> Préparation</th>
 			<th> Date départ</th>
 			<th> Date retour</th>
 			<th> Numéro contrat</th>
 			<th> Marque</th>
 			<th> Libellé modèle</th>
+			<th> Station départ</th>
+			<th> Station retour</th>
 
 			</tr>
 	</div>
@@ -35,21 +37,17 @@
 			<tr>
 				<td> <%=vehicules.MVA%></td>
 				<td> <%=vehicules.IMMAT%></td>
-				<td> <%=vehicules.CURRENT_LOCATION_STN%></td>
+				<td> <%=vehicules.localisation_agence_app%></td>
+				<td> <%=vehicules.position_app%></td>
 				<td> <%=vehicules.STATUT%></td>
-				<td> <%=vehicules.STATION_DEPART%></td>
-				<td> <%=vehicules.STATION_RETOUR%></td>
+				<td> <%=vehicules.preparation_app%></td>
 				<td> <%=vehicules.DATE_DEPART%></td>
 				<td> <%=vehicules.DATE_RETOUR%></td>
 				<td> <%=vehicules.NUMERO_CONTRAT%></td>
 				<td> <%=vehicules.marque%></td>
 				<td> <%=vehicules.libell_mod_le%></td>
-				<td>
-					<p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p>
-				</td>
-				<td>
-					<p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p>
-				</td>
+				<td> <%=vehicules.STATION_DEPART%></td>
+				<td> <%=vehicules.STATION_RETOUR%></td>
 
 
 			</tr>
