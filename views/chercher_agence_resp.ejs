@@ -202,24 +202,26 @@
         };
         </script>
 
-        <script>
+      <script>
           function suppr(){
             var l = confirm("Veuillez valider la suppression") ;
             if (l)
-{              $.ajax({
-                url: 'http://localhost:8080/supprimer_agence',
-                data : {
-                  id : $( '#id' ).html()
-                  },
+              {
+                $.ajax({
+                  url: 'http://localhost:8080/supprimer_agence',
+                  data : {
+                    id : $( '#id' ).html()
+                    },
 
-                success : function (data) {
-                  $(location).attr('href','/confirmation');
-                  console.log(data)
-            }
+                  success : function (data)
+                    {
+                      $(location).attr('href','/confirmation');
+                      console.log(data)
+                    }
 
-          });
-  }
-          };
+                });
+              }
+            };
       </script>
 
     <script src="docs/js/highlight.js"></script>

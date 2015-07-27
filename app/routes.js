@@ -418,6 +418,7 @@ app.get('/liste_vehicules', function(req,res){
 		});
 	});
 
+
 	app.post('/data_chercher_parking', function(req,res){
 		console.log(req.body)
 		connection.query('select * from parking where nom like "%'+req.body.parking+'%";', function(err,result){
@@ -434,6 +435,12 @@ app.get('/liste_vehicules', function(req,res){
 		data="";
 		res.end(data);
 	});
+
+	app.get('/supprimer_parking', isLoggedIn, function(req, res) {
+		connection.query('DELETE FROM parking WHERE idParking= ?', [req.query.id])
+			var data="";
+			res.end(data);
+		});
 
 	app.get('/data_ajouter_parking', isLoggedIn, function(req, res) {
 		var insertQueryParking='INSERT INTO parking (nom,agence) values(?,?)';
