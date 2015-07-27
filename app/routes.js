@@ -41,7 +41,6 @@ app.get('/liste_vehicules', function(req,res){
 	res.render('liste_vehicules.ejs');
 });*/
 
-
 	app.post('/data_chercher_vehicule', function(req,res){
 		console.log(req.body.immat)
 		connection.query('select * from vehicules where immat like "%'+req.body.immat+'%";', function(err,result){
@@ -55,10 +54,6 @@ app.get('/liste_vehicules', function(req,res){
 			});
 		});
 	});
-
-
-
-
 
 	app.post('/data_chercher_process', function(req,res){
 		connection.query('select * from process_f44 where Numero like "%'+req.body.numero+'%";', function(err,result){
@@ -440,13 +435,14 @@ app.get('/liste_vehicules', function(req,res){
 
 
 	app.get('/search_name',function(req,res){
+		console.log(req.query.key)
+
 	connection.query('SELECT nomOperateur from operateur where nomOperateur like "%'+req.query.key+'%"', function(err, rows, fields) {
 			//console.log('SELECT id from users where id = '+req.query.key+';');
 			if (err) throw err;
 			var data=[];
 			for(i=0;i<rows.length;i++)
 				{
-					console.log(rows[i].nomOperateur);
 					data.push(rows[i].nomOperateur);
 				}
 			res.end(JSON.stringify(data));
@@ -458,23 +454,62 @@ app.get('/liste_vehicules', function(req,res){
 	// CHERCHER MVA  =======================
 	// =====================================
 	app.get('/search_mva',function(req,res){
+			if (req.query.key!=''){
 	connection.query('SELECT mva from vehicules where immat like "%'+req.query.key+'%"', function(err, rows, fields) {
 			//console.log('SELECT id from users where id = '+req.query.key+';');
 			if (err) throw err;
 			var data=[];
 			for(i=0;i<rows.length;i++)
 				{
-					console.log(rows[i].mva);
 					data.push(rows[i].mva);
 				}
-				console.log(JSON.stringify(data));
 			res.end(JSON.stringify(data));
 		//  res.end(toString(rows[i].username))	;
 		});
+	};
 	});
 
 	// =====================================
-	// CHERCHER MVA  =======================
+	// CHERCHER Propriétaire  =======================
+	// =====================================
+	app.get('/search_proprio',function(req,res){
+		console.log();
+			if (req.query.key!=''){
+	connection.query('SELECT PROPRIO_WIZARD from vehicules where immat like "%'+req.query.key+'%"', function(err, rows, fields) {
+			//console.log('SELECT id from users where id = '+req.query.key+';');
+			if (err) throw err;
+			var data=[];
+			for(i=0;i<rows.length;i++)
+				{
+					data.push(rows[i].PROPRIO_WIZARD);
+				}
+			res.end(JSON.stringify(data));
+		//  res.end(toString(rows[i].username))	;
+		});
+	};
+	});
+
+	// =====================================
+	// CHERCHER Modèle  =======================
+	// =====================================
+	app.get('/search_modele',function(req,res){
+			if (req.query.key!=''){
+	connection.query('SELECT libell_mod_le from vehicules where immat like "%'+req.query.key+'%"', function(err, rows, fields) {
+			//console.log('SELECT id from users where id = '+req.query.key+';');
+			if (err) throw err;
+			var data=[];
+			for(i=0;i<rows.length;i++)
+				{
+					data.push(rows[i].libell_mod_le);
+				}
+			res.end(JSON.stringify(data));
+		//  res.end(toString(rows[i].username))	;
+		});
+	};
+	});
+
+	// =====================================
+	// CHERCHER agence  =======================
 	// =====================================
 	app.get('/search_agence',function(req,res){
 	connection.query('SELECT nom from agence where nom like "%'+req.query.key+'%"', function(err, rows, fields) {
@@ -483,10 +518,8 @@ app.get('/liste_vehicules', function(req,res){
 			var data=[];
 			for(i=0;i<rows.length;i++)
 				{
-					console.log(rows[i].nom);
 					data.push(rows[i].nom);
 				}
-				console.log(JSON.stringify(data));
 			res.end(JSON.stringify(data));
 		//  res.end(toString(rows[i].username))	;
 		});
@@ -499,10 +532,8 @@ app.get('/liste_vehicules', function(req,res){
 			var data=[];
 			for(i=0;i<rows.length;i++)
 				{
-					console.log(rows[i].nom);
 					data.push(rows[i].nom);
 				}
-				console.log(JSON.stringify(data));
 			res.end(JSON.stringify(data));
 		//  res.end(toString(rows[i].username))	;
 		});

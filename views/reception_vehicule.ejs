@@ -108,82 +108,7 @@ input[type=number]::-webkit-outer-spin-button {
 		}
 	</style>
 
-	<script>
-  $(function() {
-	$( "#datepicker" ).datepicker({
-altField: "#datepicker",
-closeText: 'Fermer',
-prevText: 'Précédent',
-nextText: 'Suivant',
-currentText: 'Aujourd\'hui',
-monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
-dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
-dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
-dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
-weekHeader: 'Sem.',
-dateFormat: 'dd-mm-yy'
-});
 
-$("#datepicker").datepicker("setDate", new Date());
-$(document).ready(function(){
-$("#timepicker").timepicker({
-			timeFormat: 'HH:mm:ss',
-			defaultTime: 'now',
-			minTime: '11:45:00', // 11:45:00 AM,
-			maxHour: 20,
-			maxMinutes: 30,
-			startTime: new Date(0,0,0,15,0,0), // 3:00:00 PM - noon
-			interval: 15 // 15 minutes
-	});
-});
-
-$('.next').click(function(){
-
-  var nextId = $(this).parents('.tab-pane').next().attr("id");
-  $('[href=#'+nextId+']').tab('show');
-
-});
-
-$('.first').click(function(){
-
-  $('#myWizard a:first').tab('show')
-
-});
-
-});
-
-submitForms = function(){
-    document.getElementById("form1").submit();
-    document.getElementById("form2").submit();
-}
-</script>
-
-<script  type="text/javascript" src="typeahead.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('#myimmat').typeahead({
-				hint: true,
-				highlight: true,
-				minLength: 1,
-				name: 'users',
-				remote: 'http://localhost:8080/search_immat?key=%QUERY',
-		});
-	});
-
-
-</script>
-<script>
-	function updMVA(){
-		$.ajax({
-			url: 'http://localhost:8080/search_mva?key='+$( '#myimmat' ).val()+'',
-			dataType: 'json',
-			success : function (data) {
-				$( '#mva' ).val(data);
-			},
-		})
-	};
-</script>
 
 	<% include header_.ejs %>
 
@@ -216,7 +141,7 @@ submitForms = function(){
   						<input type="text" class="form-control" id="name" name="name" placeholder="Name" value=<%=user.username%> required>
   					</div>
 						<div class="form-group">
-							<input type="text" id='myimmat' name="immat" class="typeahead form-control" placeholder="Immat" onFocus="updMVA()" />
+							<input type="text" id='myimmat' name="immat" class="typeahead form-control" placeholder="Immat" onFocus="updAUTO()" />
 						</div>
   					<div class="form-group">
   						<input type="text" pattern="[0-9]*" class="form-control" id="mva" name="mva" placeholder="MVA" required>
@@ -247,7 +172,7 @@ submitForms = function(){
 										<option value="a_transferer">A Transférer</option>
 										<option value="transfert_en_cours">Transfert en cours</option>
 									</select>
-									
+
 						</div>
             <div class="form-group">
               <input type="text" pattern="[0-9]*" class="form-control" id="num_contrat" name="num_contrat" placeholder="Numéro Contrat">
@@ -338,5 +263,98 @@ submitForms = function(){
   </div>
   </div>
 
+	<script>
+  $(function() {
+	$( "#datepicker" ).datepicker({
+altField: "#datepicker",
+closeText: 'Fermer',
+prevText: 'Précédent',
+nextText: 'Suivant',
+currentText: 'Aujourd\'hui',
+monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
+dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
+dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+weekHeader: 'Sem.',
+dateFormat: 'dd-mm-yy'
+});
+
+$("#datepicker").datepicker("setDate", new Date());
+$(document).ready(function(){
+$("#timepicker").timepicker({
+			timeFormat: 'HH:mm',
+			defaultTime: 'now',
+			minTime: '11:45', // 11:45:00 AM,
+			maxHour: 20,
+			maxMinutes: 30,
+			startTime: new Date(0,0,0,15,0,0), // 3:00:00 PM - noon
+			interval: 15 // 15 minutes
+	});
+});
+
+$('.next').click(function(){
+
+  var nextId = $(this).parents('.tab-pane').next().attr("id");
+  $('[href=#'+nextId+']').tab('show');
+
+});
+
+$('.first').click(function(){
+
+  $('#myWizard a:first').tab('show')
+
+});
+
+});
+
+submitForms = function(){
+    document.getElementById("form1").submit();
+    document.getElementById("form2").submit();
+}
+</script>
+
+<script  type="text/javascript" src="typeahead.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#myimmat').typeahead({
+				hint: true,
+				highlight: true,
+				minLength: 1,
+				name: 'users',
+				remote: 'http://localhost:8080/search_immat?key=%QUERY',
+		});
+	});
+
+
+</script>
+<script>
+	function updAUTO(){
+		$.ajax({
+			url: 'http://localhost:8080/search_mva?key='+$( '#myimmat' ).val()+'',
+			dataType: 'json',
+			success : function (data) {
+				$( '#mva' ).val(data);
+			},
+		});
+
+		$.ajax({
+			url: 'http://localhost:8080/search_proprio?key='+$( '#myimmat' ).val()+'',
+			dataType: 'json',
+			success : function (data) {
+				$( '#proprietaire' ).val(data);
+			},
+		});
+
+		$.ajax({
+			url: 'http://localhost:8080/search_modele?key='+$( '#myimmat' ).val()+'',
+			dataType: 'json',
+			success : function (data) {
+				$( '#modele' ).val(data);
+			},
+		});
+
+	};
+</script>
 </body>
 </html>
