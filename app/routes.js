@@ -370,7 +370,11 @@ app.get('/liste_vehicules', function(req,res){
 			user : req.user
 		});
 	});
-
+	app.get('/supprimer_agence', isLoggedIn, function(req, res) {
+		connection.query('DELETE FROM agence WHERE idAgence= ?', [req.query.id])
+			var data="";
+			res.end(data);
+		});
 
 	app.post('/data_chercher_agence', function(req,res){
 		console.log(req.body)

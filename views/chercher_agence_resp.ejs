@@ -157,7 +157,7 @@
   			<%})%>
   	</table>
 
-<p data-toggle="tooltip" title="su"><button type="button" class="btn btn-danger pull-right"data-toggle="modal" data-target="#delete">Modifier</button></p>
+<p data-toggle="tooltip" title="su"><button type="button" class="btn btn-warning pull-right"data-toggle="modal" data-target="#delete">Modifier</button></p>
 
 <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
   <div class="modal-dialog">
@@ -180,7 +180,7 @@
 </div>
   <!-- /.modal-dialog -->
 </div>
-
+<button type="button" class="btn btn-danger pull-right" onclick='suppr()'>Supprimer</button>
 </div>
 
             <script>
@@ -202,7 +202,25 @@
         };
         </script>
 
+        <script>
+          function suppr(){
+            var l = confirm("Veuillez valider la suppression") ;
+            if (l)
+{              $.ajax({
+                url: 'http://localhost:8080/supprimer_agence',
+                data : {
+                  id : $( '#id' ).html()
+                  },
 
+                success : function (data) {
+                  $(location).attr('href','/confirmation');
+                  console.log(data)
+            }
+
+          });
+  }
+          };
+      </script>
 
     <script src="docs/js/highlight.js"></script>
     <script src="dist/js/bootstrap-switch.js"></script>
