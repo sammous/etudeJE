@@ -54,7 +54,7 @@ module.exports = function(passport,connection) {
                 if (err)
                     return done(err);
                 if (rows.length) {
-                    return done(null, false, req.flash('signupMessage', 'Cet identifiant est déjà pris.'));
+                    return done(null, false, req.flash('signupMessage', 'ECHEC : Cet identifiant est déjà pris.'));
                 } else {
                     // if there is no user with that username
                     // create the user
@@ -74,7 +74,7 @@ module.exports = function(passport,connection) {
                         return done(null, false,req.flash('signupMessage','SUCCES : Compte créé.'));
                     });
                 } else {
-                    return done(null,false,req.flash('signupMessage', 'Choisir un attribut.'));
+                    return done(null,false,req.flash('signupMessage', 'ECHEC : Choisir un attribut.'));
                 }
               }
           });
@@ -135,11 +135,11 @@ module.exports = function(passport,connection) {
                 if (err)
                     return done(err);
                 if (!rows.length) {
-                    return done(null, false, req.flash('updateMessage', 'Pas d\'utilisateur trouvé.')); // req.flash is the way to set flashdata using connect-flash
+                    return done(null, false, req.flash('updateMessage', 'ECHEC : Pas d\'utilisateur trouvé.')); // req.flash is the way to set flashdata using connect-flash
                 }
 
                 connection.query("UPDATE users SET password = ? WHERE username = ?",[bcrypt.hashSync(password, null, null),username], function(err, rows2){
-                    return done(null, req.flash('updateMessage','Mot de passe changé avec succès.'))
+                    return done(null, req.flash('updateMessage','SUCCES : Mot de passe changé avec succès.'))
                 });
 
 

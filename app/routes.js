@@ -149,7 +149,7 @@ app.get('/liste_vehicules', function(req,res){
 	// show the signup form
 	app.get('/admin/signup', isAdmin, function(req, res) {
 		// render the page and pass in any flash data if it exists
-		connection.query('select nom from Agence', function(err,result){
+		connection.query('select nom from agence', function(err,result){
 			res.render('signup.ejs', { user: req.user, message: req.flash('signupMessage'), agence: result});
 		});
 	});
@@ -700,7 +700,7 @@ app.get('/comptes', isLoggedIn, function(req, res) {
 // =====================================
 app.get('/agences', isLoggedIn, function(req, res) {
 
-		connection.query('select * from Agence', function(err,result2){
+		connection.query('select * from agence', function(err,result2){
 		res.render('agence.ejs', {
 			 // get the user out of session and pass to template
 			rows : result2,
@@ -718,7 +718,7 @@ app.post('/agences', function(req,res){
 		nom : req.body.nom_agence,
 		adresse : req.body.adresse_agence
 	};
-	connection.query('INSERT INTO Agence (idAgence, nom, adresse) VALUES (?,?,?)', [post.id, post.nom, post.adresse], function(err,result){
+	connection.query('INSERT INTO agence (idAgence, nom, adresse) VALUES (?,?,?)', [post.id, post.nom, post.adresse], function(err,result){
 			if (err){
 				req.flash("messages",{"error": "Une erreur est survenue"})
 			} else {
@@ -733,7 +733,7 @@ app.post('/agences', function(req,res){
 // =====================================
 app.get('/assigner_tache', isLoggedIn, function(req, res) {
 
-		connection.query('select * from Agence', function(err,result2){
+		connection.query('select * from agence', function(err,result2){
 		res.render('agence.ejs', {
 			 // get the user out of session and pass to template
 			rows : result2,
@@ -751,7 +751,7 @@ app.post('/assigner_tache', function(req,res){
 		nom : req.body.nom_agence,
 		adresse : req.body.adresse_agence
 	};
-	connection.query('INSERT INTO Agence (idAgence, nom, adresse) VALUES (?,?,?)', [post.id, post.nom, post.adresse], function(err,result){
+	connection.query('INSERT INTO agence (idAgence, nom, adresse) VALUES (?,?,?)', [post.id, post.nom, post.adresse], function(err,result){
 			if (err){
 				req.flash("messages",{"error": "Une erreur est survenue"})
 			} else {
@@ -768,7 +768,7 @@ app.post('/assigner_tache', function(req,res){
 // =====================================
 app.get('/parking', isLoggedIn, function(req, res) {
 
-		connection.query('select * from Parking order by agence', function(err,result2){
+		connection.query('select * from parking order by agence', function(err,result2){
 			console.log(result2);
 		res.render('parking.ejs', {
 			 // get the user out of session and pass to template
@@ -785,7 +785,7 @@ app.post('/parking', function(req,res){
 		id :"",
 		nom : req.body.nom_parking,
 	};
-	connection.query('INSERT INTO Parking (idParking, nom) VALUES (?,?)', [post.id, post.nom], function(err,result){
+	connection.query('INSERT INTO parking (idParking, nom) VALUES (?,?)', [post.id, post.nom], function(err,result){
 			if (err){
 				req.flash("messages",{"error": "Une erreur est survenue"})
 			} else {
