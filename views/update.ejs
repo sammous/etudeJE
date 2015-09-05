@@ -102,7 +102,7 @@ $('#delete').on('shown.bs.modal', function(event){
 
 function delete_user(){
         		$.ajax({
-        			url: 'http://localhost:8080/supprimer_utilisateur',
+        			url: '/supprimer_utilisateur',
         			data : {
         			user : user_to_delete
         				},
