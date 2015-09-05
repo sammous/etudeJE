@@ -19,17 +19,16 @@
 			<tr class="warning">
 			<th> MVA</th>
 			<th> Immatriculation</th>
+			<th> Libellé modèle</th>
 			<th> Localisation agence </th>
-			<th> Position agence </th>
+			<th> Position véhicule </th>
 			<th> Statut agence</th>
 			<th> Préparation</th>
 			<th> Date départ</th>
 			<th> Date retour</th>
 			<th> Numéro contrat</th>
 			<th> Marque</th>
-			<th> Libellé modèle</th>
-			<th> Station départ</th>
-			<th> Station retour</th>
+
 
 			</tr>
 	</div>
@@ -37,6 +36,7 @@
 			<tr>
 				<td> <%=vehicules.MVA%></td>
 				<td> <%=vehicules.IMMAT%></td>
+				<td> <%=vehicules.libell_mod_le%></td>
 				<td> <%=vehicules.localisation_agence_app%></td>
 				<td> <%=vehicules.position_app%></td>
 				<td> <%=vehicules.STATUT%></td>
@@ -45,10 +45,6 @@
 				<td> <%=vehicules.DATE_RETOUR%></td>
 				<td> <%=vehicules.NUMERO_CONTRAT%></td>
 				<td> <%=vehicules.marque%></td>
-				<td> <%=vehicules.libell_mod_le%></td>
-				<td> <%=vehicules.STATION_DEPART%></td>
-				<td> <%=vehicules.STATION_RETOUR%></td>
-
 
 			</tr>
 			<%})%>

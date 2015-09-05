@@ -169,7 +169,9 @@ app.get('/liste_vehicules', function(req,res){
 	// show the signup form
 	app.get('/update', isLoggedIn, isAdmin, function(req, res) {
 		// render the page and pass in any flash data if it exists
-		res.render('update.ejs', { user: req.user, message: req.flash('updateMessage') });
+		connection.query('select username from users', function(err,result){
+			res.render('update.ejs', { user: req.user, message: req.flash('updateMessage'), rows: result});
+		});
 	});
 
 	// process the signup form
@@ -179,6 +181,14 @@ app.get('/liste_vehicules', function(req,res){
 		failureFlash : true // allow flash messages
 	})
 	);
+
+	app.get('/supprimer_utilisateur', isLoggedIn, function(req,res){
+	var insertQueryAgence='DELETE FROM users where username = ?';
+ 	 connection.query(insertQueryAgence,[req.query.user]);
+ 	 var data="";
+ 	res.end(data);
+ 	console.log('utilisateur supprimé');
+	});
 
 	// =====================================
 	// PROFILE SECTION =========================
@@ -251,6 +261,10 @@ app.get('/liste_vehicules', function(req,res){
   res.render('tache_reception.ejs',{
  	 user : req.user
   });
+ });
+
+ app.post('/tache_reception', function(req,res){
+ 	
  });
 
  app.post('/ajouter_tache_reception', isLoggedIn, function(req, res) {

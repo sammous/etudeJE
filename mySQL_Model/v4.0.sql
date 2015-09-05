@@ -218,7 +218,8 @@ CREATE TABLE `process_check_in` (
   `date_retour_reel` date DEFAULT NULL,
   `heure_retour_reel` time DEFAULT NULL,
   `km` double unsigned DEFAULT NULL,
-  `carburant` varchar(45) DEFAULT NULL,
+  `niveau_carburant` varchar(45) DEFAULT NULL,
+  `nom_agence` varchar(45) DEFAULT NULL,
   `dommage` tinyint(1) DEFAULT '0',
   `presence_gps` tinyint(1) DEFAULT '0',
   `position_vehicule` varchar(45) DEFAULT NULL,
@@ -341,6 +342,7 @@ CREATE TABLE `users` (
   `username` varchar(45) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
   `attribut` varchar(45) DEFAULT NULL,
+  `agence` int(11),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
