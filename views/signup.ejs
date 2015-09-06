@@ -2,39 +2,19 @@
 <!doctype html>
 <html>
 <head>
-	<title>AVIS MANAGEMENT</title>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-
-
-
-
-	<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 	<style>
 		body {
 			background-repeat:no-repeat;
-			background-image:url(/images/accueil_background_flou.jpg);
 		}
 		body.container {
 			padding-top:80px;
 
 			}
 	</style>
-	<ul class="nav nav-pills">
-	<li role="presentation" class="active"><a href="/signup">Créer compte</a></li>
-	<li role="presentation"><a href="/comptes">Gérer compte</a></li>
-	<li role="presentation"><a href="/vehicule">Vehicule</a></li>
-	<li role="presentation"><a href="/logout">Déconnexion</a></li>
+
+	<% include header.ejs %>
+
 </head>
 <body>
 
@@ -45,34 +25,48 @@
 
 	<h1><span class="fa fa-sign-in"></span> Créer Compte</h1>
 
-	<!-- show any messages that come back with authentication -->
-	<% if (message.length > 0) { %>
-		<div class="alert alert-danger"><%= message %></div>
-	<% } %>
+    <!-- show any messages that come back with authentication -->
+    <% if (message.length > 0 && (message[0].indexOf("ECHEC") > -1)) { %>
+        <div class="alert alert-danger"><%= message %></div>
+    <% } %>
+
+    <!-- show any messages that come back with authentication -->
+    <% if (message.length > 0 && (message[0].indexOf("SUCCES") > -1)) { %>
+        <div class="alert alert-success"><%= message %></div>
+    <% } %>
+
 
 	<!-- LOGIN FORM -->
 	<form action="/signup" method="post">
 		<div class="form-group">
 			<label>Identifiant</label>
-			<input type="text" class="form-control" name="username">
+			<input type="text" class="form-control" name="username" required>
 		</div>
 		<div class="form-group">
 			<label>Mot de passe</label>
-			<input type="password" class="form -control" name="password">
+			<input type="password" class="form -control" name="password" required>
 		</div>
 
 		<div class="form-group">
 
-			<select name="attribut" class="form-control select select-primary" data-toggle="select">
+			<select name="attribut" class="form-control select select-primary" data-toggle="select" required>
 				  <option value="0" selected>Choisir type de privilège</option>
 					<option value="administrateur">Administrateur</option>
 					<option value="opérateur">Opérateur</option>
-					<option value="utilisateur">Utilisateur</option>
+					<option value="préparateur">Préparateur</option>
+			</select>
+			<br>
+			<select name="agence" class="form-control select select-primary" data-toggle="select" required>
+				  	<option value="0" selected>Choisir l'agence de résidence</option>
+				  	<% agence.forEach(function(agence){ %>
+					<option value=<%=agence.nom%>><%=agence.nom%></option>
+				  	<%})%>
+
 			</select>
 
 		</div>
 
-		<button type="submit" class="btn btn-warning btn-lg">Signup</button>
+		<button type="submit" class="btn btn-warning btn-lg">Créer le compte</button>
 	</form>
 
 </div>
@@ -82,5 +76,4 @@
 
 </body>
 
-</script>
 </html>

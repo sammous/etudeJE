@@ -1,0 +1,48 @@
+<!-- views/agence.ejs -->
+<!doctype html>
+<html>
+	<head>
+		<% include header.ejs %>
+	</head>
+<body>
+
+
+<div class="container text-center">
+
+	<br><br>
+	<h1><span class="fa fa-refresh"></span><b> Historique des assignations de réception </b></h1>
+
+    <br><br>
+
+  <table  class = "table table-hover table-bordered text-center">
+    <div class="text-center">
+      <tr>
+      <th>id assignation</th>
+      <th>Immat</th>
+      <th>Date prévue</th>
+			<th>Etat</th>
+			<th>Nom Préparateur</th>
+			<th>Nom Opérateur</th>
+      </tr>
+  </div>
+    <% rows.forEach(function(recup){ %>
+      <tr>
+        <td> <%=recup.idRecuperation%></td>
+        <td> <%=recup.immat%></td>
+				<td> <%=recup.prev_date%></td>
+				<td> <%=recup.accompli ? 'Fait' : 'Non fait'%></td>
+				<td> <%=recup.nomPreparateur%></td>
+				<td> <%=recup.nomOperateur%></td>
+
+
+      </tr>
+      <%})%>
+  </table>
+
+
+
+</div>
+
+
+</body>
+</html>

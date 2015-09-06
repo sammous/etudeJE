@@ -1,0 +1,97 @@
+<!-- views/signup.ejs -->
+<!doctype html>
+<html>
+<head>
+    <% include header.ejs %>
+  <link href="docs/css/bootstrap.min.css" rel="stylesheet">
+  <link href="docs/css/highlight.css" rel="stylesheet">
+  <link href="dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
+  <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
+  <link href="docs/css/main.css" rel="stylesheet">
+
+
+
+
+
+    <!--script>
+/*
+Fonction que j'ai écrite pour les types 'boutons simples' et qui peut être utile avec du ajax si la form ne marche pas.
+Mais ça prendra du temps à écrire car faut qu'on l'adapte élément par élément...je la garde au cas où*/
+      function updB(){
+
+      var tm = $( '#testB' ).attr('value');
+      $( '#l' ).text(tm);
+      $( '#testB' ).attr('value',1);
+      var actual = $( '#testB' ).attr('class');
+      if (actual=='btn-danger')
+        {
+           $('#testB').attr('class', 'btn-primary');
+
+
+        }
+      if (actual=='btn-primary')
+        {
+           $('#testB').attr('class', 'btn-success');
+        }
+      if (actual=='btn-success')
+        {
+            $('#testB').attr('class', 'btn-danger');
+        }
+
+      };
+
+    </script-->
+
+</head>
+<body>
+
+  <!--Body-->
+    <div class="container">
+      <h1>Button fonctionnel Fait/pas fait à intégrer au f44. Regarde la console</h1>
+      <div class="col-md-5 col-md-offset-4">
+        <div class="form-area">
+          <form action="/data_f44" method="POST">
+
+            <div class="col-sm-6 col-lg-4">
+
+              <p>
+                <input id="switch-onText" name="prototype" type="checkbox" checked data-on-text="Fait" checked data-off-text="Pas fait" unchecked>
+              </p>
+
+              <input type="submit" class="btn btn-success" value="Confirmer"<span class="glyphicon glyphicon-ok-sign">
+</div>
+              <!--br>
+              <div class="text-center">
+                <h2><span class="glyphicon glyphicon-refresh"></span> Fiche F44 </h2>
+                <br>
+              </div>
+
+
+              <input id="chk_aliens" type="checkbox" name="wpuf_post_tags[]" class="vis-hidden new-post-tags" value="Aliens" />
+              <label for="chk_aliens">Aliens</label>
+
+              <input id="chk_ghosts" type="checkbox" name="wpuf_post_tags[]" class="vis-hidden new-post-tags" value="Ghosts" />
+              <label for="chk_ghosts">Ghosts</label>
+
+              <input id="chk_monsters" type="checkbox" name="wpuf_post_tags[]" class="vis-hidden new-post-tags" value="Monsters" />
+              <label for="chk_monsters">Monsters</label>
+
+          <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Confirmer </button>
+            <!button type="submit" id="bsub" name="submit" class="btn btn-primary pull-right">Envoyer</button-->
+
+        </form>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <script src="docs/js/jquery.min.js"></script>
+    <script src="docs/js/bootstrap.min.js"></script>
+    <script src="docs/js/highlight.js"></script>
+    <script src="dist/js/bootstrap-switch.js"></script>
+    <script src="docs/js/main.js"></script>
+</body>
+
+</html>

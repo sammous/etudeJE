@@ -1,0 +1,60 @@
+<!-- views/transfert_vehicule.ejs -->
+<!doctype html>
+<html>
+	<head>
+		<% include header.ejs %>
+	</head>
+
+<div class="container">
+
+
+	<div class="text-center">
+		<h1><span class="fa fa-road"></span> Liste des véhicules à transférer</h1>
+		<br>
+  </div>
+
+	<table  class = "table table-hover table-bordered text-center">
+		<div class="text-center">
+			<tr class="warning">
+			<th> MVA</th>
+			<th> Immatriculation</th>
+			<th> Localisation agence </th>
+			<th> Position agence </th>
+			<th> Statut agence</th>
+			<th> Préparation</th>
+			<th> Date départ</th>
+			<th> Date retour</th>
+			<th> Numéro contrat</th>
+			<th> Marque</th>
+			<th> Libellé modèle</th>
+			<th> Station départ</th>
+			<th> Station retour</th>
+
+			</tr>
+	</div>
+		<% rowsv.forEach(function(vehicules){ %>
+			<tr>
+				<td> <%=vehicules.MVA%></td>
+				<td> <%=vehicules.IMMAT%></td>
+				<td> <%=vehicules.localisation_agence_app%></td>
+				<td> <%=vehicules.position_app%></td>
+				<td> <%=vehicules.STATUT%></td>
+				<td> <%=vehicules.preparation_app%></td>
+				<td> <%=vehicules.DATE_DEPART%></td>
+				<td> <%=vehicules.DATE_RETOUR%></td>
+				<td> <%=vehicules.NUMERO_CONTRAT%></td>
+				<td> <%=vehicules.marque%></td>
+				<td> <%=vehicules.libell_mod_le%></td>
+				<td> <%=vehicules.STATION_DEPART%></td>
+				<td> <%=vehicules.STATION_RETOUR%></td>
+
+
+			</tr>
+			<%})%>
+	</table>
+
+
+</div>
+
+</body>
+</html>

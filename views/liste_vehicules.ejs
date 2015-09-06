@@ -1,0 +1,117 @@
+<!-- views/profile.ejs -->
+<!doctype html>
+<html>
+<head>
+<% include header0.ejs %>
+</head>
+<body>
+
+<div class="container">
+
+
+	<div class="text-center">
+		<h1><span class="fa fa-road"></span> Liste véhicules</h1>
+		<br>
+  </div>
+
+	<table  class = "table table-hover table-bordered text-center">
+		<div class="text-center">
+			<tr class="warning">
+			<th> MVA</th>
+			<th> Immatriculation</th>
+			<th> Libellé modèle</th>
+			<th> Localisation agence </th>
+			<th> Position véhicule </th>
+			<th> Statut agence</th>
+			<th> Préparation</th>
+			<th> Date départ</th>
+			<th> Date retour</th>
+			<th> Numéro contrat</th>
+			<th> Marque</th>
+
+
+			</tr>
+	</div>
+		<% rowsv.forEach(function(vehicules){ %>
+			<tr>
+				<td> <%=vehicules.MVA%></td>
+				<td> <%=vehicules.IMMAT%></td>
+				<td> <%=vehicules.libell_mod_le%></td>
+				<td> <%=vehicules.localisation_agence_app%></td>
+				<td> <%=vehicules.position_app%></td>
+				<td> <%=vehicules.STATUT%></td>
+				<td> <%=vehicules.preparation_app%></td>
+				<td> <%=vehicules.DATE_DEPART%></td>
+				<td> <%=vehicules.DATE_RETOUR%></td>
+				<td> <%=vehicules.NUMERO_CONTRAT%></td>
+				<td> <%=vehicules.marque%></td>
+
+			</tr>
+			<%})%>
+	</table>
+
+
+
+	<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+	      <div class="modal-dialog">
+	    <div class="modal-content">
+	          <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+	        <h4 class="modal-title custom_align" id="Heading">Modifier les éléments d'un véhicule </h4>
+	      </div>
+	          <div class="modal-body">
+	          <div class="form-group">
+	        <input class="form-control " type="text" placeholder="MVA">
+	        </div>
+	        <div class="form-group">
+
+	        <input class="form-control " type="text" placeholder="Agence">
+	        </div>
+	        <div class="form-group">
+	        <textarea rows="2" class="form-control" placeholder="Commentaire : "></textarea>
+
+
+	        </div>
+	      </div>
+	          <div class="modal-footer ">
+	        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Mettre à jour </button>
+	      </div>
+	        </div>
+	    <!-- /.modal-content -->
+	  </div>
+	      <!-- /.modal-dialog -->
+	    </div>
+
+
+
+	    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+	      <div class="modal-dialog">
+	    <div class="modal-content">
+	          <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+	        <h4 class="modal-title custom_align" id="Heading"> Supprimer cette entrée </h4>
+	      </div>
+	          <div class="modal-body">
+
+	       <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Etes-vous sûr de vouloir supprimer ce véhicule </div>
+
+	      </div>
+	        <div class="modal-footer ">
+	        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+	      </div>
+	        </div>
+	    <!-- /.modal-content -->
+	  </div>
+	      <!-- /.modal-dialog -->
+	    </div>
+
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>	<script type="text/javascript">
+
+	</script>
+
+</body>
+</html>

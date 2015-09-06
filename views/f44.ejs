@@ -1,183 +1,267 @@
 <!doctype html>
 <html>
-<head>
-	<title>AVIS MANAGEMENT</title>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-	<style>
-		body
-    { padding-top:0px;
-      word-wrap:break-word;
-			#radioBtn .notActive{
-			color: #3276b1;
-			background-color: #fff;
-			}
-		}
-	</style>
+  <head>
+    <% include header0.ejs %>
+    <link href="docs/css/bootstrap.min.css" rel="stylesheet">
+    <link href="docs/css/highlight.css" rel="stylesheet">
+    <link href="dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
+    <link href="docs/css/main.css" rel="stylesheet">
+    <!--Scripts-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
-</head>
-<body>
+    <script  type="text/javascript" src="typeahead.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#myimmat').typeahead({
+            hint: true,
+            highlight: true,
+            minLength: 1,
+            name: 'users',
+            remote: 'http://localhost:8080/search_immat?key=%QUERY',
+        });
+      });
 
-	<div class="panel-footer">
-		<div class="row">
-    	<div class="col-md-6 previous">
-        	<button type="button" class="btn btn-default btn-lg" onClick="history.go(-1);return true;">
-        	<span class="glyphicon glyphicon-chevron-left"></span>
-        	</button>
-    	</div>
-		</div>
-	</div>
 
-  <div class="container">
-  <div class="col-md-5 col-md-offset-4">
+    </script>
+    <script>
+      function updMVA(){
+        $.ajax({
+          url: 'http://localhost:8080/search_mva?key='+$( '#myimmat' ).val()+'',
+          dataType: 'json',
+          success : function (data) {
+            $( '#mva' ).val(data);
+          },
+        })
+      };
+    </script>
+
+    <!--Style Sheet pour corriger Bootstrap 2->3 -->
+    <style>
+
+
+      .twitter-typeahead, .tt-hint { width: 100%; }
+      .tt-dropdown-menu {
+        width:100%;
+      }
+      .twitter-typeahead .tt-query, .twitter-typeahead .tt-hint {
+      margin-bottom: 0;
+      }
+      .twitter-typeahead .tt-hint {
+      display: block;
+      height: 34px;
+      padding: 6px 12px;
+      font-size: 14px;
+      line-height: 1.428571429;
+      border: 1px solid transparent;
+      border-radius:4px;
+      }
+      .twitter-typeahead .hint-small {
+      height: 30px;
+      padding: 5px 10px;
+      font-size: 12px;
+      border-radius: 3px;
+      line-height: 1.5;
+      }
+      .twitter-typeahead .hint-large {
+      height: 45px;
+      padding: 10px 16px;
+      font-size: 18px;
+      border-radius: 6px;
+      line-height: 1.33;
+      }
+      .tt-dropdown-menu {
+      min-width: 160px;
+      margin-top: 2px;
+      padding: 5px 0;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border: 1px solid rgba(0, 0, 0, .2);
+      *border-right-width: 2px;
+      *border-bottom-width: 2px;
+      -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+      border-radius: 6px;
+      -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+      -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+      -webkit-background-clip: padding-box;
+      -moz-background-clip: padding;
+      background-clip: padding-box;
+      }
+      .tt-suggestion {
+      display: block;
+      padding: 3px 20px;
+      }
+      .tt-suggestion.tt-is-under-cursor {
+      color: #fff;
+      background-color: #0081c2;
+      background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
+      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
+      background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
+      background-image: -o-linear-gradient(top, #0088cc, #0077b3);
+      background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+      background-repeat: repeat-x;
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
+      }
+      .tt-suggestion.tt-is-under-cursor a {
+      color: #fff;
+      }
+      .tt-suggestion p {
+      margin: 0;
+      }
+      .modal-backdrop{
+        bottom: 0;
+        position: fixed;
+      }
+    </style>
+  </head>
+
+  <!--Body-->
+
+  <body>
+    <div class="container">
+
+
+    <div class="btn-group btn-group-lg" role="group">
+        <a type="button" class="btn btn-default" href="/historique_f44"><span class="glyphicon glyphicon-list"> Historique</a>
+    </div>
+
+    <div class="col-md-5 col-md-offset-4">
       <div class="form-area">
-          <form role="form">
-          <br style="clear:both">
-                      <h3 style="margin-bottom: 25px; text-align: center;">Fiche F44</h3>
 
-  					<div class="form-group">
-  						<input type="number" class="form-control" id="mva" name="mva" placeholder="MVA" required>
-  					</div>
-  					<div class="form-group">
-  						<input type="text" class="form-control" id="immat" name="immat" placeholder="Immatriculation" required>
-  					</div>
-            <div class="form-group">
-            <input type="text" class="form-control" id="name" name="name" placeholder="Nom opérateur" required>
+        <!--Form-->
+    <form role="form" action="/data_f44" method="POST" >
+        <br>
+          <div class="text-center">
+            <h2><span class="glyphicon glyphicon-refresh"></span> Fiche F44 </h2>
+            <br>
           </div>
+        <br>
 
-					<div class="form-group">
-					    		<label for="happy" class="col-sm-4 col-md-4 control-label text-right">Aspiration intérieur</label>
-					    		<div class="col-sm-8 col-md-8">
-					    			<div class="input-group">
-					    				<div id="radioBtn" class="btn-group">
-					    					<a class="btn btn-primary btn-sm active" data-toggle="happy" data-title="Y">A faire</a>
-					    					<a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="N">Ok</a>
-					    				</div>
-					    				<input type="hidden" name="happy" id="happy">
-					    			</div>
-					    		</div>
-					</div>
+        <div class="form-group">
+          <label>Identifiant:</label>
+          <input type="text" class="form-control" name="name" placeholder="Nom" value=<%=user.username%> required>
+        </div>
 
-					<div class="form-group">
-									<label for="happy" class="col-sm-4 col-md-4 control-label text-right">Lavage extérieur</label>
-									<div class="col-sm-8 col-md-8">
-										<div class="input-group">
-											<div id="radioBtn" class="btn-group">
-												<a class="btn btn-primary btn-sm active" data-toggle="happy" data-title="Y">A faire</a>
-												<a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="N">Ok</a>
-											</div>
-											<input type="hidden" name="happy" id="happy">
-										</div>
-									</div>
-					</div>
+        <div class="form-group">
+          <label>Immatriculation:</label>
+          <input type="text" id='myimmat' name="immat" class="typeahead form-control" placeholder="Immat" onFocus="updMVA()" />
+        </div>
 
-					<div class="form-group">
-									<label for="happy" class="col-sm-4 col-md-4 control-label text-right">Nettoyage vitre</label>
-									<div class="col-sm-8 col-md-8">
-										<div class="input-group">
-											<div id="radioBtn" class="btn-group">
-												<a class="btn btn-primary btn-sm active" data-toggle="happy" data-title="Y">A faire</a>
-												<a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="N">Ok</a>
-											</div>
-											<input type="hidden" name="happy" id="happy">
-										</div>
-									</div>
-					</div>
+        <div class="form-group">
+          <label>MVA:</label>
+          <input type="text" pattern="[0-9]*" class="typeahead form-control" id="mva" name="MVA" placeholder="MVA"  required>
+        </div>
 
-					<div class="form-group">
-									<label for="happy" class="col-sm-4 col-md-4 control-label text-right">Nettoyage Pare-Brise intérieur</label>
-									<div class="col-sm-8 col-md-8">
-										<div class="input-group">
-											<div id="radioBtn" class="btn-group">
-												<a class="btn btn-primary btn-sm active" data-toggle="happy" data-title="Y">A faire</a>
-												<a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="N">Ok</a>
-											</div>
-											<input type="hidden" name="happy" id="happy">
-										</div>
-									</div>
-					</div>
+        <div class="form-group">
+          <label>Remplissage carburant:</label>
+          <input type="text"  name="remplissage_carburant" class="typeahead form-control" placeholder="Remplissage Carburant"  />
+        </div>
 
-					<div class="form-group">
-									<label for="happy" class="col-sm-4 col-md-4 control-label text-right">Niveau huile</label>
-									<div class="col-sm-8 col-md-8">
-										<div class="input-group">
-											<div id="radioBtn" class="btn-group">
-												<a class="btn btn-primary btn-sm active" data-toggle="happy" data-title="Y">A faire</a>
-												<a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="N">Ok</a>
-											</div>
-											<input type="hidden" name="happy" id="happy">
-										</div>
-									</div>
-					</div>
 
-					<div class="form-group">
-									<label for="happy" class="col-sm-4 col-md-4 control-label text-right">Niveau lave-glace</label>
-									<div class="col-sm-8 col-md-8">
-										<div class="input-group">
-											<div id="radioBtn" class="btn-group">
-												<a class="btn btn-primary btn-sm active" data-toggle="happy" data-title="Y">A faire</a>
-												<a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="N">Ok</a>
-											</div>
-											<input type="hidden" name="happy" id="happy">
-										</div>
-									</div>
-					</div>
+        <div class="form-group">
+          <p>
+            <label for="Aspiration intérieure"> Aspiration intérieure  :  </label>
+            <input id="Aspiration intérieure" name="Aspiration_intérieur" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
+          </p>
+        </div>
 
-					<div class="form-group">
-					    		<label for="happy" class="col-sm-4 col-md-4 control-label text-right">Pression pneus</label>
-									<div class="col-sm-8 col-md-8">
-					    			<div class="input-group">
-					    				<div id="radioBtn" class="btn-group">
-					    					<a class="btn btn-primary btn-sm active" data-toggle="happy" data-title="Y">A faire</a>
-					    					<a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="N">Ok</a>
-					    				</div>
-					    				<input type="hidden" name="happy" id="happy">
-					    			</div>
-					    		</div>
-					</div>
+        <div class="form-group">
+          <p>
+            <label for="Lavage extérieure"> Lavage extérieure  : </label>
+            <input id="Lavage extérieure" name="Lavage_extérieure" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
+          </p>
+        </div>
 
-					<div class="form-group">
-									<label for="happy" class="col-sm-4 col-md-4 control-label text-right">Contrôle carosserie</label>
-									<div class="col-sm-8 col-md-8">
-										<div class="input-group">
-											<div id="radioBtn" class="btn-group">
-												<a class="btn btn-primary btn-sm active" data-toggle="happy" data-title="Y">A faire</a>
-												<a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="N">Ok</a>
-											</div>
-											<input type="hidden" name="happy" id="happy">
-										</div>
-									</div>
-					</div>
+        <div class="form-group">
+          <p>
+            <label for="Nettoyage vitre"> Nettoyage vitre  : </label>
+            <input id="Nettoyage vitre" name="Nettoyage_vitre" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
+          </p>
+        </div>
 
-					<div class="form-group">
-					    		<label for="happy" class="col-sm-4 col-md-4 control-label text-right">Contrôle intérieur</label>
-									<div class="col-sm-8 col-md-8">
-					    			<div class="input-group">
-					    				<div id="radioBtn" class="btn-group">
-					    					<a class="btn btn-primary btn-sm active" data-toggle="happy" data-title="Y">A faire</a>
-					    					<a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="N">Ok</a>
-					    				</div>
-					    				<input type="hidden" name="happy" id="happy">
-					    			</div>
-					    		</div>
-					</div>
+        <div class="form-group">
+          <p>
+            <label for="Nettoyage_parebrise_intérieur"> Nettoyage parebrise intérieur  : </label>
+            <input id="Nettoyage parebrise intérieur" name="Nettoyage_parebrise_intérieur" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
+          </p>
+        </div>
 
-          <button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Envoyer</button>
-          </form>
+        <div class="form-group">
+          <p>
+            <label for="Niveau huile"> Niveau huile  : </label>
+            <input id="Niveau huile" name="Niveau_huile" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
+          </p>
+        </div>
+
+        <div class="form-group">
+          <p>
+            <label for="Niveau lave-glace"> Niveau lave-glace  : </label>
+            <input id="Niveau lave-glace" name="Niveau_lave_glace" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
+          </p>
+        </div>
+
+        <div class="form-group">
+          <p>
+            <label for="Pression pneus"> Pression pneus  : </label>
+            <input id="Pression pneus" name="Pression_pneus" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
+          </p>
+        </div>
+
+        <div class="form-group">
+          <p>
+            <label for="Contrôle carrosserie"> Contrôle carrosserie  : </label>
+            <input id="Contrôle carrosserie" name="Contrôle_carrosserie" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait" default-value="lol">
+          </p>
+        </div>
+
+        <div class="form-group">
+          <p>
+            <label for="Contrôle intérieur"> Contrôle intérieur  : </label>
+            <input id="Contrôle intérieur" name="Aspiration_intérieure" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
+          </p>
+        </div>
+
+
+
+			  <p data-toggle="tooltip" title="su"><button type="button" class="btn btn-primary pull-right"data-toggle="modal" data-target="#send">Envoyer</button></p>
+
+        <div class="modal fade" id="send" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+          <div class="modal-dialog">
+        <div class="modal-content">
+              <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+            <h4 class="modal-title custom_align" id="Heading"> Confirmer cette entrée </h4>
+          </div>
+            <div class="modal-body">
+
+           <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Merci de confirmer votre saisie </div>
+
+          </div>
+            <div class="modal-footer ">
+            <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Confirmer </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Annuler </button>
+          </div>
+          </div>
+        <!-- /.modal-content -->
+        </div>
+          <!-- /.modal-dialog -->
+        </div>
+
+        </div>
+
+        <!--button type="submit" id="bsub" name="submit" class="btn btn-primary pull-right">Envoyer</button-->
+        </form>
+        </div>
       </div>
-  </div>
-  </div>
+    </div>
+
+    <script src="docs/js/highlight.js"></script>
+    <script src="dist/js/bootstrap-switch.js"></script>
+    <script src="docs/js/main.js"></script>
 
 
-	<script type="text/javascript"> $('#radioBtn a').on('click', function(){
-    var sel = $(this).data('title');
-    var tog = $(this).data('toggle');
-    $('#'+tog).prop('value', sel);
-
-    $('a[data-toggle="'+tog+'"]').not('[data-title="'+sel+'"]').removeClass('active').addClass('notActive');
-    $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').addClass('active');
-		})
-	</script>
-
-</body>
+  </body>
 </html>

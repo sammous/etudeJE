@@ -2,17 +2,18 @@
 
 // load all the things we need
 var LocalStrategy   = require('passport-local').Strategy;
-
+var bcrypt = require('bcrypt-nodejs');
+/*
 // load up the user model
 var mysql = require('mysql');
-var bcrypt = require('bcrypt-nodejs');
+
 var dbconfig = require('./database');
 var connection = mysql.createConnection(dbconfig.connection);
 
-connection.query('USE ' + dbconfig.database);
+connection.query('USE ' + dbconfig.database);*/
 
 // expose this function to our app using module.exports
-module.exports = function(passport) {
+module.exports = function(passport,connection) {
 
     // =========================================================================
     // passport session setup ==================================================
@@ -53,7 +54,7 @@ module.exports = function(passport) {
                 if (err)
                     return done(err);
                 if (rows.length) {
-                    return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
+                    return done(null, false, req.flash('signupMessage', 'ECHEC : Cet identifiant est déjà pris.'));
                 } else {
                     // if there is no user with that username
                     // create the user
@@ -62,18 +63,19 @@ module.exports = function(passport) {
                         username: username,
                         password: bcrypt.hashSync(password, null, null),  // use the generateHash function in our user model
                         attribut: req.body.attribut,
+                        agence: nom,
                     };
 
 
-                    var insertQuery = "INSERT INTO users ( username, password, attribut ) values (?,?,?)";
+                    var insertQuery = "INSERT INTO users ( username, password, attribut, nom ) values (?,?,?)";
 
                     connection.query(insertQuery,[newUserMysql.username, newUserMysql.password, newUserMysql.attribut],function(err, rows) {
                         newUserMysql.id = rows.insertId;
 
-                        return done(null, newUserMysql,req.flash('signupMessage','SUCCES : Compte créé.'));
+                        return done(null, false,req.flash('signupMessage','SUCCES : Compte créé.'));
                     });
                 } else {
-                    return done(null,false,req.flash('signupMessage', 'Choisir un attribut.'));
+                    return done(null,false,req.flash('signupMessage', 'ECHEC : Choisir un attribut.'));
                 }
               }
           });
@@ -109,9 +111,44 @@ module.exports = function(passport) {
                     return done(null, false, req.flash('loginMessage', 'Oops! Mauvais mot de passe.')); // create the loginMessage and save it to session as flashdata
 
                 // all is well, return successful user
+
                 return done(null, rows[0]);
             });
         })
     );
+
+    // =========================================================================
+    // CHANGE LOGIN =============================================================
+    // =========================================================================
+    // we are using named strategies since we have one for login and one for signup
+    // by default, if there was no name, it would just be called 'local'
+
+    passport.use(
+        'local-update',
+        new LocalStrategy({
+            // by default, local strategy uses username and password, we will override with email
+            usernameField : 'username',
+            passwordField : 'password',
+            passReqToCallback : true // allows us to pass back the entire request to the callback
+        },
+        function(req, username, password, done) { // callback with email and password from our form
+            connection.query("SELECT * FROM users WHERE username = ?",[username], function(err, rows){
+                if (err)
+                    return done(err);
+                if (!rows.length) {
+                    return done(null, false, req.flash('updateMessage', 'ECHEC : Pas d\'utilisateur trouvé.')); // req.flash is the way to set flashdata using connect-flash
+                }
+
+                connection.query("UPDATE users SET password = ? WHERE username = ?",[bcrypt.hashSync(password, null, null),username], function(err, rows2){
+                    return done(null, req.flash('updateMessage','SUCCES : Mot de passe changé avec succès.'))
+                });
+
+
+                // all is well, return successful user
+                return done(null, rows[0]);
+            });
+        })
+    );
+
 
 };

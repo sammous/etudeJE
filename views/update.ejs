@@ -1,0 +1,119 @@
+<!-- views/update.ejs -->
+<!doctype html>
+<html>
+<head>
+
+	<style>
+		body {
+			background-repeat:no-repeat;
+		}
+		body.container {
+			padding-top:80px;
+
+			}
+	</style>
+
+	<% include header.ejs %>
+
+</head>
+<body>
+
+<div class="demo-headline">
+<div class="container">
+
+<div class="col-sm-6 col-sm-offset-3">
+
+	<h1><span class="fa fa-sign-in"></span> Nouveau mot de passe</h1>
+
+	<!-- show any messages that come back with authentication -->
+	<% if (message.length > 0) { %>
+		<div class="alert alert-danger"><%= message %></div>
+	<% } %>
+
+	<!-- LOGIN FORM -->
+	<form action="/update" method="post">
+		<div class="form-group">
+			<label>Identifiant</label>
+			<input type="text" class="form-control" name="username">
+		</div>
+		<div class="form-group">
+			<label>Nouveau mot de passe</label>
+			<input type="password" class="form -control" name="password">
+		</div>
+
+		<button type="submit" class="btn btn-warning btn-lg">Envoyer</button>
+	</form>
+	<br/>
+
+	<h1><span class="fa fa-user"></span> Gérer les utilisateurs</h1>
+	<br/>
+	    <table  class = "table table-hover table-bordered text-center" id="myTable">
+  		<div class="text-center">
+  			<tr>
+  			<th>  Identifiant </th>
+  			</tr>
+  	</div>
+  	    <% rows.forEach(function(users){ %>
+  			<tr >
+  			    <td> <%=users.username%></td>
+  			    <td><p data-toggle="tooltip" title="su"><button type="button" class="btn btn-warning pull-right"data-toggle="modal" data-target="#delete" data-user=<%=users.username%>>Supprimer</button></p></td>
+  			</tr>
+  		<%})%>
+  	</table>
+
+	<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+	  <div class="modal-dialog">
+	<div class="modal-content">
+	      <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+	    <h4 class="modal-title custom_align" id="Heading"> Confirmer cette suppression </h4>
+	  </div>
+	      <div class="modal-body">
+
+	   <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Voulez vous vraiment supprimer cet utilisateur ? </div>
+
+	  </div>
+	    <div class="modal-footer">
+	    <button type="button" class="btn btn-success" onclick='delete_user()' ><span class="glyphicon glyphicon-ok-sign" ></span> Confirmer </button>
+	    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Annuler </button>
+	  </div>
+	  </div>
+	<!-- /.modal-content -->
+	</div>
+	  <!-- /.modal-dialog -->
+	</div>
+
+</div>
+
+</div>
+</div>
+
+</body>
+
+<script>
+
+var user_to_delete;
+$('#delete').on('shown.bs.modal', function(event){
+	var button = $(event.relatedTarget)
+	user_to_delete = button.data('user')
+
+	var modal = $(this)
+});
+
+function delete_user(){
+        		$.ajax({
+        			url: '/supprimer_utilisateur',
+        			data : {
+        			user : user_to_delete
+        				},
+
+        			success : function () {
+        				location.reload();   
+        			}
+        		});
+};
+
+
+</script>
+
+</html>

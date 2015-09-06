@@ -1,63 +1,82 @@
 <!-- views/admin.ejs -->
 <!doctype html>
 <html>
+
 <head>
-	<title>ADMIN PAGE</title>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
-	<style>
-		body.container 		{
+	<!-- DataTables CSS -->
+	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
 
-		padding-top:80px;
+	<!-- jQuery -->
+	<script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 
-		}
-	</style>
+	<!-- DataTables -->
+	<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.js"></script>
 
-	<ul class="nav nav-pills">
-  <li role="presentation" class="active"><a href="/signup">Créer compte</a></li>
-  <li role="presentation"><a href="/comptes">Gérer compte</a></li>
-  <li role="presentation"><a href="/vehicule">Vehicule</a></li>
-	<li role="presentation"><a href="/logout">Déconnexion</a></li>
+	<% include header.ejs %>
 
-	</ul>
+	<!--script type="text/javascript">
+	$(document).ready(function(){
+	    $('#myTable').DataTable(); //????
+	});
+</script-->
 </head>
+
 <body>
 
-    <div class="container">
+<div class="container">
+<div class="row vertical-align">
+	<div class="text-center">
+		<h1><span class="fa fa-home"></span> Bienvenue, <%=user.username%></h1>
+		<br>
+  </div>
+</div>
 
-			<table class = "table table-hover table-bordered">
-				<tr>
-				<th>Identifiant</th>
-				<th>Privilège</th>
-			</tr>
-			<% rows.forEach(function(users){ %>
-					<tr>
-						<td> <%=users.username%></td>
-						<td> <%=users.attribut%></td>
-					</tr>
-					<%})%>
-			</table>
-
-			<table class = "table table-hover table-bordered">
-				<tr>
-				<th>MVA</th>
-				<th>Immatriculation</th>
-				<th>Statut</th>
-				<th>Nom agence</th>
-
-				</tr>
-			<% rowsv.forEach(function(vehicules){ %>
-					<tr>
-						<td> <%=vehicules.MVA%></td>
-						<td> <%=vehicules.IMMAT%></td>
-						<td> <%=vehicules.STATUT%></td>
-						<td> <%=vehicules.nom_agence%></td>
-
-					</tr>
-					<%})%>
-			</table>
+</div>
 
 
-    </div>
+<div class="row vertical-align">
+
+<div class="text-center">
+
+ <!-- Single button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="fa fa-road"></span>  Véhicule <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="/liste_vehicules">Liste des véhicules</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="/recuperervehicule">Récupérer</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="/transfertvehicule">Transférer</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="/preparevehicule">A préparer</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="/chercher_vehicule">Chercher</a></li>
+
+  </ul>
+</div>
+
+ <!-- Single button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="fa fa-refresh"></span>  Process <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="/fvehicule">Réception/Checkin</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="/f44">Préparer</a></li>
+    <% if (user.attribut == "administrateur" || user.attribut == "opérateur") { %>
+	<li role="separator" class="divider"></li>
+	<li><a href="/tache_reception">Assigner une réception</a></li>
+	<% } %>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">Tâche assignées</a></li>
+
+  </ul>
+</div>
+
+</div>
+</div>
 </body>
 </html>
