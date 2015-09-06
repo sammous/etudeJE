@@ -331,6 +331,15 @@ app.get('/liste_vehicules', function(req,res){
 		});
 	});
 
+	// =====================================
+	// FICHE F44 SECTION =========================
+	// =====================================
+	app.get('/checkin', isLoggedIn, function(req, res) {
+		res.render('checkin.ejs',{
+			user : req.user
+		});
+	});
+
 
 	app.get('/historique_f44', isLoggedIn, function(req, res) {
 

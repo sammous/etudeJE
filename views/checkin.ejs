@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+	<title>AVIS MANAGEMENT</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<style>
+		body
+    { padding-top:0px;
+      word-wrap:break-word;
+    }
+	</style>
+
+</head>
+<body>
+
+	<div class="panel-footer">
+		<div class="row">
+			<div class="col-md-6 previous">
+					<button type="button" class="btn btn-default btn-lg" onClick="history.go(-1);return true;">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+					</button>
+			</div>
+		</div>
+	</div>
+
+  <div class="container">
+  <div class="col-md-4 col-md-offset-4">
+      <div class="form-area">
+          <form role="form">
+          <br style="clear:both">
+                      <h3 style="margin-bottom: 25px; text-align: center;">Réception véhicule</h3>
+      				<div class="form-group">
+  						<input type="text" class="form-control" id="name" name="name" placeholder="Name" value=<%=user.username%> required>
+  					</div>
+  					<div class="form-group">
+  						<input type="number" class="form-control" id="mva" name="mva" placeholder="MVA" required>
+  					</div>
+  					<div class="form-group">
+  						<input type="text" class="form-control" id="immat" name="immat" placeholder="Immatriculation" required>
+  					</div>
+  					<div class="form-group">
+  						<input type="text" class="form-control" id="modele" name="modele" placeholder="Modèle" required>
+  					</div>
+            <div class="form-group">
+              <input type="number" class="form-control" id="num_contrat" name="num_contrat" placeholder="Numéro Contrat">
+            </div>
+            <div class="form-group">
+              <input type="number" class="form-control" id="km" name="km" placeholder="Km" required>
+            </div>
+
+            <div class='form-group'>
+                  <input type='date' class="form-control" id='date' placeholder="Date Opération">
+                      <span class=" glyphicon glyphicon-calendar"></span>
+                  </span>
+            </div>
+
+            <select name="carburant" class="form-group form-control select select-primary" data-toggle="select">
+                <option value="0" selected>Choisir le type de carburant</option>
+                <option value="g1">G1</option>
+                <option value="g2">G2</option>
+                <option value="g3">G3</option>
+                <option value="g4">G4</option>
+                <option value="g5">G5</option>
+                <option value="g6">G6</option>
+                <option value="g7">G7</option>
+                <option value="g8">G8</option>
+
+            </select>
+
+          <button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Envoyer</button>
+          </form>
+      </div>
+  </div>
+  </div>
+
+
+</body>
+</html>
