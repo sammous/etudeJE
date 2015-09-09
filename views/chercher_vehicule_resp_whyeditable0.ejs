@@ -19,7 +19,7 @@
             highlight: true,
             minLength: 1,
             name: 'users',
-            remote: 'http://localhost:8080/search_immat?key=%QUERY',
+            remote: '/search_immat?key=%QUERY',
         });
       });
     </script>
@@ -193,7 +193,7 @@
       <div class="modal-body">
 
    <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Merci de confirmer votre saisie </div>
-   
+
   </div>
     <div class="modal-footer ">
     <button type="button" class="btn btn-success" onclick='modif()' ><span class="glyphicon glyphicon-ok-sign" ></span> Confirmer </button>
@@ -216,7 +216,7 @@
       <div class="modal-body">
 
    <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Merci de confirmer votre saisie </div>
-   
+
   </div>
     <div class="modal-footer ">
     <button type="button" class="btn btn-success" onclick='modif()' ><span class="glyphicon glyphicon-ok-sign" ></span> Confirmer </button>
@@ -286,7 +286,7 @@
         function modif(){
 
         		$.ajax({
-        			url: 'http://localhost:8080/modifier_vehicule',
+        			url: '/modifier_vehicule',
         			data : {
         			MVA : $( '#MVA' ).html(),
         			IMMAT : $( '#IMMAT' ).html(),

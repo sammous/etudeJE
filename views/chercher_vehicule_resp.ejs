@@ -19,7 +19,7 @@
             highlight: true,
             minLength: 1,
             name: 'users',
-            remote: 'http://localhost:8080/search_immat?key=%QUERY',
+            remote: '/search_immat?key=%QUERY',
         });
       });
     </script>
@@ -268,7 +268,7 @@
         function modif(){
 
         		$.ajax({
-        			url: 'http://localhost:8080/modifier_vehicule',
+        			url: '/modifier_vehicule',
         			data : {
         			MVA : $( '#MVA' ).html(),
         			IMMAT : $( '#IMMAT' ).html(),

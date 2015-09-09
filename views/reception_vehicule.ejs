@@ -338,7 +338,7 @@ submitForms = function(){
 				highlight: true,
 				minLength: 1,
 				name: 'users',
-				remote: 'http://localhost:8080/search_immat?key=%QUERY',
+				remote: '/search_immat?key=%QUERY',
 		});
 	});
 
@@ -347,7 +347,7 @@ submitForms = function(){
 <script>
 	function updAUTO(){
 		$.ajax({
-			url: 'http://localhost:8080/search_mva?key='+$( '#myimmat' ).val()+'',
+			url: '/search_mva?key='+$( '#myimmat' ).val()+'',
 			dataType: 'json',
 			success : function (data) {
 				$( '#mva' ).val(data);
@@ -355,7 +355,7 @@ submitForms = function(){
 		});
 
 		$.ajax({
-			url: 'http://localhost:8080/search_proprio?key='+$( '#myimmat' ).val()+'',
+			url: '/search_proprio?key='+$( '#myimmat' ).val()+'',
 			dataType: 'json',
 			success : function (data) {
 				$( '#proprietaire' ).val(data);
@@ -363,7 +363,7 @@ submitForms = function(){
 		});
 
 		$.ajax({
-			url: 'http://localhost:8080/search_modele?key='+$( '#myimmat' ).val()+'',
+			url: '/search_modele?key='+$( '#myimmat' ).val()+'',
 			dataType: 'json',
 			success : function (data) {
 				$( '#modele' ).val(data);

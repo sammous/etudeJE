@@ -19,7 +19,7 @@
             highlight: true,
             minLength: 1,
             name: 'users',
-            remote: 'http://localhost:8080/search_agence?key=%QUERY',
+            remote: '/search_agence?key=%QUERY',
         });
       });
     </script>
@@ -187,7 +187,7 @@
         function modif(){
 
         		$.ajax({
-        			url: 'http://localhost:8080/modifier_agence',
+        			url: '/modifier_agence',
         			data : {
         			nom : $( '#nom' ).html(),
         			adresse : $( '#adresse' ).html(),
@@ -208,7 +208,7 @@
             if (l)
               {
                 $.ajax({
-                  url: 'http://localhost:8080/supprimer_agence',
+                  url: '/supprimer_agence',
                   data : {
                     id : $( '#id' ).html()
                     },

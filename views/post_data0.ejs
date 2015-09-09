@@ -52,7 +52,7 @@
 	$(document).ready(function(){
 			$('#myimmat').typeahead({
 					name: 'immat',
-					remote: 'http://localhost:8080/search?key=%QUERY',
+					remote: '/search?key=%QUERY',
 					limit: 10
 			});
 	});
@@ -83,7 +83,7 @@
               </div>
 
               <div class="form-group">
-                
+
                 <input id="myimmat" type="number" class="typeahead tt-query"  name="immat" placeholder="IMMAT" required>
               </div>
 

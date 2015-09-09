@@ -19,7 +19,7 @@
             highlight: true,
             minLength: 1,
             name: 'users',
-            remote: 'http://localhost:8080/search_immat?key=%QUERY',
+            remote: '/search_immat?key=%QUERY',
         });
       });
 
@@ -28,7 +28,7 @@
     <script>
       function updMVA(){
         $.ajax({
-          url: 'http://localhost:8080/search_mva?key='+$( '#myimmat' ).val()+'',
+          url: '/search_mva?key='+$( '#myimmat' ).val()+'',
           dataType: 'json',
           success : function (data) {
             $( '#mva' ).val(data);
