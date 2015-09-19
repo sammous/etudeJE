@@ -164,8 +164,8 @@
         		$.ajax({
         			url: '/data_ajouter_parking',
         			data : {
-        			nom : $( '#nom' ).html(),
-        			agence : $( '#agence' ).html()
+        			nom : $( '#nom' ).val(),
+        			agence : $( '#agence' ).val()
         				},
 
         			success : function (data) {
