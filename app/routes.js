@@ -298,7 +298,7 @@ app.get('/liste_vehicules', function(req,res){
  });
 
  app.post('/ajouter_tache_reception', isLoggedIn, function(req, res) {
-	 var insertQueryRecup='INSERT INTO recuperation (immat , prev_date , accompli , nomOperateur , nomPreparateur) values(?,?,?,?,?)';
+	 var insertQueryRecup='INSERT INTO tache (immat , prev_date , accompli , nomOperateur , nomPreparateur) values(?,?,?,?,?)';
 	 connection.query(insertQueryRecup,[req.body.immat , req.body.date ,req.body.accompli ? 1 : 0 , req.body.nomOperateur, req.body.nomPreparateur ]);
 	 res.redirect('/confirmation');
  });

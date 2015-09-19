@@ -283,21 +283,20 @@ INSERT INTO `process_f44` VALUES (6,'2903003','DK517QS',1,0,0,1,0,0,1,0,1,10,'ad
 UNLOCK TABLES;
 
 --
--- Table structure for table `recuperation`
+-- Table structure for table `tache`
 --
 
-DROP TABLE IF EXISTS `recuperation`;
+DROP TABLE IF EXISTS `tache`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `recuperation` (
-  `idRecuperation` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tache` (
+  `id_tache` int(11) NOT NULL AUTO_INCREMENT,
   `immat` varchar(45) DEFAULT NULL,
   `prev_date` date DEFAULT NULL,
   `accompli` tinyint(1) DEFAULT NULL,
   `nomOperateur` varchar(45) DEFAULT NULL,
-  `nomPreparateur` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idRecuperation`),
-  KEY `fk_Recuperation_Vehicule1_idx` (`immat`)
+  `assigne_par` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id_tache`),
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -305,7 +304,7 @@ CREATE TABLE `recuperation` (
 -- Dumping data for table `recuperation`
 --
 
-LOCK TABLES `recuperation` WRITE;
+LOCK TABLES `tache` WRITE;
 /*!40000 ALTER TABLE `recuperation` DISABLE KEYS */;
 /*!40000 ALTER TABLE `recuperation` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -591,6 +590,9 @@ LOCK TABLES `voiture_à_récuperer` WRITE;
 /*!40000 ALTER TABLE `voiture_à_récuperer` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+
+
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
