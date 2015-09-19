@@ -72,7 +72,7 @@ module.exports = function(app, passport,connection) {
 
 
 app.post('/data_f44', function(req,res){
-	console.log(req.body.Aspiration_intérieur ? 1 : 0 );
+
 	var insertQueryf44='INSERT INTO process_f44 (mva,immat,remplissage_carburant,aspiration_interieur,lavage_exterieur,nettoyage_vitre,nettoyage_parebrise_interieur,niveau_huile,niveau_lave_glace,pression_pneus,controle_carosserie,controle_interieur,nomOperateur) values(?,?,?,?,?,?,?,?,?,?,?,?,?)';
 	connection.query(insertQueryf44,[req.body.MVA,req.body.immat,req.body.Aspiration_intérieur ? 1 : 0 ,req.body.Lavage_extérieure ? 1 : 0 ,req.body.Nettoyage_vitre ? 1 : 0 ,req.body.Nettoyage_parebrise_intérieur ? 1 : 0  ,req.body.Niveau_huile ? 1 : 0  ,req.body.Niveau_lave_glace ? 1 : 0 ,
 		 req.body.Pression_pneus ? 1 : 0 ,req.body.Contrôle_carrosserie ? 1 : 0 ,req.body.Aspiration_intérieure ? 1 : 0 ,req.body.remplissage_carburant ? 1 : 0 ,req.body.name]);
@@ -208,15 +208,26 @@ app.get('/liste_vehicules', function(req,res){
 				data: JSON.stringify(result)
 			});
 			});
-		console.log(data);
+
 		} else {
-	  console.log(req.query);
+			connection.query('select * from vehicules where nom_agence like "%'+req.user.agence+'%" ;', function(err,result){
+				data=JSON.stringify(result);
+				console.log(result)
+				res.render('liste_vehicules.ejs', {
+					user : req.user, // get the user out of session and pass to template
+					rowsv : result,
+					data: JSON.stringify(result)
+				});
+
+	});
+
+	  /*console.log(req.query);
 		res.render('liste_vehicules.ejs', {
 			user : req.user, // get the user out of session and pass to template
 			rowsv : []
-		});
+		});*/
 	};
-	console.log(data);
+
 	});
 
 	app.get('/profile', isLoggedIn, function(req, res) {
@@ -264,7 +275,7 @@ app.get('/liste_vehicules', function(req,res){
  });
 
  app.post('/tache_reception', function(req,res){
- 	
+
  });
 
  app.post('/ajouter_tache_reception', isLoggedIn, function(req, res) {
@@ -310,8 +321,12 @@ app.get('/liste_vehicules', function(req,res){
 
 	app.post('/fvehicule', function(req,res){
 		console.log(req.body);
+		var insertQueryCheckin='INSERT INTO process_check_in (nomOperateur,immat,mva,proprio,modele,wizard,contrat,km,date_retour_reel,heure_retour_reel,carburant,dommage,preparation,transfert,position_vehicule,presence_gps,presence_sb) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+		connection.query(insertQueryCheckin,[req.body.name,req.body.immat,req.body.mva, req.body.proprietaire, req.body.modele, req.body.wizard ,req.body.num_contrat, req.body.km,
+		req.body.date ,req.body.heure, req.body.carburant ? 1 : 0 ,req.body.dommage ? 1:0 , req.body.preparation, req.body.transfert,req.body.position, req.body.presence_gps, req.body.presence_sb]);
+		connection.query('UPDATE vehicules SET position_app = ?, localisation_agence_app = ?, preparation_app = ? WHERE MVA = ?', [req.body.position, req.body.transfert, req.body.preparation, req.body.mva]);
 		res.render('confirmation.ejs',{
-			user : req.user
+			user : req.userproximity
 		});
 	});
 
@@ -402,7 +417,6 @@ app.get('/liste_vehicules', function(req,res){
 	app.post('/data_chercher_agence', function(req,res){
 		console.log(req.body)
 		connection.query('select * from agence where nom like "%'+req.body.agence+'%";', function(err,result){
-			console.log("voici")
 			console.log(result)
 		res.render('chercher_agence_resp.ejs', {
 			rows : result,
@@ -592,6 +606,22 @@ app.get('/liste_vehicules', function(req,res){
 	};
 	});
 
+	app.get('/search_wizard',function(req,res){
+			if (req.query.key!=''){
+	connection.query('SELECT STATUT from vehicules where immat like "%'+req.query.key+'%"', function(err, rows, fields) {
+			//console.log('SELECT id from users where id = '+req.query.key+';');
+			if (err) throw err;
+			var data=[];
+			for(i=0;i<rows.length;i++)
+				{
+					data.push(rows[i].STATUT);
+				}
+			res.end(JSON.stringify(data));
+		//  res.end(toString(rows[i].username))	;
+		});
+	};
+	});
+
 	// =====================================
 	// CHERCHER agence  =======================
 	// =====================================
@@ -656,11 +686,15 @@ app.get('/liste_vehicules', function(req,res){
 // we will use route middleware to verify this (the isLoggedIn function)
 app.get('/vehicule', isLoggedIn, function(req, res) {
 
-  	connection.query('select * from vehicules', function(err,result2){
-		res.render('vehicule.ejs', {
-			 // get the user out of session and pass to template
-			rowsv : result2
-		});
+  	connection.query('select * from vehicules where nom_agence like "%'+req.user.agence+'%" ;', function(err,result){
+			data=JSON.stringify(result);
+			console.log(result)
+			res.render('liste_vehicules.ejs', {
+				user : req.user, // get the user out of session and pass to template
+				rowsv : result,
+				data: JSON.stringify(result)
+			});
+
 });
 });
 

@@ -19,12 +19,14 @@
       <tr>
       <th>id agence</th>
       <th>Nom agence</th>
+			<th>Code site</th>
       </tr>
   </div>
     <% rows.forEach(function(agences){ %>
       <tr>
         <td> <%=agences.idAgence%></td>
         <td> <%=agences.nom%></td>
+				<td> <%=agences.adresse%></td>
       </tr>
       <%})%>
   </table>

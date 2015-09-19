@@ -33,7 +33,7 @@ var connection;
 // configuration ===============================================================
 
 var mysql = require('mysql');
-var dbconfig = require('./config/database');
+var dbconfig = require('./config/database_local');
 function handleDisconnect() {
   console.log('i am restarting')
 	connection = mysql.createConnection(dbconfig.connection); // Recreate the connection, since
