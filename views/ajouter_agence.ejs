@@ -111,13 +111,22 @@
       <br>
   			<tr>
   			<th>  Nom  </th>
-        <th>  Code site  </th>
+        <th>  Code site 1 </th>
+        <th>  Code site 2 </th>
+        <th>  Code site 3 </th>
+        <th>  Code site 4 </th>
+        <th>  Code site 5 </th>
+
   			</tr>
   	</div>
   			<tr >
 
           <td ><input type="text" id='nom' name="nom" class="typeahead form-control" placeholder="Mettre le nom ici"/></td>
-          <td ><input type="text" id='adresse' name="adresse" class="typeahead form-control" placeholder="Code Agence"/></td>
+          <td ><input type="text" id='code1' name="code1" class="typeahead form-control" placeholder="Mettre ici le code agence"/></td>
+          <td ><input type="text" id='code2' name="code2" class="typeahead form-control" placeholder="Mettre ici le code agence"/></td>
+          <td ><input type="text" id='code3' name="code3" class="typeahead form-control" placeholder="Mettre ici le code agence"/></td>
+          <td ><input type="text" id='code4' name="code4" class="typeahead form-control" placeholder="Mettre ici le code agence"/></td>
+          <td ><input type="text" id='code5' name="code5" class="typeahead form-control" placeholder="Mettre ici le code agence"/></td>
 
   			</tr>
   	</table>
@@ -155,7 +164,12 @@
         			url: '/data_ajouter_agence',
         			data : {
         			nom : $( '#nom' ).html()
-              adresse : $( '#adresse' ).html()
+              code1 : $( '#code1' ).html(),
+              code2 : $( '#code2' ).html(),
+              code3 : $( '#code3' ).html(),
+              code4 : $( '#code4' ).html(),
+              code5 : $( '#code5' ).html()
+
         				},
 
         			success : function (data) {

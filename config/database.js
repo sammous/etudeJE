@@ -5,7 +5,7 @@ module.exports = {
         'user': 'root',
         'password': 'root'
     },
-	'database': 'locanor_2713,
+	'database': 'locanor_2713',
   'users_table': 'users',
   'vehicule_table': 'vehicules'
 };

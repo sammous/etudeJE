@@ -19,14 +19,25 @@
       <tr>
       <th>id agence</th>
       <th>Nom agence</th>
-			<th>Code site</th>
+			<th>Code site 1</th>
+      <th>Code site 2</th>
+      <th>Code site 3</th>
+      <th>Code site 4</th>
+      <th>Code site 5</th>
+
+
       </tr>
   </div>
     <% rows.forEach(function(agences){ %>
       <tr>
         <td> <%=agences.idAgence%></td>
         <td> <%=agences.nom%></td>
-				<td> <%=agences.adresse%></td>
+				<td> <%=agences.code1%></td>
+        <td> <%=agences.code2%></td>
+        <td> <%=agences.code3%></td>
+        <td> <%=agences.code4%></td>
+        <td> <%=agences.code5%></td>
+
       </tr>
       <%})%>
   </table>
