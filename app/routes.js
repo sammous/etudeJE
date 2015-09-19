@@ -445,16 +445,15 @@ app.get('/liste_vehicules', function(req,res){
 	});
 
 	app.get('/modifier_agence', isLoggedIn, function(req, res) {
-	connection.query('UPDATE agence SET nom = ?, adresse = ? WHERE idAgence = ?', [req.query.nom, req.query.adresse, req.query.id])
-		var data="";
+	connection.query('UPDATE agence SET nom = ?, code1 = ?, code2 = ?, code3 = ?, code4 = ?, code5 = ? WHERE idAgence = ?', [req.query.nom, req.query.code1, req.query.code2, req.query.code3, req.query.code4, req.query.code5, req.query.id])		
+	var data="";
 		res.end(data);
 	});
 
 	app.get('/data_ajouter_agence', isLoggedIn, function(req, res) {
 		console.log(res.body);
-		/*
-		var insertQueryAgence='INSERT INTO agence (nom,adresse) values(?,?)';
- 	 connection.query(insertQueryAgence,[req.query.nom,req.query.adresse]);*/
+		var insertQueryAgence='INSERT INTO agence (nom,code1,code2,code3,code4,code5) values(?,?,?,?,?,?)';
+ 		connection.query(insertQueryAgence,[req.query.nom,req.query.code1,req.query.code2,req.query.code3,req.query.code4,req.query.code5]);
  	 var data="";
  	res.end(data);
   });
