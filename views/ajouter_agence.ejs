@@ -155,14 +155,12 @@
   <!-- /.modal-dialog -->
 </div>
 
-</div>
-
 <script>
         function ajout(){
         		$.ajax({
         			url: '/data_ajouter_agence',
         			data : {
-        			nom : $( '#nom' ).html()
+        			nom : $( '#nom' ).html(),
               code1 : $( '#code1' ).html(),
               code2 : $( '#code2' ).html(),
               code3 : $( '#code3' ).html(),
