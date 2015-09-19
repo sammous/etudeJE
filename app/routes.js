@@ -452,7 +452,7 @@ app.get('/liste_vehicules', function(req,res){
 
 	app.get('/data_ajouter_agence', isLoggedIn, function(req, res) {
 		var insertQueryAgence='INSERT INTO agence (nom,code1,code2,code3,code4,code5) values(?,?,?,?,?,?)';
- 	 connection.query(insertQueryAgence,[req.query.nom,req.query.adresse]);
+ 	 connection.query(insertQueryAgence,[req.query.nom,req.query.code1,req.query.code2,req.query.code3,req.query.code4,req.query.code5]);
  	 var data="";
  	res.end(data);
   });
