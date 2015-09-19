@@ -154,12 +154,12 @@
   		<% rows.forEach(function(agence){ %>
   			<tr >
   				<td ><span id = 'id'> <%=agence.idAgence%>  </span> </td>
-          <td><input type="text" id='nom' name="nom" class="typeahead form-control" placeholder='<%=agence.nom%>'/></td>
-          <td><input type="text" id='code1' name="code1" class="typeahead form-control" placeholder='<%=agence.code1%>'/></td>
-          <td><input type="text" id='code2' name="code2" class="typeahead form-control" placeholder='<%=agence.code2%>'/></td>
-          <td><input type="text" id='code3' name="code3" class="typeahead form-control" placeholder='<%=agence.code3%>'/></td>
-          <td><input type="text" id='code4' name="code4" class="typeahead form-control" placeholder='<%=agence.code4%>'/></td>
-          <td><input type="text" id='code5' name="code5" class="typeahead form-control" placeholder='<%=agence.code5%>'/></td>
+          <td><input type="text" id='nom' name="nom" class="typeahead form-control" value='<%=agence.nom%>'/></td>
+          <td><input type="text" id='code1' name="code1" class="typeahead form-control" value='<%=agence.code1%>'/></td>
+          <td><input type="text" id='code2' name="code2" class="typeahead form-control" value='<%=agence.code2%>'/></td>
+          <td><input type="text" id='code3' name="code3" class="typeahead form-control" value='<%=agence.code3%>'/></td>
+          <td><input type="text" id='code4' name="code4" class="typeahead form-control" value='<%=agence.code4%>'/></td>
+          <td><input type="text" id='code5' name="code5" class="typeahead form-control" value='<%=agence.code5%>'/></td>
 
   			</tr>
 
@@ -198,12 +198,12 @@
         		$.ajax({
         			url: '/modifier_agence',
         			data : {
-        			nom : $( '#nom' ).html(),
-        			code1 : $( '#code1' ).html(),
-              code2 : $( '#code2' ).html(),
-              code3 : $( '#code3' ).html(),
-              code4 : $( '#code4' ).html(),
-              code5 : $( '#code5' ).html(),
+        			nom : $( '#nom' ).val(),
+        			code1 : $( '#code1' ).val(),
+              code2 : $( '#code2' ).val(),
+              code3 : $( '#code3' ).val(),
+              code4 : $( '#code4' ).val(),
+              code5 : $( '#code5' ).val(),
               id : $( '#id' ).html()
         				},
 
