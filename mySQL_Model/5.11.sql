@@ -18,7 +18,7 @@
 --
 -- Table structure for table `agence`
 --
-
+use mydb;
 DROP TABLE IF EXISTS `agence`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -296,7 +296,7 @@ CREATE TABLE `tache` (
   `accompli` tinyint(1) DEFAULT NULL,
   `nomOperateur` varchar(45) DEFAULT NULL,
   `assigne_par` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_tache`),
+  PRIMARY KEY (`id_tache`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -305,8 +305,8 @@ CREATE TABLE `tache` (
 --
 
 LOCK TABLES `tache` WRITE;
-/*!40000 ALTER TABLE `recuperation` DISABLE KEYS */;
-/*!40000 ALTER TABLE `recuperation` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tache` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tache` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
