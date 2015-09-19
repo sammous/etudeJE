@@ -92,17 +92,36 @@ app.get('/liste_vehicules', function(req,res){
 });*/
 
 	app.post('/data_chercher_vehicule', function(req,res){
-		console.log(req.body.immat)
-		connection.query('select * from vehicules where immat like "%'+req.body.immat+'%";', function(err,result){
-			connection.query('select * from process_f44 where immat like"%'+req.body.immat+'%";', function(err,result2){
 
-		res.render('chercher_vehicule_resp.ejs', {
-			rows : result,
-			rows2 : result2,
-			user : req.user
-		});
+
+		if (req.user.attribut == "administrateur") {
+			connection.query('select * from vehicules where immat like "%'+req.body.immat+'%";', function(err,result){
+				connection.query('select * from process_f44 where immat like"%'+req.body.immat+'%";', function(err,result2){
+
+			res.render('chercher_vehicule_resp.ejs', {
+				rows : result,
+				rows2 : result2,
+				user : req.user
 			});
-		});
+				});
+			});
+
+		} else {
+
+			connection.query('select * from vehicules where immat like "%'+req.body.immat+'%" AND vehicules.nom_agence like "%'+req.user.agence+'%";', function(err,result){
+				connection.query('select * from process_f44 where immat like"%'+req.body.immat+'%" AND immat IN ( select immat from vehicules where vehicules.nom_agence like "%'+req.user.agence+'%" );', function(err,result2){
+
+			res.render('chercher_vehicule_resp.ejs', {
+				rows : result,
+				rows2 : result2,
+				user : req.user
+			});
+				});
+			});
+
+		}
+
+
 	});
 
 	app.post('/data_chercher_process', function(req,res){
@@ -375,8 +394,8 @@ app.get('/liste_vehicules', function(req,res){
 
 
 	app.post('/data_chercher_vehicule', function(req,res){
-		console.log(req.body.immat)
-		connection.query('select * from vehicules where immat like "%'+req.body.immat+'%";', function(err,result){
+		console.log('yolo')
+		connection.query('select * from vehicules where immat like "%'+req.body.immat+'%" where nom_agence like "%'+req.user.agence+'%" ;', function(err,result){
 		res.render('chercher_vehicule_resp.ejs', {
 			rows : result,
 			user : req.user,
@@ -495,7 +514,8 @@ app.get('/liste_vehicules', function(req,res){
 
 
 	app.get('/search_immat',function(req,res){
-	connection.query('SELECT immat from vehicules where immat like "%'+req.query.key+'%"', function(err, rows, fields) {
+
+		connection.query('SELECT immat from vehicules where immat like "%'+req.query.key+'%"', function(err, rows, fields) {
 			//console.log('SELECT id from users where id = '+req.query.key+';');
 			if (err) throw err;
 			var data=[];
@@ -507,6 +527,8 @@ app.get('/liste_vehicules', function(req,res){
 			res.end(JSON.stringify(data));
 		//  res.end(toString(rows[i].username))	;
 		});
+
+
 	});
 
 
@@ -702,37 +724,73 @@ app.get('/vehicule', isLoggedIn, function(req, res) {
 
 app.get('/transfertvehicule', isLoggedIn, function(req, res) {
 
+	if (req.user.attribut == "administrateur") {
+
 		connection.query('select * from vehicules where STATUT = "ON MOVE"', function(err,result){
-		res.render('transfert_vehicule.ejs', {
+		res.render('recuperer_vehicule.ejs', {
 			 // get the user out of session and pass to template
 			rowsv : result,
 			user: req.user
+			});
 		});
-});
+	} else {
+		connection.query('select * from vehicules where nom_agence like "%'+req.user.agence+'%" AND STATUT = "ON MOVE"', function(err,result){
+		res.render('recuperer_vehicule.ejs', {
+			 // get the user out of session and pass to template
+			rowsv : result,
+			user: req.user
+			});
+		});
+	}
+
 });
 
 
 app.get('/preparevehicule', isLoggedIn, function(req, res) {
 
+	if (req.user.attribut == "administrateur") {
+
 		connection.query('select * from vehicules where STATUT = "MARSHALL"', function(err,result){
-		res.render('prepare_vehicule.ejs', {
+		res.render('recuperer_vehicule.ejs', {
 			 // get the user out of session and pass to template
 			rowsv : result,
 			user: req.user
+			});
 		});
-});
+	} else {
+		connection.query('select * from vehicules where nom_agence like "%'+req.user.agence+'%" AND STATUT = "MARSHALL"', function(err,result){
+		res.render('recuperer_vehicule.ejs', {
+			 // get the user out of session and pass to template
+			rowsv : result,
+			user: req.user
+			});
+		});
+	}
+
 });
 
 
 app.get('/recuperervehicule', isLoggedIn, function(req, res) {
 
-		connection.query('select * from vehicules where STATUT = "ON HAND"', function(err,result){
-		res.render('recuperer_vehicule.ejs', {
-			 // get the user out of session and pass to template
-			rowsv : result,
-			user: req.user
-		});
-});
+	  if (req.user.attribut == "administrateur") {
+
+			connection.query('select * from vehicules where STATUT = "ON HAND"', function(err,result){
+			res.render('recuperer_vehicule.ejs', {
+				 // get the user out of session and pass to template
+				rowsv : result,
+				user: req.user
+				});
+			});
+	 	} else {
+			connection.query('select * from vehicules where nom_agence like "%'+req.user.agence+'%" AND STATUT = "ON HAND"', function(err,result){
+			res.render('recuperer_vehicule.ejs', {
+				 // get the user out of session and pass to template
+				rowsv : result,
+				user: req.user
+				});
+			});
+		}
+
 });
 
 // =====================================

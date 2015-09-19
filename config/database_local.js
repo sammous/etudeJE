@@ -3,9 +3,9 @@ module.exports = {
     'connection': {
         'host': 'localhost',
         'user': 'root',
-        'password': 'root'
+        'password': '123456'
     },
-	'database': 'locanor_2713',
+	'database': 'mydb',
   'users_table': 'users',
   'vehicule_table': 'vehicules'
 };
