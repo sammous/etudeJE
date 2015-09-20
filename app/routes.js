@@ -309,8 +309,20 @@ app.get('/liste_vehicules', function(req,res){
 
  });
 
+ app.get('/redirect_to_task', function(req,res){
+  		var id_task = req.query.id;
+  		var type = req.query.type
+
+  		if (type == 'process_f44') {
+  			res.redirect('/f44')
+  		} else {
+  			res.redirect('/fvehicule')
+  		}
+
+ });
+
  app.post('/ajouter_tache_reception', isLoggedIn, function(req, res) {
-	 var insertQueryRecup='INSERT INTO tache (immat , prev_date , accompli , nomOperateur , assigne_par) values(?,?,?,?,?)';
+	 var insertQueryRecup='INSERT INTO tache (immat , prev_date , accompli , nomOperateur , assigne_par, type) values(?,?,?,?,?,?)';
 	 connection.query(insertQueryRecup,[req.body.immat , req.body.date ,req.body.accompli ? 1 : 0 , req.body.operateur, req.body.nomPreparateur ]);
 	 res.redirect('/confirmation');
  });
@@ -355,7 +367,7 @@ app.get('/liste_vehicules', function(req,res){
 		var insertQueryCheckin='INSERT INTO process_check_in (nomOperateur,immat,mva,proprio,modele,wizard,contrat,km,date_retour_reel,heure_retour_reel,carburant,dommage,preparation,transfert,position_vehicule,presence_gps,presence_sb) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
 		connection.query(insertQueryCheckin,[req.body.name,req.body.immat,req.body.mva, req.body.proprietaire, req.body.modele, req.body.wizard ,req.body.num_contrat, req.body.km,
 		req.body.date ,req.body.heure, req.body.carburant ? 1 : 0 ,req.body.dommage ? 1:0 , req.body.preparation, req.body.transfert,req.body.position, req.body.presence_gps, req.body.presence_sb]);
-		connection.query('UPDATE vehicules SET position_app = ?, localisation_agence_app = ?, preparation_app = ? WHERE MVA = ?', [req.body.position, req.body.transfert, req.body.preparation, req.body.mva]);
+		connection.quotesery('UPDATE vehicules SET position_app = ?, localisation_agence_app = ?, preparation_app = ? WHERE MVA = ?', [req.body.position, req.body.transfert, req.body.preparation, req.body.mva]);
 		res.render('confirmation.ejs',{
 			user : req.userproximity
 		});
@@ -376,16 +388,6 @@ app.get('/liste_vehicules', function(req,res){
 			user : req.user
 		});
 	});
-
-	// =====================================
-	// FICHE F44 SECTION =========================
-	// =====================================
-	app.get('/checkin', isLoggedIn, function(req, res) {
-		res.render('checkin.ejs',{
-			user : req.user
-		});
-	});
-
 
 
 	// =====================================

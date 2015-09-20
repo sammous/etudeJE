@@ -29,6 +29,8 @@
 			<th>Etat</th>
 			<th>Chargé du travail</th>
 			<th>Assignation faite par </th>
+      <th>Type </th>
+
       </tr>
   </div>
     <% rows.forEach(function(recup){ %>
@@ -39,7 +41,7 @@
 				<td> <%=recup.accompli ? 'Fait' : 'Non fait'%></td>
 				<td> <%=recup.nomOperateur%></td>
 				<td> <%=recup.assigne_par%></td>
-
+        <td><p data-toggle="tooltip" title="su"><button type="button" class="btn btn-info" onclick='go_to_task()' data-target="#task" data-type='<%=recup.type%>' data-id='<%=recup.id_tache%>'><%=recup.type%></button></p></td>
 
       </tr>
       <%})%>
@@ -53,4 +55,33 @@
 </div>
 
 </body>
+
+<script>
+
+var id_task;
+var type;
+
+function go_to_task(){
+  var button = $(event.relatedTarget)
+  id_task = button.data('id')
+  type = button.data('type')
+  var url;
+  if (type == "process_f44") {
+    url = '/f44'
+  } else {
+    url = '/fvehicule'
+  }
+            
+  $.ajax({
+    url: url,
+    data : {
+    id_task : id_task,
+    type: type
+      },
+  });
+};
+
+
+</script>
+
 </html>

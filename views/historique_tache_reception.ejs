@@ -23,6 +23,8 @@
 			<th>Etat</th>
 			<th>Chargé du travail</th>
 			<th>Assignation faite par </th>
+      <th>Type </th>
+
       </tr>
   </div>
     <% rows.forEach(function(recup){ %>
@@ -33,6 +35,7 @@
 				<td> <%=recup.accompli ? 'Fait' : 'Non fait'%></td>
 				<td> <%=recup.nomOperateur%></td>
 				<td> <%=recup.assigne_par%></td>
+        <td> <%=recup.type%></td>
 
 
       </tr>

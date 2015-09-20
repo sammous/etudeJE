@@ -277,6 +277,7 @@ CREATE TABLE `tache` (
   `accompli` tinyint(1) DEFAULT NULL,
   `nomOperateur` varchar(45) DEFAULT NULL,
   `assigne_par` varchar(45) DEFAULT NULL,
+  `type` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_tache`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -287,7 +288,7 @@ CREATE TABLE `tache` (
 
 LOCK TABLES `tache` WRITE;
 /*!40000 ALTER TABLE `tache` DISABLE KEYS */;
-INSERT INTO `tache` VALUES (1,'DL569AB','20-09-2015',0,'foo','admin');
+INSERT INTO `tache` VALUES (1,'DL569AB','20-09-2015',0,'foo','admin','process_f44');
 /*!40000 ALTER TABLE `tache` ENABLE KEYS */;
 UNLOCK TABLES;
 
