@@ -142,22 +142,30 @@ input[type=number]::-webkit-outer-spin-button {
         <br>
 
         <div class="form-group">
+					<label>Réception assignée par :</label>
           <input type="text" class="form-control" name="nomPreparateur" placeholder="nomPreparateur" value=<%=user.username%> >
+					<br>
         </div>
 
         <div class="form-group">
+					<label>Chargé du travail :</label>
           <input type="text" id='name' class="typeahead form-control" name="operateur" placeholder="Nom de l'opérateur" >
         </div>
 
         <div class="form-group">
+					<label>Immat : </label>
           <input type="text" id='myimmat' name="immat" class="typeahead form-control" placeholder="Immat" onFocus="updMVA()" />
+					<br>
         </div>
 
         <div class="form-group">
+					<label>MVA :</label>
           <input type="number" class="typeahead form-control" id="mva" name="MVA" placeholder="MVA"  required>
+					<br>
         </div>
 
         <div class="form-group">
+					<label>Travail : </label>
                   <select name="tache" class="form-control select select-primary" data-toggle="select">
                       <option value="0" selected>Choisir une tache</option>
                     <option value="immatriculation">Immatriculation</option>
@@ -165,12 +173,14 @@ input[type=number]::-webkit-outer-spin-button {
                     <option value="REG">REG</option>
                     <option value="MARSHALLED">MARSHALLED</option>
                   </select>
+									<br>
         </div>
 
         <div class='form-group'>
           <label> Date prévue : <label>
            <input name="date" type="text" id="datepicker" placeholder="Date prévue">
           <span class=" glyphicon glyphicon-calendar"></span>
+					<br>
         </div>
 
         <div class="form-group">
@@ -178,6 +188,7 @@ input[type=number]::-webkit-outer-spin-button {
             <label for="Contrôle intérieur"> Etat :</label>
             <input id="accompli" name="accompli" type="checkbox" unchecked data-on-text="Fait"  data-off-text="Pas fait">
           </p>
+					<br>
         </div>
 
 
@@ -238,6 +249,7 @@ input[type=number]::-webkit-outer-spin-button {
     });
 
     </script>
+		<script  type="text/javascript" src="typeahead.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
         $('#myimmat').typeahead({

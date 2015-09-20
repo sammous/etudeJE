@@ -21,18 +21,18 @@
       <th>Immat</th>
       <th>Date prévue</th>
 			<th>Etat</th>
-			<th>Nom Préparateur</th>
-			<th>Nom Opérateur</th>
+			<th>Chargé du travail</th>
+			<th>Assignation faite par </th>
       </tr>
   </div>
     <% rows.forEach(function(recup){ %>
       <tr>
-        <td> <%=recup.idRecuperation%></td>
+        <td> <%=recup.id_tache%></td>
         <td> <%=recup.immat%></td>
 				<td> <%=recup.prev_date%></td>
 				<td> <%=recup.accompli ? 'Fait' : 'Non fait'%></td>
-				<td> <%=recup.nomPreparateur%></td>
 				<td> <%=recup.nomOperateur%></td>
+				<td> <%=recup.assigne_par%></td>
 
 
       </tr>

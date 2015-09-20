@@ -124,15 +124,27 @@ app.get('/liste_vehicules', function(req,res){
 
 	});
 
-	app.post('/data_chercher_process', function(req,res){
-		connection.query('select * from process_f44 where Numero like "%'+req.body.numero+'%";', function(err,result){
-		console.log(result);
-		res.render('chercher_process_resp.ejs', {
-			rows : result,
-			user : req.user
+	app.get('/historique_f44', function(req,res){
+		if (req.user.attribut == "administrateur") {
+
+			connection.query('select * from process_f44 ;', function(err,result){
+
+			res.render('chercher_process_resp.ejs', {
+				rows : result,
+				user : req.user
+				});
 			});
-		});
-	});
+
+		} else {
+
+					connection.query('select * from process_f44 where process_f44.immat IN ( select immat from vehicules where vehicules.nom_agence like "%'+req.user.agence+'%" );', function(err,result){
+					res.render('chercher_process_resp.ejs', {
+						rows : result,
+						user : req.user
+						});
+					});
+				}
+			});
 
 
 
@@ -219,7 +231,7 @@ app.get('/liste_vehicules', function(req,res){
 
 		if (req.user.attribut == "administrateur") {
 
-			connection.query('select * from vehicules LIMIT 50', function(err,result){
+			connection.query('select * from vehicules', function(err,result){
 			data=JSON.stringify(result);
 			res.render('liste_vehicules.ejs', {
 				user : req.user, // get the user out of session and pass to template
@@ -254,7 +266,7 @@ app.get('/liste_vehicules', function(req,res){
 
 		if (req.user.attribut == "administrateur") {
 			console.log("Connected as admin");
-			connection.query('select * from vehicules LIMIT 50', function(err,result){
+			connection.query('select * from vehicules ', function(err,result){
 			data=JSON.stringify(result);
 			res.render('admin.ejs', {
 				user : req.user, // get the user out of session and pass to template
@@ -264,12 +276,12 @@ app.get('/liste_vehicules', function(req,res){
 			});
 		console.log(data);
 		} else {
-	  console.log(req.query);
-		connection.query('select * from vehicules LIMIT 50', function(err,result){
+	  console.log(req.user.username);
+		connection.query('select * from tache where nomOperateur like "%'+req.user.username+'%" ;', function(err,result){
 		data=JSON.stringify(result);
 		res.render('profile.ejs', {
 			user : req.user, // get the user out of session and pass to template
-			rowsv : result,
+			rows : result,
 			data: JSON.stringify(result)
 		});
 		});
@@ -298,15 +310,15 @@ app.get('/liste_vehicules', function(req,res){
  });
 
  app.post('/ajouter_tache_reception', isLoggedIn, function(req, res) {
-	 var insertQueryRecup='INSERT INTO tache (immat , prev_date , accompli , nomOperateur , nomPreparateur) values(?,?,?,?,?)';
-	 connection.query(insertQueryRecup,[req.body.immat , req.body.date ,req.body.accompli ? 1 : 0 , req.body.nomOperateur, req.body.nomPreparateur ]);
+	 var insertQueryRecup='INSERT INTO tache (immat , prev_date , accompli , nomOperateur , assigne_par) values(?,?,?,?,?)';
+	 connection.query(insertQueryRecup,[req.body.immat , req.body.date ,req.body.accompli ? 1 : 0 , req.body.operateur, req.body.nomPreparateur ]);
 	 res.redirect('/confirmation');
  });
 
 
  app.get('/historique_tache_reception', function(req,res){
 
-	 connection.query('select * from recuperation;', function(err,result){
+	 connection.query('select * from tache;', function(err,result){
 	 res.render('historique_tache_reception.ejs', {
 		 rows : result,
 		 user : req.user,
@@ -375,12 +387,6 @@ app.get('/liste_vehicules', function(req,res){
 	});
 
 
-	app.get('/historique_f44', isLoggedIn, function(req, res) {
-
-		res.render('chercher_process.ejs',{
-			user : req.user
-		});
-	});
 
 	// =====================================
 	// CHERCHER VEHICULE SECTION ===========
@@ -687,7 +693,7 @@ app.get('/liste_vehicules', function(req,res){
 	app.get('/admin', isLoggedIn, isAdmin, function(req, res) {
 		var data='';
 		connection.query('select * from users', function(err,result){
-			connection.query('select * from vehicules LIMIT 50', function(err,result2){
+			connection.query('select * from vehicules ', function(err,result2){
 			data = JSON.stringify(result2)
 			res.render('admin.ejs', {
 				user:req.user,
