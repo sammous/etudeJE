@@ -1,21 +1,9 @@
 <!-- views/update.ejs -->
-<!doctype html>
-<html>
-<head>
 
-	<style>
-		body {
-			background-repeat:no-repeat;
-		}
-		body.container {
-			padding-top:80px;
 
-			}
-	</style>
 
 	<% include header.ejs %>
 
-</head>
 <body>
 
 <div class="demo-headline">
@@ -56,7 +44,7 @@
   	    <% rows.forEach(function(users){ %>
   			<tr >
   			    <td> <%=users.username%></td>
-  			    <td><p data-toggle="tooltip" title="su"><button type="button" class="btn btn-warning pull-right"data-toggle="modal" data-target="#delete" data-user=<%=users.username%>>Supprimer</button></p></td>
+  			    <td><p data-toggle="tooltip" title="su"><button type="button" class="btn btn-warning pull-right"data-toggle="modal" data-target="#delete" data-user='<%=users.username%>'>Supprimer</button></p></td>
   			</tr>
   		<%})%>
   	</table>
@@ -108,7 +96,7 @@ function delete_user(){
         				},
 
         			success : function () {
-        				location.reload();   
+        				location.reload();
         			}
         		});
 };
