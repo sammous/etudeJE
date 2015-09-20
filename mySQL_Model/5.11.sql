@@ -25,7 +25,11 @@ DROP TABLE IF EXISTS `agence`;
 CREATE TABLE `agence` (
   `idAgence` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(45) DEFAULT NULL,
-  `adresse` varchar(45) DEFAULT NULL,
+  `code1` varchar(45) DEFAULT NULL,
+  `code2` varchar(45) DEFAULT NULL,
+  `code3` varchar(45) DEFAULT NULL,
+  `code4` varchar(45) DEFAULT NULL,
+  `code5` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idAgence`),
   UNIQUE KEY `idAgence_UNIQUE` (`idAgence`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
@@ -37,9 +41,13 @@ CREATE TABLE `agence` (
 
 LOCK TABLES `agence` WRITE;
 /*!40000 ALTER TABLE `agence` DISABLE KEYS */;
-INSERT INTO `agence` VALUES (1,'   Agence1      ','   Code 1'),(2,'Agence2','Adresse2'),(3,' test1',' test2'),(4,' table_test',' ADRESSE_test'),(5,' Amiens',' '),(6,' Beauvais APT',' Mettre l\'adresse ici '),(7,' Beauvais DT',' Mettre l\'adresse ici '),(8,' Rouen DT',' Mettre l\'adresse ici '),(9,' Rouen Gare',' Mettre l\'adresse ici '),(10,' Creil',' Mettre l\'adresse ici '),(11,' Compiègne',' Mettre l\'adresse ici '),(12,' Saint Quentin',' Mettre l\'adresse ici '),(13,' Le Bourget',' Mettre l\'adresse ici '),(14,' TGV Picardie',' Mettre l\'adresse ici '),(15,' Abbevile',' Mettre l\'adresse ici '),(16,' Boulogne',' Mettre l\'adresse ici '),(17,' Calais',' Mettre l\'adresse ici '),(18,' Dunkerque',' Mettre l\'adresse ici '),(19,' Lens',' Mettre l\'adresse ici '),(20,' Béthune',' Mettre l\'adresse ici '),(21,' Arras',' Mettre l\'adresse ici '),(22,' Douai',' Mettre l\'adresse ici '),(23,' Valenciennes',' Mettre l\'adresse ici '),(24,' Maubeuge',' Mettre l\'adresse ici '),(25,' Cambrai',' Mettre l\'adresse ici '),(26,' Le Havre',' Mettre l\'adresse ici '),(27,' Yvetot',' Mettre l\'adresse ici '),(28,' Dieppe',' Mettre l\'adresse ici '),(29,' Laon',' Mettre l\'adresse ici '),(30,' Chateau-Thierry',' Mettre l\'adresse ici '),(31,' Soissons',' Mettre l\'adresse ici ');
+/*INSERT INTO `agence` VALUES (1,'   Agence1      ','   Code 1', '','','',''),(2,'Agence2','Adresse2', '','','',''),(3,' test1',' test2', '','','',''),(4,' table_test',' ADRESSE_test', '','','',''),(5,' Amiens',' ', '','','','',(6,' Beauvais APT',' Mettre l\'adresse ici ', '','','',''),(7,' Beauvais DT',' Mettre l\'adresse ici ', '','','',''),(8,' Rouen DT',' Mettre l\'adresse ici ', '','','',''),(9,' Rouen Gare',' Mettre l\'adresse ici ', '','','',''),(10,' Creil',' Mettre l\'adresse ici ', '','','',''),(11,' Compiègne',' Mettre l\'adresse ici ', '','','',''),(12,' Saint Quentin',' Mettre l\'adresse ici ', '','','',''),(13,' Le Bourget',' Mettre l\'adresse ici ', '','','',''),(14,' TGV Picardie',' Mettre l\'adresse ici ', '','','',''),(15,' Abbevile',' Mettre l\'adresse ici ', '','','',''),(16,' Boulogne',' Mettre l\'adresse ici ', '','','',''),(17,' Calais',' Mettre l\'adresse ici ', '','','',''),(18,' Dunkerque',' Mettre l\'adresse ici ', '','','',''),(19,' Lens',' Mettre l\'adresse ici ', '','','',''),(20,' Béthune',' Mettre l\'adresse ici ', '','','',''),(21,' Arras',' Mettre l\'adresse ici ', '','','',''),(22,' Douai',' Mettre l\'adresse ici ', '','','',''),(23,' Valenciennes',' Mettre l\'adresse ici ', '','','',''),(24,' Maubeuge',' Mettre l\'adresse ici ', '','','',''),(25,' Cambrai',' Mettre l\'adresse ici ', '','','',''),(26,' Le Havre',' Mettre l\'adresse ici ', '','','',''),(27,' Yvetot',' Mettre l\'adresse ici ', '','','',''),(28,' Dieppe',' Mettre l\'adresse ici ', '','','',''),(29,' Laon',' Mettre l\'adresse ici ', '','','',''),(30,' Chateau-Thierry',' Mettre l\'adresse ici ', '','','',''),(31,' Soissons',' Mettre l\'adresse ici ', '','','','');*/
+INSERT INTO `agence` VALUES (1,'   Agence1','Code 1', 'Code 2','Code 3','Code 4','Code 5'),(2,'Agence2','Adresse2', 'dsc','sdc','few','ewf'),(3,' test1',' test2', 'ewf','ewf','efw','wef');
 /*!40000 ALTER TABLE `agence` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `est_stationne`
 
 --
 -- Table structure for table `est_stationne`

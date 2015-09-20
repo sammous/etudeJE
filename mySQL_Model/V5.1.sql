@@ -18,7 +18,7 @@
 --
 -- Table structure for table `agence`
 --
-USE locanor_2713;
+USE mydb;
 DROP TABLE IF EXISTS `agence`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;

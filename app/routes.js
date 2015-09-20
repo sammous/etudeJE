@@ -445,7 +445,7 @@ app.get('/liste_vehicules', function(req,res){
 	});
 
 	app.get('/modifier_agence', isLoggedIn, function(req, res) {
-	connection.query('UPDATE agence SET nom = ?, code1 = ?, code2 = ?, code3 = ?, code4 = ?, code5 = ? WHERE idAgence = ?', [req.query.nom, req.query.code1, req.query.code2, req.query.code3, req.query.code4, req.query.code5, req.query.id])		
+	connection.query('UPDATE agence SET nom = ?, code1 = ?, code2 = ?, code3 = ?, code4 = ?, code5 = ? WHERE idAgence = ?', [req.query.nom, req.query.code1, req.query.code2, req.query.code3, req.query.code4, req.query.code5, req.query.id])
 	var data="";
 		res.end(data);
 	});
@@ -558,13 +558,13 @@ app.get('/liste_vehicules', function(req,res){
 	app.get('/search_name',function(req,res){
 		console.log(req.query.key)
 
-	connection.query('SELECT nomOperateur from operateur where nomOperateur like "%'+req.query.key+'%"', function(err, rows, fields) {
+	connection.query('SELECT username from users where username like "%'+req.query.key+'%"', function(err, rows, fields) {
 			//console.log('SELECT id from users where id = '+req.query.key+';');
 			if (err) throw err;
 			var data=[];
 			for(i=0;i<rows.length;i++)
 				{
-					data.push(rows[i].nomOperateur);
+					data.push(rows[i].username);
 				}
 			res.end(JSON.stringify(data));
 		//  res.end(toString(rows[i].username))	;
