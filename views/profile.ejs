@@ -41,13 +41,34 @@
 				<td> <%=recup.accompli ? 'Fait' : 'Non fait'%></td>
 				<td> <%=recup.nomOperateur%></td>
 				<td> <%=recup.assigne_par%></td>
-        <td><p data-toggle="tooltip" title="su"><button type="button" class="btn btn-info" onclick='go_to_task()' data-target="#task" data-type='<%=recup.type%>' data-id='<%=recup.id_tache%>'><%=recup.type%></button></p></td>
+        <td><p data-toggle="tooltip" title="su"><button type="button" class="btn btn-info"  data-toggle="modal" data-target="#task" data-type='<%=recup.type%>' data-id='<%=recup.id_tache%>'><%=recup.type%></button></p></td>
 
       </tr>
       <%})%>
   </table>
 
 
+  <div class="modal fade" id="task" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <div class="modal-dialog">
+  <div class="modal-content">
+        <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+      <h4 class="modal-title custom_align" id="Heading"> Confirmer cette tâche </h4>
+    </div>
+        <div class="modal-body">
+
+     <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Voulez vous vraiment réaliser cette tâche ? </div>
+
+    </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-success" onclick='go_to_task()' ><span class="glyphicon glyphicon-ok-sign" ></span> Confirmer </button>
+      <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Annuler </button>
+    </div>
+    </div>
+  <!-- /.modal-content -->
+  </div>
+    <!-- /.modal-dialog -->
+  </div>
 
 </div>
 
@@ -59,25 +80,26 @@
 <script>
 
 var id_task;
-var type;
-
-function go_to_task(){
+var type_task;
+$('#task').on('shown.bs.modal', function(event){
   var button = $(event.relatedTarget)
+  type_task = button.data('type')
   id_task = button.data('id')
-  type = button.data('type')
-  var url;
-  if (type == "process_f44") {
-    url = '/f44'
-  } else {
-    url = '/fvehicule'
-  }
-            
+
+
+  var modal = $(this)
+});
+function go_to_task(){
   $.ajax({
-    url: url,
+    url: '/redirect_to_task',
     data : {
-    id_task : id_task,
-    type: type
-      },
+    id_task: id_task,
+    type_task: type_task
+   },
+
+    success : function (data) {
+      window.location = data.redirect
+    }
   });
 };
 

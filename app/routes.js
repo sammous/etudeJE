@@ -305,25 +305,22 @@ app.get('/liste_vehicules', function(req,res){
   });
  });
 
- app.post('/tache_reception', function(req,res){
-
- });
-
- app.get('/redirect_to_task', function(req,res){
-  		var id_task = req.query.id;
-  		var type = req.query.type
-
+ app.get('/redirect_to_task', isLoggedIn, function(req,res){
+  		var id_task = req.query.id_task;
+  		var type = req.query.type_task;
+  		console.log(type);
+  		console.log(id_task);
   		if (type == 'process_f44') {
-  			res.redirect('/f44')
+  			 res.send({redirect:'/f44'});
   		} else {
-  			res.redirect('/fvehicule')
+  			 res.send({redirect:'/fvehicule'});
   		}
 
  });
 
  app.post('/ajouter_tache_reception', isLoggedIn, function(req, res) {
 	 var insertQueryRecup='INSERT INTO tache (immat , prev_date , accompli , nomOperateur , assigne_par, type) values(?,?,?,?,?,?)';
-	 connection.query(insertQueryRecup,[req.body.immat , req.body.date ,req.body.accompli ? 1 : 0 , req.body.operateur, req.body.nomPreparateur ]);
+	 connection.query(insertQueryRecup,[req.body.immat , req.body.date ,req.body.accompli ? 1 : 0 , req.body.operateur, req.body.nomPreparateur, req.body.type ]);
 	 res.redirect('/confirmation');
  });
 
