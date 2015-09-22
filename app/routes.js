@@ -91,6 +91,7 @@ app.post('/data_f44', function(req,res){
 	var insertQueryf44='INSERT INTO process_f44 (mva,immat,remplissage_carburant,aspiration_interieur,lavage_exterieur,nettoyage_vitre,nettoyage_parebrise_interieur,niveau_huile,niveau_lave_glace,pression_pneus,controle_carosserie,controle_interieur,nomOperateur) values(?,?,?,?,?,?,?,?,?,?,?,?,?)';
 	connection.query(insertQueryf44,[req.body.MVA,req.body.immat,req.body.Aspiration_intérieur ? 1 : 0 ,req.body.Lavage_extérieure ? 1 : 0 ,req.body.Nettoyage_vitre ? 1 : 0 ,req.body.Nettoyage_parebrise_intérieur ? 1 : 0  ,req.body.Niveau_huile ? 1 : 0  ,req.body.Niveau_lave_glace ? 1 : 0 ,
 		 req.body.Pression_pneus ? 1 : 0 ,req.body.Contrôle_carrosserie ? 1 : 0 ,req.body.Aspiration_intérieure ? 1 : 0 ,req.body.remplissage_carburant ? 1 : 0 ,req.body.name]);
+		 connection.query('UPDATE tache SET accompli = ? WHERE immat = ?', [1, req.body.immat]);
 	res.render('confirmation.ejs',{
 		user : req.userproximity
 	});
