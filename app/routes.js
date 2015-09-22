@@ -334,6 +334,17 @@ app.get('/liste_vehicules', function(req,res){
 	 });
 	 });
  });
+
+
+  app.get('/historique_reception', function(req,res){
+
+	 connection.query('select * from process_check_in;', function(err,result){
+	 res.render('historique_reception.ejs', {
+		 rows : result,
+		 user : req.user,
+	 });
+	 });
+ });
  // =====================================
  // data_f44 ============================
  // =====================================
