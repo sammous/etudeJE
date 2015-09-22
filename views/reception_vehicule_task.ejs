@@ -1,0 +1,415 @@
+<!doctype html>
+<html>
+<head>
+	<title> Locanor  </title>
+	<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+	<link href="docs/css/bootstrap.min.css" rel="stylesheet">
+	<link href="docs/css/highlight.css" rel="stylesheet">
+	<link href="dist/css/bootstrap-switch.css" rel="stylesheet">
+
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+	<script src="dist/js/jquery.timepicker.js"></script>
+	<script src="docs/css/jquery.timepicker.css"></script>
+
+	<link href="docs/css/highlight.css" rel="stylesheet">
+	<link href="docs/css/bootstrap.min.css" rel="stylesheet">
+
+	<style>
+		body 		{
+		background-size:100% auto;
+		background-attachment: fixed;
+}
+
+	</style>
+
+	<style>
+	input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+		.twitter-typeahead, .tt-hint { width: 100%; }
+		.tt-dropdown-menu {
+			width:100%;
+		}
+		.twitter-typeahead .tt-query, .twitter-typeahead .tt-hint {
+		margin-bottom: 0;
+		}
+		.twitter-typeahead .tt-hint {
+		display: block;
+		height: 34px;
+		padding: 6px 12px;
+		font-size: 14px;
+		line-height: 1.428571429;
+		border: 1px solid transparent;
+		border-radius:4px;
+		}
+		.twitter-typeahead .hint-small {
+		height: 30px;
+		padding: 5px 10px;
+		font-size: 12px;
+		border-radius: 3px;
+		line-height: 1.5;
+		}
+		.twitter-typeahead .hint-large {
+		height: 45px;
+		padding: 10px 16px;
+		font-size: 18px;
+		border-radius: 6px;
+		line-height: 1.33;
+		}
+		.tt-dropdown-menu {
+		min-width: 160px;
+		margin-top: 2px;
+		padding: 5px 0;
+		background-color: #fff;
+		border: 1px solid #ccc;
+		border: 1px solid rgba(0, 0, 0, .2);
+		*border-right-width: 2px;
+		*border-bottom-width: 2px;
+		-webkit-border-radius: 6px;
+		-moz-border-radius: 6px;
+		border-radius: 6px;
+		-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+		-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+		box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+		-webkit-background-clip: padding-box;
+		-moz-background-clip: padding;
+		background-clip: padding-box;
+		}
+		.tt-suggestion {
+		display: block;
+		padding: 3px 20px;
+		}
+		.tt-suggestion.tt-is-under-cursor {
+		color: #fff;
+		background-color: #0081c2;
+		background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
+		background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
+		background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
+		background-image: -o-linear-gradient(top, #0088cc, #0077b3);
+		background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+		background-repeat: repeat-x;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
+		}
+		.tt-suggestion.tt-is-under-cursor a {
+		color: #fff;
+		}
+		.tt-suggestion p {
+		margin: 0;
+		}
+	</style>
+
+
+
+	<% include header_.ejs %>
+
+</head>
+
+<body>
+  <div class="container" id="myWizard">
+  <div class="col-md-5 col-md-offset-4">
+
+		<div class="navbar">
+      <div class="navbar-inner">
+            <ul class="nav nav-pills">
+               <li class="active"><a href="#step1" data-toggle="tab">Etape 1</a></li>
+               <li><a href="#step2" data-toggle="tab">Etape 2</a></li>
+            </ul>
+      </div>
+   </div>
+   <div class="tab-content">
+      <div class="tab-pane active" id="step1">
+      <div class="form-area">
+          <form role="form" id="form1" action="/fvehicule" method="post">
+          <br>
+					<div class="text-center">
+						<h2><span class="glyphicon glyphicon-refresh"></span> Réception véhicule </h2>
+						<br>
+
+					</div>
+
+      				<div class="form-group">
+      				     <label>Id:</label>
+  						<input type="text" class="form-control" id="name" name="name" placeholder="Name" value=<%=user.username%> required>
+  					</div>
+						<div class="form-group">
+						    <label>Immatriculation:</label>
+							<input type="text" id='myimmat' name="immat" class="typeahead form-control" placeholder="Immat" value=<%=immat%> />
+						</div>
+  					<div class="form-group">
+  					    <label>MVA:</label>
+  						<input type="text" pattern="[0-9]*" class="form-control" id="mva" name="mva" placeholder="MVA" required>
+  					</div>
+  					<div class="form-group">
+  					    <label>Propriétaire:</label>
+  						<input type="text" class="form-control" id="proprietaire" name="proprietaire" placeholder="Propriétaire" required>
+  					</div>
+						<div class="form-group">
+						    <label>Modèle:</label>
+							<input type="text" class="form-control" id="modele" name="modele" placeholder="Modèle" required>
+						</div>
+						<div class="form-group">
+						    <label>Wizard :</label>
+							<input type="text" class="form-control" id="Wizard" name="wizard" placeholder="Wizard" required>
+						</div>
+
+						<!--div class="form-group">
+
+									<select name="statutwizard" class="form-control select select-primary" data-toggle="select">
+				  						<option value="0" selected>Choisir un statut Wizard</option>
+										<option value="ON HAND">ON HAND</option>
+										<option value="ON MOVE">ON MOVE</option>
+										<option value="REG">REG</option>
+										<option value="MARSHALLED">MARSHALLED</option>
+									</select>
+
+						</div-->
+
+            <div class="form-group">
+              <label>Id:</label>
+              <input type="text" pattern="[0-9]*" class="form-control" id="num_contrat" name="num_contrat" placeholder="Numéro Contrat">
+            </div>
+            <div class="form-group">
+              <label>km:</label>
+              <input type="number" value=0 class="form-control" id="km" name="km" placeholder=0 required>
+            </div>
+
+
+						<div class='form-group'>
+							<span class=" glyphicon glyphicon-calendar"></span> <input type="text" id="datepicker" name="date" placeholder="Date retour"> <span class=" glyphicon glyphicon-time"></span><input type="text" id="timepicker" name="heure" placeholder="Heure retour, ex: 12:35">
+						</div>
+
+
+						<div class="form-group">
+		          <p>
+		            <label for="carburant"> Carburant : </label>
+		            <input id="carburant" name="carburant" type="checkbox" unchecked data-on-text="OK"  data-off-text="A FAIRE">
+		          </p>
+		        </div>
+
+						<div class="form-group">
+		          <p>
+		            <label for="dommage"> Dommages </label>
+		            <input id="dommage" name="dommage" type="checkbox" unchecked data-on-text="RAS"  data-off-text="NOUVEAUX DOMMAGES">
+		          </p>
+		        </div>
+
+
+            <!--select name="carburant" class="form-group form-control select select-primary" data-toggle="select">
+                <option value="0" selected>Niveau carburant</option>
+								<option value="g1">G0</option>
+								<option value="g1">G1</option>
+                <option value="g2">G2</option>
+								<option value="g3">G3</option>
+								<option value="g4">G4</option>
+								<option value="g5">G5</option>
+								<option value="g6">G6</option>
+								<option value="g7">G7</option>
+								<option value="g8">G8</option>
+            </select-->
+
+      </div>
+			<a class="btn btn-primary next" href="#">Continuer</a>
+			<br><br>
+		</div>
+			<div class="tab-pane" id="step2">
+				<div class="form-area">
+						<div class="text-center">
+						<h3><span class="glyphicon glyphicon-refresh"></span> Définition des tâches/Statut</h3>
+						<br>
+
+						</div>
+						<br>
+						<select name="preparation" class="form-group form-control select select-primary" data-toggle="select" required>
+								<option value="0" selected>Statut Préparation</option>
+								<option value="achecker">A checker</option>
+								<option value="apreparercomplet">A préparer complet</option>
+								<option value="apreparerquickprep">A préparer quickprep</option>
+								<option value="encoursdeprep">En cours de préparation</option>
+								<option value="pret">Prêt</option>
+								<option value="areparer">A réparer</option>
+						</select>
+						<br>
+						<select name="transfert" class="form-group form-control select select-primary" data-toggle="select" required>
+								<option value="0" selected>Statut transfert</option>
+								<option value="alocaliser">A localiser</option>
+								<option value="localise">Localisé</option>
+								<option value="atransferer">A transférer</option>
+								<option value="encoursdetransfert">En cours de transfert</option>
+						</select>
+						<br>
+						<select name="position" class="form-group form-control select select-primary" data-toggle="select" required>
+								<option value="0" selected>Position véhicule</option>
+								<option value="readyline">Ready line</option>
+								<option value="p1">P1</option>
+								<option value="p2">P2</option>
+								<option value="p3">P3</option>
+								<option value="p3">P4</option>
+						</select>
+						<br>
+
+						<select name="presence_gps" class="form-group form-control select select-primary" data-toggle="select" required>
+								<option value="inconnu" selected>Présence GPS</option>
+								<option value="non">Non</option>
+								<option value="oui">Oui</option>
+
+						</select>
+						<br>
+						<select name="presence_sb" class="form-group form-control select select-primary" data-toggle="select" required>
+								<option value="inconnu" selected>Présence siège bébé</option>
+								<option value="non">Non</option>
+								<option value="oui">Oui</option>
+						</select>
+						<br>
+
+		<p data-toggle="tooltip" title="su"><button type="button" class="btn btn-primary pull-right"data-toggle="modal" data-target="#delete">Envoyer</button></p>
+
+        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+          <div class="modal-dialog">
+        <div class="modal-content">
+              <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+            <h4 class="modal-title custom_align" id="Heading"> Confirmer cette entrée </h4>
+          </div>
+              <div class="modal-body">
+
+           <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Merci de confirmer votre saisie </div>
+
+          </div>
+            <div class="modal-footer ">
+            <button type="submit" class="btn btn-success" onclick="submitForms()" ><span class="glyphicon glyphicon-ok-sign"></span> Confirmer </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Annuler </button>
+          </div>
+          </div>
+        <!-- /.modal-content -->
+        </div>
+          <!-- /.modal-dialog -->
+        </div>
+			</div>
+
+		</div>
+  </div>
+  </div>
+
+	<script>
+  $(function() {
+	$( "#datepicker" ).datepicker({
+altField: "#datepicker",
+closeText: 'Fermer',
+prevText: 'Précédent',
+nextText: 'Suivant',
+currentText: 'Aujourd\'hui',
+monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
+dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
+dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+weekHeader: 'Sem.',
+dateFormat: 'dd-mm-yy'
+});
+
+$("#datepicker").datepicker("setDate", new Date());
+$(document).ready(function(){
+$("#timepicker").timepicker({
+			timeFormat: 'HH:mm',
+			defaultTime: 'now',
+			minTime: '11:45', // 11:45:00 AM,
+			maxHour: 20,
+			maxMinutes: 30,
+			startTime: new Date(0,0,0,15,0,0), // 3:00:00 PM - noon
+			interval: 15 // 15 minutes
+	});
+});
+
+$('.next').click(function(){
+
+  var nextId = $(this).parents('.tab-pane').next().attr("id");
+  $('[href=#'+nextId+']').tab('show');
+
+});
+
+$('.first').click(function(){
+
+  $('#myWizard a:first').tab('show')
+
+});
+
+});
+
+submitForms = function(){
+    document.getElementById("form1").submit();
+    document.getElementById("form2").submit();
+}
+</script>
+
+<script  type="text/javascript" src="typeahead.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#myimmat').typeahead({
+				hint: true,
+				highlight: true,
+				minLength: 1,
+				name: 'users',
+				remote: '/search_immat?key=%QUERY',
+		});
+	});
+
+
+</script>
+<script>
+	function updAUTO(){
+		$.ajax({
+			url: '/search_mva?key='+$( '#myimmat' ).val()+'',
+			dataType: 'json',
+			success : function (data) {
+				$( '#mva' ).val(data);
+			},
+		});
+
+		$.ajax({
+			url: '/search_proprio?key='+$( '#myimmat' ).val()+'',
+			dataType: 'json',
+			success : function (data) {
+				$( '#proprietaire' ).val(data);
+			},
+		});
+
+		$.ajax({
+			url: '/search_modele?key='+$( '#myimmat' ).val()+'',
+			dataType: 'json',
+			success : function (data) {
+				$( '#modele' ).val(data);
+			},
+		});
+
+		$.ajax({
+			url: '/search_wizard?key='+$( '#myimmat' ).val()+'',
+			dataType: 'json',
+			success : function (data) {
+				$( '#Wizard' ).val(data);
+			},
+		});
+
+	};
+</script>
+<script> updAUTO() </script>
+<script src="docs/js/highlight.js"></script>
+<script src="dist/js/bootstrap-switch.js"></script>
+<script src="docs/js/main.js"></script>
+
+</body>
+</html>
