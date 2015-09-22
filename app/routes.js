@@ -292,7 +292,7 @@ app.get('/liste_vehicules', function(req,res){
 		console.log(data);
 		} else {
 	  console.log(req.user.username);
-		connection.query('select * from tache where nomOperateur like "%'+req.user.username+'%" ;', function(err,result){
+		connection.query('select * from tache where nomOperateur like "%'+req.user.username+'%" AND accompli = 0 ;', function(err,result){
 		data=JSON.stringify(result);
 		res.render('profile.ejs', {
 			user : req.user, // get the user out of session and pass to template
@@ -379,7 +379,8 @@ app.get('/liste_vehicules', function(req,res){
 		var insertQueryCheckin='INSERT INTO process_check_in (nomOperateur,immat,mva,proprio,modele,wizard,contrat,km,date_retour_reel,heure_retour_reel,carburant,dommage,preparation,transfert,position_vehicule,presence_gps,presence_sb) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
 		connection.query(insertQueryCheckin,[req.body.name,req.body.immat,req.body.mva, req.body.proprietaire, req.body.modele, req.body.wizard ,req.body.num_contrat, req.body.km,
 		req.body.date ,req.body.heure, req.body.carburant ? 1 : 0 ,req.body.dommage ? 1:0 , req.body.preparation, req.body.transfert,req.body.position, req.body.presence_gps, req.body.presence_sb]);
-		connection.quotesery('UPDATE vehicules SET position_app = ?, localisation_agence_app = ?, preparation_app = ? WHERE MVA = ?', [req.body.position, req.body.transfert, req.body.preparation, req.body.mva]);
+		connection.query('UPDATE vehicules SET position_app = ?, localisation_agence_app = ?, preparation_app = ? WHERE immat = ?', [req.body.position, req.body.transfert, req.body.preparation, req.body.immat]);
+		connection.query('UPDATE tache SET accompli = ? WHERE immat = ?', [1, req.body.immat]);
 		res.render('confirmation.ejs',{
 			user : req.userproximity
 		});
