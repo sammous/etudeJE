@@ -69,6 +69,21 @@ module.exports = function(app, passport,connection) {
 	});
 });
 
+ app.get('/accomplish_task', function(req,res){
+ console.log(req.query.immat)
+ if (req.query.type=='process_f44') {
+ 		res.render('f44_task.ejs',{
+			immat : req.query.immat,
+ 			user : req.user
+ 		});
+ 	} else if (req.query.type=='process_check_in'){
+		res.render('reception_vehicule_task.ejs',{
+			immat : req.query.immat,
+ 			user : req.user
+ 		});
+	}
+});
+
 
 
 app.post('/data_f44', function(req,res){
