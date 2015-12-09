@@ -952,8 +952,46 @@ app.post('/parking', function(req,res){
 		res.redirect('/');
 	});
 
+app.post('/importfile',function(req,res,next){
+
+	var fstream;
+    req.pipe(req.busboy);
+    req.busboy.on('file', function (fieldname, file, filename) {
+        console.log("Uploading: " + filename); 
+        fstream = fs.createWriteStream(__dirname + '/files/' + filename);
+        file.pipe(fstream);
+        fstream.on('close', function () {
+            res.redirect('/')
+        });
+    });
+	// var fullpath = __dirname + "\\uploads\\" + filename;    
+	// query = "LOAD DATA INFILE '" +fullpath+ "' INTO TABLE vehicules FIELDS TERMINATED BY ',' IGNORE 1 LINES;";
+
+ //    connection.query(query, function(err, rows, fields) {
+ //        if (err)
+ //            console.log('Error while performing Query.');   
+ //        else{   
+ //            connection.release();
+ //            res.redirect('/confirmation_import');
+ //        }
+ //    });     
+});
+
+app.get('/importer_vehicule', isLoggedIn, isAdmin, function(req,res){
+ 	res.render('import_vehicule.ejs',{
+ 		user : req.user
+ 	});
+ });
+
+app.get('/confirmation_import', function(req,res){
+ 	res.render('confirmation_import.ejs',{
+ 		user : req.user
+ 	});
+ });
 
 };
+
+
 
 // route middleware to make sure
 function isLoggedIn(req, res, next) {

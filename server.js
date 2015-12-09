@@ -10,10 +10,12 @@ app.use(cors())
 
 var bodyParser = require('body-parser');
 var path = require('path');
+var fs = require('fs');
+var busboy = require('connect-busboy');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
+app.use(busboy())
 
 var passport = require('passport');
 var flash    = require('connect-flash');
@@ -33,7 +35,7 @@ var connection;
 // configuration ===============================================================
 
 var mysql = require('mysql');
-var dbconfig = require('./config/database_local');
+var dbconfig = require('./config/database');
 function handleDisconnect() {
   console.log('i am restarting')
 	connection = mysql.createConnection(dbconfig.connection); // Recreate the connection, since
