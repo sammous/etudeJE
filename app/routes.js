@@ -54,6 +54,7 @@ function handleDisconnect() {
 
 
 module.exports = function(app, passport,connection) {
+	var fs = require('fs');
 
 	// =====================================
 	// LOGIN ===============================
@@ -953,29 +954,28 @@ app.post('/parking', function(req,res){
 	});
 
 app.post('/importfile',function(req,res,next){
-
-	var fstream;
-    req.pipe(req.busboy);
-    req.busboy.on('file', function (fieldname, file, filename) {
-        console.log("Uploading: " + filename); 
-        fstream = fs.createWriteStream(__dirname + '/files/' + filename);
-        file.pipe(fstream);
-        fstream.on('close', function () {
-            res.redirect('/')
-        });
-    });
-	// var fullpath = __dirname + "\\uploads\\" + filename;    
-	// query = "LOAD DATA INFILE '" +fullpath+ "' INTO TABLE vehicules FIELDS TERMINATED BY ',' IGNORE 1 LINES;";
-
- //    connection.query(query, function(err, rows, fields) {
- //        if (err)
- //            console.log('Error while performing Query.');   
- //        else{   
- //            connection.release();
- //            res.redirect('/confirmation_import');
- //        }
- //    });     
+	fs.readFile(req.files.import.path, function (err, data) {
+  // ...
+  // var newPath = __dirname + "/mySQL_Model/" + 'vehicules.xls';
+	var newPath = '/Users/MACSAMI/Documents/Github/etudeJE/mySQL_Model/vehicules.xls'
+  fs.rename(req.files.import.path, newPath, function (err) {
+		fs.exists(newPath, function(exists) {
+			// body...
+			if (exists){
+				require("child_process").exec('cd ~/Documents/Github/etudeJE/mySQL_Model; python xltosql.py').unref;
+				res.render('confirmation.ejs',{
+					user : req.userproximity
+				});
+			} else {
+				res.render('fail.ejs',{
+					user : req.userproximity
+				});
+			}
+		});
+	});
+	});
 });
+
 
 app.get('/importer_vehicule', isLoggedIn, isAdmin, function(req,res){
  	res.render('import_vehicule.ejs',{
