@@ -1,0 +1,80 @@
+<!-- views/historique_reception.ejs -->
+<!doctype html>
+<html>
+  <head>
+    <% include header.ejs %>
+        <link href="docs/css/bootstrap.min.css" rel="stylesheet">
+    <link href="docs/css/highlight.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
+    <link href="docs/css/main.css" rel="stylesheet">
+    <!--Scripts-->
+        <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  </head>
+<body>
+
+
+<div class="container text-center">
+
+  <br><br>
+  <h1><span class="fa fa-refresh"></span><b> Historique des réceptions </b></h1>
+
+    <br><br>
+
+  <table  class = "table table-hover table-bordered text-center">
+    <div class="text-center">
+      <tr>
+      <th>id receptioj</th>
+      <th>Immat</th>
+      <th>MVA</th>
+      <th>Date retour</th>
+      <th>Heure retour</th>
+      <th>Km</th>
+      <th>Carburant </th>
+      <th>Dommage </th>
+      <th>Présence GPS </th>
+      <th>Position véhicule </th>
+      <th>Nom opérateur </th>
+      <th>Propriétaire </th>
+      <th>Modèle </th>
+      <th>Wizard </th>
+      <th>contrat </th>
+      <th>Présence siège-bébé </th>
+      <th>Transfert </th>
+      <th>Préparation </th>
+
+      </tr>
+  </div>
+    <% rows.forEach(function(recup){ %>
+      <tr>
+        <td> <%=recup.Id%></td>
+        <td> <%=recup.immat%></td>
+        <td> <%=recup.mva%></td>
+        <td> <%=recup.date_retour_reel%></td>
+        <td> <%=recup.heure_retour_reel%></td>
+        <td> <%=recup.km%></td>
+        <td> <%=recup.carburant ? 'Oui' : 'Non'%></td>
+        <td> <%=recup.dommage ? 'Oui' : 'Non'%></td>
+        <td> <%=recup.presence_gps%></td>
+        <td> <%=recup.position_vehicule%></td>
+        <td> <%=recup.nomOperateur%></td>
+        <td> <%=recup.proprio%></td>
+        <td> <%=recup.modele%></td>
+        <td> <%=recup.wizard%></td>
+        <td> <%=recup.contrat%></td>
+        <td> <%=recup.presence_sb%></td>
+        <td> <%=recup.transfert%></td>
+        <td> <%=recup.preparation%></td>
+
+      </tr>
+      <%})%>
+  </table>
+
+
+
+</div>
+
+
+</body>
+</html>

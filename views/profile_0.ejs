@@ -1,0 +1,63 @@
+<!-- views/profile.ejs -->
+<!doctype html>
+<html>
+	<head>
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<% include header.ejs %>
+	</head>
+
+<div class="container">
+	<div class="text-center">
+		<h1><span class="fa fa-home"></span> Bienvenue, <%=user.username%></h1>
+		<br>
+  	</div>
+</div>
+
+
+<div class="row vertical-align">
+
+<div class="text-center">
+
+ <!-- Single button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="fa fa-road"></span>  Véhicule <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="/liste_vehicules">Liste des véhicules</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="/recuperervehicule">Récupérer</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="/transfertvehicule">Transférer</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="/preparevehicule">A préparer</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="/chercher_vehicule">Chercher</a></li>
+
+  </ul>
+</div>
+
+ <!-- Single button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="fa fa-refresh"></span>  Process <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="/fvehicule">Réception/Checkin</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="/f44">Préparer</a></li>
+    <% if (user.attribut == "administrateur" || user.attribut == "opérateur") { %>
+	<li role="separator" class="divider"></li>
+	<li><a href="/tache_reception">Assigner une réception</a></li>
+	<% } %>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">Tâche assignées</a></li>
+
+  </ul>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

@@ -8,6 +8,7 @@
     <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
     <link href="docs/css/main.css" rel="stylesheet">
     <!--Scripts-->
+        <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>	
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
@@ -19,7 +20,7 @@
             highlight: true,
             minLength: 1,
             name: 'users',
-            remote: 'http://localhost:8080/search_immat?key=%QUERY',
+            remote: '/search_immat?key=%QUERY',
         });
       });
     </script>
@@ -253,7 +254,7 @@
           <td><%=f44.pression_pneus ? 'Fait' : 'Non fait'%></span>  </td>
           <td><%=f44.controle_carosserie ? 'Fait' : 'Non fait'%></span>  </td>
           <td><%=f44.controle_interieur ? 'Fait' : 'Non fait'%></span>  </td>
-          <td><%=f44.remplissage_carburant%></span>  </td>
+          <td><%=f44.remplissage_carburant ? 'Fait' : 'Non fait' %></span>  </td>
           <td><%=f44.nomOperateur%> </span></td>
 
         </tr>
@@ -268,7 +269,7 @@
         function modif(){
 
         		$.ajax({
-        			url: 'http://localhost:8080/modifier_vehicule',
+        			url: '/modifier_vehicule',
         			data : {
         			MVA : $( '#MVA' ).html(),
         			IMMAT : $( '#IMMAT' ).html(),

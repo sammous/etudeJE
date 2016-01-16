@@ -1,4 +1,3 @@
-// config/database.js
 module.exports = {
     'connection': {
         'host': 'localhost',
@@ -9,5 +8,3 @@ module.exports = {
   'users_table': 'users',
   'vehicule_table': 'vehicules'
 };
-
-

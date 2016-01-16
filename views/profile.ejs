@@ -2,6 +2,7 @@
 <!doctype html>
 <html>
 	<head>
+        <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 		<% include header.ejs %>
 	</head>
@@ -13,51 +14,44 @@
   	</div>
 </div>
 
+<div class="container text-center">
 
-<div class="row vertical-align">
+	<br><br>
+	<h1><span class="fa fa-refresh"></span><b> Travail à accomplir :  </b></h1>
 
-<div class="text-center">
+    <br><br>
 
- <!-- Single button -->
-<div class="btn-group">
-  <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="fa fa-road"></span>  Véhicule <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a href="/liste_vehicules">Liste des véhicules</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="/recuperervehicule">Récupérer</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="/transfertvehicule">Transférer</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="/preparevehicule">A préparer</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="/chercher_vehicule">Chercher</a></li>
+  <table  class = "table table-hover table-bordered text-center">
+    <div class="text-center">
+      <tr>
+      <th>id assignation</th>
+      <th>Immat</th>
+      <th>Date prévue</th>
+			<th>Etat</th>
+			<th>Chargé du travail</th>
+			<th>Assignation faite par </th>
+      <th>Type </th>
 
-  </ul>
-</div>
+      </tr>
+  </div>
+    <% rows.forEach(function(recup){ %>
+      <tr>
+        <td> <%=recup.id_tache%></td>
+        <td> <%=recup.immat%></td>
+				<td> <%=recup.prev_date%></td>
+				<td> <%=recup.accompli ? 'Fait' : 'Non fait'%></td>
+				<td> <%=recup.nomOperateur%></td>
+				<td> <%=recup.assigne_par%></td>
+        <td><a href="/accomplish_task?type=<%=recup.type%>&immat=<%=recup.immat%>" title="accomplir un travail"><button  type="button" class="btn btn-info"><%=recup.type%></button></a></td>
 
- <!-- Single button -->
-<div class="btn-group">
-  <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="fa fa-refresh"></span>  Process <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a href="/fvehicule">Réception/Checkin</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="/f44">Préparer</a></li>
-    <% if (user.attribut == "administrateur" || user.attribut == "opérateur") { %>
-	<li role="separator" class="divider"></li>
-	<li><a href="/tache_reception">Assigner une réception</a></li>
-	<% } %>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">Tâche assignées</a></li>
+      </tr>
+      <%})%>
+  </table>
 
-  </ul>
-</div>
-
-</div>
 </div>
 
 </body>
+
+
+
 </html>

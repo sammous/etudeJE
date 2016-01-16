@@ -1,0 +1,109 @@
+<!-- views/profile.ejs -->
+<!doctype html>
+<html>
+	<head>
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<% include header.ejs %>
+	</head>
+
+<div class="container">
+	<div class="text-center">
+		<h1><span class="fa fa-home"></span> Bienvenue, <%=user.username%></h1>
+		<br>
+  	</div>
+</div>
+
+<div class="container text-center">
+
+	<br><br>
+	<h1><span class="fa fa-refresh"></span><b> Travail à accomplir :  </b></h1>
+
+    <br><br>
+
+  <table  class = "table table-hover table-bordered text-center">
+    <div class="text-center">
+      <tr>
+      <th>id assignation</th>
+      <th>Immat</th>
+      <th>Date prévue</th>
+			<th>Etat</th>
+			<th>Chargé du travail</th>
+			<th>Assignation faite par </th>
+      <th>Type </th>
+
+      </tr>
+  </div>
+    <% rows.forEach(function(recup){ %>
+      <tr>
+        <td> <%=recup.id_tache%></td>
+        <td> <%=recup.immat%></td>
+				<td> <%=recup.prev_date%></td>
+				<td> <%=recup.accompli ? 'Fait' : 'Non fait'%></td>
+				<td> <%=recup.nomOperateur%></td>
+				<td> <%=recup.assigne_par%></td>
+        <td><p data-toggle="tooltip" title="su"><button type="button" class="btn btn-info"  data-toggle="modal" data-target="#task" data-type='<%=recup.type%>' data-id='<%=recup.id_tache%>'><%=recup.type%></button></p></td>
+
+      </tr>
+      <%})%>
+  </table>
+
+
+  <div class="modal fade" id="task" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <div class="modal-dialog">
+  <div class="modal-content">
+        <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+      <h4 class="modal-title custom_align" id="Heading"> Confirmer cette tâche </h4>
+    </div>
+        <div class="modal-body">
+
+     <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Voulez vous vraiment réaliser cette tâche ? </div>
+
+    </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-success" onclick='go_to_task()' ><span class="glyphicon glyphicon-ok-sign" ></span> Confirmer </button>
+      <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Annuler </button>
+    </div>
+    </div>
+  <!-- /.modal-content -->
+  </div>
+    <!-- /.modal-dialog -->
+  </div>
+
+</div>
+
+</div>
+</div>
+
+</body>
+
+<script>
+
+var id_task;
+var type_task;
+$('#task').on('shown.bs.modal', function(event){
+  var button = $(event.relatedTarget)
+  type_task = button.data('type')
+  id_task = button.data('id')
+
+
+  var modal = $(this)
+});
+function go_to_task(){
+  $.ajax({
+    url: '/redirect_to_task',
+    data : {
+    id_task: id_task,
+    type_task: type_task
+   },
+
+    success : function (data) {
+      window.location = data.redirect
+    }
+  });
+};
+
+
+</script>
+
+</html>

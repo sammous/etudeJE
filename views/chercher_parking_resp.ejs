@@ -8,6 +8,7 @@
     <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
     <link href="docs/css/main.css" rel="stylesheet">
     <!--Scripts-->
+        <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
@@ -18,7 +19,7 @@
             hint: true,
             highlight: true,
             minLength: 1,
-            remote: 'http://localhost:8080/search_parking?key=%QUERY',
+            remote: '/search_parking?key=%QUERY',
         });
       });
     </script>
@@ -150,15 +151,18 @@
   			<tr >
 
   				<td ><span id = 'id'> <%=parking.idParking%>  </span> </td>
-          <td ><div contenteditable><span id = 'nom'> <%=parking.nom%>  </span> </div></td>
-  				<td> <div contenteditable><span id = 'agence'> <%=parking.agence%> </span> </div> </td>
+
+          <td><input type="text" id='nom' name="nom" class="typeahead form-control" value='<%=parking.nom%>'/></td>
+          <td><input type="text" id='agence' name="agence" class="typeahead form-control" value='<%=parking.agence%>'/></td>
+
+
 
   			</tr>
 
   			<%})%>
   	</table>
 
-<p data-toggle="tooltip" title="su"><button type="button" class="btn btn-danger pull-right"data-toggle="modal" data-target="#delete">Modifier</button></p>
+<p data-toggle="tooltip" title="su"><button type="button" class="btn btn-warning pull-right"data-toggle="modal" data-target="#delete">Modifier</button></p>
 
 <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
   <div class="modal-dialog">
@@ -188,10 +192,10 @@
         function modif(){
 
         		$.ajax({
-        			url: 'http://localhost:8080/modifier_parking',
+        			url: '/modifier_parking',
         			data : {
-        			nom : $( '#nom' ).html(),
-        			agence : $( '#agence' ).html(),
+        			nom : $( '#nom' ).val(),
+        			agence : $( '#agence' ).val(),
               id : $( '#id').html()
         				},
 
@@ -208,7 +212,7 @@
               if (l)
                 {
                   $.ajax({
-                    url: 'http://localhost:8080/supprimer_parking',
+                    url: '/supprimer_parking',
                     data : {
                       id : $( '#id' ).html()
                       },

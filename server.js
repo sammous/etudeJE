@@ -10,10 +10,13 @@ app.use(cors())
 
 var bodyParser = require('body-parser');
 var path = require('path');
+var fs = require('fs');
+var busboy = require('connect-busboy');
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
+app.use(busboy())
 
 var passport = require('passport');
 var flash    = require('connect-flash');

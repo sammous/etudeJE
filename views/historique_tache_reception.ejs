@@ -3,6 +3,14 @@
 <html>
 	<head>
 		<% include header.ejs %>
+        <link href="docs/css/bootstrap.min.css" rel="stylesheet">
+    <link href="docs/css/highlight.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
+    <link href="docs/css/main.css" rel="stylesheet">
+    <!--Scripts-->
+        <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	</head>
 <body>
 
@@ -21,18 +29,21 @@
       <th>Immat</th>
       <th>Date prévue</th>
 			<th>Etat</th>
-			<th>Nom Préparateur</th>
-			<th>Nom Opérateur</th>
+			<th>Chargé du travail</th>
+			<th>Assignation faite par </th>
+      <th>Type </th>
+
       </tr>
   </div>
     <% rows.forEach(function(recup){ %>
       <tr>
-        <td> <%=recup.idRecuperation%></td>
+        <td> <%=recup.id_tache%></td>
         <td> <%=recup.immat%></td>
 				<td> <%=recup.prev_date%></td>
 				<td> <%=recup.accompli ? 'Fait' : 'Non fait'%></td>
-				<td> <%=recup.nomPreparateur%></td>
 				<td> <%=recup.nomOperateur%></td>
+				<td> <%=recup.assigne_par%></td>
+        <td> <%=recup.type%></td>
 
 
       </tr>

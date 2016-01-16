@@ -3,6 +3,7 @@
 <head>
 	<title> Locanor  </title>
 	<link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+	<meta name="viewport" content="width=device-width"/>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 	<meta charset="utf-8">
@@ -11,7 +12,6 @@
 	<!--Scripts à mettre dans un footer éventuellement, pour optimiser le chargement-->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
 
 	<style>
 		body 		{
@@ -69,13 +69,13 @@
 					<ul class="dropdown-menu">
 						<li><a href="/fvehicule"> Réception/Checkin </a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="/f44"> Préparation f44 </a></li>
+						<li><a href="/f44"> F44 préparation  </a></li>
 						<% if (user.attribut == "administrateur" || user.attribut == "opérateur") { %>
 						<li role="separator" class="divider"></li>
-						<li><a href="/tache_reception">Assigner une réception</a></li>
+						<li><a href="/tache_reception">Assigner un travail </a></li>
 						<% } %>
 						<li role="separator" class="divider"></li>
-						<li><a href="/tache_reception"> Tâches assignées </a></li>
+						<li><a href="/historique_tache_reception"> Travail assigné </a></li>
 					</ul>
 				</li>
 
@@ -124,6 +124,8 @@
 							<li><a href="/admin/signup">Ajouter un utilisateur</a></li>
 							<li role="separator" class="divider"></li>
 							<li><a href="/update">Gérer les utilisateurs</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="/importer_vehicule">Importer des véhicules</a></li>
 							<li role="separator" class="divider"></li>
 							<% } %>
 	            <li><a href="mailto:admin@email.fr">Contacter l'administrateur</a></li>

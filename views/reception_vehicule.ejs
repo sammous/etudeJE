@@ -8,6 +8,11 @@
 	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
+	<link href="docs/css/bootstrap.min.css" rel="stylesheet">
+	<link href="docs/css/highlight.css" rel="stylesheet">
+	<link href="dist/css/bootstrap-switch.css" rel="stylesheet">
+
+
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 
@@ -127,6 +132,7 @@ input[type=number]::-webkit-outer-spin-button {
       </div>
    </div>
    <div class="tab-content">
+           <a type="button" class="btn btn-default" href="/historique_reception"><span class="glyphicon glyphicon-list"> Historique</a>
       <div class="tab-pane active" id="step1">
       <div class="form-area">
           <form role="form" id="form1" action="/fvehicule" method="post">
@@ -158,6 +164,11 @@ input[type=number]::-webkit-outer-spin-button {
 							<input type="text" class="form-control" id="modele" name="modele" placeholder="Modèle" required>
 						</div>
 						<div class="form-group">
+						    <label>Wizard :</label>
+							<input type="text" class="form-control" id="Wizard" name="wizard" placeholder="Wizard" required>
+						</div>
+
+						<!--div class="form-group">
 
 									<select name="statutwizard" class="form-control select select-primary" data-toggle="select">
 				  						<option value="0" selected>Choisir un statut Wizard</option>
@@ -167,7 +178,7 @@ input[type=number]::-webkit-outer-spin-button {
 										<option value="MARSHALLED">MARSHALLED</option>
 									</select>
 
-						</div>
+						</div-->
 
             <div class="form-group">
               <label>Id:</label>
@@ -175,15 +186,31 @@ input[type=number]::-webkit-outer-spin-button {
             </div>
             <div class="form-group">
               <label>km:</label>
-              <input type="text" pattern="[0-9]*" class="form-control" id="km" name="km" placeholder="Km" required>
+              <input type="number" value=0 class="form-control" id="km" name="km" placeholder=0 required>
             </div>
 
 
 						<div class='form-group'>
-							<span class=" glyphicon glyphicon-calendar"></span> <input type="text" id="datepicker" placeholder="Date retour"> <span class=" glyphicon glyphicon-time"></span><input type="text" id="timepicker" placeholder="Heure retour, ex: 12:35">
+							<span class=" glyphicon glyphicon-calendar"></span> <input type="text" id="datepicker" name="date" placeholder="Date retour"> <span class=" glyphicon glyphicon-time"></span><input type="text" id="timepicker" name="heure" placeholder="Heure retour, ex: 12:35">
 						</div>
 
-            <select name="carburant" class="form-group form-control select select-primary" data-toggle="select">
+
+						<div class="form-group">
+		          <p>
+		            <label for="carburant"> Carburant : </label>
+		            <input id="carburant" name="carburant" type="checkbox" unchecked data-on-text="OK"  data-off-text="A FAIRE">
+		          </p>
+		        </div>
+
+						<div class="form-group">
+		          <p>
+		            <label for="dommage"> Dommages </label>
+		            <input id="dommage" name="dommage" type="checkbox" unchecked data-on-text="RAS"  data-off-text="NOUVEAUX DOMMAGES">
+		          </p>
+		        </div>
+
+
+            <!--select name="carburant" class="form-group form-control select select-primary" data-toggle="select">
                 <option value="0" selected>Niveau carburant</option>
 								<option value="g1">G0</option>
 								<option value="g1">G1</option>
@@ -194,7 +221,7 @@ input[type=number]::-webkit-outer-spin-button {
 								<option value="g6">G6</option>
 								<option value="g7">G7</option>
 								<option value="g8">G8</option>
-            </select>
+            </select-->
 
       </div>
 			<a class="btn btn-primary next" href="#">Continuer</a>
@@ -203,7 +230,7 @@ input[type=number]::-webkit-outer-spin-button {
 			<div class="tab-pane" id="step2">
 				<div class="form-area">
 						<div class="text-center">
-						<h2><span class="glyphicon glyphicon-refresh"></span> Définition des tâches/Statut</h2>
+						<h3><span class="glyphicon glyphicon-refresh"></span> Définition des tâches/Statut</h3>
 						<br>
 
 						</div>
@@ -214,7 +241,7 @@ input[type=number]::-webkit-outer-spin-button {
 								<option value="apreparercomplet">A préparer complet</option>
 								<option value="apreparerquickprep">A préparer quickprep</option>
 								<option value="encoursdeprep">En cours de préparation</option>
-								<option value="pret">prêt</option>
+								<option value="pret">Prêt</option>
 								<option value="areparer">A réparer</option>
 						</select>
 						<br>
@@ -236,17 +263,17 @@ input[type=number]::-webkit-outer-spin-button {
 						</select>
 						<br>
 
-						<select name="position" class="form-group form-control select select-primary" data-toggle="select" required>
-								<option value="0" selected>Présence GPS</option>
-								<option value="no">Non</option>
-								<option value="yes">Oui</option>
+						<select name="presence_gps" class="form-group form-control select select-primary" data-toggle="select" required>
+								<option value="inconnu" selected>Présence GPS</option>
+								<option value="non">Non</option>
+								<option value="oui">Oui</option>
 
 						</select>
 						<br>
-						<select name="position" class="form-group form-control select select-primary" data-toggle="select" required>
-								<option value="0" selected>Présence siège bébé</option>
-								<option value="no">Non</option>
-								<option value="yes">Oui</option>
+						<select name="presence_sb" class="form-group form-control select select-primary" data-toggle="select" required>
+								<option value="inconnu" selected>Présence siège bébé</option>
+								<option value="non">Non</option>
+								<option value="oui">Oui</option>
 						</select>
 						<br>
 
@@ -338,7 +365,7 @@ submitForms = function(){
 				highlight: true,
 				minLength: 1,
 				name: 'users',
-				remote: 'http://localhost:8080/search_immat?key=%QUERY',
+				remote: '/search_immat?key=%QUERY',
 		});
 	});
 
@@ -347,7 +374,7 @@ submitForms = function(){
 <script>
 	function updAUTO(){
 		$.ajax({
-			url: 'http://localhost:8080/search_mva?key='+$( '#myimmat' ).val()+'',
+			url: '/search_mva?key='+$( '#myimmat' ).val()+'',
 			dataType: 'json',
 			success : function (data) {
 				$( '#mva' ).val(data);
@@ -355,7 +382,7 @@ submitForms = function(){
 		});
 
 		$.ajax({
-			url: 'http://localhost:8080/search_proprio?key='+$( '#myimmat' ).val()+'',
+			url: '/search_proprio?key='+$( '#myimmat' ).val()+'',
 			dataType: 'json',
 			success : function (data) {
 				$( '#proprietaire' ).val(data);
@@ -363,14 +390,26 @@ submitForms = function(){
 		});
 
 		$.ajax({
-			url: 'http://localhost:8080/search_modele?key='+$( '#myimmat' ).val()+'',
+			url: '/search_modele?key='+$( '#myimmat' ).val()+'',
 			dataType: 'json',
 			success : function (data) {
 				$( '#modele' ).val(data);
 			},
 		});
 
+		$.ajax({
+			url: '/search_wizard?key='+$( '#myimmat' ).val()+'',
+			dataType: 'json',
+			success : function (data) {
+				$( '#Wizard' ).val(data);
+			},
+		});
+
 	};
 </script>
+<script src="docs/js/highlight.js"></script>
+<script src="dist/js/bootstrap-switch.js"></script>
+<script src="docs/js/main.js"></script>
+
 </body>
 </html>

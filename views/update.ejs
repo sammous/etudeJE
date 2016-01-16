@@ -1,21 +1,16 @@
 <!-- views/update.ejs -->
-<!doctype html>
+
 <html>
-<head>
 
-	<style>
-		body {
-			background-repeat:no-repeat;
-		}
-		body.container {
-			padding-top:80px;
+	<% include header.ejs %>		    <link href="docs/css/bootstrap.min.css" rel="stylesheet">
+    <link href="docs/css/highlight.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
+    <link href="docs/css/main.css" rel="stylesheet">
 
-			}
-	</style>
-
-	<% include header.ejs %>
-
-</head>
+    <!--Scripts-->
+        <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <body>
 
 <div class="demo-headline">
@@ -56,7 +51,7 @@
   	    <% rows.forEach(function(users){ %>
   			<tr >
   			    <td> <%=users.username%></td>
-  			    <td><p data-toggle="tooltip" title="su"><button type="button" class="btn btn-warning pull-right"data-toggle="modal" data-target="#delete" data-user=<%=users.username%>>Supprimer</button></p></td>
+  			    <td><p data-toggle="tooltip" title="su"><button type="button" class="btn btn-warning"data-toggle="modal" data-target="#delete" data-user='<%=users.username%>'>Supprimer</button></p></td>
   			</tr>
   		<%})%>
   	</table>
@@ -108,7 +103,6 @@ function delete_user(){
         				},
 
         			success : function () {
-        				location.reload();   
         			}
         		});
 };

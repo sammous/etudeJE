@@ -3,14 +3,14 @@
 // load all the things we need
 var LocalStrategy   = require('passport-local').Strategy;
 var bcrypt = require('bcrypt-nodejs');
-/*
+
 // load up the user model
 var mysql = require('mysql');
 
 var dbconfig = require('./database');
 var connection = mysql.createConnection(dbconfig.connection);
 
-connection.query('USE ' + dbconfig.database);*/
+connection.query('USE ' + dbconfig.database);
 
 // expose this function to our app using module.exports
 module.exports = function(passport,connection) {
@@ -63,13 +63,13 @@ module.exports = function(passport,connection) {
                         username: username,
                         password: bcrypt.hashSync(password, null, null),  // use the generateHash function in our user model
                         attribut: req.body.attribut,
-                        agence: nom,
+                        agence: req.body.agence,
                     };
 
 
-                    var insertQuery = "INSERT INTO users ( username, password, attribut, nom ) values (?,?,?)";
+                    var insertQuery = "INSERT INTO users ( username, password, attribut, agence ) values (?,?,?,?)";
 
-                    connection.query(insertQuery,[newUserMysql.username, newUserMysql.password, newUserMysql.attribut],function(err, rows) {
+                    connection.query(insertQuery,[newUserMysql.username, newUserMysql.password, newUserMysql.attribut, newUserMysql.agence],function(err, rows) {
                         newUserMysql.id = rows.insertId;
 
                         return done(null, false,req.flash('signupMessage','SUCCES : Compte créé.'));

@@ -8,6 +8,7 @@
     <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
     <link href="docs/css/main.css" rel="stylesheet">
     <!--Scripts-->
+        <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
@@ -101,7 +102,7 @@
         hint: true,
         highlight: true,
         minLength: 1,
-        remote: 'http://localhost:8080/search_agence?key=%QUERY',
+        remote: '/search_agence?key=%QUERY',
     });
   });
 </script>
@@ -113,7 +114,7 @@
   <div class="container">
     <br>
       <div class="text-center">
-        <h2><span class="glyphicon glyphicon-refresh"></span> Ajouter un parking </h2>
+        <h2><span class="glyphicon glyphicon-plus"></span> Ajouter un parking </h2>
         <br>
       </div>
     <br>
@@ -126,7 +127,7 @@
   			</tr>
   	</div>
   			<tr >
-  				<td ><div contenteditable><span id = 'nom'> NOM </span> </div></td>
+  				<td ><input type="text" id='nom' name="nom" class="typeahead form-control" placeholder="Nom"/></td>
   				<td><input type="text" id='agence' name="agence" class="typeahead form-control" placeholder="Agence"/>
           </td>
   			</tr>
@@ -164,8 +165,8 @@
         		$.ajax({
         			url: '/data_ajouter_parking',
         			data : {
-        			nom : $( '#nom' ).html(),
-        			agence : $( '#agence' ).html()
+        			nom : $( '#nom' ).val(),
+        			agence : $( '#agence' ).val()
         				},
 
         			success : function (data) {

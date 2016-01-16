@@ -8,6 +8,7 @@
     <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
     <link href="docs/css/main.css" rel="stylesheet">
     <!--Scripts-->
+        <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
@@ -19,7 +20,7 @@
             highlight: true,
             minLength: 1,
             name: 'users',
-            remote: 'http://localhost:8080/search_agence?key=%QUERY',
+            remote: '/search_agence?key=%QUERY',
         });
       });
     </script>
@@ -143,14 +144,23 @@
   			<tr>
           <th> id </th>
   			<th>  Nom  </th>
-  			<th>  Adresse </th>
+  			<th>  Code site 1</th>
+        <th>  Code site 2</th>
+        <th>  Code site 3</th>
+        <th>  Code site 4</th>
+        <th>  Code site 5</th>
+
   			</tr>
   	</div>
   		<% rows.forEach(function(agence){ %>
   			<tr >
   				<td ><span id = 'id'> <%=agence.idAgence%>  </span> </td>
-          <td ><div contenteditable><span id = 'nom'> <%=agence.nom%>  </span> </div></td>
-  				<td> <div contenteditable><span id = 'adresse'> <%=agence.adresse%> </span> </div> </td>
+          <td><input type="text" id='nom' name="nom" class="typeahead form-control" value='<%=agence.nom%>'/></td>
+          <td><input type="text" id='code1' name="code1" class="typeahead form-control" value='<%=agence.code1%>'/></td>
+          <td><input type="text" id='code2' name="code2" class="typeahead form-control" value='<%=agence.code2%>'/></td>
+          <td><input type="text" id='code3' name="code3" class="typeahead form-control" value='<%=agence.code3%>'/></td>
+          <td><input type="text" id='code4' name="code4" class="typeahead form-control" value='<%=agence.code4%>'/></td>
+          <td><input type="text" id='code5' name="code5" class="typeahead form-control" value='<%=agence.code5%>'/></td>
 
   			</tr>
 
@@ -187,10 +197,14 @@
         function modif(){
 
         		$.ajax({
-        			url: 'http://localhost:8080/modifier_agence',
+        			url: '/modifier_agence',
         			data : {
-        			nom : $( '#nom' ).html(),
-        			adresse : $( '#adresse' ).html(),
+        			nom : $( '#nom' ).val(),
+        			code1 : $( '#code1' ).val(),
+              code2 : $( '#code2' ).val(),
+              code3 : $( '#code3' ).val(),
+              code4 : $( '#code4' ).val(),
+              code5 : $( '#code5' ).val(),
               id : $( '#id' ).html()
         				},
 
@@ -208,7 +222,7 @@
             if (l)
               {
                 $.ajax({
-                  url: 'http://localhost:8080/supprimer_agence',
+                  url: '/supprimer_agence',
                   data : {
                     id : $( '#id' ).html()
                     },

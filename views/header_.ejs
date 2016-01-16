@@ -65,13 +65,13 @@
 					<ul class="dropdown-menu">
 						<li><a href="/fvehicule"> Réception/Checkin </a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="/f44"> Préparer </a></li>
+						<li><a href="/f44"> F44 préparation  </a></li>
 						<% if (user.attribut == "administrateur" || user.attribut == "opérateur") { %>
 						<li role="separator" class="divider"></li>
-						<li><a href="/assigner_tache">Assigner une tâche</a></li>
+						<li><a href="/tache_reception">Assigner un travail </a></li>
 						<% } %>
 						<li role="separator" class="divider"></li>
-						<li><a href="/tache_reception"> Tâches assignées </a></li>
+						<li><a href="/historique_tache_reception"> Travail assigné </a></li>
 					</ul>
 				</li>
 
@@ -84,6 +84,8 @@
 					<li><a href="/agences"> Liste des agences </a></li>
 					<li role="separator" class="divider"></li>
 					<li><a href="/chercher_agence">Chercher/Modifier</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="/ajouter_agence">Ajouter</a></li>
 				</ul>
 			</li>
 
@@ -95,6 +97,8 @@
 				<li><a href="/parking"> Liste des parkings </a></li>
 				<li role="separator" class="divider"></li>
 				<li><a href="/chercher_agence">Chercher/Modifier</a></li>
+				<li role="separator" class="divider"></li>
+				<li><a href="/ajouter_parking">Ajouter</a></li>
 			</ul>
 		</li>
 	</ul>
@@ -115,6 +119,8 @@
 							<li><a href="/admin/signup">Ajouter un utilisateur</a></li>
 							<li role="separator" class="divider"></li>
 							<li><a href="/update">Gérer les utilisateurs</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="/importer_vehicule">Importer des véhicules</a></li>
 							<li role="separator" class="divider"></li>
 							<% } %>
 	            <li><a href="mailto:admin@email.fr">Contacter l'administrateur</a></li>

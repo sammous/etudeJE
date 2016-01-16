@@ -1,13 +1,14 @@
 <!doctype html>
 <html>
   <head>
-    <% include header0.ejs %>
+
     <link href="docs/css/bootstrap.min.css" rel="stylesheet">
     <link href="docs/css/highlight.css" rel="stylesheet">
-    <link href="dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
+    <link href="dist/css/bootstrap-switch.css" rel="stylesheet">
     <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
     <link href="docs/css/main.css" rel="stylesheet">
     <!--Scripts-->
+        <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
@@ -19,7 +20,7 @@
             highlight: true,
             minLength: 1,
             name: 'users',
-            remote: 'http://localhost:8080/search_immat?key=%QUERY',
+            remote: '/search_immat?key=%QUERY',
         });
       });
 
@@ -28,7 +29,7 @@
     <script>
       function updMVA(){
         $.ajax({
-          url: 'http://localhost:8080/search_mva?key='+$( '#myimmat' ).val()+'',
+          url: '/search_mva?key='+$( '#myimmat' ).val()+'',
           dataType: 'json',
           success : function (data) {
             $( '#mva' ).val(data);
@@ -116,6 +117,14 @@
         position: fixed;
       }
     </style>
+    <style>
+      body 		{
+      background-size:100% auto;
+      background-attachment: fixed;
+  }
+
+    </style>
+    <% include header0.ejs %>
   </head>
 
   <!--Body-->
