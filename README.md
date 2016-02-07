@@ -12,48 +12,6 @@ Choisis une tâche (tu peux ajouter une tâche s'il en manque) parmi celles là 
     - Afficher les déplacements d'un véhicule ( recherche dans la table est-stationné par immat.)
     - Séparer les véhicules exterieurs et intérieurs sur le site (button ajouter si pas d'immat proposé)
 
-#IN_PROGRESS
-  Mehdi
-    -Reception vehicule
-
-
-  Sami :
-    - requete SQL F44
-    - Afficher l'historique des process par véhicule
-
-
-#DONE
-  Mehdi
-    13/07/2015
-    - Ajouter un user admin/admin : FAIT
-    - Résoudre le problème de "passport" et du crash lié au hash : FAIT
-    - régler fatal error liée au hash  : FAIT
-    - Enlever les boutons modifier/delete sur l'affichage des tables : FAIT
-    - Intégrer la complétion automatique sur toutes les pages process : FAIT
-    - Recherche des tables véhicules, puis une fois la table localisée, modifier ou supprimer avec ajax. MODIFICATION UNIQUEMENT VIA CETTE METHODE : FAIT
-    - Ajouter une page recherche parking et modification : FAIT
-    - Ajouter une page recherche agence et modification : FAIT
-
-    14/07/2015
-    - Ajouter des agences + modif du header : FAIT
-    - Ajouter des parkings + modif du header : FAIT
-    - Retravailler l'aspect des Agences et Parking : FAIT
-    - Auto-incrementation des id la base de données et mise à jour des infos sans ids : FAIT
-    - mettre les requêtes sql pour :
-      - Agences
-      - Parking
-      - Modifier vehicule
-      - Modifier agence
-      - Modifier parking
-
-  Sami :
-    - ?
-
-
-
-
-## Infos supplémentaires
-
 
 1. Le dossier mySQL_Model contient à la fois le modèle graphique et un fichier de création des tables ( texte donc ).
 1. Pages à créer : traduire ce qui est mis sur les tables de la base de données ( regarder de manière graphique avec workbench, c'est plus parlant ). J'ai veillé à mettre en correspondance les ids, et les différentes informations. Les pages comporteront grosso modo les même choses ( champs de saisie, choix de G0 à G8, check boutton, date etc.. sauf si la date est réelle, dans ce cas elle est automatiquement insérée)
@@ -89,7 +47,13 @@ Afficher checkin pour une immat donnée et du jour.
 ## Fichier à lancer pour l'initialisation de la base de donnée :
 
 - /scripts  : node create_database.js
-- fichier sql : V_2.1.sql
+- fichier sql : V_5.2.sql
+
+##To modify
+- python connexion informations
+- Config informations 
+
+
 
 ## Instructions
 

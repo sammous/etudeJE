@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
   <head>
-    <% include header.ejs %>
+    <% include header_.ejs %>
         <link href="docs/css/bootstrap.min.css" rel="stylesheet">
     <link href="docs/css/highlight.css" rel="stylesheet">
     <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
@@ -14,18 +14,24 @@
   </head>
 <body>
 
+<style>
 
-<div class="container text-center">
+  table td {
+     text-align: center;
+  }
+  </style>
+<div class="container-fluid text-center">
 
   <br><br>
   <h1><span class="fa fa-refresh"></span><b> Historique des réceptions </b></h1>
 
     <br><br>
 
-  <table  class = "table table-hover table-bordered text-center">
+  <table  class = "table table-bordered ">
+
     <div class="text-center">
       <tr>
-      <th>id receptioj</th>
+      <th>id reception</th>
       <th>Immat</th>
       <th>MVA</th>
       <th>Date retour</th>
@@ -72,9 +78,7 @@
   </table>
 
 
-
 </div>
-
 
 </body>
 </html>

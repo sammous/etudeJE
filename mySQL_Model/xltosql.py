@@ -6,11 +6,11 @@ import datetime
 import pprint
 
 # Open the workbook and define the worksheet
-book = xlrd.open_workbook("vehicules.xls")
+book = xlrd.open_workbook("../mySQL_Model/vehicules.xls")
 sheet = book.sheet_by_name("Feuil1")
 
 # Establish a MySQL connection
-database = MySQLdb.connect (host="localhost", user = "root", passwd = "root", db = "mydb")
+database = MySQLdb.connect (host="localhost", user = "root", passwd = "123456", db = "mydb")
 
 # Get the cursor, which is used to traverse the database, line by line
 cursor = database.cursor()

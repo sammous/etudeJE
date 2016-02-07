@@ -114,13 +114,17 @@ app.get('/liste_vehicules', function(req,res){
 		if (req.user.attribut == "administrateur") {
 			connection.query('select * from vehicules where immat like "%'+req.body.immat+'%";', function(err,result){
 				connection.query('select * from process_f44 where immat like"%'+req.body.immat+'%";', function(err,result2){
+					connection.query('select * from process_check_in where immat like"%'+req.body.immat+'%";', function(err,result3){
+
 
 			res.render('chercher_vehicule_resp.ejs', {
 				rows : result,
 				rows2 : result2,
+				rows3 :  result3,
 				user : req.user
 			});
 				});
+					});
 			});
 
 		} else {
@@ -234,8 +238,8 @@ app.get('/liste_vehicules', function(req,res){
 	var insertQueryAgence='DELETE FROM users where username = ?';
  	 connection.query(insertQueryAgence,[req.query.user]);
  	 var data="";
- 	res.end(data);
- 	console.log('utilisateur supprimé');
+		res.redirect('/confirmation')
+
 	});
 
 	// =====================================
@@ -957,12 +961,12 @@ app.post('/importfile',function(req,res,next){
 	fs.readFile(req.files.import.path, function (err, data) {
   // ...
   // var newPath = __dirname + "/mySQL_Model/" + 'vehicules.xls';
-	var newPath = '/Users/MACSAMI/Documents/Github/etudeJE/mySQL_Model/vehicules.xls'
+	var newPath = './mySQL_Model/vehicules.xls'
   fs.rename(req.files.import.path, newPath, function (err) {
 		fs.exists(newPath, function(exists) {
 			// body...
 			if (exists){
-				require("child_process").exec('cd ~/Documents/Github/etudeJE/mySQL_Model; python xltosql.py').unref;
+				require("child_process").exec('python ./mySQL_Mod/xltosql.py').unref;
 				res.render('confirmation.ejs',{
 					user : req.userproximity
 				});

@@ -2,7 +2,7 @@
 
 <html>
 
-	<% include header.ejs %>		    <link href="docs/css/bootstrap.min.css" rel="stylesheet">
+	<% include header_.ejs %>		    <link href="docs/css/bootstrap.min.css" rel="stylesheet">
     <link href="docs/css/highlight.css" rel="stylesheet">
     <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
     <link href="docs/css/main.css" rel="stylesheet">
@@ -103,6 +103,7 @@ function delete_user(){
         				},
 
         			success : function () {
+								window.setTimeout('window.location="/confirmation"; ',1000);
         			}
         		});
 };
