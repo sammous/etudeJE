@@ -2,12 +2,16 @@
 
 Manuel rapide :
 
-Pour l'initialisation de la DB :
-  Installer mysql-workbench. Puis créer un schéma appelé mydb ( identifiants comme sur /config/database.js)
-- python connexion informations (username, password, table name)
-- Config informations : /config/database.js
-- /mySQL_Model/V_N.n.sql : use "__New name of DB__"
+- Pour l'initialisation de la DB :
+    1. Installer mysql-workbench.
+    1. Créer un schéma appelé mydb (avec les identifiants que sur /config/database.js)
+    1. Importer la base de donnée à partir d'un fichier .sql, le fichier en question est /mySQL_Model/5.2.sql
 
+- Mise à jour des infos de connexion à la DB :
+    1. Dans /mySQL_Model/xltosql.py : mettre le bon username, password et db
+    1. Dans /config/database.js
+
+Au moindre bug, envoie moi un message sur fb ou par téléphone.
 
 
 ## Instructions
@@ -30,6 +34,10 @@ Pour l'initialisation de la DB :
     23
     24
     25
+# Keep attention to
+- python connexion informations (username, password, table name)
+- Config informations : /config/database.js
+- /mySQL_Model/V_N.n.sql : use "__New name of DB__"
     26
     28
     87
@@ -41,3 +49,9 @@ Pour l'initialisation de la DB :
 
 - /scripts  : node create_database.js
 - fichier sql : V_N.n.sql
+
+
+# Keep attention to
+- python connexion informations (username, password, table name)
+- Config informations : /config/database.js
+- /mySQL_Model/V_N.n.sql : use "__New name of DB__"
